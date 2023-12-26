@@ -1,0 +1,34 @@
+{
+  "name": "oneclang-language-features",
+  "version": "0.0.1",
+  "author": "IgorKilipenko",
+  "publisher": "IgorKilipenko",
+  "contributes": {
+    "commands": [
+      {
+        "command": "oneclang-language-features.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint ./src --ext .ts",
+    "antlr4_": "antlr4 -Dlanguage=TypeScript -lib ./src/antlr -o ./src/antlr/out -Xexact-output-dir -visitor ./src/antlr/*.g4",
+    "antlr4__": "antlr4 -Dlanguage=TypeScript -o ./src/antlr/out -Xexact-output-dir ./src/antlr/*.g4",
+    "antlr4": "antlr4 -Dlanguage=TypeScript -lib ./src/antlr -o ./src/antlr/out -Xexact-output-dir ./src/antlr/*.g4",
+    "antlr4ts": "antlr4ts -o ./src/antlr/out -Xexact-output-dir ./src/antlr/*.g4"
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "antlr4": "^4.13.1-patch-1"
+  }
+}

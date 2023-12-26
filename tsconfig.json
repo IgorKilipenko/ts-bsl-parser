@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+        "module": "CommonJS",
+		"target": "ES2022",
+		"outDir": "out",
+		"lib": [
+			"ES2022"
+		],
+		"sourceMap": true,
+		"rootDir": "src",
+		"importHelpers": true,
+	},
+	"include": [
+		"src/**/*.ts"
+, "src/parser.ts"	],
+	"exclude": [
+		"node_modules"
+	]
+}
