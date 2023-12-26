@@ -24,9 +24,13 @@
  */
 parser grammar BSLMethodDescriptionParser;
 
+@header {
+import { BslParserRuleContext } from "../../core/context";
+}
+
 options {
     tokenVocab = BSLMethodDescriptionLexer;
-    contextSuperClass = 'BSLParserRuleContext';
+    contextSuperClass = 'BslParserRuleContext';
 }
 
 // структура описания

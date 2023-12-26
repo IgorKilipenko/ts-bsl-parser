@@ -21,9 +21,13 @@
  */
 parser grammar BSLParser;
 
+@header {
+import { BslParserRuleContext } from "../../core/context";
+}
+
 options {
     tokenVocab = BSLLexer;
-    contextSuperClass = 'BSLParserRuleContext';
+    contextSuperClass = 'BslParserRuleContext';
 }
 
 // ROOT

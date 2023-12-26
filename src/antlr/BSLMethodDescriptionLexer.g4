@@ -24,13 +24,13 @@
  */
 lexer grammar BSLMethodDescriptionLexer;
 
-@members {
-public BSLMethodDescriptionLexer(CharStream input, boolean crAwareCostructor) {
-  super(input);
-  _interp = new CRAwareLexerATNSimulator(this, _ATN);
-  validateInputStream(_ATN, input);
-}
-}
+// @members {
+// public BSLMethodDescriptionLexer(CharStream input, boolean crAwareCostructor) {
+//   super(input);
+//   _interp = new CRAwareLexerATNSimulator(this, _ATN);
+//   validateInputStream(_ATN, input);
+// }
+// }
 
 // KEYWORDS
 PARAMETERS_KEYWORD:     (P A R A M E T E R S        | RU_P RU_A RU_R RU_A RU_M RU_E RU_T RU_R RU_Y) ':';

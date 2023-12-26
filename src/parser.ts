@@ -17,4 +17,4 @@ const lexer = new BslGrammarLexer(chars);
 const tokens = new CommonTokenStream(lexer);
 const parser = new BslGrammarParser(tokens);
 const tree = parser.funcDeclaration();
-console.log({tree});
+console.log({ tree });

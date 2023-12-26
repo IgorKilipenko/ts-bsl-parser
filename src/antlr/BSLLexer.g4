@@ -26,13 +26,13 @@ channels {
     PREPROC_DELETE_CHANNEL
 }
 
-@members {
-public BSLLexer(CharStream input, boolean crAwareCostructor) {
-  super(input);
-  _interp = new CRAwareLexerATNSimulator(this, _ATN);
-  validateInputStream(_ATN, input);
-}
-}
+// @members {
+// public BSLLexer(CharStream input, boolean crAwareCostructor) {
+//   super(input);
+//   _interp = new CRAwareLexerATNSimulator(this, _ATN);
+//   validateInputStream(_ATN, input);
+// }
+// }
 
 // commons
 fragment DIGIT: [0-9];
