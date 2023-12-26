@@ -18,8 +18,7 @@
     "lint": "eslint ./src --ext .ts",
     "antlr4_": "antlr4 -Dlanguage=TypeScript -lib ./src/antlr -o ./src/antlr/out -Xexact-output-dir -visitor ./src/antlr/*.g4",
     "antlr4__": "antlr4 -Dlanguage=TypeScript -o ./src/antlr/out -Xexact-output-dir ./src/antlr/*.g4",
-    "antlr4": "antlr4 -Dlanguage=TypeScript -lib ./src/antlr -o ./src/antlr/out -Xexact-output-dir ./src/antlr/*.g4",
-    "antlr4ts": "antlr4ts -o ./src/antlr/out -Xexact-output-dir ./src/antlr/*.g4"
+    "antlr4": "antlr4 -Dlanguage=TypeScript -encoding utf8 -o ./src/antlr/out -Xexact-output-dir -visitor ./src/antlr/*.g4"
   },
   "devDependencies": {
     "@types/node": "18.x",
