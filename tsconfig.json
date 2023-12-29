@@ -1,19 +1,20 @@
 {
-	"compilerOptions": {
+    "compilerOptions": {
         "module": "CommonJS",
-		"target": "ES2022",
-		"outDir": "out",
-		"lib": [
-			"ES2022"
-		],
-		"sourceMap": true,
-		"rootDir": "src",
-		"importHelpers": true,
-	},
-	"include": [
-		"src/**/*.ts"
-, "src/parser.ts"	],
-	"exclude": [
-		"node_modules"
-	]
+        "target": "ES2022",
+        "outDir": "out",
+        "lib": [
+            "ES2022"
+        ],
+        "sourceMap": true,
+        "rootDir": ".",
+        "importHelpers": true
+    },
+    "include": [
+        "src/**/*.ts",
+        "tests/unit/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }

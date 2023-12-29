@@ -1,3 +1,7 @@
 {
     "workbench.colorTheme": "Default Dark Modern",
+    "jestrunner.jestCommand": "npm run test --",
+    "jestrunner.debugOptions": {
+        "runtimeExecutable": "node",
+    }
 }

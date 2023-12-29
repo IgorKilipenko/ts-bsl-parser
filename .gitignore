@@ -2,4 +2,4 @@ out
 dist
 node_modules
 .antlr
-antlr/gen/**
+src/antlr/generated/**
