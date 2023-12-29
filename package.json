@@ -16,15 +16,17 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint ./src --ext .ts",
-    "antlr4_": "antlr4 -Dlanguage=TypeScript -lib ./src/antlr -o ./src/antlr/out -Xexact-output-dir -visitor ./src/antlr/*.g4",
-    "antlr4__": "antlr4 -Dlanguage=TypeScript -o ./src/antlr/out -Xexact-output-dir ./src/antlr/*.g4",
-    "antlr4": "antlr4 -Dlanguage=TypeScript -encoding utf8 -o ./src/antlr/out -Xexact-output-dir -visitor ./src/antlr/*.g4"
+    "test": "jest",
+    "antlr4": "antlr4 -Dlanguage=TypeScript -encoding utf8 -o ./src/antlr/generated -Xexact-output-dir -visitor ./src/antlr/*.g4"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.11",
     "@types/node": "18.x",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "eslint": "^8.52.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2"
   },
   "dependencies": {
