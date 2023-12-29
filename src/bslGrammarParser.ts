@@ -1,3 +1,3 @@
-import BslGrammarParser from "./antlr/out/BSLParser";
+import BslGrammarParser from "./antlr/generated/BSLParser";
 
 export { BslGrammarParser };
