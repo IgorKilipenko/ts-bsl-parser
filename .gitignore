@@ -3,3 +3,4 @@ dist
 node_modules
 .antlr
 src/antlr/generated/**
+!src/antlr/generated/**/*.ts
