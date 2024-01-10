@@ -3,5 +3,8 @@
     "jestrunner.jestCommand": "npm run test --",
     "jestrunner.debugOptions": {
         "runtimeExecutable": "node",
-    }
+    },
+    "cSpell.words": [
+        "linebreak"
+    ]
 }
