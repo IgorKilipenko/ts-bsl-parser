@@ -1,38 +1,18 @@
 // Generated from ./src/antlr/SDBLParser.g4 by ANTLR 4.13.1
-// noinspection ES6UnusedImports,JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 
-import {
-    ATN,
-    ATNDeserializer,
-    DecisionState,
-    DFA,
-    FailedPredicateException,
-    RecognitionException,
-    NoViableAltException,
-    BailErrorStrategy,
-    Parser,
-    ParserATNSimulator,
-    RuleContext,
-    ParserRuleContext,
-    PredictionMode,
-    PredictionContextCache,
-    TerminalNode,
-    RuleNode,
-    Token,
-    TokenStream,
-    Interval,
-    IntervalSet,
-} from "antlr4";
-import SDBLParserListener from "./SDBLParserListener.js";
-import SDBLParserVisitor from "./SDBLParserVisitor.js";
+import * as antlr from "antlr4ng";
+import type { Token } from "antlr4ng";
+
+import type { SDBLParserListener } from "./SDBLParserListener.js";
+import type { SDBLParserVisitor } from "./SDBLParserVisitor.js";
 
 // for running tests with parameters, TODO: discuss strategy for typed parameters in CI
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 type int = number;
 
-import { BslParserRuleContext } from "../../core/context";
+import { BslParserRuleContext } from "../../core/context.js";
 
-export default class SDBLParser extends Parser {
+export class SDBLParser extends antlr.Parser {
     public static readonly WHITE_SPACE = 1;
 
     public static readonly LINE_COMMENT = 2;
@@ -391,8 +371,6 @@ export default class SDBLParser extends Parser {
 
     public static readonly EDS_CUBE_DIMTABLE = 179;
 
-    public static readonly EOF = Token.EOF;
-
     public static readonly RULE_queryPackage = 0;
 
     public static readonly RULE_queries = 1;
@@ -515,7 +493,7 @@ export default class SDBLParser extends Parser {
 
     public static readonly RULE_mdo = 60;
 
-    public static readonly literalNames: (string | null)[] = [
+    public static readonly literalNames = [
         null,
         null,
         null,
@@ -677,7 +655,7 @@ export default class SDBLParser extends Parser {
         "'\"'",
     ];
 
-    public static readonly symbolicNames: (string | null)[] = [
+    public static readonly symbolicNames = [
         null,
         "WHITE_SPACE",
         "LINE_COMMENT",
@@ -860,8 +838,7 @@ export default class SDBLParser extends Parser {
         "EDS_CUBE_DIMTABLE",
     ];
 
-    // tslint:disable:no-trailing-whitespace
-    public static readonly ruleNames: string[] = [
+    public static readonly ruleNames = [
         "queryPackage",
         "queries",
         "dropTableQuery",
@@ -945,36 +922,35 @@ export default class SDBLParser extends Parser {
         return SDBLParser._serializedATN;
     }
 
-    protected createFailedPredicateException(predicate?: string, message?: string): FailedPredicateException {
-        return new FailedPredicateException(this, predicate, message);
+    protected createFailedPredicateException(predicate?: string, message?: string): antlr.FailedPredicateException {
+        return new antlr.FailedPredicateException(this, predicate, message);
     }
 
-    constructor(input: TokenStream) {
+    public constructor(input: antlr.TokenStream) {
         super(input);
-        this._interp = new ParserATNSimulator(
+        this.interpreter = new antlr.ParserATNSimulator(
             this,
             SDBLParser._ATN,
-            SDBLParser.DecisionsToDFA,
-            new PredictionContextCache()
+            SDBLParser.decisionsToDFA,
+            new antlr.PredictionContextCache()
         );
     }
 
-    // @RuleVersion(0)
     public queryPackage(): QueryPackageContext {
-        let localctx: QueryPackageContext = new QueryPackageContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 0, SDBLParser.RULE_queryPackage);
+        let localContext = new QueryPackageContext(this.context, this.state);
+        this.enterRule(localContext, 0, SDBLParser.RULE_queryPackage);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 122;
                 this.queries();
                 this.state = 127;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 0, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 0, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             {
                                 this.state = 123;
@@ -985,12 +961,12 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     this.state = 129;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 0, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 0, this.context);
                 }
                 this.state = 131;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 6) {
                     {
                         this.state = 130;
@@ -1002,106 +978,103 @@ export default class SDBLParser extends Parser {
                 this.match(SDBLParser.EOF);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public queries(): QueriesContext {
-        let localctx: QueriesContext = new QueriesContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 2, SDBLParser.RULE_queries);
+        let localContext = new QueriesContext(this.context, this.state);
+        this.enterRule(localContext, 2, SDBLParser.RULE_queries);
         try {
             this.state = 137;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 50:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.SELECT:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 135;
                         this.selectQuery();
                     }
                     break;
-                case 31:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.DROP:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 136;
                         this.dropTableQuery();
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public dropTableQuery(): DropTableQueryContext {
-        let localctx: DropTableQueryContext = new DropTableQueryContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 4, SDBLParser.RULE_dropTableQuery);
+        let localContext = new DropTableQueryContext(this.context, this.state);
+        this.enterRule(localContext, 4, SDBLParser.RULE_dropTableQuery);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 139;
                 this.match(SDBLParser.DROP);
                 this.state = 140;
-                localctx._temporaryTableName = this.identifier();
+                localContext._temporaryTableName = this.identifier();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public selectQuery(): SelectQueryContext {
-        let localctx: SelectQueryContext = new SelectQueryContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 6, SDBLParser.RULE_selectQuery);
+        let localContext = new SelectQueryContext(this.context, this.state);
+        this.enterRule(localContext, 6, SDBLParser.RULE_selectQuery);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 142;
                 this.subquery();
                 this.state = 169;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 6, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 6, this.context)) {
                     case 1:
                         {
                             {
                                 this.state = 143;
-                                localctx._autoorder = this.match(SDBLParser.AUTOORDER);
+                                localContext._autoorder = this.match(SDBLParser.AUTOORDER);
                                 this.state = 144;
-                                localctx._orders = this.orderBy();
+                                localContext._orders = this.orderBy();
                                 this.state = 145;
-                                localctx._totals = this.totalBy();
+                                localContext._totals = this.totalBy();
                             }
                         }
                         break;
@@ -1109,11 +1082,11 @@ export default class SDBLParser extends Parser {
                         {
                             {
                                 this.state = 147;
-                                localctx._orders = this.orderBy();
+                                localContext._orders = this.orderBy();
                                 this.state = 148;
-                                localctx._autoorder = this.match(SDBLParser.AUTOORDER);
+                                localContext._autoorder = this.match(SDBLParser.AUTOORDER);
                                 this.state = 149;
-                                localctx._totals = this.totalBy();
+                                localContext._totals = this.totalBy();
                             }
                         }
                         break;
@@ -1121,11 +1094,11 @@ export default class SDBLParser extends Parser {
                         {
                             {
                                 this.state = 151;
-                                localctx._orders = this.orderBy();
+                                localContext._orders = this.orderBy();
                                 this.state = 152;
-                                localctx._totals = this.totalBy();
+                                localContext._totals = this.totalBy();
                                 this.state = 153;
-                                localctx._autoorder = this.match(SDBLParser.AUTOORDER);
+                                localContext._autoorder = this.match(SDBLParser.AUTOORDER);
                             }
                         }
                         break;
@@ -1133,24 +1106,24 @@ export default class SDBLParser extends Parser {
                         {
                             {
                                 this.state = 155;
-                                localctx._autoorder = this.match(SDBLParser.AUTOORDER);
+                                localContext._autoorder = this.match(SDBLParser.AUTOORDER);
                                 this.state = 158;
-                                this._errHandler.sync(this);
-                                switch (this._input.LA(1)) {
-                                    case 140:
+                                this.errorHandler.sync(this);
+                                switch (this.tokenStream.LA(1)) {
+                                    case SDBLParser.ORDER:
                                         {
                                             this.state = 156;
-                                            localctx._orders = this.orderBy();
+                                            localContext._orders = this.orderBy();
                                         }
                                         break;
-                                    case 53:
+                                    case SDBLParser.TOTALS:
                                         {
                                             this.state = 157;
-                                            localctx._totals = this.totalBy();
+                                            localContext._totals = this.totalBy();
                                         }
                                         break;
-                                    case -1:
-                                    case 6:
+                                    case SDBLParser.EOF:
+                                    case SDBLParser.SEMICOLON:
                                         break;
                                     default:
                                         break;
@@ -1162,24 +1135,24 @@ export default class SDBLParser extends Parser {
                         {
                             {
                                 this.state = 160;
-                                localctx._orders = this.orderBy();
+                                localContext._orders = this.orderBy();
                                 this.state = 163;
-                                this._errHandler.sync(this);
-                                switch (this._input.LA(1)) {
-                                    case 24:
+                                this.errorHandler.sync(this);
+                                switch (this.tokenStream.LA(1)) {
+                                    case SDBLParser.AUTOORDER:
                                         {
                                             this.state = 161;
-                                            localctx._autoorder = this.match(SDBLParser.AUTOORDER);
+                                            localContext._autoorder = this.match(SDBLParser.AUTOORDER);
                                         }
                                         break;
-                                    case 53:
+                                    case SDBLParser.TOTALS:
                                         {
                                             this.state = 162;
-                                            localctx._totals = this.totalBy();
+                                            localContext._totals = this.totalBy();
                                         }
                                         break;
-                                    case -1:
-                                    case 6:
+                                    case SDBLParser.EOF:
+                                    case SDBLParser.SEMICOLON:
                                         break;
                                     default:
                                         break;
@@ -1191,14 +1164,14 @@ export default class SDBLParser extends Parser {
                         {
                             {
                                 this.state = 165;
-                                localctx._totals = this.totalBy();
+                                localContext._totals = this.totalBy();
                                 this.state = 167;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 24) {
                                     {
                                         this.state = 166;
-                                        localctx._autoorder = this.match(SDBLParser.AUTOORDER);
+                                        localContext._autoorder = this.match(SDBLParser.AUTOORDER);
                                     }
                                 }
                             }
@@ -1207,32 +1180,31 @@ export default class SDBLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subquery(): SubqueryContext {
-        let localctx: SubqueryContext = new SubqueryContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 8, SDBLParser.RULE_subquery);
+        let localContext = new SubqueryContext(this.context, this.state);
+        this.enterRule(localContext, 8, SDBLParser.RULE_subquery);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 171;
-                localctx._main = this.query();
+                localContext._main = this.query();
                 this.state = 173;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 7, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 7, this.context)) {
                     case 1:
                         {
                             this.state = 172;
@@ -1241,55 +1213,54 @@ export default class SDBLParser extends Parser {
                         break;
                 }
                 this.state = 180;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 153) {
                     {
                         this.state = 176;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
+                        this.errorHandler.sync(this);
+                        _la = this.tokenStream.LA(1);
                         do {
                             {
                                 {
                                     this.state = 175;
-                                    localctx._union = this.union();
-                                    localctx._unions.push(localctx._union);
+                                    localContext._union = this.union();
+                                    localContext._unions.push(localContext._union);
                                 }
                             }
                             this.state = 178;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                         } while (_la === 153);
                     }
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public union(): UnionContext {
-        let localctx: UnionContext = new UnionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 10, SDBLParser.RULE_union);
+        let localContext = new UnionContext(this.context, this.state);
+        this.enterRule(localContext, 10, SDBLParser.RULE_union);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 182;
                 this.match(SDBLParser.UNION);
                 this.state = 184;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 152) {
                     {
                         this.state = 183;
@@ -1300,8 +1271,8 @@ export default class SDBLParser extends Parser {
                 this.state = 186;
                 this.query();
                 this.state = 188;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 11, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 11, this.context)) {
                     case 1:
                         {
                             this.state = 187;
@@ -1311,32 +1282,31 @@ export default class SDBLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public query(): QueryContext {
-        let localctx: QueryContext = new QueryContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 12, SDBLParser.RULE_query);
+        let localContext = new QueryContext(this.context, this.state);
+        this.enterRule(localContext, 12, SDBLParser.RULE_query);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 190;
                 this.match(SDBLParser.SELECT);
                 this.state = 192;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 20 || _la === 30 || _la === 52) {
                     {
                         this.state = 191;
@@ -1345,78 +1315,78 @@ export default class SDBLParser extends Parser {
                 }
 
                 this.state = 194;
-                localctx._columns = this.selectedFields();
+                localContext._columns = this.selectedFields();
                 this.state = 197;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 39) {
                     {
                         this.state = 195;
                         this.match(SDBLParser.INTO);
                         this.state = 196;
-                        localctx._temporaryTableName = this.identifier();
+                        localContext._temporaryTableName = this.identifier();
                     }
                 }
 
                 this.state = 201;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 36) {
                     {
                         this.state = 199;
                         this.match(SDBLParser.FROM);
                         this.state = 200;
-                        localctx._from_ = this.dataSources();
+                        localContext._from_ = this.dataSources();
                     }
                 }
 
                 this.state = 205;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 57) {
                     {
                         this.state = 203;
                         this.match(SDBLParser.WHERE);
                         this.state = 204;
-                        localctx._where = this.logicalExpression();
+                        localContext._where = this.logicalExpression();
                     }
                 }
 
                 this.state = 210;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 139) {
                     {
                         this.state = 207;
                         this.match(SDBLParser.GROUP);
                         this.state = 208;
-                        _la = this._input.LA(1);
+                        _la = this.tokenStream.LA(1);
                         if (!(_la === 26 || _la === 49)) {
-                            this._errHandler.recoverInline(this);
+                            this.errorHandler.recoverInline(this);
                         } else {
-                            this._errHandler.reportMatch(this);
+                            this.errorHandler.reportMatch(this);
                             this.consume();
                         }
                         this.state = 209;
-                        localctx._groupBy = this.groupByItem();
+                        localContext._groupBy = this.groupByItem();
                     }
                 }
 
                 this.state = 214;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 37) {
                     {
                         this.state = 212;
                         this.match(SDBLParser.HAVING);
                         this.state = 213;
-                        localctx._having = this.logicalExpression();
+                        localContext._having = this.logicalExpression();
                     }
                 }
 
                 this.state = 221;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 150) {
                     {
                         this.state = 216;
@@ -1424,110 +1394,109 @@ export default class SDBLParser extends Parser {
                         this.state = 217;
                         this.match(SDBLParser.UPDATE);
                         this.state = 219;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
+                        this.errorHandler.sync(this);
+                        _la = this.tokenStream.LA(1);
                         if (((_la - 119) & ~0x1f) === 0 && ((1 << (_la - 119)) & 262143) !== 0) {
                             {
                                 this.state = 218;
-                                localctx._forUpdate = this.mdo();
+                                localContext._forUpdate = this.mdo();
                             }
                         }
                     }
                 }
 
                 this.state = 233;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 138) {
                     {
                         this.state = 223;
                         this.match(SDBLParser.INDEX);
                         this.state = 224;
-                        _la = this._input.LA(1);
+                        _la = this.tokenStream.LA(1);
                         if (!(_la === 26 || _la === 49)) {
-                            this._errHandler.recoverInline(this);
+                            this.errorHandler.recoverInline(this);
                         } else {
-                            this._errHandler.reportMatch(this);
+                            this.errorHandler.reportMatch(this);
                             this.consume();
                         }
                         this.state = 225;
-                        localctx._indexingItem = this.indexingItem();
-                        localctx._indexes.push(localctx._indexingItem);
+                        localContext._indexingItem = this.indexingItem();
+                        localContext._indexes.push(localContext._indexingItem);
                         this.state = 230;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
+                        this.errorHandler.sync(this);
+                        _la = this.tokenStream.LA(1);
                         while (_la === 7) {
                             {
                                 {
                                     this.state = 226;
                                     this.match(SDBLParser.COMMA);
                                     this.state = 227;
-                                    localctx._indexingItem = this.indexingItem();
-                                    localctx._indexes.push(localctx._indexingItem);
+                                    localContext._indexingItem = this.indexingItem();
+                                    localContext._indexes.push(localContext._indexingItem);
                                 }
                             }
                             this.state = 232;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                         }
                     }
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public limitations(): LimitationsContext {
-        let localctx: LimitationsContext = new LimitationsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 14, SDBLParser.RULE_limitations);
+        let localContext = new LimitationsContext(this.context, this.state);
+        this.enterRule(localContext, 14, SDBLParser.RULE_limitations);
         try {
             this.state = 276;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 23, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 23, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 238;
-                            this._errHandler.sync(this);
-                            switch (this._input.LA(1)) {
-                                case 52:
+                            this.errorHandler.sync(this);
+                            switch (this.tokenStream.LA(1)) {
+                                case SDBLParser.TOP:
                                     {
                                         this.state = 235;
                                         this.top();
                                     }
                                     break;
-                                case 30:
+                                case SDBLParser.DISTINCT:
                                     {
                                         this.state = 236;
                                         this.match(SDBLParser.DISTINCT);
                                     }
                                     break;
-                                case 20:
+                                case SDBLParser.ALLOWED:
                                     {
                                         this.state = 237;
                                         this.match(SDBLParser.ALLOWED);
                                     }
                                     break;
                                 default:
-                                    throw new NoViableAltException(this);
+                                    throw new antlr.NoViableAltException(this);
                             }
                         }
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 240;
@@ -1540,7 +1509,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         {
                             this.state = 243;
@@ -1553,7 +1522,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 4:
-                    this.enterOuterAlt(localctx, 4);
+                    this.enterOuterAlt(localContext, 4);
                     {
                         {
                             this.state = 247;
@@ -1566,7 +1535,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 5:
-                    this.enterOuterAlt(localctx, 5);
+                    this.enterOuterAlt(localContext, 5);
                     {
                         {
                             this.state = 251;
@@ -1579,7 +1548,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 6:
-                    this.enterOuterAlt(localctx, 6);
+                    this.enterOuterAlt(localContext, 6);
                     {
                         {
                             this.state = 255;
@@ -1592,7 +1561,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 7:
-                    this.enterOuterAlt(localctx, 7);
+                    this.enterOuterAlt(localContext, 7);
                     {
                         {
                             this.state = 258;
@@ -1605,7 +1574,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 8:
-                    this.enterOuterAlt(localctx, 8);
+                    this.enterOuterAlt(localContext, 8);
                     {
                         {
                             this.state = 262;
@@ -1616,7 +1585,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 9:
-                    this.enterOuterAlt(localctx, 9);
+                    this.enterOuterAlt(localContext, 9);
                     {
                         {
                             this.state = 264;
@@ -1627,7 +1596,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 10:
-                    this.enterOuterAlt(localctx, 10);
+                    this.enterOuterAlt(localContext, 10);
                     {
                         {
                             this.state = 266;
@@ -1638,7 +1607,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 11:
-                    this.enterOuterAlt(localctx, 11);
+                    this.enterOuterAlt(localContext, 11);
                     {
                         {
                             this.state = 268;
@@ -1649,7 +1618,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 12:
-                    this.enterOuterAlt(localctx, 12);
+                    this.enterOuterAlt(localContext, 12);
                     {
                         {
                             this.state = 270;
@@ -1660,7 +1629,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 13:
-                    this.enterOuterAlt(localctx, 13);
+                    this.enterOuterAlt(localContext, 13);
                     {
                         {
                             this.state = 273;
@@ -1672,98 +1641,95 @@ export default class SDBLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public top(): TopContext {
-        let localctx: TopContext = new TopContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 16, SDBLParser.RULE_top);
+        let localContext = new TopContext(this.context, this.state);
+        this.enterRule(localContext, 16, SDBLParser.RULE_top);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 278;
                 this.match(SDBLParser.TOP);
                 this.state = 279;
-                localctx._count = this.match(SDBLParser.DECIMAL);
+                localContext._count = this.match(SDBLParser.DECIMAL);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public selectedFields(): SelectedFieldsContext {
-        let localctx: SelectedFieldsContext = new SelectedFieldsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 18, SDBLParser.RULE_selectedFields);
+        let localContext = new SelectedFieldsContext(this.context, this.state);
+        this.enterRule(localContext, 18, SDBLParser.RULE_selectedFields);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 281;
-                localctx._selectedField = this.selectedField();
-                localctx._fields.push(localctx._selectedField);
+                localContext._selectedField = this.selectedField();
+                localContext._fields.push(localContext._selectedField);
                 this.state = 286;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 7) {
                     {
                         {
                             this.state = 282;
                             this.match(SDBLParser.COMMA);
                             this.state = 283;
-                            localctx._selectedField = this.selectedField();
-                            localctx._fields.push(localctx._selectedField);
+                            localContext._selectedField = this.selectedField();
+                            localContext._fields.push(localContext._selectedField);
                         }
                     }
                     this.state = 288;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public selectedField(): SelectedFieldContext {
-        let localctx: SelectedFieldContext = new SelectedFieldContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 20, SDBLParser.RULE_selectedField);
+        let localContext = new SelectedFieldContext(this.context, this.state);
+        this.enterRule(localContext, 20, SDBLParser.RULE_selectedField);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 294;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 25, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 25, this.context)) {
                     case 1:
                         {
                             this.state = 289;
@@ -1796,8 +1762,8 @@ export default class SDBLParser extends Parser {
                         break;
                 }
                 this.state = 297;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 26, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 26, this.context)) {
                     case 1:
                         {
                             this.state = 296;
@@ -1807,30 +1773,29 @@ export default class SDBLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public asteriskField(): AsteriskFieldContext {
-        let localctx: AsteriskFieldContext = new AsteriskFieldContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 22, SDBLParser.RULE_asteriskField);
+        let localContext = new AsteriskFieldContext(this.context, this.state);
+        this.enterRule(localContext, 22, SDBLParser.RULE_asteriskField);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 304;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (
                     (((_la - 31) & ~0x1f) === 0 && ((1 << (_la - 31)) & 4165469189) !== 0) ||
                     (((_la - 63) & ~0x1f) === 0 && ((1 << (_la - 63)) & 4294967295) !== 0) ||
@@ -1841,104 +1806,101 @@ export default class SDBLParser extends Parser {
                     {
                         {
                             this.state = 299;
-                            localctx._tableName = this.identifier();
+                            localContext._tableName = this.identifier();
                             this.state = 300;
                             this.match(SDBLParser.DOT);
                         }
                     }
                     this.state = 306;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 307;
                 this.match(SDBLParser.MUL);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public expressionField(): ExpressionFieldContext {
-        let localctx: ExpressionFieldContext = new ExpressionFieldContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 24, SDBLParser.RULE_expressionField);
+        let localContext = new ExpressionFieldContext(this.context, this.state);
+        this.enterRule(localContext, 24, SDBLParser.RULE_expressionField);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 309;
                 this.logicalExpression();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public columnField(): ColumnFieldContext {
-        let localctx: ColumnFieldContext = new ColumnFieldContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 26, SDBLParser.RULE_columnField);
+        let localContext = new ColumnFieldContext(this.context, this.state);
+        this.enterRule(localContext, 26, SDBLParser.RULE_columnField);
         try {
             this.state = 313;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 44:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.NULL:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 311;
                         this.match(SDBLParser.NULL);
                     }
                     break;
-                case 92:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.RECORDAUTONUMBER:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 312;
                         this.recordAutoNumberFunction();
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public emptyTableField(): EmptyTableFieldContext {
-        let localctx: EmptyTableFieldContext = new EmptyTableFieldContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 28, SDBLParser.RULE_emptyTableField);
+        let localContext = new EmptyTableFieldContext(this.context, this.state);
+        this.enterRule(localContext, 28, SDBLParser.RULE_emptyTableField);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 315;
-                localctx._emptyTable = this.match(SDBLParser.EMPTYTABLE);
+                localContext._emptyTable = this.match(SDBLParser.EMPTYTABLE);
                 this.state = 316;
                 this.match(SDBLParser.DOT);
                 this.state = 317;
@@ -1949,137 +1911,129 @@ export default class SDBLParser extends Parser {
                 this.match(SDBLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public emptyTableColumns(): EmptyTableColumnsContext {
-        let localctx: EmptyTableColumnsContext = new EmptyTableColumnsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 30, SDBLParser.RULE_emptyTableColumns);
+        let localContext = new EmptyTableColumnsContext(this.context, this.state);
+        this.enterRule(localContext, 30, SDBLParser.RULE_emptyTableColumns);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 321;
-                localctx._alias = this.alias();
-                localctx._columns.push(localctx._alias);
+                localContext._alias = this.alias();
+                localContext._columns.push(localContext._alias);
                 this.state = 326;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 7) {
                     {
                         {
                             this.state = 322;
                             this.match(SDBLParser.COMMA);
                             this.state = 323;
-                            localctx._alias = this.alias();
-                            localctx._columns.push(localctx._alias);
+                            localContext._alias = this.alias();
+                            localContext._columns.push(localContext._alias);
                         }
                     }
                     this.state = 328;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public inlineTableField(): InlineTableFieldContext {
-        let localctx: InlineTableFieldContext = new InlineTableFieldContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 32, SDBLParser.RULE_inlineTableField);
+        let localContext = new InlineTableFieldContext(this.context, this.state);
+        this.enterRule(localContext, 32, SDBLParser.RULE_inlineTableField);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 329;
-                localctx._inlineTable = this.column();
+                localContext._inlineTable = this.column();
                 this.state = 330;
                 this.match(SDBLParser.DOT);
                 this.state = 331;
                 this.match(SDBLParser.LPAREN);
                 this.state = 332;
-                localctx._inlineTableFields = this.selectedFields();
+                localContext._inlineTableFields = this.selectedFields();
                 this.state = 333;
                 this.match(SDBLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public recordAutoNumberFunction(): RecordAutoNumberFunctionContext {
-        let localctx: RecordAutoNumberFunctionContext = new RecordAutoNumberFunctionContext(
-            this,
-            this._ctx,
-            this.state
-        );
-        this.enterRule(localctx, 34, SDBLParser.RULE_recordAutoNumberFunction);
+        let localContext = new RecordAutoNumberFunctionContext(this.context, this.state);
+        this.enterRule(localContext, 34, SDBLParser.RULE_recordAutoNumberFunction);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 335;
-                localctx._doCall = this.match(SDBLParser.RECORDAUTONUMBER);
+                localContext._doCall = this.match(SDBLParser.RECORDAUTONUMBER);
                 this.state = 336;
                 this.match(SDBLParser.LPAREN);
                 this.state = 337;
                 this.match(SDBLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public groupByItem(): GroupByItemContext {
-        let localctx: GroupByItemContext = new GroupByItemContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 36, SDBLParser.RULE_groupByItem);
+        let localContext = new GroupByItemContext(this.context, this.state);
+        this.enterRule(localContext, 36, SDBLParser.RULE_groupByItem);
         let _la: number;
         try {
             this.state = 365;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 142:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.GROUPING:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 339;
                         this.match(SDBLParser.GROUPING);
@@ -2091,13 +2045,13 @@ export default class SDBLParser extends Parser {
                             this.state = 342;
                             this.match(SDBLParser.LPAREN);
                             this.state = 343;
-                            localctx._expressionList = this.expressionList();
-                            localctx._groupingSet.push(localctx._expressionList);
+                            localContext._expressionList = this.expressionList();
+                            localContext._groupingSet.push(localContext._expressionList);
                             this.state = 344;
                             this.match(SDBLParser.RPAREN);
                             this.state = 352;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             while (_la === 7) {
                                 {
                                     {
@@ -2106,473 +2060,469 @@ export default class SDBLParser extends Parser {
                                         this.state = 346;
                                         this.match(SDBLParser.LPAREN);
                                         this.state = 347;
-                                        localctx._expressionList = this.expressionList();
-                                        localctx._groupingSet.push(localctx._expressionList);
+                                        localContext._expressionList = this.expressionList();
+                                        localContext._groupingSet.push(localContext._expressionList);
                                         this.state = 348;
                                         this.match(SDBLParser.RPAREN);
                                     }
                                 }
                                 this.state = 354;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                             }
                         }
                         this.state = 355;
                         this.match(SDBLParser.RPAREN);
                     }
                     break;
-                case 4:
-                case 9:
-                case 10:
-                case 18:
-                case 27:
-                case 28:
-                case 31:
-                case 33:
-                case 35:
-                case 41:
-                case 44:
-                case 50:
-                case 53:
-                case 54:
-                case 55:
-                case 56:
-                case 58:
-                case 59:
-                case 60:
-                case 61:
-                case 62:
-                case 63:
-                case 64:
-                case 65:
-                case 66:
-                case 67:
-                case 68:
-                case 69:
-                case 70:
-                case 71:
-                case 72:
-                case 73:
-                case 74:
-                case 75:
-                case 76:
-                case 77:
-                case 78:
-                case 79:
-                case 80:
-                case 81:
-                case 82:
-                case 83:
-                case 84:
-                case 85:
-                case 86:
-                case 87:
-                case 88:
-                case 89:
-                case 90:
-                case 91:
-                case 92:
-                case 93:
-                case 94:
-                case 95:
-                case 96:
-                case 97:
-                case 98:
-                case 99:
-                case 100:
-                case 101:
-                case 102:
-                case 103:
-                case 104:
-                case 105:
-                case 106:
-                case 107:
-                case 108:
-                case 109:
-                case 110:
-                case 111:
-                case 112:
-                case 113:
-                case 114:
-                case 115:
-                case 116:
-                case 117:
-                case 118:
-                case 119:
-                case 120:
-                case 121:
-                case 122:
-                case 123:
-                case 124:
-                case 125:
-                case 126:
-                case 127:
-                case 128:
-                case 129:
-                case 130:
-                case 131:
-                case 132:
-                case 133:
-                case 134:
-                case 135:
-                case 136:
-                case 137:
-                case 138:
-                case 139:
-                case 140:
-                case 141:
-                case 143:
-                case 144:
-                case 145:
-                case 146:
-                case 147:
-                case 148:
-                case 149:
-                case 150:
-                case 151:
-                case 152:
-                case 153:
-                case 156:
-                case 157:
-                case 158:
-                case 160:
-                case 163:
-                case 164:
-                case 165:
-                case 166:
-                case 167:
-                case 168:
-                case 169:
-                case 170:
-                case 171:
-                case 172:
-                case 173:
-                case 174:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.LPAREN:
+                case SDBLParser.PLUS:
+                case SDBLParser.MINUS:
+                case SDBLParser.AMPERSAND:
+                case SDBLParser.CASE:
+                case SDBLParser.CAST:
+                case SDBLParser.DROP:
+                case SDBLParser.END:
+                case SDBLParser.FALSE:
+                case SDBLParser.ISNULL:
+                case SDBLParser.NULL:
+                case SDBLParser.SELECT:
+                case SDBLParser.TOTALS:
+                case SDBLParser.TRUE:
+                case SDBLParser.UNDEFINED:
+                case SDBLParser.WHEN:
+                case SDBLParser.ACOS:
+                case SDBLParser.ASIN:
+                case SDBLParser.ATAN:
+                case SDBLParser.AVG:
+                case SDBLParser.BEGINOFPERIOD:
+                case SDBLParser.BOOLEAN:
+                case SDBLParser.COS:
+                case SDBLParser.COUNT:
+                case SDBLParser.DATE:
+                case SDBLParser.DATEADD:
+                case SDBLParser.DATEDIFF:
+                case SDBLParser.DATETIME:
+                case SDBLParser.DAY:
+                case SDBLParser.DAYOFYEAR:
+                case SDBLParser.EMPTYTABLE:
+                case SDBLParser.EMPTYREF:
+                case SDBLParser.ENDOFPERIOD:
+                case SDBLParser.EXP:
+                case SDBLParser.HALFYEAR:
+                case SDBLParser.HOUR:
+                case SDBLParser.INT:
+                case SDBLParser.LOG:
+                case SDBLParser.LOG10:
+                case SDBLParser.LOWER:
+                case SDBLParser.MAX:
+                case SDBLParser.MIN:
+                case SDBLParser.MINUTE:
+                case SDBLParser.MONTH:
+                case SDBLParser.NUMBER:
+                case SDBLParser.QUARTER:
+                case SDBLParser.ONLY:
+                case SDBLParser.PERIODS:
+                case SDBLParser.REFS:
+                case SDBLParser.PRESENTATION:
+                case SDBLParser.RECORDAUTONUMBER:
+                case SDBLParser.REFPRESENTATION:
+                case SDBLParser.POW:
+                case SDBLParser.ROUND:
+                case SDBLParser.SECOND:
+                case SDBLParser.SIN:
+                case SDBLParser.SQRT:
+                case SDBLParser.STOREDDATASIZE:
+                case SDBLParser.STRING:
+                case SDBLParser.STRINGLENGTH:
+                case SDBLParser.STRFIND:
+                case SDBLParser.STRREPLACE:
+                case SDBLParser.SUBSTRING:
+                case SDBLParser.SUM:
+                case SDBLParser.TAN:
+                case SDBLParser.TENDAYS:
+                case SDBLParser.TRIMALL:
+                case SDBLParser.TRIML:
+                case SDBLParser.TRIMR:
+                case SDBLParser.TYPE:
+                case SDBLParser.UPPER:
+                case SDBLParser.VALUE:
+                case SDBLParser.VALUETYPE:
+                case SDBLParser.WEEK:
+                case SDBLParser.WEEKDAY:
+                case SDBLParser.YEAR:
+                case SDBLParser.UUID:
+                case SDBLParser.ACCOUNTING_REGISTER_TYPE:
+                case SDBLParser.ACCUMULATION_REGISTER_TYPE:
+                case SDBLParser.BUSINESS_PROCESS_TYPE:
+                case SDBLParser.CALCULATION_REGISTER_TYPE:
+                case SDBLParser.CATALOG_TYPE:
+                case SDBLParser.CHART_OF_ACCOUNTS_TYPE:
+                case SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE:
+                case SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE:
+                case SDBLParser.CONSTANT_TYPE:
+                case SDBLParser.DOCUMENT_TYPE:
+                case SDBLParser.DOCUMENT_JOURNAL_TYPE:
+                case SDBLParser.ENUM_TYPE:
+                case SDBLParser.EXCHANGE_PLAN_TYPE:
+                case SDBLParser.EXTERNAL_DATA_SOURCE_TYPE:
+                case SDBLParser.FILTER_CRITERION_TYPE:
+                case SDBLParser.INFORMATION_REGISTER_TYPE:
+                case SDBLParser.SEQUENCE_TYPE:
+                case SDBLParser.TASK_TYPE:
+                case SDBLParser.ROUTEPOINT_FIELD:
+                case SDBLParser.INDEX:
+                case SDBLParser.GROUP:
+                case SDBLParser.ORDER:
+                case SDBLParser.GROUPEDBY:
+                case SDBLParser.SET:
+                case SDBLParser.RIGHT:
+                case SDBLParser.LEFT:
+                case SDBLParser.INNER:
+                case SDBLParser.FULL:
+                case SDBLParser.JOIN:
+                case SDBLParser.OUTER:
+                case SDBLParser.FOR:
+                case SDBLParser.UPDATE:
+                case SDBLParser.ALL:
+                case SDBLParser.UNION:
+                case SDBLParser.DECIMAL:
+                case SDBLParser.FLOAT:
+                case SDBLParser.STR:
+                case SDBLParser.IDENTIFIER:
+                case SDBLParser.ACTUAL_ACTION_PERIOD_VT:
+                case SDBLParser.BALANCE_VT:
+                case SDBLParser.BALANCE_AND_TURNOVERS_VT:
+                case SDBLParser.BOUNDARIES_VT:
+                case SDBLParser.DR_CR_TURNOVERS_VT:
+                case SDBLParser.EXT_DIMENSIONS_VT:
+                case SDBLParser.RECORDS_WITH_EXT_DIMENSIONS_VT:
+                case SDBLParser.SCHEDULE_DATA_VT:
+                case SDBLParser.SLICEFIRST_VT:
+                case SDBLParser.SLICELAST_VT:
+                case SDBLParser.TASK_BY_PERFORMER_VT:
+                case SDBLParser.TURNOVERS_VT:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 357;
-                            localctx._expression = this.expression(0);
-                            localctx._groupBy.push(localctx._expression);
+                            localContext._expression = this.expression(0);
+                            localContext._groupBy.push(localContext._expression);
                             this.state = 362;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             while (_la === 7) {
                                 {
                                     {
                                         this.state = 358;
                                         this.match(SDBLParser.COMMA);
                                         this.state = 359;
-                                        localctx._expression = this.expression(0);
-                                        localctx._groupBy.push(localctx._expression);
+                                        localContext._expression = this.expression(0);
+                                        localContext._groupBy.push(localContext._expression);
                                     }
                                 }
                                 this.state = 364;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                             }
                         }
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public indexingItem(): IndexingItemContext {
-        let localctx: IndexingItemContext = new IndexingItemContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 38, SDBLParser.RULE_indexingItem);
+        let localContext = new IndexingItemContext(this.context, this.state);
+        this.enterRule(localContext, 38, SDBLParser.RULE_indexingItem);
         try {
             this.state = 369;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 18:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.AMPERSAND:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 367;
                         this.parameter();
                     }
                     break;
-                case 31:
-                case 33:
-                case 41:
-                case 50:
-                case 53:
-                case 58:
-                case 59:
-                case 60:
-                case 61:
-                case 62:
-                case 63:
-                case 64:
-                case 65:
-                case 66:
-                case 67:
-                case 68:
-                case 69:
-                case 70:
-                case 71:
-                case 72:
-                case 73:
-                case 74:
-                case 75:
-                case 76:
-                case 77:
-                case 78:
-                case 79:
-                case 80:
-                case 81:
-                case 82:
-                case 83:
-                case 84:
-                case 85:
-                case 86:
-                case 87:
-                case 88:
-                case 89:
-                case 90:
-                case 91:
-                case 92:
-                case 93:
-                case 94:
-                case 95:
-                case 96:
-                case 97:
-                case 98:
-                case 99:
-                case 100:
-                case 101:
-                case 102:
-                case 103:
-                case 104:
-                case 105:
-                case 106:
-                case 107:
-                case 108:
-                case 109:
-                case 110:
-                case 111:
-                case 112:
-                case 113:
-                case 114:
-                case 115:
-                case 116:
-                case 117:
-                case 118:
-                case 119:
-                case 120:
-                case 121:
-                case 122:
-                case 123:
-                case 124:
-                case 125:
-                case 126:
-                case 127:
-                case 128:
-                case 129:
-                case 130:
-                case 131:
-                case 132:
-                case 133:
-                case 134:
-                case 135:
-                case 136:
-                case 137:
-                case 138:
-                case 139:
-                case 140:
-                case 143:
-                case 144:
-                case 145:
-                case 146:
-                case 147:
-                case 148:
-                case 149:
-                case 150:
-                case 151:
-                case 152:
-                case 153:
-                case 160:
-                case 163:
-                case 164:
-                case 165:
-                case 166:
-                case 167:
-                case 168:
-                case 169:
-                case 170:
-                case 171:
-                case 172:
-                case 173:
-                case 174:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.DROP:
+                case SDBLParser.END:
+                case SDBLParser.ISNULL:
+                case SDBLParser.SELECT:
+                case SDBLParser.TOTALS:
+                case SDBLParser.ACOS:
+                case SDBLParser.ASIN:
+                case SDBLParser.ATAN:
+                case SDBLParser.AVG:
+                case SDBLParser.BEGINOFPERIOD:
+                case SDBLParser.BOOLEAN:
+                case SDBLParser.COS:
+                case SDBLParser.COUNT:
+                case SDBLParser.DATE:
+                case SDBLParser.DATEADD:
+                case SDBLParser.DATEDIFF:
+                case SDBLParser.DATETIME:
+                case SDBLParser.DAY:
+                case SDBLParser.DAYOFYEAR:
+                case SDBLParser.EMPTYTABLE:
+                case SDBLParser.EMPTYREF:
+                case SDBLParser.ENDOFPERIOD:
+                case SDBLParser.EXP:
+                case SDBLParser.HALFYEAR:
+                case SDBLParser.HOUR:
+                case SDBLParser.INT:
+                case SDBLParser.LOG:
+                case SDBLParser.LOG10:
+                case SDBLParser.LOWER:
+                case SDBLParser.MAX:
+                case SDBLParser.MIN:
+                case SDBLParser.MINUTE:
+                case SDBLParser.MONTH:
+                case SDBLParser.NUMBER:
+                case SDBLParser.QUARTER:
+                case SDBLParser.ONLY:
+                case SDBLParser.PERIODS:
+                case SDBLParser.REFS:
+                case SDBLParser.PRESENTATION:
+                case SDBLParser.RECORDAUTONUMBER:
+                case SDBLParser.REFPRESENTATION:
+                case SDBLParser.POW:
+                case SDBLParser.ROUND:
+                case SDBLParser.SECOND:
+                case SDBLParser.SIN:
+                case SDBLParser.SQRT:
+                case SDBLParser.STOREDDATASIZE:
+                case SDBLParser.STRING:
+                case SDBLParser.STRINGLENGTH:
+                case SDBLParser.STRFIND:
+                case SDBLParser.STRREPLACE:
+                case SDBLParser.SUBSTRING:
+                case SDBLParser.SUM:
+                case SDBLParser.TAN:
+                case SDBLParser.TENDAYS:
+                case SDBLParser.TRIMALL:
+                case SDBLParser.TRIML:
+                case SDBLParser.TRIMR:
+                case SDBLParser.TYPE:
+                case SDBLParser.UPPER:
+                case SDBLParser.VALUE:
+                case SDBLParser.VALUETYPE:
+                case SDBLParser.WEEK:
+                case SDBLParser.WEEKDAY:
+                case SDBLParser.YEAR:
+                case SDBLParser.UUID:
+                case SDBLParser.ACCOUNTING_REGISTER_TYPE:
+                case SDBLParser.ACCUMULATION_REGISTER_TYPE:
+                case SDBLParser.BUSINESS_PROCESS_TYPE:
+                case SDBLParser.CALCULATION_REGISTER_TYPE:
+                case SDBLParser.CATALOG_TYPE:
+                case SDBLParser.CHART_OF_ACCOUNTS_TYPE:
+                case SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE:
+                case SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE:
+                case SDBLParser.CONSTANT_TYPE:
+                case SDBLParser.DOCUMENT_TYPE:
+                case SDBLParser.DOCUMENT_JOURNAL_TYPE:
+                case SDBLParser.ENUM_TYPE:
+                case SDBLParser.EXCHANGE_PLAN_TYPE:
+                case SDBLParser.EXTERNAL_DATA_SOURCE_TYPE:
+                case SDBLParser.FILTER_CRITERION_TYPE:
+                case SDBLParser.INFORMATION_REGISTER_TYPE:
+                case SDBLParser.SEQUENCE_TYPE:
+                case SDBLParser.TASK_TYPE:
+                case SDBLParser.ROUTEPOINT_FIELD:
+                case SDBLParser.INDEX:
+                case SDBLParser.GROUP:
+                case SDBLParser.ORDER:
+                case SDBLParser.SET:
+                case SDBLParser.RIGHT:
+                case SDBLParser.LEFT:
+                case SDBLParser.INNER:
+                case SDBLParser.FULL:
+                case SDBLParser.JOIN:
+                case SDBLParser.OUTER:
+                case SDBLParser.FOR:
+                case SDBLParser.UPDATE:
+                case SDBLParser.ALL:
+                case SDBLParser.UNION:
+                case SDBLParser.IDENTIFIER:
+                case SDBLParser.ACTUAL_ACTION_PERIOD_VT:
+                case SDBLParser.BALANCE_VT:
+                case SDBLParser.BALANCE_AND_TURNOVERS_VT:
+                case SDBLParser.BOUNDARIES_VT:
+                case SDBLParser.DR_CR_TURNOVERS_VT:
+                case SDBLParser.EXT_DIMENSIONS_VT:
+                case SDBLParser.RECORDS_WITH_EXT_DIMENSIONS_VT:
+                case SDBLParser.SCHEDULE_DATA_VT:
+                case SDBLParser.SLICEFIRST_VT:
+                case SDBLParser.SLICELAST_VT:
+                case SDBLParser.TASK_BY_PERFORMER_VT:
+                case SDBLParser.TURNOVERS_VT:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 368;
                         this.column();
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public orderBy(): OrderByContext {
-        let localctx: OrderByContext = new OrderByContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 40, SDBLParser.RULE_orderBy);
+        let localContext = new OrderByContext(this.context, this.state);
+        this.enterRule(localContext, 40, SDBLParser.RULE_orderBy);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 371;
                 this.match(SDBLParser.ORDER);
                 this.state = 372;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 26 || _la === 49)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 373;
-                localctx._ordersByExpession = this.ordersByExpession();
-                localctx._orders.push(localctx._ordersByExpession);
+                localContext._ordersByExpession = this.ordersByExpession();
+                localContext._orders.push(localContext._ordersByExpession);
                 this.state = 376;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 7) {
                     {
                         this.state = 374;
                         this.match(SDBLParser.COMMA);
                         this.state = 375;
-                        localctx._ordersByExpession = this.ordersByExpession();
-                        localctx._orders.push(localctx._ordersByExpession);
+                        localContext._ordersByExpession = this.ordersByExpession();
+                        localContext._orders.push(localContext._ordersByExpession);
                     }
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public ordersByExpession(): OrdersByExpessionContext {
-        let localctx: OrdersByExpessionContext = new OrdersByExpessionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 42, SDBLParser.RULE_ordersByExpession);
+        let localContext = new OrdersByExpessionContext(this.context, this.state);
+        this.enterRule(localContext, 42, SDBLParser.RULE_ordersByExpession);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 378;
                 this.expression(0);
                 this.state = 384;
-                this._errHandler.sync(this);
-                switch (this._input.LA(1)) {
-                    case 23:
-                    case 29:
+                this.errorHandler.sync(this);
+                switch (this.tokenStream.LA(1)) {
+                    case SDBLParser.ASC:
+                    case SDBLParser.DESC:
                         {
                             this.state = 379;
-                            localctx._direction = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._direction = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (!(_la === 23 || _la === 29)) {
-                                localctx._direction = this._errHandler.recoverInline(this);
+                                localContext._direction = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                         }
                         break;
-                    case 38:
+                    case SDBLParser.HIERARCHY:
                         {
                             {
                                 this.state = 380;
-                                localctx._hierarchy = this.match(SDBLParser.HIERARCHY);
+                                localContext._hierarchy = this.match(SDBLParser.HIERARCHY);
                                 this.state = 382;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 29) {
                                     {
                                         this.state = 381;
-                                        localctx._direction = this.match(SDBLParser.DESC);
+                                        localContext._direction = this.match(SDBLParser.DESC);
                                     }
                                 }
                             }
                         }
                         break;
-                    case -1:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 24:
-                    case 53:
-                    case 140:
-                    case 153:
+                    case SDBLParser.EOF:
+                    case SDBLParser.RPAREN:
+                    case SDBLParser.SEMICOLON:
+                    case SDBLParser.COMMA:
+                    case SDBLParser.AUTOORDER:
+                    case SDBLParser.TOTALS:
+                    case SDBLParser.ORDER:
+                    case SDBLParser.UNION:
                         break;
                     default:
                         break;
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public totalBy(): TotalByContext {
-        let localctx: TotalByContext = new TotalByContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 44, SDBLParser.RULE_totalBy);
+        let localContext = new TotalByContext(this.context, this.state);
+        this.enterRule(localContext, 44, SDBLParser.RULE_totalBy);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 386;
                 this.match(SDBLParser.TOTALS);
                 this.state = 388;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (
                     ((_la & ~0x1f) === 0 && ((1 << _la) & 2550466064) !== 0) ||
                     (((_la - 33) & ~0x1f) === 0 && ((1 << (_la - 33)) & 4277275909) !== 0) ||
@@ -2588,205 +2538,204 @@ export default class SDBLParser extends Parser {
                 }
 
                 this.state = 390;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 26 || _la === 49)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 391;
-                localctx._totalsGroup = this.totalsGroup();
-                localctx._totalsGroups.push(localctx._totalsGroup);
+                localContext._totalsGroup = this.totalsGroup();
+                localContext._totalsGroups.push(localContext._totalsGroup);
                 this.state = 396;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 7) {
                     {
                         {
                             this.state = 392;
                             this.match(SDBLParser.COMMA);
                             this.state = 393;
-                            localctx._totalsGroup = this.totalsGroup();
-                            localctx._totalsGroups.push(localctx._totalsGroup);
+                            localContext._totalsGroup = this.totalsGroup();
+                            localContext._totalsGroups.push(localContext._totalsGroup);
                         }
                     }
                     this.state = 398;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public totalsGroup(): TotalsGroupContext {
-        let localctx: TotalsGroupContext = new TotalsGroupContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 46, SDBLParser.RULE_totalsGroup);
+        let localContext = new TotalsGroupContext(this.context, this.state);
+        this.enterRule(localContext, 46, SDBLParser.RULE_totalsGroup);
         let _la: number;
         try {
             this.state = 411;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 48:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.OVERALL:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 399;
                         this.match(SDBLParser.OVERALL);
                     }
                     break;
-                case 4:
-                case 9:
-                case 10:
-                case 18:
-                case 27:
-                case 28:
-                case 31:
-                case 33:
-                case 35:
-                case 41:
-                case 44:
-                case 50:
-                case 53:
-                case 54:
-                case 55:
-                case 56:
-                case 58:
-                case 59:
-                case 60:
-                case 61:
-                case 62:
-                case 63:
-                case 64:
-                case 65:
-                case 66:
-                case 67:
-                case 68:
-                case 69:
-                case 70:
-                case 71:
-                case 72:
-                case 73:
-                case 74:
-                case 75:
-                case 76:
-                case 77:
-                case 78:
-                case 79:
-                case 80:
-                case 81:
-                case 82:
-                case 83:
-                case 84:
-                case 85:
-                case 86:
-                case 87:
-                case 88:
-                case 89:
-                case 90:
-                case 91:
-                case 92:
-                case 93:
-                case 94:
-                case 95:
-                case 96:
-                case 97:
-                case 98:
-                case 99:
-                case 100:
-                case 101:
-                case 102:
-                case 103:
-                case 104:
-                case 105:
-                case 106:
-                case 107:
-                case 108:
-                case 109:
-                case 110:
-                case 111:
-                case 112:
-                case 113:
-                case 114:
-                case 115:
-                case 116:
-                case 117:
-                case 118:
-                case 119:
-                case 120:
-                case 121:
-                case 122:
-                case 123:
-                case 124:
-                case 125:
-                case 126:
-                case 127:
-                case 128:
-                case 129:
-                case 130:
-                case 131:
-                case 132:
-                case 133:
-                case 134:
-                case 135:
-                case 136:
-                case 137:
-                case 138:
-                case 139:
-                case 140:
-                case 141:
-                case 143:
-                case 144:
-                case 145:
-                case 146:
-                case 147:
-                case 148:
-                case 149:
-                case 150:
-                case 151:
-                case 152:
-                case 153:
-                case 156:
-                case 157:
-                case 158:
-                case 160:
-                case 163:
-                case 164:
-                case 165:
-                case 166:
-                case 167:
-                case 168:
-                case 169:
-                case 170:
-                case 171:
-                case 172:
-                case 173:
-                case 174:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.LPAREN:
+                case SDBLParser.PLUS:
+                case SDBLParser.MINUS:
+                case SDBLParser.AMPERSAND:
+                case SDBLParser.CASE:
+                case SDBLParser.CAST:
+                case SDBLParser.DROP:
+                case SDBLParser.END:
+                case SDBLParser.FALSE:
+                case SDBLParser.ISNULL:
+                case SDBLParser.NULL:
+                case SDBLParser.SELECT:
+                case SDBLParser.TOTALS:
+                case SDBLParser.TRUE:
+                case SDBLParser.UNDEFINED:
+                case SDBLParser.WHEN:
+                case SDBLParser.ACOS:
+                case SDBLParser.ASIN:
+                case SDBLParser.ATAN:
+                case SDBLParser.AVG:
+                case SDBLParser.BEGINOFPERIOD:
+                case SDBLParser.BOOLEAN:
+                case SDBLParser.COS:
+                case SDBLParser.COUNT:
+                case SDBLParser.DATE:
+                case SDBLParser.DATEADD:
+                case SDBLParser.DATEDIFF:
+                case SDBLParser.DATETIME:
+                case SDBLParser.DAY:
+                case SDBLParser.DAYOFYEAR:
+                case SDBLParser.EMPTYTABLE:
+                case SDBLParser.EMPTYREF:
+                case SDBLParser.ENDOFPERIOD:
+                case SDBLParser.EXP:
+                case SDBLParser.HALFYEAR:
+                case SDBLParser.HOUR:
+                case SDBLParser.INT:
+                case SDBLParser.LOG:
+                case SDBLParser.LOG10:
+                case SDBLParser.LOWER:
+                case SDBLParser.MAX:
+                case SDBLParser.MIN:
+                case SDBLParser.MINUTE:
+                case SDBLParser.MONTH:
+                case SDBLParser.NUMBER:
+                case SDBLParser.QUARTER:
+                case SDBLParser.ONLY:
+                case SDBLParser.PERIODS:
+                case SDBLParser.REFS:
+                case SDBLParser.PRESENTATION:
+                case SDBLParser.RECORDAUTONUMBER:
+                case SDBLParser.REFPRESENTATION:
+                case SDBLParser.POW:
+                case SDBLParser.ROUND:
+                case SDBLParser.SECOND:
+                case SDBLParser.SIN:
+                case SDBLParser.SQRT:
+                case SDBLParser.STOREDDATASIZE:
+                case SDBLParser.STRING:
+                case SDBLParser.STRINGLENGTH:
+                case SDBLParser.STRFIND:
+                case SDBLParser.STRREPLACE:
+                case SDBLParser.SUBSTRING:
+                case SDBLParser.SUM:
+                case SDBLParser.TAN:
+                case SDBLParser.TENDAYS:
+                case SDBLParser.TRIMALL:
+                case SDBLParser.TRIML:
+                case SDBLParser.TRIMR:
+                case SDBLParser.TYPE:
+                case SDBLParser.UPPER:
+                case SDBLParser.VALUE:
+                case SDBLParser.VALUETYPE:
+                case SDBLParser.WEEK:
+                case SDBLParser.WEEKDAY:
+                case SDBLParser.YEAR:
+                case SDBLParser.UUID:
+                case SDBLParser.ACCOUNTING_REGISTER_TYPE:
+                case SDBLParser.ACCUMULATION_REGISTER_TYPE:
+                case SDBLParser.BUSINESS_PROCESS_TYPE:
+                case SDBLParser.CALCULATION_REGISTER_TYPE:
+                case SDBLParser.CATALOG_TYPE:
+                case SDBLParser.CHART_OF_ACCOUNTS_TYPE:
+                case SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE:
+                case SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE:
+                case SDBLParser.CONSTANT_TYPE:
+                case SDBLParser.DOCUMENT_TYPE:
+                case SDBLParser.DOCUMENT_JOURNAL_TYPE:
+                case SDBLParser.ENUM_TYPE:
+                case SDBLParser.EXCHANGE_PLAN_TYPE:
+                case SDBLParser.EXTERNAL_DATA_SOURCE_TYPE:
+                case SDBLParser.FILTER_CRITERION_TYPE:
+                case SDBLParser.INFORMATION_REGISTER_TYPE:
+                case SDBLParser.SEQUENCE_TYPE:
+                case SDBLParser.TASK_TYPE:
+                case SDBLParser.ROUTEPOINT_FIELD:
+                case SDBLParser.INDEX:
+                case SDBLParser.GROUP:
+                case SDBLParser.ORDER:
+                case SDBLParser.GROUPEDBY:
+                case SDBLParser.SET:
+                case SDBLParser.RIGHT:
+                case SDBLParser.LEFT:
+                case SDBLParser.INNER:
+                case SDBLParser.FULL:
+                case SDBLParser.JOIN:
+                case SDBLParser.OUTER:
+                case SDBLParser.FOR:
+                case SDBLParser.UPDATE:
+                case SDBLParser.ALL:
+                case SDBLParser.UNION:
+                case SDBLParser.DECIMAL:
+                case SDBLParser.FLOAT:
+                case SDBLParser.STR:
+                case SDBLParser.IDENTIFIER:
+                case SDBLParser.ACTUAL_ACTION_PERIOD_VT:
+                case SDBLParser.BALANCE_VT:
+                case SDBLParser.BALANCE_AND_TURNOVERS_VT:
+                case SDBLParser.BOUNDARIES_VT:
+                case SDBLParser.DR_CR_TURNOVERS_VT:
+                case SDBLParser.EXT_DIMENSIONS_VT:
+                case SDBLParser.RECORDS_WITH_EXT_DIMENSIONS_VT:
+                case SDBLParser.SCHEDULE_DATA_VT:
+                case SDBLParser.SLICEFIRST_VT:
+                case SDBLParser.SLICELAST_VT:
+                case SDBLParser.TASK_BY_PERFORMER_VT:
+                case SDBLParser.TURNOVERS_VT:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 400;
                             this.expression(0);
                             this.state = 406;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 40, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 40, this.context)) {
                                 case 1:
                                     {
                                         {
                                             this.state = 402;
-                                            this._errHandler.sync(this);
-                                            _la = this._input.LA(1);
+                                            this.errorHandler.sync(this);
+                                            _la = this.tokenStream.LA(1);
                                             if (_la === 88) {
                                                 {
                                                     this.state = 401;
@@ -2807,8 +2756,8 @@ export default class SDBLParser extends Parser {
                                     break;
                             }
                             this.state = 409;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (
                                 (((_la - 22) & ~0x1f) === 0 && ((1 << (_la - 22)) & 2416445953) !== 0) ||
                                 (((_la - 58) & ~0x1f) === 0 && ((1 << (_la - 58)) & 4294967295) !== 0) ||
@@ -2825,69 +2774,68 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public periodic(): PeriodicContext {
-        let localctx: PeriodicContext = new PeriodicContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 48, SDBLParser.RULE_periodic);
+        let localContext = new PeriodicContext(this.context, this.state);
+        this.enterRule(localContext, 48, SDBLParser.RULE_periodic);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 413;
                 this.match(SDBLParser.PERIODS);
                 this.state = 414;
                 this.match(SDBLParser.LPAREN);
                 this.state = 415;
-                localctx._periodType = this._input.LT(1);
-                _la = this._input.LA(1);
+                localContext._periodType = this.tokenStream.LT(1);
+                _la = this.tokenStream.LA(1);
                 if (
                     !(
                         (((_la - 70) & ~0x1f) === 0 && ((1 << (_la - 70)) & 67289281) !== 0) ||
                         (((_la - 107) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1281) !== 0)
                     )
                 ) {
-                    localctx._periodType = this._errHandler.recoverInline(this);
+                    localContext._periodType = this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 418;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 43, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 43, this.context)) {
                     case 1:
                         {
                             this.state = 416;
                             this.match(SDBLParser.COMMA);
                             this.state = 417;
-                            localctx._first = this.expression(0);
+                            localContext._first = this.expression(0);
                         }
                         break;
                 }
                 this.state = 422;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 7) {
                     {
                         this.state = 420;
                         this.match(SDBLParser.COMMA);
                         this.state = 421;
-                        localctx._second = this.expression(0);
+                        localContext._second = this.expression(0);
                     }
                 }
 
@@ -2895,135 +2843,133 @@ export default class SDBLParser extends Parser {
                 this.match(SDBLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public column(): ColumnContext {
-        let localctx: ColumnContext = new ColumnContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 50, SDBLParser.RULE_column);
+        let localContext = new ColumnContext(this.context, this.state);
+        this.enterRule(localContext, 50, SDBLParser.RULE_column);
         try {
-            let _alt: number;
+            let alternative: number;
             this.state = 441;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 47, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 47, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 426;
-                        localctx._mdoName = this.identifier();
+                        localContext._mdoName = this.identifier();
                         this.state = 429;
-                        this._errHandler.sync(this);
-                        _alt = 1;
+                        this.errorHandler.sync(this);
+                        alternative = 1;
                         do {
-                            switch (_alt) {
+                            switch (alternative) {
                                 case 1:
                                     {
                                         {
                                             this.state = 427;
                                             this.match(SDBLParser.DOT);
                                             this.state = 428;
-                                            localctx._identifier = this.identifier();
-                                            localctx._columnNames.push(localctx._identifier);
+                                            localContext._identifier = this.identifier();
+                                            localContext._columnNames.push(localContext._identifier);
                                         }
                                     }
                                     break;
                                 default:
-                                    throw new NoViableAltException(this);
+                                    throw new antlr.NoViableAltException(this);
                             }
                             this.state = 431;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 45, this._ctx);
-                        } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 45, this.context);
+                        } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 433;
-                        localctx._identifier = this.identifier();
-                        localctx._columnNames.push(localctx._identifier);
+                        localContext._identifier = this.identifier();
+                        localContext._columnNames.push(localContext._identifier);
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 434;
                         this.mdo();
                         this.state = 437;
-                        this._errHandler.sync(this);
-                        _alt = 1;
+                        this.errorHandler.sync(this);
+                        alternative = 1;
                         do {
-                            switch (_alt) {
+                            switch (alternative) {
                                 case 1:
                                     {
                                         {
                                             this.state = 435;
                                             this.match(SDBLParser.DOT);
                                             this.state = 436;
-                                            localctx._identifier = this.identifier();
-                                            localctx._columnNames.push(localctx._identifier);
+                                            localContext._identifier = this.identifier();
+                                            localContext._columnNames.push(localContext._identifier);
                                         }
                                     }
                                     break;
                                 default:
-                                    throw new NoViableAltException(this);
+                                    throw new antlr.NoViableAltException(this);
                             }
                             this.state = 439;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 46, this._ctx);
-                        } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 46, this.context);
+                        } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
                     }
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
     public expression(): ExpressionContext;
 
     public expression(_p: number): ExpressionContext;
 
-    // @RuleVersion(0)
     public expression(_p?: number): ExpressionContext {
         if (_p === undefined) {
             _p = 0;
         }
 
-        let _parentctx: ParserRuleContext = this._ctx;
-        let _parentState: number = this.state;
-        let localctx: ExpressionContext = new ExpressionContext(this, this._ctx, _parentState);
-        let _prevctx: ExpressionContext = localctx;
-        let _startState: number = 52;
-        this.enterRecursionRule(localctx, 52, SDBLParser.RULE_expression, _p);
+        let parentContext = this.context;
+        let parentState = this.state;
+        let localContext = new ExpressionContext(this.context, parentState);
+        let previousContext = localContext;
+        let _startState = 52;
+        this.enterRecursionRule(localContext, 52, SDBLParser.RULE_expression, _p);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 450;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 48, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 48, this.context)) {
                     case 1:
                         {
                             this.state = 444;
@@ -3061,31 +3007,31 @@ export default class SDBLParser extends Parser {
                         }
                         break;
                 }
-                this._ctx.stop = this._input.LT(-1);
+                this.context!.stop = this.tokenStream.LT(-1);
                 this.state = 457;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 49, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 49, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         if (this._parseListeners != null) {
                             this.triggerExitRuleEvent();
                         }
-                        _prevctx = localctx;
+                        previousContext = localContext;
                         {
                             {
-                                localctx = new ExpressionContext(this, _parentctx, _parentState);
-                                this.pushNewRecursionContext(localctx, _startState, SDBLParser.RULE_expression);
+                                localContext = new ExpressionContext(parentContext, parentState);
+                                this.pushNewRecursionContext(localContext, _startState, SDBLParser.RULE_expression);
                                 this.state = 452;
-                                if (!this.precpred(this._ctx, 1)) {
-                                    throw this.createFailedPredicateException("this.precpred(this._ctx, 1)");
+                                if (!this.precpred(this.context, 1)) {
+                                    throw this.createFailedPredicateException("this.precpred(this.context, 1)");
                                 }
                                 this.state = 453;
-                                localctx._binaryOperation = this._input.LT(1);
-                                _la = this._input.LA(1);
+                                localContext._binaryOperation = this.tokenStream.LT(1);
+                                _la = this.tokenStream.LA(1);
                                 if (!((_la & ~0x1f) === 0 && ((1 << _la) & 198144) !== 0)) {
-                                    localctx._binaryOperation = this._errHandler.recoverInline(this);
+                                    localContext._binaryOperation = this.errorHandler.recoverInline(this);
                                 } else {
-                                    this._errHandler.reportMatch(this);
+                                    this.errorHandler.reportMatch(this);
                                     this.consume();
                                 }
                                 this.state = 454;
@@ -3094,85 +3040,84 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     this.state = 459;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 49, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 49, this.context);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
-            this.unrollRecursionContexts(_parentctx);
+            this.unrollRecursionContexts(parentContext);
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public primitiveExpression(): PrimitiveExpressionContext {
-        let localctx: PrimitiveExpressionContext = new PrimitiveExpressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 54, SDBLParser.RULE_primitiveExpression);
+        let localContext = new PrimitiveExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 54, SDBLParser.RULE_primitiveExpression);
         let _la: number;
         try {
             this.state = 495;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 44:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.NULL:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 460;
                         this.match(SDBLParser.NULL);
                     }
                     break;
-                case 55:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.UNDEFINED:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 461;
                         this.match(SDBLParser.UNDEFINED);
                     }
                     break;
-                case 158:
-                    this.enterOuterAlt(localctx, 3);
+                case SDBLParser.STR:
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 462;
                         this.multiString();
                     }
                     break;
-                case 156:
-                    this.enterOuterAlt(localctx, 4);
+                case SDBLParser.DECIMAL:
+                    this.enterOuterAlt(localContext, 4);
                     {
                         this.state = 463;
                         this.match(SDBLParser.DECIMAL);
                     }
                     break;
-                case 157:
-                    this.enterOuterAlt(localctx, 5);
+                case SDBLParser.FLOAT:
+                    this.enterOuterAlt(localContext, 5);
                     {
                         this.state = 464;
                         this.match(SDBLParser.FLOAT);
                     }
                     break;
-                case 35:
-                case 54:
-                    this.enterOuterAlt(localctx, 6);
+                case SDBLParser.FALSE:
+                case SDBLParser.TRUE:
+                    this.enterOuterAlt(localContext, 6);
                     {
                         this.state = 465;
-                        localctx._booleanValue = this._input.LT(1);
-                        _la = this._input.LA(1);
+                        localContext._booleanValue = this.tokenStream.LT(1);
+                        _la = this.tokenStream.LA(1);
                         if (!(_la === 35 || _la === 54)) {
-                            localctx._booleanValue = this._errHandler.recoverInline(this);
+                            localContext._booleanValue = this.errorHandler.recoverInline(this);
                         } else {
-                            this._errHandler.reportMatch(this);
+                            this.errorHandler.reportMatch(this);
                             this.consume();
                         }
                     }
                     break;
-                case 69:
-                    this.enterOuterAlt(localctx, 7);
+                case SDBLParser.DATETIME:
+                    this.enterOuterAlt(localContext, 7);
                     {
                         {
                             this.state = 466;
@@ -3180,32 +3125,32 @@ export default class SDBLParser extends Parser {
                             this.state = 467;
                             this.match(SDBLParser.LPAREN);
                             this.state = 468;
-                            localctx._year = this.datePart();
+                            localContext._year = this.datePart();
                             this.state = 469;
                             this.match(SDBLParser.COMMA);
                             this.state = 470;
-                            localctx._month = this.datePart();
+                            localContext._month = this.datePart();
                             this.state = 471;
                             this.match(SDBLParser.COMMA);
                             this.state = 472;
-                            localctx._day = this.datePart();
+                            localContext._day = this.datePart();
                             this.state = 480;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 7) {
                                 {
                                     this.state = 473;
                                     this.match(SDBLParser.COMMA);
                                     this.state = 474;
-                                    localctx._hour = this.datePart();
+                                    localContext._hour = this.datePart();
                                     this.state = 475;
                                     this.match(SDBLParser.COMMA);
                                     this.state = 476;
-                                    localctx._minute = this.datePart();
+                                    localContext._minute = this.datePart();
                                     this.state = 477;
                                     this.match(SDBLParser.COMMA);
                                     this.state = 478;
-                                    localctx._second = this.datePart();
+                                    localContext._second = this.datePart();
                                 }
                             }
 
@@ -3214,15 +3159,15 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     break;
-                case 18:
-                    this.enterOuterAlt(localctx, 8);
+                case SDBLParser.AMPERSAND:
+                    this.enterOuterAlt(localContext, 8);
                     {
                         this.state = 484;
                         this.parameter();
                     }
                     break;
-                case 111:
-                    this.enterOuterAlt(localctx, 9);
+                case SDBLParser.TYPE:
+                    this.enterOuterAlt(localContext, 9);
                     {
                         {
                             this.state = 485;
@@ -3230,57 +3175,57 @@ export default class SDBLParser extends Parser {
                             this.state = 486;
                             this.match(SDBLParser.LPAREN);
                             this.state = 492;
-                            this._errHandler.sync(this);
-                            switch (this._input.LA(1)) {
-                                case 119:
-                                case 120:
-                                case 121:
-                                case 122:
-                                case 123:
-                                case 124:
-                                case 125:
-                                case 126:
-                                case 127:
-                                case 128:
-                                case 129:
-                                case 130:
-                                case 131:
-                                case 132:
-                                case 133:
-                                case 134:
-                                case 135:
-                                case 136:
+                            this.errorHandler.sync(this);
+                            switch (this.tokenStream.LA(1)) {
+                                case SDBLParser.ACCOUNTING_REGISTER_TYPE:
+                                case SDBLParser.ACCUMULATION_REGISTER_TYPE:
+                                case SDBLParser.BUSINESS_PROCESS_TYPE:
+                                case SDBLParser.CALCULATION_REGISTER_TYPE:
+                                case SDBLParser.CATALOG_TYPE:
+                                case SDBLParser.CHART_OF_ACCOUNTS_TYPE:
+                                case SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE:
+                                case SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE:
+                                case SDBLParser.CONSTANT_TYPE:
+                                case SDBLParser.DOCUMENT_TYPE:
+                                case SDBLParser.DOCUMENT_JOURNAL_TYPE:
+                                case SDBLParser.ENUM_TYPE:
+                                case SDBLParser.EXCHANGE_PLAN_TYPE:
+                                case SDBLParser.EXTERNAL_DATA_SOURCE_TYPE:
+                                case SDBLParser.FILTER_CRITERION_TYPE:
+                                case SDBLParser.INFORMATION_REGISTER_TYPE:
+                                case SDBLParser.SEQUENCE_TYPE:
+                                case SDBLParser.TASK_TYPE:
                                     {
                                         this.state = 487;
                                         this.mdo();
                                     }
                                     break;
-                                case 100:
+                                case SDBLParser.STRING:
                                     {
                                         this.state = 488;
                                         this.match(SDBLParser.STRING);
                                     }
                                     break;
-                                case 63:
+                                case SDBLParser.BOOLEAN:
                                     {
                                         this.state = 489;
                                         this.match(SDBLParser.BOOLEAN);
                                     }
                                     break;
-                                case 66:
+                                case SDBLParser.DATE:
                                     {
                                         this.state = 490;
                                         this.match(SDBLParser.DATE);
                                     }
                                     break;
-                                case 86:
+                                case SDBLParser.NUMBER:
                                     {
                                         this.state = 491;
                                         this.match(SDBLParser.NUMBER);
                                     }
                                     break;
                                 default:
-                                    throw new NoViableAltException(this);
+                                    throw new antlr.NoViableAltException(this);
                             }
                             this.state = 494;
                             this.match(SDBLParser.RPAREN);
@@ -3288,42 +3233,41 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public caseExpression(): CaseExpressionContext {
-        let localctx: CaseExpressionContext = new CaseExpressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 56, SDBLParser.RULE_caseExpression);
+        let localContext = new CaseExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 56, SDBLParser.RULE_caseExpression);
         let _la: number;
         try {
             this.state = 529;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 58, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 58, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 497;
                             this.match(SDBLParser.CASE);
                             this.state = 498;
-                            localctx._caseExp = this.expression(0);
+                            localContext._caseExp = this.expression(0);
                             this.state = 500;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             do {
                                 {
                                     {
@@ -3332,18 +3276,18 @@ export default class SDBLParser extends Parser {
                                     }
                                 }
                                 this.state = 502;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                             } while (_la === 56);
                             this.state = 506;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 32) {
                                 {
                                     this.state = 504;
                                     this.match(SDBLParser.ELSE);
                                     this.state = 505;
-                                    localctx._elseExp = this.logicalExpression();
+                                    localContext._elseExp = this.logicalExpression();
                                 }
                             }
 
@@ -3353,14 +3297,14 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 510;
                             this.match(SDBLParser.CASE);
                             this.state = 512;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             do {
                                 {
                                     {
@@ -3369,18 +3313,18 @@ export default class SDBLParser extends Parser {
                                     }
                                 }
                                 this.state = 514;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                             } while (_la === 56);
                             this.state = 518;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 32) {
                                 {
                                     this.state = 516;
                                     this.match(SDBLParser.ELSE);
                                     this.state = 517;
-                                    localctx._elseExp = this.logicalExpression();
+                                    localContext._elseExp = this.logicalExpression();
                                 }
                             }
 
@@ -3390,20 +3334,20 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         {
                             this.state = 522;
                             this.caseBranch();
                             this.state = 525;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 32) {
                                 {
                                     this.state = 523;
                                     this.match(SDBLParser.ELSE);
                                     this.state = 524;
-                                    localctx._elseExp = this.logicalExpression();
+                                    localContext._elseExp = this.logicalExpression();
                                 }
                             }
 
@@ -3414,25 +3358,24 @@ export default class SDBLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public caseBranch(): CaseBranchContext {
-        let localctx: CaseBranchContext = new CaseBranchContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 58, SDBLParser.RULE_caseBranch);
+        let localContext = new CaseBranchContext(this.context, this.state);
+        this.enterRule(localContext, 58, SDBLParser.RULE_caseBranch);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 531;
                 this.match(SDBLParser.WHEN);
@@ -3444,29 +3387,28 @@ export default class SDBLParser extends Parser {
                 this.logicalExpression();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public bracketExpression(): BracketExpressionContext {
-        let localctx: BracketExpressionContext = new BracketExpressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 60, SDBLParser.RULE_bracketExpression);
+        let localContext = new BracketExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 60, SDBLParser.RULE_bracketExpression);
         try {
             this.state = 544;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 59, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 59, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 536;
@@ -3479,7 +3421,7 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 540;
@@ -3493,25 +3435,24 @@ export default class SDBLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public unaryExpression(): UnaryExpressionContext {
-        let localctx: UnaryExpressionContext = new UnaryExpressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 62, SDBLParser.RULE_unaryExpression);
+        let localContext = new UnaryExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 62, SDBLParser.RULE_unaryExpression);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 546;
                 this.sign();
@@ -3519,261 +3460,259 @@ export default class SDBLParser extends Parser {
                 this.expression(0);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public functionCall(): FunctionCallContext {
-        let localctx: FunctionCallContext = new FunctionCallContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 64, SDBLParser.RULE_functionCall);
+        let localContext = new FunctionCallContext(this.context, this.state);
+        this.enterRule(localContext, 64, SDBLParser.RULE_functionCall);
         try {
-            let _alt: number;
+            let alternative: number;
             this.state = 567;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 61:
-                case 65:
-                case 82:
-                case 83:
-                case 105:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.AVG:
+                case SDBLParser.COUNT:
+                case SDBLParser.MAX:
+                case SDBLParser.MIN:
+                case SDBLParser.SUM:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 549;
                         this.aggregateFunctions();
                     }
                     break;
-                case 41:
-                case 58:
-                case 59:
-                case 60:
-                case 62:
-                case 64:
-                case 67:
-                case 68:
-                case 70:
-                case 71:
-                case 74:
-                case 75:
-                case 77:
-                case 78:
-                case 79:
-                case 80:
-                case 81:
-                case 84:
-                case 85:
-                case 87:
-                case 91:
-                case 93:
-                case 94:
-                case 95:
-                case 96:
-                case 97:
-                case 98:
-                case 99:
-                case 101:
-                case 102:
-                case 103:
-                case 104:
-                case 106:
-                case 108:
-                case 109:
-                case 110:
-                case 112:
-                case 114:
-                case 115:
-                case 116:
-                case 117:
-                case 118:
-                case 141:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.ISNULL:
+                case SDBLParser.ACOS:
+                case SDBLParser.ASIN:
+                case SDBLParser.ATAN:
+                case SDBLParser.BEGINOFPERIOD:
+                case SDBLParser.COS:
+                case SDBLParser.DATEADD:
+                case SDBLParser.DATEDIFF:
+                case SDBLParser.DAY:
+                case SDBLParser.DAYOFYEAR:
+                case SDBLParser.ENDOFPERIOD:
+                case SDBLParser.EXP:
+                case SDBLParser.HOUR:
+                case SDBLParser.INT:
+                case SDBLParser.LOG:
+                case SDBLParser.LOG10:
+                case SDBLParser.LOWER:
+                case SDBLParser.MINUTE:
+                case SDBLParser.MONTH:
+                case SDBLParser.QUARTER:
+                case SDBLParser.PRESENTATION:
+                case SDBLParser.REFPRESENTATION:
+                case SDBLParser.POW:
+                case SDBLParser.ROUND:
+                case SDBLParser.SECOND:
+                case SDBLParser.SIN:
+                case SDBLParser.SQRT:
+                case SDBLParser.STOREDDATASIZE:
+                case SDBLParser.STRINGLENGTH:
+                case SDBLParser.STRFIND:
+                case SDBLParser.STRREPLACE:
+                case SDBLParser.SUBSTRING:
+                case SDBLParser.TAN:
+                case SDBLParser.TRIMALL:
+                case SDBLParser.TRIML:
+                case SDBLParser.TRIMR:
+                case SDBLParser.UPPER:
+                case SDBLParser.VALUETYPE:
+                case SDBLParser.WEEK:
+                case SDBLParser.WEEKDAY:
+                case SDBLParser.YEAR:
+                case SDBLParser.UUID:
+                case SDBLParser.GROUPEDBY:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 550;
                         this.builtInFunctions();
                     }
                     break;
-                case 113:
-                    this.enterOuterAlt(localctx, 3);
+                case SDBLParser.VALUE:
+                    this.enterOuterAlt(localContext, 3);
                     {
                         {
                             this.state = 551;
                             this.valueFunction();
                             this.state = 556;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 60, this._ctx);
-                            while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                if (_alt === 1) {
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 60, this.context);
+                            while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                if (alternative === 1) {
                                     {
                                         {
                                             this.state = 552;
                                             this.match(SDBLParser.DOT);
                                             this.state = 553;
-                                            localctx._identifier = this.identifier();
-                                            localctx._columnNames.push(localctx._identifier);
+                                            localContext._identifier = this.identifier();
+                                            localContext._columnNames.push(localContext._identifier);
                                         }
                                     }
                                 }
                                 this.state = 558;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 60, this._ctx);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 60, this.context);
                             }
                         }
                     }
                     break;
-                case 28:
-                    this.enterOuterAlt(localctx, 4);
+                case SDBLParser.CAST:
+                    this.enterOuterAlt(localContext, 4);
                     {
                         {
                             this.state = 559;
                             this.castFunction();
                             this.state = 564;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 61, this._ctx);
-                            while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                if (_alt === 1) {
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 61, this.context);
+                            while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                if (alternative === 1) {
                                     {
                                         {
                                             this.state = 560;
                                             this.match(SDBLParser.DOT);
                                             this.state = 561;
-                                            localctx._identifier = this.identifier();
-                                            localctx._columnNames.push(localctx._identifier);
+                                            localContext._identifier = this.identifier();
+                                            localContext._columnNames.push(localContext._identifier);
                                         }
                                     }
                                 }
                                 this.state = 566;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 61, this._ctx);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 61, this.context);
                             }
                         }
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public builtInFunctions(): BuiltInFunctionsContext {
-        let localctx: BuiltInFunctionsContext = new BuiltInFunctionsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 66, SDBLParser.RULE_builtInFunctions);
+        let localContext = new BuiltInFunctionsContext(this.context, this.state);
+        this.enterRule(localContext, 66, SDBLParser.RULE_builtInFunctions);
         let _la: number;
         try {
             this.state = 658;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 104:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.SUBSTRING:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 569;
-                            localctx._doCall = this.match(SDBLParser.SUBSTRING);
+                            localContext._doCall = this.match(SDBLParser.SUBSTRING);
                             this.state = 570;
                             this.match(SDBLParser.LPAREN);
                             this.state = 571;
-                            localctx._string_ = this.expression(0);
+                            localContext._string_ = this.expression(0);
                             this.state = 572;
                             this.match(SDBLParser.COMMA);
                             this.state = 573;
-                            localctx._charNo = this.expression(0);
+                            localContext._charNo = this.expression(0);
                             this.state = 574;
                             this.match(SDBLParser.COMMA);
                             this.state = 575;
-                            localctx._count = this.expression(0);
+                            localContext._count = this.expression(0);
                             this.state = 576;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 70:
-                case 71:
-                case 77:
-                case 84:
-                case 85:
-                case 87:
-                case 96:
-                case 115:
-                case 116:
-                case 117:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.DAY:
+                case SDBLParser.DAYOFYEAR:
+                case SDBLParser.HOUR:
+                case SDBLParser.MINUTE:
+                case SDBLParser.MONTH:
+                case SDBLParser.QUARTER:
+                case SDBLParser.SECOND:
+                case SDBLParser.WEEK:
+                case SDBLParser.WEEKDAY:
+                case SDBLParser.YEAR:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 578;
-                            localctx._doCall = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._doCall = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (
                                 !(
                                     (((_la - 70) & ~0x1f) === 0 && ((1 << (_la - 70)) & 67289219) !== 0) ||
                                     (((_la - 115) & ~0x1f) === 0 && ((1 << (_la - 115)) & 7) !== 0)
                                 )
                             ) {
-                                localctx._doCall = this._errHandler.recoverInline(this);
+                                localContext._doCall = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 579;
                             this.match(SDBLParser.LPAREN);
                             this.state = 580;
-                            localctx._date = this.expression(0);
+                            localContext._date = this.expression(0);
                             this.state = 581;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 62:
-                case 74:
-                    this.enterOuterAlt(localctx, 3);
+                case SDBLParser.BEGINOFPERIOD:
+                case SDBLParser.ENDOFPERIOD:
+                    this.enterOuterAlt(localContext, 3);
                     {
                         {
                             this.state = 583;
-                            localctx._doCall = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._doCall = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (!(_la === 62 || _la === 74)) {
-                                localctx._doCall = this._errHandler.recoverInline(this);
+                                localContext._doCall = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 584;
                             this.match(SDBLParser.LPAREN);
                             this.state = 585;
-                            localctx._date = this.expression(0);
+                            localContext._date = this.expression(0);
                             this.state = 586;
                             this.match(SDBLParser.COMMA);
                             this.state = 587;
-                            localctx._periodType = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._periodType = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (
                                 !(
                                     (((_la - 70) & ~0x1f) === 0 && ((1 << (_la - 70)) & 180417) !== 0) ||
                                     (((_la - 107) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1281) !== 0)
                                 )
                             ) {
-                                localctx._periodType = this._errHandler.recoverInline(this);
+                                localContext._periodType = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 588;
@@ -3781,66 +3720,66 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     break;
-                case 67:
-                    this.enterOuterAlt(localctx, 4);
+                case SDBLParser.DATEADD:
+                    this.enterOuterAlt(localContext, 4);
                     {
                         {
                             this.state = 590;
-                            localctx._doCall = this.match(SDBLParser.DATEADD);
+                            localContext._doCall = this.match(SDBLParser.DATEADD);
                             this.state = 591;
                             this.match(SDBLParser.LPAREN);
                             this.state = 592;
-                            localctx._date = this.expression(0);
+                            localContext._date = this.expression(0);
                             this.state = 593;
                             this.match(SDBLParser.COMMA);
                             this.state = 594;
-                            localctx._periodType = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._periodType = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (
                                 !(
                                     (((_la - 70) & ~0x1f) === 0 && ((1 << (_la - 70)) & 67289281) !== 0) ||
                                     (((_la - 107) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1281) !== 0)
                                 )
                             ) {
-                                localctx._periodType = this._errHandler.recoverInline(this);
+                                localContext._periodType = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 595;
                             this.match(SDBLParser.COMMA);
                             this.state = 596;
-                            localctx._count = this.expression(0);
+                            localContext._count = this.expression(0);
                             this.state = 597;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 68:
-                    this.enterOuterAlt(localctx, 5);
+                case SDBLParser.DATEDIFF:
+                    this.enterOuterAlt(localContext, 5);
                     {
                         {
                             this.state = 599;
-                            localctx._doCall = this.match(SDBLParser.DATEDIFF);
+                            localContext._doCall = this.match(SDBLParser.DATEDIFF);
                             this.state = 600;
                             this.match(SDBLParser.LPAREN);
                             this.state = 601;
-                            localctx._firstdate = this.expression(0);
+                            localContext._firstdate = this.expression(0);
                             this.state = 602;
                             this.match(SDBLParser.COMMA);
                             this.state = 603;
-                            localctx._seconddate = this.expression(0);
+                            localContext._seconddate = this.expression(0);
                             this.state = 604;
                             this.match(SDBLParser.COMMA);
                             this.state = 605;
-                            localctx._periodType = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._periodType = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (
                                 !((((_la - 70) & ~0x1f) === 0 && ((1 << (_la - 70)) & 67289217) !== 0) || _la === 117)
                             ) {
-                                localctx._periodType = this._errHandler.recoverInline(this);
+                                localContext._periodType = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 606;
@@ -3848,239 +3787,238 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     break;
-                case 91:
-                case 93:
-                case 114:
-                case 141:
-                    this.enterOuterAlt(localctx, 6);
+                case SDBLParser.PRESENTATION:
+                case SDBLParser.REFPRESENTATION:
+                case SDBLParser.VALUETYPE:
+                case SDBLParser.GROUPEDBY:
+                    this.enterOuterAlt(localContext, 6);
                     {
                         {
                             this.state = 608;
-                            localctx._doCall = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._doCall = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (!((((_la - 91) & ~0x1f) === 0 && ((1 << (_la - 91)) & 8388613) !== 0) || _la === 141)) {
-                                localctx._doCall = this._errHandler.recoverInline(this);
+                                localContext._doCall = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 609;
                             this.match(SDBLParser.LPAREN);
                             this.state = 610;
-                            localctx._value = this.expression(0);
+                            localContext._value = this.expression(0);
                             this.state = 611;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 41:
-                    this.enterOuterAlt(localctx, 7);
+                case SDBLParser.ISNULL:
+                    this.enterOuterAlt(localContext, 7);
                     {
                         {
                             this.state = 613;
-                            localctx._doCall = this.match(SDBLParser.ISNULL);
+                            localContext._doCall = this.match(SDBLParser.ISNULL);
                             this.state = 614;
                             this.match(SDBLParser.LPAREN);
                             this.state = 615;
-                            localctx._first = this.logicalExpression();
+                            localContext._first = this.logicalExpression();
                             this.state = 616;
                             this.match(SDBLParser.COMMA);
                             this.state = 617;
-                            localctx._second = this.logicalExpression();
+                            localContext._second = this.logicalExpression();
                             this.state = 618;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 58:
-                case 59:
-                case 60:
-                case 64:
-                case 75:
-                case 78:
-                case 79:
-                case 80:
-                case 94:
-                case 97:
-                case 98:
-                case 106:
-                    this.enterOuterAlt(localctx, 8);
+                case SDBLParser.ACOS:
+                case SDBLParser.ASIN:
+                case SDBLParser.ATAN:
+                case SDBLParser.COS:
+                case SDBLParser.EXP:
+                case SDBLParser.INT:
+                case SDBLParser.LOG:
+                case SDBLParser.LOG10:
+                case SDBLParser.POW:
+                case SDBLParser.SIN:
+                case SDBLParser.SQRT:
+                case SDBLParser.TAN:
+                    this.enterOuterAlt(localContext, 8);
                     {
                         {
                             this.state = 620;
-                            localctx._doCall = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._doCall = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (
                                 !(
                                     (((_la - 58) & ~0x1f) === 0 && ((1 << (_la - 58)) & 7471175) !== 0) ||
                                     (((_la - 94) & ~0x1f) === 0 && ((1 << (_la - 94)) & 4121) !== 0)
                                 )
                             ) {
-                                localctx._doCall = this._errHandler.recoverInline(this);
+                                localContext._doCall = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 621;
                             this.match(SDBLParser.LPAREN);
                             this.state = 622;
-                            localctx._decimal = this.expression(0);
+                            localContext._decimal = this.expression(0);
                             this.state = 623;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 81:
-                case 101:
-                case 108:
-                case 109:
-                case 110:
-                case 112:
-                    this.enterOuterAlt(localctx, 9);
+                case SDBLParser.LOWER:
+                case SDBLParser.STRINGLENGTH:
+                case SDBLParser.TRIMALL:
+                case SDBLParser.TRIML:
+                case SDBLParser.TRIMR:
+                case SDBLParser.UPPER:
+                    this.enterOuterAlt(localContext, 9);
                     {
                         {
                             this.state = 625;
-                            localctx._doCall = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._doCall = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (!(((_la - 81) & ~0x1f) === 0 && ((1 << (_la - 81)) & 3088056321) !== 0)) {
-                                localctx._doCall = this._errHandler.recoverInline(this);
+                                localContext._doCall = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 626;
                             this.match(SDBLParser.LPAREN);
                             this.state = 627;
-                            localctx._string_ = this.expression(0);
+                            localContext._string_ = this.expression(0);
                             this.state = 628;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 95:
-                    this.enterOuterAlt(localctx, 10);
+                case SDBLParser.ROUND:
+                    this.enterOuterAlt(localContext, 10);
                     {
                         {
                             this.state = 630;
-                            localctx._doCall = this.match(SDBLParser.ROUND);
+                            localContext._doCall = this.match(SDBLParser.ROUND);
                             this.state = 631;
                             this.match(SDBLParser.LPAREN);
                             this.state = 632;
-                            localctx._decimal = this.expression(0);
+                            localContext._decimal = this.expression(0);
                             this.state = 633;
                             this.match(SDBLParser.COMMA);
                             this.state = 634;
-                            localctx._precise = this.expression(0);
+                            localContext._precise = this.expression(0);
                             this.state = 635;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 99:
-                case 118:
-                    this.enterOuterAlt(localctx, 11);
+                case SDBLParser.STOREDDATASIZE:
+                case SDBLParser.UUID:
+                    this.enterOuterAlt(localContext, 11);
                     {
                         {
                             this.state = 637;
-                            localctx._doCall = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._doCall = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (!(_la === 99 || _la === 118)) {
-                                localctx._doCall = this._errHandler.recoverInline(this);
+                                localContext._doCall = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 638;
                             this.match(SDBLParser.LPAREN);
                             this.state = 639;
-                            localctx._value = this.expression(0);
+                            localContext._value = this.expression(0);
                             this.state = 640;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 102:
-                    this.enterOuterAlt(localctx, 12);
+                case SDBLParser.STRFIND:
+                    this.enterOuterAlt(localContext, 12);
                     {
                         {
                             this.state = 642;
-                            localctx._doCall = this.match(SDBLParser.STRFIND);
+                            localContext._doCall = this.match(SDBLParser.STRFIND);
                             this.state = 643;
                             this.match(SDBLParser.LPAREN);
                             this.state = 644;
-                            localctx._string_ = this.expression(0);
+                            localContext._string_ = this.expression(0);
                             this.state = 645;
                             this.match(SDBLParser.COMMA);
                             this.state = 646;
-                            localctx._substring1 = this.expression(0);
+                            localContext._substring1 = this.expression(0);
                             this.state = 647;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
-                case 103:
-                    this.enterOuterAlt(localctx, 13);
+                case SDBLParser.STRREPLACE:
+                    this.enterOuterAlt(localContext, 13);
                     {
                         {
                             this.state = 649;
-                            localctx._doCall = this.match(SDBLParser.STRREPLACE);
+                            localContext._doCall = this.match(SDBLParser.STRREPLACE);
                             this.state = 650;
                             this.match(SDBLParser.LPAREN);
                             this.state = 651;
-                            localctx._string_ = this.expression(0);
+                            localContext._string_ = this.expression(0);
                             this.state = 652;
                             this.match(SDBLParser.COMMA);
                             this.state = 653;
-                            localctx._substring1 = this.expression(0);
+                            localContext._substring1 = this.expression(0);
                             this.state = 654;
                             this.match(SDBLParser.COMMA);
                             this.state = 655;
-                            localctx._substring1 = this.expression(0);
+                            localContext._substring1 = this.expression(0);
                             this.state = 656;
                             this.match(SDBLParser.RPAREN);
                         }
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public aggregateFunctions(): AggregateFunctionsContext {
-        let localctx: AggregateFunctionsContext = new AggregateFunctionsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 68, SDBLParser.RULE_aggregateFunctions);
+        let localContext = new AggregateFunctionsContext(this.context, this.state);
+        this.enterRule(localContext, 68, SDBLParser.RULE_aggregateFunctions);
         let _la: number;
         try {
             this.state = 675;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 61:
-                case 82:
-                case 83:
-                case 105:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case SDBLParser.AVG:
+                case SDBLParser.MAX:
+                case SDBLParser.MIN:
+                case SDBLParser.SUM:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 660;
-                            localctx._doCall = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._doCall = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (!((((_la - 61) & ~0x1f) === 0 && ((1 << (_la - 61)) & 6291457) !== 0) || _la === 105)) {
-                                localctx._doCall = this._errHandler.recoverInline(this);
+                                localContext._doCall = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 661;
@@ -4092,150 +4030,150 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     break;
-                case 65:
-                    this.enterOuterAlt(localctx, 2);
+                case SDBLParser.COUNT:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 665;
-                            localctx._doCall = this.match(SDBLParser.COUNT);
+                            localContext._doCall = this.match(SDBLParser.COUNT);
                             this.state = 666;
                             this.match(SDBLParser.LPAREN);
                             this.state = 672;
-                            this._errHandler.sync(this);
-                            switch (this._input.LA(1)) {
-                                case 4:
-                                case 9:
-                                case 10:
-                                case 18:
-                                case 27:
-                                case 28:
-                                case 30:
-                                case 31:
-                                case 33:
-                                case 35:
-                                case 41:
-                                case 43:
-                                case 44:
-                                case 50:
-                                case 53:
-                                case 54:
-                                case 55:
-                                case 56:
-                                case 58:
-                                case 59:
-                                case 60:
-                                case 61:
-                                case 62:
-                                case 63:
-                                case 64:
-                                case 65:
-                                case 66:
-                                case 67:
-                                case 68:
-                                case 69:
-                                case 70:
-                                case 71:
-                                case 72:
-                                case 73:
-                                case 74:
-                                case 75:
-                                case 76:
-                                case 77:
-                                case 78:
-                                case 79:
-                                case 80:
-                                case 81:
-                                case 82:
-                                case 83:
-                                case 84:
-                                case 85:
-                                case 86:
-                                case 87:
-                                case 88:
-                                case 89:
-                                case 90:
-                                case 91:
-                                case 92:
-                                case 93:
-                                case 94:
-                                case 95:
-                                case 96:
-                                case 97:
-                                case 98:
-                                case 99:
-                                case 100:
-                                case 101:
-                                case 102:
-                                case 103:
-                                case 104:
-                                case 105:
-                                case 106:
-                                case 107:
-                                case 108:
-                                case 109:
-                                case 110:
-                                case 111:
-                                case 112:
-                                case 113:
-                                case 114:
-                                case 115:
-                                case 116:
-                                case 117:
-                                case 118:
-                                case 119:
-                                case 120:
-                                case 121:
-                                case 122:
-                                case 123:
-                                case 124:
-                                case 125:
-                                case 126:
-                                case 127:
-                                case 128:
-                                case 129:
-                                case 130:
-                                case 131:
-                                case 132:
-                                case 133:
-                                case 134:
-                                case 135:
-                                case 136:
-                                case 137:
-                                case 138:
-                                case 139:
-                                case 140:
-                                case 141:
-                                case 143:
-                                case 144:
-                                case 145:
-                                case 146:
-                                case 147:
-                                case 148:
-                                case 149:
-                                case 150:
-                                case 151:
-                                case 152:
-                                case 153:
-                                case 156:
-                                case 157:
-                                case 158:
-                                case 160:
-                                case 163:
-                                case 164:
-                                case 165:
-                                case 166:
-                                case 167:
-                                case 168:
-                                case 169:
-                                case 170:
-                                case 171:
-                                case 172:
-                                case 173:
-                                case 174:
+                            this.errorHandler.sync(this);
+                            switch (this.tokenStream.LA(1)) {
+                                case SDBLParser.LPAREN:
+                                case SDBLParser.PLUS:
+                                case SDBLParser.MINUS:
+                                case SDBLParser.AMPERSAND:
+                                case SDBLParser.CASE:
+                                case SDBLParser.CAST:
+                                case SDBLParser.DISTINCT:
+                                case SDBLParser.DROP:
+                                case SDBLParser.END:
+                                case SDBLParser.FALSE:
+                                case SDBLParser.ISNULL:
+                                case SDBLParser.NOT:
+                                case SDBLParser.NULL:
+                                case SDBLParser.SELECT:
+                                case SDBLParser.TOTALS:
+                                case SDBLParser.TRUE:
+                                case SDBLParser.UNDEFINED:
+                                case SDBLParser.WHEN:
+                                case SDBLParser.ACOS:
+                                case SDBLParser.ASIN:
+                                case SDBLParser.ATAN:
+                                case SDBLParser.AVG:
+                                case SDBLParser.BEGINOFPERIOD:
+                                case SDBLParser.BOOLEAN:
+                                case SDBLParser.COS:
+                                case SDBLParser.COUNT:
+                                case SDBLParser.DATE:
+                                case SDBLParser.DATEADD:
+                                case SDBLParser.DATEDIFF:
+                                case SDBLParser.DATETIME:
+                                case SDBLParser.DAY:
+                                case SDBLParser.DAYOFYEAR:
+                                case SDBLParser.EMPTYTABLE:
+                                case SDBLParser.EMPTYREF:
+                                case SDBLParser.ENDOFPERIOD:
+                                case SDBLParser.EXP:
+                                case SDBLParser.HALFYEAR:
+                                case SDBLParser.HOUR:
+                                case SDBLParser.INT:
+                                case SDBLParser.LOG:
+                                case SDBLParser.LOG10:
+                                case SDBLParser.LOWER:
+                                case SDBLParser.MAX:
+                                case SDBLParser.MIN:
+                                case SDBLParser.MINUTE:
+                                case SDBLParser.MONTH:
+                                case SDBLParser.NUMBER:
+                                case SDBLParser.QUARTER:
+                                case SDBLParser.ONLY:
+                                case SDBLParser.PERIODS:
+                                case SDBLParser.REFS:
+                                case SDBLParser.PRESENTATION:
+                                case SDBLParser.RECORDAUTONUMBER:
+                                case SDBLParser.REFPRESENTATION:
+                                case SDBLParser.POW:
+                                case SDBLParser.ROUND:
+                                case SDBLParser.SECOND:
+                                case SDBLParser.SIN:
+                                case SDBLParser.SQRT:
+                                case SDBLParser.STOREDDATASIZE:
+                                case SDBLParser.STRING:
+                                case SDBLParser.STRINGLENGTH:
+                                case SDBLParser.STRFIND:
+                                case SDBLParser.STRREPLACE:
+                                case SDBLParser.SUBSTRING:
+                                case SDBLParser.SUM:
+                                case SDBLParser.TAN:
+                                case SDBLParser.TENDAYS:
+                                case SDBLParser.TRIMALL:
+                                case SDBLParser.TRIML:
+                                case SDBLParser.TRIMR:
+                                case SDBLParser.TYPE:
+                                case SDBLParser.UPPER:
+                                case SDBLParser.VALUE:
+                                case SDBLParser.VALUETYPE:
+                                case SDBLParser.WEEK:
+                                case SDBLParser.WEEKDAY:
+                                case SDBLParser.YEAR:
+                                case SDBLParser.UUID:
+                                case SDBLParser.ACCOUNTING_REGISTER_TYPE:
+                                case SDBLParser.ACCUMULATION_REGISTER_TYPE:
+                                case SDBLParser.BUSINESS_PROCESS_TYPE:
+                                case SDBLParser.CALCULATION_REGISTER_TYPE:
+                                case SDBLParser.CATALOG_TYPE:
+                                case SDBLParser.CHART_OF_ACCOUNTS_TYPE:
+                                case SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE:
+                                case SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE:
+                                case SDBLParser.CONSTANT_TYPE:
+                                case SDBLParser.DOCUMENT_TYPE:
+                                case SDBLParser.DOCUMENT_JOURNAL_TYPE:
+                                case SDBLParser.ENUM_TYPE:
+                                case SDBLParser.EXCHANGE_PLAN_TYPE:
+                                case SDBLParser.EXTERNAL_DATA_SOURCE_TYPE:
+                                case SDBLParser.FILTER_CRITERION_TYPE:
+                                case SDBLParser.INFORMATION_REGISTER_TYPE:
+                                case SDBLParser.SEQUENCE_TYPE:
+                                case SDBLParser.TASK_TYPE:
+                                case SDBLParser.ROUTEPOINT_FIELD:
+                                case SDBLParser.INDEX:
+                                case SDBLParser.GROUP:
+                                case SDBLParser.ORDER:
+                                case SDBLParser.GROUPEDBY:
+                                case SDBLParser.SET:
+                                case SDBLParser.RIGHT:
+                                case SDBLParser.LEFT:
+                                case SDBLParser.INNER:
+                                case SDBLParser.FULL:
+                                case SDBLParser.JOIN:
+                                case SDBLParser.OUTER:
+                                case SDBLParser.FOR:
+                                case SDBLParser.UPDATE:
+                                case SDBLParser.ALL:
+                                case SDBLParser.UNION:
+                                case SDBLParser.DECIMAL:
+                                case SDBLParser.FLOAT:
+                                case SDBLParser.STR:
+                                case SDBLParser.IDENTIFIER:
+                                case SDBLParser.ACTUAL_ACTION_PERIOD_VT:
+                                case SDBLParser.BALANCE_VT:
+                                case SDBLParser.BALANCE_AND_TURNOVERS_VT:
+                                case SDBLParser.BOUNDARIES_VT:
+                                case SDBLParser.DR_CR_TURNOVERS_VT:
+                                case SDBLParser.EXT_DIMENSIONS_VT:
+                                case SDBLParser.RECORDS_WITH_EXT_DIMENSIONS_VT:
+                                case SDBLParser.SCHEDULE_DATA_VT:
+                                case SDBLParser.SLICEFIRST_VT:
+                                case SDBLParser.SLICELAST_VT:
+                                case SDBLParser.TASK_BY_PERFORMER_VT:
+                                case SDBLParser.TURNOVERS_VT:
                                     {
                                         this.state = 668;
-                                        this._errHandler.sync(this);
-                                        _la = this._input.LA(1);
+                                        this.errorHandler.sync(this);
+                                        _la = this.tokenStream.LA(1);
                                         if (_la === 30) {
                                             {
                                                 this.state = 667;
@@ -4247,14 +4185,14 @@ export default class SDBLParser extends Parser {
                                         this.logicalExpression();
                                     }
                                     break;
-                                case 16:
+                                case SDBLParser.MUL:
                                     {
                                         this.state = 671;
                                         this.match(SDBLParser.MUL);
                                     }
                                     break;
                                 default:
-                                    throw new NoViableAltException(this);
+                                    throw new antlr.NoViableAltException(this);
                             }
                             this.state = 674;
                             this.match(SDBLParser.RPAREN);
@@ -4262,57 +4200,56 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public valueFunction(): ValueFunctionContext {
-        let localctx: ValueFunctionContext = new ValueFunctionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 70, SDBLParser.RULE_valueFunction);
+        let localContext = new ValueFunctionContext(this.context, this.state);
+        this.enterRule(localContext, 70, SDBLParser.RULE_valueFunction);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 677;
-                localctx._doCall = this.match(SDBLParser.VALUE);
+                localContext._doCall = this.match(SDBLParser.VALUE);
                 this.state = 678;
                 this.match(SDBLParser.LPAREN);
                 this.state = 706;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 67, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 67, this.context)) {
                     case 1:
                         {
                             {
                                 this.state = 679;
-                                localctx._type_ = this._input.LT(1);
-                                _la = this._input.LA(1);
+                                localContext._type_ = this.tokenStream.LT(1);
+                                _la = this.tokenStream.LA(1);
                                 if (!(((_la - 121) & ~0x1f) === 0 && ((1 << (_la - 121)) & 40637) !== 0)) {
-                                    localctx._type_ = this._errHandler.recoverInline(this);
+                                    localContext._type_ = this.errorHandler.recoverInline(this);
                                 } else {
-                                    this._errHandler.reportMatch(this);
+                                    this.errorHandler.reportMatch(this);
                                     this.consume();
                                 }
                                 this.state = 680;
                                 this.match(SDBLParser.DOT);
                                 this.state = 681;
-                                localctx._mdoName = this.identifier();
+                                localContext._mdoName = this.identifier();
                                 this.state = 682;
                                 this.match(SDBLParser.DOT);
                                 this.state = 683;
-                                localctx._emptyFer = this.match(SDBLParser.EMPTYREF);
+                                localContext._emptyFer = this.match(SDBLParser.EMPTYREF);
                             }
                         }
                         break;
@@ -4320,22 +4257,22 @@ export default class SDBLParser extends Parser {
                         {
                             {
                                 this.state = 685;
-                                localctx._type_ = this._input.LT(1);
-                                _la = this._input.LA(1);
+                                localContext._type_ = this.tokenStream.LT(1);
+                                _la = this.tokenStream.LA(1);
                                 if (!(((_la - 123) & ~0x1f) === 0 && ((1 << (_la - 123)) & 143) !== 0)) {
-                                    localctx._type_ = this._errHandler.recoverInline(this);
+                                    localContext._type_ = this.errorHandler.recoverInline(this);
                                 } else {
-                                    this._errHandler.reportMatch(this);
+                                    this.errorHandler.reportMatch(this);
                                     this.consume();
                                 }
                                 this.state = 686;
                                 this.match(SDBLParser.DOT);
                                 this.state = 687;
-                                localctx._mdoName = this.identifier();
+                                localContext._mdoName = this.identifier();
                                 this.state = 688;
                                 this.match(SDBLParser.DOT);
                                 this.state = 689;
-                                localctx._predefinedName = this.identifier();
+                                localContext._predefinedName = this.identifier();
                             }
                         }
                         break;
@@ -4343,11 +4280,11 @@ export default class SDBLParser extends Parser {
                         {
                             {
                                 this.state = 691;
-                                localctx._type_ = this.match(SDBLParser.BUSINESS_PROCESS_TYPE);
+                                localContext._type_ = this.match(SDBLParser.BUSINESS_PROCESS_TYPE);
                                 this.state = 692;
                                 this.match(SDBLParser.DOT);
                                 this.state = 693;
-                                localctx._mdoName = this.identifier();
+                                localContext._mdoName = this.identifier();
                                 this.state = 694;
                                 this.match(SDBLParser.DOT);
                                 this.state = 695;
@@ -4355,7 +4292,7 @@ export default class SDBLParser extends Parser {
                                 this.state = 696;
                                 this.match(SDBLParser.DOT);
                                 this.state = 697;
-                                localctx._routePointName = this.identifier();
+                                localContext._routePointName = this.identifier();
                             }
                         }
                         break;
@@ -4363,11 +4300,11 @@ export default class SDBLParser extends Parser {
                         {
                             {
                                 this.state = 699;
-                                localctx._systemName = this.identifier();
+                                localContext._systemName = this.identifier();
                                 this.state = 700;
                                 this.match(SDBLParser.DOT);
                                 this.state = 701;
-                                localctx._predefinedName = this.identifier();
+                                localContext._predefinedName = this.identifier();
                             }
                         }
                         break;
@@ -4386,68 +4323,67 @@ export default class SDBLParser extends Parser {
                 this.match(SDBLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public castFunction(): CastFunctionContext {
-        let localctx: CastFunctionContext = new CastFunctionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 72, SDBLParser.RULE_castFunction);
+        let localContext = new CastFunctionContext(this.context, this.state);
+        this.enterRule(localContext, 72, SDBLParser.RULE_castFunction);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 {
                     this.state = 710;
-                    localctx._doCall = this.match(SDBLParser.CAST);
+                    localContext._doCall = this.match(SDBLParser.CAST);
                     this.state = 711;
                     this.match(SDBLParser.LPAREN);
                     this.state = 712;
-                    localctx._value = this.expression(0);
+                    localContext._value = this.expression(0);
                     this.state = 713;
                     this.match(SDBLParser.AS);
                     this.state = 733;
-                    this._errHandler.sync(this);
-                    switch (this._input.LA(1)) {
-                        case 63:
+                    this.errorHandler.sync(this);
+                    switch (this.tokenStream.LA(1)) {
+                        case SDBLParser.BOOLEAN:
                             {
                                 this.state = 714;
-                                localctx._type_ = this.match(SDBLParser.BOOLEAN);
+                                localContext._type_ = this.match(SDBLParser.BOOLEAN);
                             }
                             break;
-                        case 86:
+                        case SDBLParser.NUMBER:
                             {
                                 {
                                     this.state = 715;
-                                    localctx._type_ = this.match(SDBLParser.NUMBER);
+                                    localContext._type_ = this.match(SDBLParser.NUMBER);
                                     this.state = 723;
-                                    this._errHandler.sync(this);
-                                    _la = this._input.LA(1);
+                                    this.errorHandler.sync(this);
+                                    _la = this.tokenStream.LA(1);
                                     if (_la === 4) {
                                         {
                                             this.state = 716;
                                             this.match(SDBLParser.LPAREN);
                                             this.state = 717;
-                                            localctx._len = this.match(SDBLParser.DECIMAL);
+                                            localContext._len = this.match(SDBLParser.DECIMAL);
                                             this.state = 720;
-                                            this._errHandler.sync(this);
-                                            _la = this._input.LA(1);
+                                            this.errorHandler.sync(this);
+                                            _la = this.tokenStream.LA(1);
                                             if (_la === 7) {
                                                 {
                                                     this.state = 718;
                                                     this.match(SDBLParser.COMMA);
                                                     this.state = 719;
-                                                    localctx._prec = this.match(SDBLParser.DECIMAL);
+                                                    localContext._prec = this.match(SDBLParser.DECIMAL);
                                                 }
                                             }
 
@@ -4458,20 +4394,20 @@ export default class SDBLParser extends Parser {
                                 }
                             }
                             break;
-                        case 100:
+                        case SDBLParser.STRING:
                             {
                                 {
                                     this.state = 725;
-                                    localctx._type_ = this.match(SDBLParser.STRING);
+                                    localContext._type_ = this.match(SDBLParser.STRING);
                                     this.state = 729;
-                                    this._errHandler.sync(this);
-                                    _la = this._input.LA(1);
+                                    this.errorHandler.sync(this);
+                                    _la = this.tokenStream.LA(1);
                                     if (_la === 4) {
                                         {
                                             this.state = 726;
                                             this.match(SDBLParser.LPAREN);
                                             this.state = 727;
-                                            localctx._len = this.match(SDBLParser.DECIMAL);
+                                            localContext._len = this.match(SDBLParser.DECIMAL);
                                             this.state = 728;
                                             this.match(SDBLParser.RPAREN);
                                         }
@@ -4479,116 +4415,114 @@ export default class SDBLParser extends Parser {
                                 }
                             }
                             break;
-                        case 66:
+                        case SDBLParser.DATE:
                             {
                                 this.state = 731;
-                                localctx._type_ = this.match(SDBLParser.DATE);
+                                localContext._type_ = this.match(SDBLParser.DATE);
                             }
                             break;
-                        case 119:
-                        case 120:
-                        case 121:
-                        case 122:
-                        case 123:
-                        case 124:
-                        case 125:
-                        case 126:
-                        case 127:
-                        case 128:
-                        case 129:
-                        case 130:
-                        case 131:
-                        case 132:
-                        case 133:
-                        case 134:
-                        case 135:
-                        case 136:
+                        case SDBLParser.ACCOUNTING_REGISTER_TYPE:
+                        case SDBLParser.ACCUMULATION_REGISTER_TYPE:
+                        case SDBLParser.BUSINESS_PROCESS_TYPE:
+                        case SDBLParser.CALCULATION_REGISTER_TYPE:
+                        case SDBLParser.CATALOG_TYPE:
+                        case SDBLParser.CHART_OF_ACCOUNTS_TYPE:
+                        case SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE:
+                        case SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE:
+                        case SDBLParser.CONSTANT_TYPE:
+                        case SDBLParser.DOCUMENT_TYPE:
+                        case SDBLParser.DOCUMENT_JOURNAL_TYPE:
+                        case SDBLParser.ENUM_TYPE:
+                        case SDBLParser.EXCHANGE_PLAN_TYPE:
+                        case SDBLParser.EXTERNAL_DATA_SOURCE_TYPE:
+                        case SDBLParser.FILTER_CRITERION_TYPE:
+                        case SDBLParser.INFORMATION_REGISTER_TYPE:
+                        case SDBLParser.SEQUENCE_TYPE:
+                        case SDBLParser.TASK_TYPE:
                             {
                                 this.state = 732;
                                 this.mdo();
                             }
                             break;
                         default:
-                            throw new NoViableAltException(this);
+                            throw new antlr.NoViableAltException(this);
                     }
                     this.state = 735;
                     this.match(SDBLParser.RPAREN);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public logicalExpression(): LogicalExpressionContext {
-        let localctx: LogicalExpressionContext = new LogicalExpressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 74, SDBLParser.RULE_logicalExpression);
+        let localContext = new LogicalExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 74, SDBLParser.RULE_logicalExpression);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 737;
-                localctx._predicate = this.predicate();
-                localctx._condidions.push(localctx._predicate);
+                localContext._predicate = this.predicate();
+                localContext._condidions.push(localContext._predicate);
                 this.state = 742;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 21 || _la === 47) {
                     {
                         {
                             this.state = 738;
-                            _la = this._input.LA(1);
+                            _la = this.tokenStream.LA(1);
                             if (!(_la === 21 || _la === 47)) {
-                                this._errHandler.recoverInline(this);
+                                this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 739;
-                            localctx._predicate = this.predicate();
-                            localctx._condidions.push(localctx._predicate);
+                            localContext._predicate = this.predicate();
+                            localContext._condidions.push(localContext._predicate);
                         }
                     }
                     this.state = 744;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public predicate(): PredicateContext {
-        let localctx: PredicateContext = new PredicateContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 76, SDBLParser.RULE_predicate);
+        let localContext = new PredicateContext(this.context, this.state);
+        this.enterRule(localContext, 76, SDBLParser.RULE_predicate);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 748;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 43) {
                     {
                         {
@@ -4597,16 +4531,16 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     this.state = 750;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 762;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 74, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 74, this.context)) {
                     case 1:
                         {
                             this.state = 751;
-                            localctx._booleanPredicate = this.expression(0);
+                            localContext._booleanPredicate = this.expression(0);
                         }
                         break;
                     case 2:
@@ -4660,32 +4594,31 @@ export default class SDBLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public likePredicate(): LikePredicateContext {
-        let localctx: LikePredicateContext = new LikePredicateContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 78, SDBLParser.RULE_likePredicate);
+        let localContext = new LikePredicateContext(this.context, this.state);
+        this.enterRule(localContext, 78, SDBLParser.RULE_likePredicate);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 764;
                 this.expression(0);
                 this.state = 768;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 43) {
                     {
                         {
@@ -4694,54 +4627,53 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     this.state = 770;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 771;
                 this.match(SDBLParser.LIKE);
                 this.state = 772;
                 this.expression(0);
                 this.state = 775;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 34) {
                     {
                         this.state = 773;
                         this.match(SDBLParser.ESCAPE);
                         this.state = 774;
-                        localctx._escape = this.multiString();
+                        localContext._escape = this.multiString();
                     }
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public isNullPredicate(): IsNullPredicateContext {
-        let localctx: IsNullPredicateContext = new IsNullPredicateContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 80, SDBLParser.RULE_isNullPredicate);
+        let localContext = new IsNullPredicateContext(this.context, this.state);
+        this.enterRule(localContext, 80, SDBLParser.RULE_isNullPredicate);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 777;
                 this.expression(0);
                 this.state = 778;
                 this.match(SDBLParser.IS);
                 this.state = 780;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 43) {
                     {
                         this.state = 779;
@@ -4753,61 +4685,59 @@ export default class SDBLParser extends Parser {
                 this.match(SDBLParser.NULL);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public comparePredicate(): ComparePredicateContext {
-        let localctx: ComparePredicateContext = new ComparePredicateContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 82, SDBLParser.RULE_comparePredicate);
+        let localContext = new ComparePredicateContext(this.context, this.state);
+        this.enterRule(localContext, 82, SDBLParser.RULE_comparePredicate);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 784;
                 this.expression(0);
                 this.state = 785;
-                localctx._compareOperation = this._input.LT(1);
-                _la = this._input.LA(1);
+                localContext._compareOperation = this.tokenStream.LT(1);
+                _la = this.tokenStream.LA(1);
                 if (!((_la & ~0x1f) === 0 && ((1 << _la) & 63744) !== 0)) {
-                    localctx._compareOperation = this._errHandler.recoverInline(this);
+                    localContext._compareOperation = this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 786;
                 this.expression(0);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public betweenPredicate(): BetweenPredicateContext {
-        let localctx: BetweenPredicateContext = new BetweenPredicateContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 84, SDBLParser.RULE_betweenPredicate);
+        let localContext = new BetweenPredicateContext(this.context, this.state);
+        this.enterRule(localContext, 84, SDBLParser.RULE_betweenPredicate);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 788;
                 this.expression(0);
@@ -4821,30 +4751,29 @@ export default class SDBLParser extends Parser {
                 this.expression(0);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public inPredicate(): InPredicateContext {
-        let localctx: InPredicateContext = new InPredicateContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 86, SDBLParser.RULE_inPredicate);
+        let localContext = new InPredicateContext(this.context, this.state);
+        this.enterRule(localContext, 86, SDBLParser.RULE_inPredicate);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 799;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 78, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 78, this.context)) {
                     case 1:
                         {
                             this.state = 794;
@@ -4865,8 +4794,8 @@ export default class SDBLParser extends Parser {
                         break;
                 }
                 this.state = 804;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 43) {
                     {
                         {
@@ -4875,14 +4804,14 @@ export default class SDBLParser extends Parser {
                         }
                     }
                     this.state = 806;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 807;
                 this.match(SDBLParser.IN);
                 this.state = 809;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 154) {
                     {
                         this.state = 808;
@@ -4893,8 +4822,8 @@ export default class SDBLParser extends Parser {
                 this.state = 811;
                 this.match(SDBLParser.LPAREN);
                 this.state = 814;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 81, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 81, this.context)) {
                     case 1:
                         {
                             this.state = 812;
@@ -4912,25 +4841,24 @@ export default class SDBLParser extends Parser {
                 this.match(SDBLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public refsPredicate(): RefsPredicateContext {
-        let localctx: RefsPredicateContext = new RefsPredicateContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 88, SDBLParser.RULE_refsPredicate);
+        let localContext = new RefsPredicateContext(this.context, this.state);
+        this.enterRule(localContext, 88, SDBLParser.RULE_refsPredicate);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 818;
                 this.expression(0);
@@ -4940,116 +4868,113 @@ export default class SDBLParser extends Parser {
                 this.mdo();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public expressionList(): ExpressionListContext {
-        let localctx: ExpressionListContext = new ExpressionListContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 90, SDBLParser.RULE_expressionList);
+        let localContext = new ExpressionListContext(this.context, this.state);
+        this.enterRule(localContext, 90, SDBLParser.RULE_expressionList);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 822;
-                localctx._logicalExpression = this.logicalExpression();
-                localctx._exp.push(localctx._logicalExpression);
+                localContext._logicalExpression = this.logicalExpression();
+                localContext._exp.push(localContext._logicalExpression);
                 this.state = 827;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 7) {
                     {
                         {
                             this.state = 823;
                             this.match(SDBLParser.COMMA);
                             this.state = 824;
-                            localctx._logicalExpression = this.logicalExpression();
-                            localctx._exp.push(localctx._logicalExpression);
+                            localContext._logicalExpression = this.logicalExpression();
+                            localContext._exp.push(localContext._logicalExpression);
                         }
                     }
                     this.state = 829;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public dataSources(): DataSourcesContext {
-        let localctx: DataSourcesContext = new DataSourcesContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 92, SDBLParser.RULE_dataSources);
+        let localContext = new DataSourcesContext(this.context, this.state);
+        this.enterRule(localContext, 92, SDBLParser.RULE_dataSources);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 830;
-                localctx._dataSource = this.dataSource();
-                localctx._tables.push(localctx._dataSource);
+                localContext._dataSource = this.dataSource();
+                localContext._tables.push(localContext._dataSource);
                 this.state = 835;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 7) {
                     {
                         {
                             this.state = 831;
                             this.match(SDBLParser.COMMA);
                             this.state = 832;
-                            localctx._dataSource = this.dataSource();
-                            localctx._tables.push(localctx._dataSource);
+                            localContext._dataSource = this.dataSource();
+                            localContext._tables.push(localContext._dataSource);
                         }
                     }
                     this.state = 837;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public dataSource(): DataSourceContext {
-        let localctx: DataSourceContext = new DataSourceContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 94, SDBLParser.RULE_dataSource);
+        let localContext = new DataSourceContext(this.context, this.state);
+        this.enterRule(localContext, 94, SDBLParser.RULE_dataSource);
         let _la: number;
         try {
             this.state = 870;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 90, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 90, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 838;
@@ -5062,130 +4987,132 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 862;
-                            this._errHandler.sync(this);
-                            switch (this._input.LA(1)) {
-                                case 18:
-                                case 31:
-                                case 33:
-                                case 41:
-                                case 50:
-                                case 53:
-                                case 58:
-                                case 59:
-                                case 60:
-                                case 61:
-                                case 62:
-                                case 63:
-                                case 64:
-                                case 65:
-                                case 66:
-                                case 67:
-                                case 68:
-                                case 69:
-                                case 70:
-                                case 71:
-                                case 72:
-                                case 73:
-                                case 74:
-                                case 75:
-                                case 76:
-                                case 77:
-                                case 78:
-                                case 79:
-                                case 80:
-                                case 81:
-                                case 82:
-                                case 83:
-                                case 84:
-                                case 85:
-                                case 86:
-                                case 87:
-                                case 88:
-                                case 89:
-                                case 90:
-                                case 91:
-                                case 92:
-                                case 93:
-                                case 94:
-                                case 95:
-                                case 96:
-                                case 97:
-                                case 98:
-                                case 99:
-                                case 100:
-                                case 101:
-                                case 102:
-                                case 103:
-                                case 104:
-                                case 105:
-                                case 106:
-                                case 107:
-                                case 108:
-                                case 109:
-                                case 110:
-                                case 111:
-                                case 112:
-                                case 113:
-                                case 114:
-                                case 115:
-                                case 116:
-                                case 117:
-                                case 118:
-                                case 119:
-                                case 120:
-                                case 121:
-                                case 122:
-                                case 123:
-                                case 124:
-                                case 125:
-                                case 126:
-                                case 127:
-                                case 128:
-                                case 129:
-                                case 130:
-                                case 131:
-                                case 132:
-                                case 133:
-                                case 134:
-                                case 135:
-                                case 136:
-                                case 137:
-                                case 138:
-                                case 139:
-                                case 140:
-                                case 143:
-                                case 144:
-                                case 145:
-                                case 146:
-                                case 147:
-                                case 148:
-                                case 149:
-                                case 150:
-                                case 151:
-                                case 152:
-                                case 153:
-                                case 160:
-                                case 163:
-                                case 164:
-                                case 165:
-                                case 166:
-                                case 167:
-                                case 168:
-                                case 169:
-                                case 170:
-                                case 171:
-                                case 172:
-                                case 173:
-                                case 174:
+                            this.errorHandler.sync(this);
+                            switch (this.tokenStream.LA(1)) {
+                                case SDBLParser.AMPERSAND:
+                                case SDBLParser.DROP:
+                                case SDBLParser.END:
+                                case SDBLParser.ISNULL:
+                                case SDBLParser.SELECT:
+                                case SDBLParser.TOTALS:
+                                case SDBLParser.ACOS:
+                                case SDBLParser.ASIN:
+                                case SDBLParser.ATAN:
+                                case SDBLParser.AVG:
+                                case SDBLParser.BEGINOFPERIOD:
+                                case SDBLParser.BOOLEAN:
+                                case SDBLParser.COS:
+                                case SDBLParser.COUNT:
+                                case SDBLParser.DATE:
+                                case SDBLParser.DATEADD:
+                                case SDBLParser.DATEDIFF:
+                                case SDBLParser.DATETIME:
+                                case SDBLParser.DAY:
+                                case SDBLParser.DAYOFYEAR:
+                                case SDBLParser.EMPTYTABLE:
+                                case SDBLParser.EMPTYREF:
+                                case SDBLParser.ENDOFPERIOD:
+                                case SDBLParser.EXP:
+                                case SDBLParser.HALFYEAR:
+                                case SDBLParser.HOUR:
+                                case SDBLParser.INT:
+                                case SDBLParser.LOG:
+                                case SDBLParser.LOG10:
+                                case SDBLParser.LOWER:
+                                case SDBLParser.MAX:
+                                case SDBLParser.MIN:
+                                case SDBLParser.MINUTE:
+                                case SDBLParser.MONTH:
+                                case SDBLParser.NUMBER:
+                                case SDBLParser.QUARTER:
+                                case SDBLParser.ONLY:
+                                case SDBLParser.PERIODS:
+                                case SDBLParser.REFS:
+                                case SDBLParser.PRESENTATION:
+                                case SDBLParser.RECORDAUTONUMBER:
+                                case SDBLParser.REFPRESENTATION:
+                                case SDBLParser.POW:
+                                case SDBLParser.ROUND:
+                                case SDBLParser.SECOND:
+                                case SDBLParser.SIN:
+                                case SDBLParser.SQRT:
+                                case SDBLParser.STOREDDATASIZE:
+                                case SDBLParser.STRING:
+                                case SDBLParser.STRINGLENGTH:
+                                case SDBLParser.STRFIND:
+                                case SDBLParser.STRREPLACE:
+                                case SDBLParser.SUBSTRING:
+                                case SDBLParser.SUM:
+                                case SDBLParser.TAN:
+                                case SDBLParser.TENDAYS:
+                                case SDBLParser.TRIMALL:
+                                case SDBLParser.TRIML:
+                                case SDBLParser.TRIMR:
+                                case SDBLParser.TYPE:
+                                case SDBLParser.UPPER:
+                                case SDBLParser.VALUE:
+                                case SDBLParser.VALUETYPE:
+                                case SDBLParser.WEEK:
+                                case SDBLParser.WEEKDAY:
+                                case SDBLParser.YEAR:
+                                case SDBLParser.UUID:
+                                case SDBLParser.ACCOUNTING_REGISTER_TYPE:
+                                case SDBLParser.ACCUMULATION_REGISTER_TYPE:
+                                case SDBLParser.BUSINESS_PROCESS_TYPE:
+                                case SDBLParser.CALCULATION_REGISTER_TYPE:
+                                case SDBLParser.CATALOG_TYPE:
+                                case SDBLParser.CHART_OF_ACCOUNTS_TYPE:
+                                case SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE:
+                                case SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE:
+                                case SDBLParser.CONSTANT_TYPE:
+                                case SDBLParser.DOCUMENT_TYPE:
+                                case SDBLParser.DOCUMENT_JOURNAL_TYPE:
+                                case SDBLParser.ENUM_TYPE:
+                                case SDBLParser.EXCHANGE_PLAN_TYPE:
+                                case SDBLParser.EXTERNAL_DATA_SOURCE_TYPE:
+                                case SDBLParser.FILTER_CRITERION_TYPE:
+                                case SDBLParser.INFORMATION_REGISTER_TYPE:
+                                case SDBLParser.SEQUENCE_TYPE:
+                                case SDBLParser.TASK_TYPE:
+                                case SDBLParser.ROUTEPOINT_FIELD:
+                                case SDBLParser.INDEX:
+                                case SDBLParser.GROUP:
+                                case SDBLParser.ORDER:
+                                case SDBLParser.SET:
+                                case SDBLParser.RIGHT:
+                                case SDBLParser.LEFT:
+                                case SDBLParser.INNER:
+                                case SDBLParser.FULL:
+                                case SDBLParser.JOIN:
+                                case SDBLParser.OUTER:
+                                case SDBLParser.FOR:
+                                case SDBLParser.UPDATE:
+                                case SDBLParser.ALL:
+                                case SDBLParser.UNION:
+                                case SDBLParser.IDENTIFIER:
+                                case SDBLParser.ACTUAL_ACTION_PERIOD_VT:
+                                case SDBLParser.BALANCE_VT:
+                                case SDBLParser.BALANCE_AND_TURNOVERS_VT:
+                                case SDBLParser.BOUNDARIES_VT:
+                                case SDBLParser.DR_CR_TURNOVERS_VT:
+                                case SDBLParser.EXT_DIMENSIONS_VT:
+                                case SDBLParser.RECORDS_WITH_EXT_DIMENSIONS_VT:
+                                case SDBLParser.SCHEDULE_DATA_VT:
+                                case SDBLParser.SLICEFIRST_VT:
+                                case SDBLParser.SLICELAST_VT:
+                                case SDBLParser.TASK_BY_PERFORMER_VT:
+                                case SDBLParser.TURNOVERS_VT:
                                     {
                                         {
                                             this.state = 846;
-                                            this._errHandler.sync(this);
-                                            switch (this._interp.adaptivePredict(this._input, 84, this._ctx)) {
+                                            this.errorHandler.sync(this);
+                                            switch (
+                                                this.interpreter.adaptivePredict(this.tokenStream, 84, this.context)
+                                            ) {
                                                 case 1:
                                                     {
                                                         this.state = 842;
@@ -5212,8 +5139,10 @@ export default class SDBLParser extends Parser {
                                                     break;
                                             }
                                             this.state = 849;
-                                            this._errHandler.sync(this);
-                                            switch (this._interp.adaptivePredict(this._input, 85, this._ctx)) {
+                                            this.errorHandler.sync(this);
+                                            switch (
+                                                this.interpreter.adaptivePredict(this.tokenStream, 85, this.context)
+                                            ) {
                                                 case 1:
                                                     {
                                                         this.state = 848;
@@ -5224,14 +5153,16 @@ export default class SDBLParser extends Parser {
                                         }
                                     }
                                     break;
-                                case 4:
+                                case SDBLParser.LPAREN:
                                     {
                                         {
                                             this.state = 851;
                                             this.match(SDBLParser.LPAREN);
                                             this.state = 856;
-                                            this._errHandler.sync(this);
-                                            switch (this._interp.adaptivePredict(this._input, 86, this._ctx)) {
+                                            this.errorHandler.sync(this);
+                                            switch (
+                                                this.interpreter.adaptivePredict(this.tokenStream, 86, this.context)
+                                            ) {
                                                 case 1:
                                                     {
                                                         this.state = 852;
@@ -5260,8 +5191,10 @@ export default class SDBLParser extends Parser {
                                             this.state = 858;
                                             this.match(SDBLParser.RPAREN);
                                             this.state = 860;
-                                            this._errHandler.sync(this);
-                                            switch (this._interp.adaptivePredict(this._input, 87, this._ctx)) {
+                                            this.errorHandler.sync(this);
+                                            switch (
+                                                this.interpreter.adaptivePredict(this.tokenStream, 87, this.context)
+                                            ) {
                                                 case 1:
                                                     {
                                                         this.state = 859;
@@ -5273,100 +5206,98 @@ export default class SDBLParser extends Parser {
                                     }
                                     break;
                                 default:
-                                    throw new NoViableAltException(this);
+                                    throw new antlr.NoViableAltException(this);
                             }
                             this.state = 867;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             while (((_la - 144) & ~0x1f) === 0 && ((1 << (_la - 144)) & 31) !== 0) {
                                 {
                                     {
                                         this.state = 864;
-                                        localctx._joinPart = this.joinPart();
-                                        localctx._joins.push(localctx._joinPart);
+                                        localContext._joinPart = this.joinPart();
+                                        localContext._joins.push(localContext._joinPart);
                                     }
                                 }
                                 this.state = 869;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                             }
                         }
                     }
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public table(): TableContext {
-        let localctx: TableContext = new TableContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 96, SDBLParser.RULE_table);
+        let localContext = new TableContext(this.context, this.state);
+        this.enterRule(localContext, 96, SDBLParser.RULE_table);
         try {
             this.state = 878;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 91, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 91, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 872;
                         this.mdo();
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 873;
                         this.mdo();
                         this.state = 874;
                         this.match(SDBLParser.DOT);
                         this.state = 875;
-                        localctx._objectTableName = this.identifier();
+                        localContext._objectTableName = this.identifier();
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 877;
-                        localctx._tableName = this.identifier();
+                        localContext._tableName = this.identifier();
                     }
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public virtualTable(): VirtualTableContext {
-        let localctx: VirtualTableContext = new VirtualTableContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 98, SDBLParser.RULE_virtualTable);
+        let localContext = new VirtualTableContext(this.context, this.state);
+        this.enterRule(localContext, 98, SDBLParser.RULE_virtualTable);
         let _la: number;
         try {
             this.state = 905;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 95, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 95, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 880;
@@ -5374,40 +5305,42 @@ export default class SDBLParser extends Parser {
                             this.state = 881;
                             this.match(SDBLParser.DOT);
                             this.state = 882;
-                            localctx._virtualTableName = this._input.LT(1);
-                            _la = this._input.LA(1);
+                            localContext._virtualTableName = this.tokenStream.LT(1);
+                            _la = this.tokenStream.LA(1);
                             if (!(((_la - 163) & ~0x1f) === 0 && ((1 << (_la - 163)) & 4095) !== 0)) {
-                                localctx._virtualTableName = this._errHandler.recoverInline(this);
+                                localContext._virtualTableName = this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 894;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 4) {
                                 {
                                     this.state = 883;
                                     this.match(SDBLParser.LPAREN);
                                     this.state = 884;
-                                    localctx._virtualTableParameter = this.virtualTableParameter();
-                                    localctx._virtualTableParameters.push(localctx._virtualTableParameter);
+                                    localContext._virtualTableParameter = this.virtualTableParameter();
+                                    localContext._virtualTableParameters.push(localContext._virtualTableParameter);
                                     this.state = 889;
-                                    this._errHandler.sync(this);
-                                    _la = this._input.LA(1);
+                                    this.errorHandler.sync(this);
+                                    _la = this.tokenStream.LA(1);
                                     while (_la === 7) {
                                         {
                                             {
                                                 this.state = 885;
                                                 this.match(SDBLParser.COMMA);
                                                 this.state = 886;
-                                                localctx._virtualTableParameter = this.virtualTableParameter();
-                                                localctx._virtualTableParameters.push(localctx._virtualTableParameter);
+                                                localContext._virtualTableParameter = this.virtualTableParameter();
+                                                localContext._virtualTableParameters.push(
+                                                    localContext._virtualTableParameter
+                                                );
                                             }
                                         }
                                         this.state = 891;
-                                        this._errHandler.sync(this);
-                                        _la = this._input.LA(1);
+                                        this.errorHandler.sync(this);
+                                        _la = this.tokenStream.LA(1);
                                     }
                                     this.state = 892;
                                     this.match(SDBLParser.RPAREN);
@@ -5417,20 +5350,20 @@ export default class SDBLParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 896;
-                            localctx._type_ = this.match(SDBLParser.FILTER_CRITERION_TYPE);
+                            localContext._type_ = this.match(SDBLParser.FILTER_CRITERION_TYPE);
                             this.state = 897;
                             this.match(SDBLParser.DOT);
                             this.state = 898;
-                            localctx._tableName = this.identifier();
+                            localContext._tableName = this.identifier();
                             this.state = 899;
                             this.match(SDBLParser.LPAREN);
                             this.state = 901;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 18) {
                                 {
                                     this.state = 900;
@@ -5445,30 +5378,29 @@ export default class SDBLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public virtualTableParameter(): VirtualTableParameterContext {
-        let localctx: VirtualTableParameterContext = new VirtualTableParameterContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 100, SDBLParser.RULE_virtualTableParameter);
+        let localContext = new VirtualTableParameterContext(this.context, this.state);
+        this.enterRule(localContext, 100, SDBLParser.RULE_virtualTableParameter);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 908;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (
                     ((_la & ~0x1f) === 0 && ((1 << _la) & 2550400528) !== 0) ||
                     (((_la - 33) & ~0x1f) === 0 && ((1 << (_la - 33)) & 4277275909) !== 0) ||
@@ -5484,53 +5416,51 @@ export default class SDBLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public parameterTable(): ParameterTableContext {
-        let localctx: ParameterTableContext = new ParameterTableContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 102, SDBLParser.RULE_parameterTable);
+        let localContext = new ParameterTableContext(this.context, this.state);
+        this.enterRule(localContext, 102, SDBLParser.RULE_parameterTable);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 910;
                 this.parameter();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public externalDataSourceTable(): ExternalDataSourceTableContext {
-        let localctx: ExternalDataSourceTableContext = new ExternalDataSourceTableContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 104, SDBLParser.RULE_externalDataSourceTable);
+        let localContext = new ExternalDataSourceTableContext(this.context, this.state);
+        this.enterRule(localContext, 104, SDBLParser.RULE_externalDataSourceTable);
         try {
             this.state = 928;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 97, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 97, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 912;
                         this.mdo();
@@ -5541,11 +5471,11 @@ export default class SDBLParser extends Parser {
                         this.state = 915;
                         this.match(SDBLParser.DOT);
                         this.state = 916;
-                        localctx._tableName = this.identifier();
+                        localContext._tableName = this.identifier();
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 918;
                         this.mdo();
@@ -5556,7 +5486,7 @@ export default class SDBLParser extends Parser {
                         this.state = 921;
                         this.match(SDBLParser.DOT);
                         this.state = 922;
-                        localctx._cubeName = this.identifier();
+                        localContext._cubeName = this.identifier();
                         this.state = 923;
                         this.match(SDBLParser.DOT);
                         this.state = 924;
@@ -5564,47 +5494,46 @@ export default class SDBLParser extends Parser {
                         this.state = 925;
                         this.match(SDBLParser.DOT);
                         this.state = 926;
-                        localctx._tableName = this.identifier();
+                        localContext._tableName = this.identifier();
                     }
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public joinPart(): JoinPartContext {
-        let localctx: JoinPartContext = new JoinPartContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 106, SDBLParser.RULE_joinPart);
+        let localContext = new JoinPartContext(this.context, this.state);
+        this.enterRule(localContext, 106, SDBLParser.RULE_joinPart);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 948;
-                this._errHandler.sync(this);
-                switch (this._input.LA(1)) {
-                    case 144:
+                this.errorHandler.sync(this);
+                switch (this.tokenStream.LA(1)) {
+                    case SDBLParser.RIGHT:
                         {
                             {
                                 this.state = 930;
-                                localctx._joinType = this.match(SDBLParser.RIGHT);
+                                localContext._joinType = this.match(SDBLParser.RIGHT);
                                 this.state = 932;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 149) {
                                     {
                                         this.state = 931;
-                                        localctx._outerJoin = this.match(SDBLParser.OUTER);
+                                        localContext._outerJoin = this.match(SDBLParser.OUTER);
                                     }
                                 }
 
@@ -5613,18 +5542,18 @@ export default class SDBLParser extends Parser {
                             }
                         }
                         break;
-                    case 145:
+                    case SDBLParser.LEFT:
                         {
                             {
                                 this.state = 935;
-                                localctx._joinType = this.match(SDBLParser.LEFT);
+                                localContext._joinType = this.match(SDBLParser.LEFT);
                                 this.state = 937;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 149) {
                                     {
                                         this.state = 936;
-                                        localctx._outerJoin = this.match(SDBLParser.OUTER);
+                                        localContext._outerJoin = this.match(SDBLParser.OUTER);
                                     }
                                 }
 
@@ -5633,18 +5562,18 @@ export default class SDBLParser extends Parser {
                             }
                         }
                         break;
-                    case 147:
+                    case SDBLParser.FULL:
                         {
                             {
                                 this.state = 940;
-                                localctx._joinType = this.match(SDBLParser.FULL);
+                                localContext._joinType = this.match(SDBLParser.FULL);
                                 this.state = 942;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 149) {
                                     {
                                         this.state = 941;
-                                        localctx._outerJoin = this.match(SDBLParser.OUTER);
+                                        localContext._outerJoin = this.match(SDBLParser.OUTER);
                                     }
                                 }
 
@@ -5653,65 +5582,64 @@ export default class SDBLParser extends Parser {
                             }
                         }
                         break;
-                    case 146:
+                    case SDBLParser.INNER:
                         {
                             {
                                 this.state = 945;
-                                localctx._joinType = this.match(SDBLParser.INNER);
+                                localContext._joinType = this.match(SDBLParser.INNER);
                                 this.state = 946;
                                 this.match(SDBLParser.JOIN);
                             }
                         }
                         break;
-                    case 148:
+                    case SDBLParser.JOIN:
                         {
                             {
                                 this.state = 947;
-                                localctx._joinType = this.match(SDBLParser.JOIN);
+                                localContext._joinType = this.match(SDBLParser.JOIN);
                             }
                         }
                         break;
                     default:
-                        throw new NoViableAltException(this);
+                        throw new antlr.NoViableAltException(this);
                 }
                 this.state = 950;
-                localctx._source = this.dataSource();
+                localContext._source = this.dataSource();
                 this.state = 951;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 46 || _la === 49)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 952;
-                localctx._condition = this.logicalExpression();
+                localContext._condition = this.logicalExpression();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public alias(): AliasContext {
-        let localctx: AliasContext = new AliasContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 108, SDBLParser.RULE_alias);
+        let localContext = new AliasContext(this.context, this.state);
+        this.enterRule(localContext, 108, SDBLParser.RULE_alias);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 955;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 22) {
                     {
                         this.state = 954;
@@ -5720,75 +5648,73 @@ export default class SDBLParser extends Parser {
                 }
 
                 this.state = 957;
-                localctx._name = this.identifier();
+                localContext._name = this.identifier();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public datePart(): DatePartContext {
-        let localctx: DatePartContext = new DatePartContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 110, SDBLParser.RULE_datePart);
+        let localContext = new DatePartContext(this.context, this.state);
+        this.enterRule(localContext, 110, SDBLParser.RULE_datePart);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 961;
-                this._errHandler.sync(this);
-                switch (this._input.LA(1)) {
-                    case 18:
+                this.errorHandler.sync(this);
+                switch (this.tokenStream.LA(1)) {
+                    case SDBLParser.AMPERSAND:
                         {
                             this.state = 959;
                             this.parameter();
                         }
                         break;
-                    case 156:
+                    case SDBLParser.DECIMAL:
                         {
                             this.state = 960;
                             this.match(SDBLParser.DECIMAL);
                         }
                         break;
                     default:
-                        throw new NoViableAltException(this);
+                        throw new antlr.NoViableAltException(this);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public multiString(): MultiStringContext {
-        let localctx: MultiStringContext = new MultiStringContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 112, SDBLParser.RULE_multiString);
+        let localContext = new MultiStringContext(this.context, this.state);
+        this.enterRule(localContext, 112, SDBLParser.RULE_multiString);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 964;
-                this._errHandler.sync(this);
-                _alt = 1;
+                this.errorHandler.sync(this);
+                alternative = 1;
                 do {
-                    switch (_alt) {
+                    switch (alternative) {
                         case 1:
                             {
                                 {
@@ -5798,68 +5724,66 @@ export default class SDBLParser extends Parser {
                             }
                             break;
                         default:
-                            throw new NoViableAltException(this);
+                            throw new antlr.NoViableAltException(this);
                     }
                     this.state = 966;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 104, this._ctx);
-                } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 104, this.context);
+                } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public sign(): SignContext {
-        let localctx: SignContext = new SignContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 114, SDBLParser.RULE_sign);
+        let localContext = new SignContext(this.context, this.state);
+        this.enterRule(localContext, 114, SDBLParser.RULE_sign);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 968;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 9 || _la === 10)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public identifier(): IdentifierContext {
-        let localctx: IdentifierContext = new IdentifierContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 116, SDBLParser.RULE_identifier);
+        let localContext = new IdentifierContext(this.context, this.state);
+        this.enterRule(localContext, 116, SDBLParser.RULE_identifier);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 970;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (
                     !(
                         (((_la - 31) & ~0x1f) === 0 && ((1 << (_la - 31)) & 4165469189) !== 0) ||
@@ -5869,100 +5793,98 @@ export default class SDBLParser extends Parser {
                         (((_la - 160) & ~0x1f) === 0 && ((1 << (_la - 160)) & 32761) !== 0)
                     )
                 ) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public parameter(): ParameterContext {
-        let localctx: ParameterContext = new ParameterContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 118, SDBLParser.RULE_parameter);
+        let localContext = new ParameterContext(this.context, this.state);
+        this.enterRule(localContext, 118, SDBLParser.RULE_parameter);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 972;
                 this.match(SDBLParser.AMPERSAND);
                 this.state = 973;
-                localctx._name = this.match(SDBLParser.PARAMETER_IDENTIFIER);
+                localContext._name = this.match(SDBLParser.PARAMETER_IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public mdo(): MdoContext {
-        let localctx: MdoContext = new MdoContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 120, SDBLParser.RULE_mdo);
+        let localContext = new MdoContext(this.context, this.state);
+        this.enterRule(localContext, 120, SDBLParser.RULE_mdo);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 975;
-                localctx._type_ = this._input.LT(1);
-                _la = this._input.LA(1);
+                localContext._type_ = this.tokenStream.LT(1);
+                _la = this.tokenStream.LA(1);
                 if (!(((_la - 119) & ~0x1f) === 0 && ((1 << (_la - 119)) & 262143) !== 0)) {
-                    localctx._type_ = this._errHandler.recoverInline(this);
+                    localContext._type_ = this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 976;
                 this.match(SDBLParser.DOT);
                 this.state = 977;
-                localctx._tableName = this.identifier();
+                localContext._tableName = this.identifier();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    public sempred(localctx: RuleContext, ruleIndex: number, predIndex: number): boolean {
+    public override sempred(localContext: antlr.RuleContext | null, ruleIndex: number, predIndex: number): boolean {
         switch (ruleIndex) {
             case 26:
-                return this.expression_sempred(localctx as ExpressionContext, predIndex);
+                return this.expression_sempred(localContext as ExpressionContext, predIndex);
         }
         return true;
     }
 
-    private expression_sempred(localctx: ExpressionContext, predIndex: number): boolean {
+    private expression_sempred(localContext: ExpressionContext | null, predIndex: number): boolean {
         switch (predIndex) {
             case 0:
-                return this.precpred(this._ctx, 1);
+                return this.precpred(this.context, 1);
         }
         return true;
     }
@@ -6272,65 +6194,77 @@ export default class SDBLParser extends Parser {
         878, 889, 894, 901, 905, 908, 928, 932, 937, 942, 948, 955, 961, 966,
     ];
 
-    private static __ATN: ATN;
+    private static __ATN: antlr.ATN;
 
-    public static get _ATN(): ATN {
+    public static get _ATN(): antlr.ATN {
         if (!SDBLParser.__ATN) {
-            SDBLParser.__ATN = new ATNDeserializer().deserialize(SDBLParser._serializedATN);
+            SDBLParser.__ATN = new antlr.ATNDeserializer().deserialize(SDBLParser._serializedATN);
         }
 
         return SDBLParser.__ATN;
     }
 
-    static DecisionsToDFA = SDBLParser._ATN.decisionToState.map(
-        (ds: DecisionState, index: number) => new DFA(ds, index)
+    private static readonly vocabulary = new antlr.Vocabulary(SDBLParser.literalNames, SDBLParser.symbolicNames, []);
+
+    public override get vocabulary(): antlr.Vocabulary {
+        return SDBLParser.vocabulary;
+    }
+
+    private static readonly decisionsToDFA = SDBLParser._ATN.decisionToState.map(
+        (ds: antlr.DecisionState, index: number) => new antlr.DFA(ds, index)
     );
 }
 
 export class QueryPackageContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public queries_list(): QueriesContext[] {
-        return this.getTypedRuleContexts(QueriesContext) as QueriesContext[];
+    public queries(): QueriesContext[];
+
+    public queries(i: number): QueriesContext | null;
+
+    public queries(i?: number): QueriesContext[] | QueriesContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(QueriesContext);
+        }
+
+        return this.getRuleContext(i, QueriesContext);
     }
 
-    public queries(i: number): QueriesContext {
-        return this.getTypedRuleContext(QueriesContext, i) as QueriesContext;
+    public EOF(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.EOF, 0)!;
     }
 
-    public EOF(): TerminalNode {
-        return this.getToken(SDBLParser.EOF, 0);
+    public SEMICOLON(): antlr.TerminalNode[];
+
+    public SEMICOLON(i: number): antlr.TerminalNode | null;
+
+    public SEMICOLON(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.SEMICOLON);
+        } else {
+            return this.getToken(SDBLParser.SEMICOLON, i);
+        }
     }
 
-    public SEMICOLON_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.SEMICOLON);
-    }
-
-    public SEMICOLON(i: number): TerminalNode {
-        return this.getToken(SDBLParser.SEMICOLON, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_queryPackage;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterQueryPackage) {
             listener.enterQueryPackage(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitQueryPackage) {
             listener.exitQueryPackage(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitQueryPackage) {
             return visitor.visitQueryPackage(this);
         } else {
@@ -6340,37 +6274,35 @@ export class QueryPackageContext extends BslParserRuleContext {
 }
 
 export class QueriesContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public selectQuery(): SelectQueryContext {
-        return this.getTypedRuleContext(SelectQueryContext, 0) as SelectQueryContext;
+    public selectQuery(): SelectQueryContext | null {
+        return this.getRuleContext(0, SelectQueryContext);
     }
 
-    public dropTableQuery(): DropTableQueryContext {
-        return this.getTypedRuleContext(DropTableQueryContext, 0) as DropTableQueryContext;
+    public dropTableQuery(): DropTableQueryContext | null {
+        return this.getRuleContext(0, DropTableQueryContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_queries;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterQueries) {
             listener.enterQueries(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitQueries) {
             listener.exitQueries(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitQueries) {
             return visitor.visitQueries(this);
         } else {
@@ -6380,39 +6312,37 @@ export class QueriesContext extends BslParserRuleContext {
 }
 
 export class DropTableQueryContext extends BslParserRuleContext {
-    public _temporaryTableName!: IdentifierContext;
+    public _temporaryTableName?: IdentifierContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public DROP(): TerminalNode {
-        return this.getToken(SDBLParser.DROP, 0);
+    public DROP(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.DROP, 0)!;
     }
 
     public identifier(): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, 0) as IdentifierContext;
+        return this.getRuleContext(0, IdentifierContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_dropTableQuery;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterDropTableQuery) {
             listener.enterDropTableQuery(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitDropTableQuery) {
             listener.exitDropTableQuery(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitDropTableQuery) {
             return visitor.visitDropTableQuery(this);
         } else {
@@ -6422,51 +6352,49 @@ export class DropTableQueryContext extends BslParserRuleContext {
 }
 
 export class SelectQueryContext extends BslParserRuleContext {
-    public _autoorder!: Token;
+    public _autoorder?: Token | null;
 
-    public _orders!: OrderByContext;
+    public _orders?: OrderByContext;
 
-    public _totals!: TotalByContext;
+    public _totals?: TotalByContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public subquery(): SubqueryContext {
-        return this.getTypedRuleContext(SubqueryContext, 0) as SubqueryContext;
+        return this.getRuleContext(0, SubqueryContext)!;
     }
 
-    public AUTOORDER(): TerminalNode {
+    public AUTOORDER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.AUTOORDER, 0);
     }
 
-    public orderBy(): OrderByContext {
-        return this.getTypedRuleContext(OrderByContext, 0) as OrderByContext;
+    public orderBy(): OrderByContext | null {
+        return this.getRuleContext(0, OrderByContext);
     }
 
-    public totalBy(): TotalByContext {
-        return this.getTypedRuleContext(TotalByContext, 0) as TotalByContext;
+    public totalBy(): TotalByContext | null {
+        return this.getRuleContext(0, TotalByContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_selectQuery;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterSelectQuery) {
             listener.enterSelectQuery(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitSelectQuery) {
             listener.exitSelectQuery(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitSelectQuery) {
             return visitor.visitSelectQuery(this);
         } else {
@@ -6476,51 +6404,53 @@ export class SelectQueryContext extends BslParserRuleContext {
 }
 
 export class SubqueryContext extends BslParserRuleContext {
-    public _main!: QueryContext;
+    public _main?: QueryContext;
 
-    public _union!: UnionContext;
+    public _union?: UnionContext;
 
     public _unions: UnionContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public query(): QueryContext {
-        return this.getTypedRuleContext(QueryContext, 0) as QueryContext;
+        return this.getRuleContext(0, QueryContext)!;
     }
 
-    public orderBy(): OrderByContext {
-        return this.getTypedRuleContext(OrderByContext, 0) as OrderByContext;
+    public orderBy(): OrderByContext | null {
+        return this.getRuleContext(0, OrderByContext);
     }
 
-    public union_list(): UnionContext[] {
-        return this.getTypedRuleContexts(UnionContext) as UnionContext[];
+    public union(): UnionContext[];
+
+    public union(i: number): UnionContext | null;
+
+    public union(i?: number): UnionContext[] | UnionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(UnionContext);
+        }
+
+        return this.getRuleContext(i, UnionContext);
     }
 
-    public union(i: number): UnionContext {
-        return this.getTypedRuleContext(UnionContext, i) as UnionContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_subquery;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterSubquery) {
             listener.enterSubquery(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitSubquery) {
             listener.exitSubquery(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitSubquery) {
             return visitor.visitSubquery(this);
         } else {
@@ -6530,45 +6460,43 @@ export class SubqueryContext extends BslParserRuleContext {
 }
 
 export class UnionContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public UNION(): TerminalNode {
-        return this.getToken(SDBLParser.UNION, 0);
+    public UNION(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.UNION, 0)!;
     }
 
     public query(): QueryContext {
-        return this.getTypedRuleContext(QueryContext, 0) as QueryContext;
+        return this.getRuleContext(0, QueryContext)!;
     }
 
-    public ALL(): TerminalNode {
+    public ALL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ALL, 0);
     }
 
-    public orderBy(): OrderByContext {
-        return this.getTypedRuleContext(OrderByContext, 0) as OrderByContext;
+    public orderBy(): OrderByContext | null {
+        return this.getRuleContext(0, OrderByContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_union;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterUnion) {
             listener.enterUnion(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitUnion) {
             listener.exitUnion(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitUnion) {
             return visitor.visitUnion(this);
         } else {
@@ -6578,147 +6506,165 @@ export class UnionContext extends BslParserRuleContext {
 }
 
 export class QueryContext extends BslParserRuleContext {
-    public _columns!: SelectedFieldsContext;
+    public _columns?: SelectedFieldsContext;
 
-    public _temporaryTableName!: IdentifierContext;
+    public _temporaryTableName?: IdentifierContext;
 
-    public _from_!: DataSourcesContext;
+    public _from_?: DataSourcesContext;
 
-    public _where!: LogicalExpressionContext;
+    public _where?: LogicalExpressionContext;
 
-    public _groupBy!: GroupByItemContext;
+    public _groupBy?: GroupByItemContext;
 
-    public _having!: LogicalExpressionContext;
+    public _having?: LogicalExpressionContext;
 
-    public _forUpdate!: MdoContext;
+    public _forUpdate?: MdoContext;
 
-    public _indexingItem!: IndexingItemContext;
+    public _indexingItem?: IndexingItemContext;
 
     public _indexes: IndexingItemContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public SELECT(): TerminalNode {
-        return this.getToken(SDBLParser.SELECT, 0);
+    public SELECT(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.SELECT, 0)!;
     }
 
     public selectedFields(): SelectedFieldsContext {
-        return this.getTypedRuleContext(SelectedFieldsContext, 0) as SelectedFieldsContext;
+        return this.getRuleContext(0, SelectedFieldsContext)!;
     }
 
-    public limitations(): LimitationsContext {
-        return this.getTypedRuleContext(LimitationsContext, 0) as LimitationsContext;
+    public limitations(): LimitationsContext | null {
+        return this.getRuleContext(0, LimitationsContext);
     }
 
-    public INTO(): TerminalNode {
+    public INTO(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INTO, 0);
     }
 
-    public FROM(): TerminalNode {
+    public FROM(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FROM, 0);
     }
 
-    public WHERE(): TerminalNode {
+    public WHERE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.WHERE, 0);
     }
 
-    public GROUP(): TerminalNode {
+    public GROUP(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.GROUP, 0);
     }
 
-    public HAVING(): TerminalNode {
+    public HAVING(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HAVING, 0);
     }
 
-    public FOR(): TerminalNode {
+    public FOR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FOR, 0);
     }
 
-    public UPDATE(): TerminalNode {
+    public UPDATE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.UPDATE, 0);
     }
 
-    public INDEX(): TerminalNode {
+    public INDEX(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INDEX, 0);
     }
 
-    public identifier(): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, 0) as IdentifierContext;
+    public identifier(): IdentifierContext | null {
+        return this.getRuleContext(0, IdentifierContext);
     }
 
-    public dataSources(): DataSourcesContext {
-        return this.getTypedRuleContext(DataSourcesContext, 0) as DataSourcesContext;
+    public dataSources(): DataSourcesContext | null {
+        return this.getRuleContext(0, DataSourcesContext);
     }
 
-    public logicalExpression_list(): LogicalExpressionContext[] {
-        return this.getTypedRuleContexts(LogicalExpressionContext) as LogicalExpressionContext[];
+    public logicalExpression(): LogicalExpressionContext[];
+
+    public logicalExpression(i: number): LogicalExpressionContext | null;
+
+    public logicalExpression(i?: number): LogicalExpressionContext[] | LogicalExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(LogicalExpressionContext);
+        }
+
+        return this.getRuleContext(i, LogicalExpressionContext);
     }
 
-    public logicalExpression(i: number): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, i) as LogicalExpressionContext;
+    public BY_EN(): antlr.TerminalNode[];
+
+    public BY_EN(i: number): antlr.TerminalNode | null;
+
+    public BY_EN(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.BY_EN);
+        } else {
+            return this.getToken(SDBLParser.BY_EN, i);
+        }
     }
 
-    public BY_EN_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.BY_EN);
+    public PO_RU(): antlr.TerminalNode[];
+
+    public PO_RU(i: number): antlr.TerminalNode | null;
+
+    public PO_RU(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.PO_RU);
+        } else {
+            return this.getToken(SDBLParser.PO_RU, i);
+        }
     }
 
-    public BY_EN(i: number): TerminalNode {
-        return this.getToken(SDBLParser.BY_EN, i);
+    public groupByItem(): GroupByItemContext | null {
+        return this.getRuleContext(0, GroupByItemContext);
     }
 
-    public PO_RU_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.PO_RU);
+    public indexingItem(): IndexingItemContext[];
+
+    public indexingItem(i: number): IndexingItemContext | null;
+
+    public indexingItem(i?: number): IndexingItemContext[] | IndexingItemContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(IndexingItemContext);
+        }
+
+        return this.getRuleContext(i, IndexingItemContext);
     }
 
-    public PO_RU(i: number): TerminalNode {
-        return this.getToken(SDBLParser.PO_RU, i);
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public groupByItem(): GroupByItemContext {
-        return this.getTypedRuleContext(GroupByItemContext, 0) as GroupByItemContext;
+    public mdo(): MdoContext | null {
+        return this.getRuleContext(0, MdoContext);
     }
 
-    public indexingItem_list(): IndexingItemContext[] {
-        return this.getTypedRuleContexts(IndexingItemContext) as IndexingItemContext[];
-    }
-
-    public indexingItem(i: number): IndexingItemContext {
-        return this.getTypedRuleContext(IndexingItemContext, i) as IndexingItemContext;
-    }
-
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_query;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterQuery) {
             listener.enterQuery(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitQuery) {
             listener.exitQuery(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitQuery) {
             return visitor.visitQuery(this);
         } else {
@@ -6728,41 +6674,39 @@ export class QueryContext extends BslParserRuleContext {
 }
 
 export class LimitationsContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public top(): TopContext {
-        return this.getTypedRuleContext(TopContext, 0) as TopContext;
+    public top(): TopContext | null {
+        return this.getRuleContext(0, TopContext);
     }
 
-    public DISTINCT(): TerminalNode {
+    public DISTINCT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DISTINCT, 0);
     }
 
-    public ALLOWED(): TerminalNode {
+    public ALLOWED(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ALLOWED, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_limitations;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterLimitations) {
             listener.enterLimitations(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitLimitations) {
             listener.exitLimitations(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitLimitations) {
             return visitor.visitLimitations(this);
         } else {
@@ -6772,39 +6716,37 @@ export class LimitationsContext extends BslParserRuleContext {
 }
 
 export class TopContext extends BslParserRuleContext {
-    public _count!: Token;
+    public _count?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public TOP(): TerminalNode {
-        return this.getToken(SDBLParser.TOP, 0);
+    public TOP(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.TOP, 0)!;
     }
 
-    public DECIMAL(): TerminalNode {
-        return this.getToken(SDBLParser.DECIMAL, 0);
+    public DECIMAL(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.DECIMAL, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_top;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterTop) {
             listener.enterTop(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitTop) {
             listener.exitTop(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitTop) {
             return visitor.visitTop(this);
         } else {
@@ -6814,49 +6756,55 @@ export class TopContext extends BslParserRuleContext {
 }
 
 export class SelectedFieldsContext extends BslParserRuleContext {
-    public _selectedField!: SelectedFieldContext;
+    public _selectedField?: SelectedFieldContext;
 
     public _fields: SelectedFieldContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public selectedField_list(): SelectedFieldContext[] {
-        return this.getTypedRuleContexts(SelectedFieldContext) as SelectedFieldContext[];
+    public selectedField(): SelectedFieldContext[];
+
+    public selectedField(i: number): SelectedFieldContext | null;
+
+    public selectedField(i?: number): SelectedFieldContext[] | SelectedFieldContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(SelectedFieldContext);
+        }
+
+        return this.getRuleContext(i, SelectedFieldContext);
     }
 
-    public selectedField(i: number): SelectedFieldContext {
-        return this.getTypedRuleContext(SelectedFieldContext, i) as SelectedFieldContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_selectedFields;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterSelectedFields) {
             listener.enterSelectedFields(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitSelectedFields) {
             listener.exitSelectedFields(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitSelectedFields) {
             return visitor.visitSelectedFields(this);
         } else {
@@ -6866,53 +6814,51 @@ export class SelectedFieldsContext extends BslParserRuleContext {
 }
 
 export class SelectedFieldContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public asteriskField(): AsteriskFieldContext {
-        return this.getTypedRuleContext(AsteriskFieldContext, 0) as AsteriskFieldContext;
+    public asteriskField(): AsteriskFieldContext | null {
+        return this.getRuleContext(0, AsteriskFieldContext);
     }
 
-    public columnField(): ColumnFieldContext {
-        return this.getTypedRuleContext(ColumnFieldContext, 0) as ColumnFieldContext;
+    public columnField(): ColumnFieldContext | null {
+        return this.getRuleContext(0, ColumnFieldContext);
     }
 
-    public emptyTableField(): EmptyTableFieldContext {
-        return this.getTypedRuleContext(EmptyTableFieldContext, 0) as EmptyTableFieldContext;
+    public emptyTableField(): EmptyTableFieldContext | null {
+        return this.getRuleContext(0, EmptyTableFieldContext);
     }
 
-    public inlineTableField(): InlineTableFieldContext {
-        return this.getTypedRuleContext(InlineTableFieldContext, 0) as InlineTableFieldContext;
+    public inlineTableField(): InlineTableFieldContext | null {
+        return this.getRuleContext(0, InlineTableFieldContext);
     }
 
-    public expressionField(): ExpressionFieldContext {
-        return this.getTypedRuleContext(ExpressionFieldContext, 0) as ExpressionFieldContext;
+    public expressionField(): ExpressionFieldContext | null {
+        return this.getRuleContext(0, ExpressionFieldContext);
     }
 
-    public alias(): AliasContext {
-        return this.getTypedRuleContext(AliasContext, 0) as AliasContext;
+    public alias(): AliasContext | null {
+        return this.getRuleContext(0, AliasContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_selectedField;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterSelectedField) {
             listener.enterSelectedField(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitSelectedField) {
             listener.exitSelectedField(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitSelectedField) {
             return visitor.visitSelectedField(this);
         } else {
@@ -6922,51 +6868,57 @@ export class SelectedFieldContext extends BslParserRuleContext {
 }
 
 export class AsteriskFieldContext extends BslParserRuleContext {
-    public _tableName!: IdentifierContext;
+    public _tableName?: IdentifierContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public MUL(): TerminalNode {
-        return this.getToken(SDBLParser.MUL, 0);
+    public MUL(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.MUL, 0)!;
     }
 
-    public DOT_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.DOT);
+    public DOT(): antlr.TerminalNode[];
+
+    public DOT(i: number): antlr.TerminalNode | null;
+
+    public DOT(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.DOT);
+        } else {
+            return this.getToken(SDBLParser.DOT, i);
+        }
     }
 
-    public DOT(i: number): TerminalNode {
-        return this.getToken(SDBLParser.DOT, i);
+    public identifier(): IdentifierContext[];
+
+    public identifier(i: number): IdentifierContext | null;
+
+    public identifier(i?: number): IdentifierContext[] | IdentifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(IdentifierContext);
+        }
+
+        return this.getRuleContext(i, IdentifierContext);
     }
 
-    public identifier_list(): IdentifierContext[] {
-        return this.getTypedRuleContexts(IdentifierContext) as IdentifierContext[];
-    }
-
-    public identifier(i: number): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, i) as IdentifierContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_asteriskField;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterAsteriskField) {
             listener.enterAsteriskField(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitAsteriskField) {
             listener.exitAsteriskField(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitAsteriskField) {
             return visitor.visitAsteriskField(this);
         } else {
@@ -6976,33 +6928,31 @@ export class AsteriskFieldContext extends BslParserRuleContext {
 }
 
 export class ExpressionFieldContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public logicalExpression(): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, 0) as LogicalExpressionContext;
+        return this.getRuleContext(0, LogicalExpressionContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_expressionField;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterExpressionField) {
             listener.enterExpressionField(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitExpressionField) {
             listener.exitExpressionField(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitExpressionField) {
             return visitor.visitExpressionField(this);
         } else {
@@ -7012,37 +6962,35 @@ export class ExpressionFieldContext extends BslParserRuleContext {
 }
 
 export class ColumnFieldContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public NULL(): TerminalNode {
+    public NULL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.NULL, 0);
     }
 
-    public recordAutoNumberFunction(): RecordAutoNumberFunctionContext {
-        return this.getTypedRuleContext(RecordAutoNumberFunctionContext, 0) as RecordAutoNumberFunctionContext;
+    public recordAutoNumberFunction(): RecordAutoNumberFunctionContext | null {
+        return this.getRuleContext(0, RecordAutoNumberFunctionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_columnField;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterColumnField) {
             listener.enterColumnField(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitColumnField) {
             listener.exitColumnField(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitColumnField) {
             return visitor.visitColumnField(this);
         } else {
@@ -7052,51 +7000,49 @@ export class ColumnFieldContext extends BslParserRuleContext {
 }
 
 export class EmptyTableFieldContext extends BslParserRuleContext {
-    public _emptyTable!: Token;
+    public _emptyTable?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public DOT(): TerminalNode {
-        return this.getToken(SDBLParser.DOT, 0);
+    public DOT(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.DOT, 0)!;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.LPAREN, 0)!;
     }
 
     public emptyTableColumns(): EmptyTableColumnsContext {
-        return this.getTypedRuleContext(EmptyTableColumnsContext, 0) as EmptyTableColumnsContext;
+        return this.getRuleContext(0, EmptyTableColumnsContext)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.RPAREN, 0)!;
     }
 
-    public EMPTYTABLE(): TerminalNode {
-        return this.getToken(SDBLParser.EMPTYTABLE, 0);
+    public EMPTYTABLE(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.EMPTYTABLE, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_emptyTableField;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterEmptyTableField) {
             listener.enterEmptyTableField(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitEmptyTableField) {
             listener.exitEmptyTableField(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitEmptyTableField) {
             return visitor.visitEmptyTableField(this);
         } else {
@@ -7106,49 +7052,55 @@ export class EmptyTableFieldContext extends BslParserRuleContext {
 }
 
 export class EmptyTableColumnsContext extends BslParserRuleContext {
-    public _alias!: AliasContext;
+    public _alias?: AliasContext;
 
     public _columns: AliasContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public alias_list(): AliasContext[] {
-        return this.getTypedRuleContexts(AliasContext) as AliasContext[];
+    public alias(): AliasContext[];
+
+    public alias(i: number): AliasContext | null;
+
+    public alias(i?: number): AliasContext[] | AliasContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(AliasContext);
+        }
+
+        return this.getRuleContext(i, AliasContext);
     }
 
-    public alias(i: number): AliasContext {
-        return this.getTypedRuleContext(AliasContext, i) as AliasContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_emptyTableColumns;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterEmptyTableColumns) {
             listener.enterEmptyTableColumns(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitEmptyTableColumns) {
             listener.exitEmptyTableColumns(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitEmptyTableColumns) {
             return visitor.visitEmptyTableColumns(this);
         } else {
@@ -7158,53 +7110,51 @@ export class EmptyTableColumnsContext extends BslParserRuleContext {
 }
 
 export class InlineTableFieldContext extends BslParserRuleContext {
-    public _inlineTable!: ColumnContext;
+    public _inlineTable?: ColumnContext;
 
-    public _inlineTableFields!: SelectedFieldsContext;
+    public _inlineTableFields?: SelectedFieldsContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public DOT(): TerminalNode {
-        return this.getToken(SDBLParser.DOT, 0);
+    public DOT(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.DOT, 0)!;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.LPAREN, 0)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.RPAREN, 0)!;
     }
 
     public column(): ColumnContext {
-        return this.getTypedRuleContext(ColumnContext, 0) as ColumnContext;
+        return this.getRuleContext(0, ColumnContext)!;
     }
 
     public selectedFields(): SelectedFieldsContext {
-        return this.getTypedRuleContext(SelectedFieldsContext, 0) as SelectedFieldsContext;
+        return this.getRuleContext(0, SelectedFieldsContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_inlineTableField;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterInlineTableField) {
             listener.enterInlineTableField(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitInlineTableField) {
             listener.exitInlineTableField(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitInlineTableField) {
             return visitor.visitInlineTableField(this);
         } else {
@@ -7214,43 +7164,41 @@ export class InlineTableFieldContext extends BslParserRuleContext {
 }
 
 export class RecordAutoNumberFunctionContext extends BslParserRuleContext {
-    public _doCall!: Token;
+    public _doCall?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.LPAREN, 0)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.RPAREN, 0)!;
     }
 
-    public RECORDAUTONUMBER(): TerminalNode {
-        return this.getToken(SDBLParser.RECORDAUTONUMBER, 0);
+    public RECORDAUTONUMBER(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.RECORDAUTONUMBER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_recordAutoNumberFunction;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterRecordAutoNumberFunction) {
             listener.enterRecordAutoNumberFunction(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitRecordAutoNumberFunction) {
             listener.exitRecordAutoNumberFunction(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitRecordAutoNumberFunction) {
             return visitor.visitRecordAutoNumberFunction(this);
         } else {
@@ -7260,85 +7208,103 @@ export class RecordAutoNumberFunctionContext extends BslParserRuleContext {
 }
 
 export class GroupByItemContext extends BslParserRuleContext {
-    public _expressionList!: ExpressionListContext;
+    public _expressionList?: ExpressionListContext;
 
     public _groupingSet: ExpressionListContext[] = [];
 
-    public _expression!: ExpressionContext;
+    public _expression?: ExpressionContext;
 
     public _groupBy: ExpressionContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public GROUPING(): TerminalNode {
+    public GROUPING(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.GROUPING, 0);
     }
 
-    public SET(): TerminalNode {
+    public SET(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SET, 0);
     }
 
-    public LPAREN_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.LPAREN);
+    public LPAREN(): antlr.TerminalNode[];
+
+    public LPAREN(i: number): antlr.TerminalNode | null;
+
+    public LPAREN(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.LPAREN);
+        } else {
+            return this.getToken(SDBLParser.LPAREN, i);
+        }
     }
 
-    public LPAREN(i: number): TerminalNode {
-        return this.getToken(SDBLParser.LPAREN, i);
+    public RPAREN(): antlr.TerminalNode[];
+
+    public RPAREN(i: number): antlr.TerminalNode | null;
+
+    public RPAREN(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.RPAREN);
+        } else {
+            return this.getToken(SDBLParser.RPAREN, i);
+        }
     }
 
-    public RPAREN_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.RPAREN);
+    public expressionList(): ExpressionListContext[];
+
+    public expressionList(i: number): ExpressionListContext | null;
+
+    public expressionList(i?: number): ExpressionListContext[] | ExpressionListContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionListContext);
+        }
+
+        return this.getRuleContext(i, ExpressionListContext);
     }
 
-    public RPAREN(i: number): TerminalNode {
-        return this.getToken(SDBLParser.RPAREN, i);
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public expressionList_list(): ExpressionListContext[] {
-        return this.getTypedRuleContexts(ExpressionListContext) as ExpressionListContext[];
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expressionList(i: number): ExpressionListContext {
-        return this.getTypedRuleContext(ExpressionListContext, i) as ExpressionListContext;
-    }
-
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
-    }
-
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_groupByItem;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterGroupByItem) {
             listener.enterGroupByItem(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitGroupByItem) {
             listener.exitGroupByItem(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitGroupByItem) {
             return visitor.visitGroupByItem(this);
         } else {
@@ -7348,37 +7314,35 @@ export class GroupByItemContext extends BslParserRuleContext {
 }
 
 export class IndexingItemContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public parameter(): ParameterContext {
-        return this.getTypedRuleContext(ParameterContext, 0) as ParameterContext;
+    public parameter(): ParameterContext | null {
+        return this.getRuleContext(0, ParameterContext);
     }
 
-    public column(): ColumnContext {
-        return this.getTypedRuleContext(ColumnContext, 0) as ColumnContext;
+    public column(): ColumnContext | null {
+        return this.getRuleContext(0, ColumnContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_indexingItem;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterIndexingItem) {
             listener.enterIndexingItem(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitIndexingItem) {
             listener.exitIndexingItem(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitIndexingItem) {
             return visitor.visitIndexingItem(this);
         } else {
@@ -7388,57 +7352,59 @@ export class IndexingItemContext extends BslParserRuleContext {
 }
 
 export class OrderByContext extends BslParserRuleContext {
-    public _ordersByExpession!: OrdersByExpessionContext;
+    public _ordersByExpession?: OrdersByExpessionContext;
 
     public _orders: OrdersByExpessionContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public ORDER(): TerminalNode {
-        return this.getToken(SDBLParser.ORDER, 0);
+    public ORDER(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.ORDER, 0)!;
     }
 
-    public BY_EN(): TerminalNode {
+    public BY_EN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BY_EN, 0);
     }
 
-    public PO_RU(): TerminalNode {
+    public PO_RU(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.PO_RU, 0);
     }
 
-    public ordersByExpession_list(): OrdersByExpessionContext[] {
-        return this.getTypedRuleContexts(OrdersByExpessionContext) as OrdersByExpessionContext[];
+    public ordersByExpession(): OrdersByExpessionContext[];
+
+    public ordersByExpession(i: number): OrdersByExpessionContext | null;
+
+    public ordersByExpession(i?: number): OrdersByExpessionContext[] | OrdersByExpessionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(OrdersByExpessionContext);
+        }
+
+        return this.getRuleContext(i, OrdersByExpessionContext);
     }
 
-    public ordersByExpession(i: number): OrdersByExpessionContext {
-        return this.getTypedRuleContext(OrdersByExpessionContext, i) as OrdersByExpessionContext;
-    }
-
-    public COMMA(): TerminalNode {
+    public COMMA(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.COMMA, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_orderBy;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterOrderBy) {
             listener.enterOrderBy(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitOrderBy) {
             listener.exitOrderBy(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitOrderBy) {
             return visitor.visitOrderBy(this);
         } else {
@@ -7448,49 +7414,47 @@ export class OrderByContext extends BslParserRuleContext {
 }
 
 export class OrdersByExpessionContext extends BslParserRuleContext {
-    public _direction!: Token;
+    public _direction?: Token | null;
 
-    public _hierarchy!: Token;
+    public _hierarchy?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public ASC(): TerminalNode {
+    public ASC(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ASC, 0);
     }
 
-    public DESC(): TerminalNode {
+    public DESC(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DESC, 0);
     }
 
-    public HIERARCHY(): TerminalNode {
+    public HIERARCHY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HIERARCHY, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_ordersByExpession;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterOrdersByExpession) {
             listener.enterOrdersByExpession(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitOrdersByExpession) {
             listener.exitOrdersByExpession(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitOrdersByExpession) {
             return visitor.visitOrdersByExpession(this);
         } else {
@@ -7500,65 +7464,71 @@ export class OrdersByExpessionContext extends BslParserRuleContext {
 }
 
 export class TotalByContext extends BslParserRuleContext {
-    public _totalsGroup!: TotalsGroupContext;
+    public _totalsGroup?: TotalsGroupContext;
 
     public _totalsGroups: TotalsGroupContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public TOTALS(): TerminalNode {
-        return this.getToken(SDBLParser.TOTALS, 0);
+    public TOTALS(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.TOTALS, 0)!;
     }
 
-    public BY_EN(): TerminalNode {
+    public BY_EN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BY_EN, 0);
     }
 
-    public PO_RU(): TerminalNode {
+    public PO_RU(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.PO_RU, 0);
     }
 
-    public totalsGroup_list(): TotalsGroupContext[] {
-        return this.getTypedRuleContexts(TotalsGroupContext) as TotalsGroupContext[];
+    public totalsGroup(): TotalsGroupContext[];
+
+    public totalsGroup(i: number): TotalsGroupContext | null;
+
+    public totalsGroup(i?: number): TotalsGroupContext[] | TotalsGroupContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(TotalsGroupContext);
+        }
+
+        return this.getRuleContext(i, TotalsGroupContext);
     }
 
-    public totalsGroup(i: number): TotalsGroupContext {
-        return this.getTypedRuleContext(TotalsGroupContext, i) as TotalsGroupContext;
+    public selectedFields(): SelectedFieldsContext | null {
+        return this.getRuleContext(0, SelectedFieldsContext);
     }
 
-    public selectedFields(): SelectedFieldsContext {
-        return this.getTypedRuleContext(SelectedFieldsContext, 0) as SelectedFieldsContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_totalBy;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterTotalBy) {
             listener.enterTotalBy(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitTotalBy) {
             listener.exitTotalBy(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitTotalBy) {
             return visitor.visitTotalBy(this);
         } else {
@@ -7568,53 +7538,51 @@ export class TotalByContext extends BslParserRuleContext {
 }
 
 export class TotalsGroupContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public OVERALL(): TerminalNode {
+    public OVERALL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.OVERALL, 0);
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public periodic(): PeriodicContext {
-        return this.getTypedRuleContext(PeriodicContext, 0) as PeriodicContext;
+    public periodic(): PeriodicContext | null {
+        return this.getRuleContext(0, PeriodicContext);
     }
 
-    public alias(): AliasContext {
-        return this.getTypedRuleContext(AliasContext, 0) as AliasContext;
+    public alias(): AliasContext | null {
+        return this.getRuleContext(0, AliasContext);
     }
 
-    public HIERARCHY(): TerminalNode {
+    public HIERARCHY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HIERARCHY, 0);
     }
 
-    public ONLY(): TerminalNode {
+    public ONLY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ONLY, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_totalsGroup;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterTotalsGroup) {
             listener.enterTotalsGroup(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitTotalsGroup) {
             listener.exitTotalsGroup(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitTotalsGroup) {
             return visitor.visitTotalsGroup(this);
         } else {
@@ -7624,103 +7592,109 @@ export class TotalsGroupContext extends BslParserRuleContext {
 }
 
 export class PeriodicContext extends BslParserRuleContext {
-    public _periodType!: Token;
+    public _periodType?: Token | null;
 
-    public _first!: ExpressionContext;
+    public _first?: ExpressionContext;
 
-    public _second!: ExpressionContext;
+    public _second?: ExpressionContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PERIODS(): TerminalNode {
-        return this.getToken(SDBLParser.PERIODS, 0);
+    public PERIODS(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.PERIODS, 0)!;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.LPAREN, 0)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.RPAREN, 0)!;
     }
 
-    public SECOND(): TerminalNode {
+    public SECOND(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SECOND, 0);
     }
 
-    public MINUTE(): TerminalNode {
+    public MINUTE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MINUTE, 0);
     }
 
-    public HOUR(): TerminalNode {
+    public HOUR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HOUR, 0);
     }
 
-    public DAY(): TerminalNode {
+    public DAY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DAY, 0);
     }
 
-    public WEEK(): TerminalNode {
+    public WEEK(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.WEEK, 0);
     }
 
-    public MONTH(): TerminalNode {
+    public MONTH(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MONTH, 0);
     }
 
-    public QUARTER(): TerminalNode {
+    public QUARTER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.QUARTER, 0);
     }
 
-    public YEAR(): TerminalNode {
+    public YEAR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.YEAR, 0);
     }
 
-    public TENDAYS(): TerminalNode {
+    public TENDAYS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TENDAYS, 0);
     }
 
-    public HALFYEAR(): TerminalNode {
+    public HALFYEAR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HALFYEAR, 0);
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
-    }
-
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_periodic;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterPeriodic) {
             listener.enterPeriodic(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitPeriodic) {
             listener.exitPeriodic(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitPeriodic) {
             return visitor.visitPeriodic(this);
         } else {
@@ -7730,55 +7704,61 @@ export class PeriodicContext extends BslParserRuleContext {
 }
 
 export class ColumnContext extends BslParserRuleContext {
-    public _mdoName!: IdentifierContext;
+    public _mdoName?: IdentifierContext;
 
-    public _identifier!: IdentifierContext;
+    public _identifier?: IdentifierContext;
 
     public _columnNames: IdentifierContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public identifier_list(): IdentifierContext[] {
-        return this.getTypedRuleContexts(IdentifierContext) as IdentifierContext[];
+    public identifier(): IdentifierContext[];
+
+    public identifier(i: number): IdentifierContext | null;
+
+    public identifier(i?: number): IdentifierContext[] | IdentifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(IdentifierContext);
+        }
+
+        return this.getRuleContext(i, IdentifierContext);
     }
 
-    public identifier(i: number): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, i) as IdentifierContext;
+    public DOT(): antlr.TerminalNode[];
+
+    public DOT(i: number): antlr.TerminalNode | null;
+
+    public DOT(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.DOT);
+        } else {
+            return this.getToken(SDBLParser.DOT, i);
+        }
     }
 
-    public DOT_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.DOT);
+    public mdo(): MdoContext | null {
+        return this.getRuleContext(0, MdoContext);
     }
 
-    public DOT(i: number): TerminalNode {
-        return this.getToken(SDBLParser.DOT, i);
-    }
-
-    public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_column;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterColumn) {
             listener.enterColumn(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitColumn) {
             listener.exitColumn(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitColumn) {
             return visitor.visitColumn(this);
         } else {
@@ -7788,79 +7768,81 @@ export class ColumnContext extends BslParserRuleContext {
 }
 
 export class ExpressionContext extends BslParserRuleContext {
-    public _binaryOperation!: Token;
+    public _binaryOperation?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public primitiveExpression(): PrimitiveExpressionContext {
-        return this.getTypedRuleContext(PrimitiveExpressionContext, 0) as PrimitiveExpressionContext;
+    public primitiveExpression(): PrimitiveExpressionContext | null {
+        return this.getRuleContext(0, PrimitiveExpressionContext);
     }
 
-    public functionCall(): FunctionCallContext {
-        return this.getTypedRuleContext(FunctionCallContext, 0) as FunctionCallContext;
+    public functionCall(): FunctionCallContext | null {
+        return this.getRuleContext(0, FunctionCallContext);
     }
 
-    public caseExpression(): CaseExpressionContext {
-        return this.getTypedRuleContext(CaseExpressionContext, 0) as CaseExpressionContext;
+    public caseExpression(): CaseExpressionContext | null {
+        return this.getRuleContext(0, CaseExpressionContext);
     }
 
-    public column(): ColumnContext {
-        return this.getTypedRuleContext(ColumnContext, 0) as ColumnContext;
+    public column(): ColumnContext | null {
+        return this.getRuleContext(0, ColumnContext);
     }
 
-    public bracketExpression(): BracketExpressionContext {
-        return this.getTypedRuleContext(BracketExpressionContext, 0) as BracketExpressionContext;
+    public bracketExpression(): BracketExpressionContext | null {
+        return this.getRuleContext(0, BracketExpressionContext);
     }
 
-    public unaryExpression(): UnaryExpressionContext {
-        return this.getTypedRuleContext(UnaryExpressionContext, 0) as UnaryExpressionContext;
+    public unaryExpression(): UnaryExpressionContext | null {
+        return this.getRuleContext(0, UnaryExpressionContext);
     }
 
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
-    }
-
-    public MUL(): TerminalNode {
+    public MUL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MUL, 0);
     }
 
-    public QUOTIENT(): TerminalNode {
+    public QUOTIENT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.QUOTIENT, 0);
     }
 
-    public PLUS(): TerminalNode {
+    public PLUS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.PLUS, 0);
     }
 
-    public MINUS(): TerminalNode {
+    public MINUS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MINUS, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_expression;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterExpression) {
             listener.enterExpression(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitExpression) {
             listener.exitExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitExpression) {
             return visitor.visitExpression(this);
         } else {
@@ -7870,127 +7852,133 @@ export class ExpressionContext extends BslParserRuleContext {
 }
 
 export class PrimitiveExpressionContext extends BslParserRuleContext {
-    public _booleanValue!: Token;
+    public _booleanValue?: Token | null;
 
-    public _year!: DatePartContext;
+    public _year?: DatePartContext;
 
-    public _month!: DatePartContext;
+    public _month?: DatePartContext;
 
-    public _day!: DatePartContext;
+    public _day?: DatePartContext;
 
-    public _hour!: DatePartContext;
+    public _hour?: DatePartContext;
 
-    public _minute!: DatePartContext;
+    public _minute?: DatePartContext;
 
-    public _second!: DatePartContext;
+    public _second?: DatePartContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public NULL(): TerminalNode {
+    public NULL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.NULL, 0);
     }
 
-    public UNDEFINED(): TerminalNode {
+    public UNDEFINED(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.UNDEFINED, 0);
     }
 
-    public multiString(): MultiStringContext {
-        return this.getTypedRuleContext(MultiStringContext, 0) as MultiStringContext;
+    public multiString(): MultiStringContext | null {
+        return this.getRuleContext(0, MultiStringContext);
     }
 
-    public DECIMAL(): TerminalNode {
+    public DECIMAL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DECIMAL, 0);
     }
 
-    public FLOAT(): TerminalNode {
+    public FLOAT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FLOAT, 0);
     }
 
-    public TRUE(): TerminalNode {
+    public TRUE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TRUE, 0);
     }
 
-    public FALSE(): TerminalNode {
+    public FALSE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FALSE, 0);
     }
 
-    public DATETIME(): TerminalNode {
+    public DATETIME(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATETIME, 0);
     }
 
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LPAREN, 0);
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RPAREN, 0);
     }
 
-    public datePart_list(): DatePartContext[] {
-        return this.getTypedRuleContexts(DatePartContext) as DatePartContext[];
+    public datePart(): DatePartContext[];
+
+    public datePart(i: number): DatePartContext | null;
+
+    public datePart(i?: number): DatePartContext[] | DatePartContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(DatePartContext);
+        }
+
+        return this.getRuleContext(i, DatePartContext);
     }
 
-    public datePart(i: number): DatePartContext {
-        return this.getTypedRuleContext(DatePartContext, i) as DatePartContext;
+    public parameter(): ParameterContext | null {
+        return this.getRuleContext(0, ParameterContext);
     }
 
-    public parameter(): ParameterContext {
-        return this.getTypedRuleContext(ParameterContext, 0) as ParameterContext;
-    }
-
-    public TYPE(): TerminalNode {
+    public TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TYPE, 0);
     }
 
-    public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
+    public mdo(): MdoContext | null {
+        return this.getRuleContext(0, MdoContext);
     }
 
-    public STRING(): TerminalNode {
+    public STRING(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRING, 0);
     }
 
-    public BOOLEAN(): TerminalNode {
+    public BOOLEAN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BOOLEAN, 0);
     }
 
-    public DATE(): TerminalNode {
+    public DATE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATE, 0);
     }
 
-    public NUMBER(): TerminalNode {
+    public NUMBER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.NUMBER, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_primitiveExpression;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterPrimitiveExpression) {
             listener.enterPrimitiveExpression(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitPrimitiveExpression) {
             listener.exitPrimitiveExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitPrimitiveExpression) {
             return visitor.visitPrimitiveExpression(this);
         } else {
@@ -8000,61 +7988,63 @@ export class PrimitiveExpressionContext extends BslParserRuleContext {
 }
 
 export class CaseExpressionContext extends BslParserRuleContext {
-    public _caseExp!: ExpressionContext;
+    public _caseExp?: ExpressionContext;
 
-    public _elseExp!: LogicalExpressionContext;
+    public _elseExp?: LogicalExpressionContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public CASE(): TerminalNode {
+    public CASE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CASE, 0);
     }
 
-    public END(): TerminalNode {
+    public END(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.END, 0);
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public caseBranch_list(): CaseBranchContext[] {
-        return this.getTypedRuleContexts(CaseBranchContext) as CaseBranchContext[];
+    public caseBranch(): CaseBranchContext[];
+
+    public caseBranch(i: number): CaseBranchContext | null;
+
+    public caseBranch(i?: number): CaseBranchContext[] | CaseBranchContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(CaseBranchContext);
+        }
+
+        return this.getRuleContext(i, CaseBranchContext);
     }
 
-    public caseBranch(i: number): CaseBranchContext {
-        return this.getTypedRuleContext(CaseBranchContext, i) as CaseBranchContext;
-    }
-
-    public ELSE(): TerminalNode {
+    public ELSE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ELSE, 0);
     }
 
-    public logicalExpression(): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, 0) as LogicalExpressionContext;
+    public logicalExpression(): LogicalExpressionContext | null {
+        return this.getRuleContext(0, LogicalExpressionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_caseExpression;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterCaseExpression) {
             listener.enterCaseExpression(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitCaseExpression) {
             listener.exitCaseExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitCaseExpression) {
             return visitor.visitCaseExpression(this);
         } else {
@@ -8064,45 +8054,47 @@ export class CaseExpressionContext extends BslParserRuleContext {
 }
 
 export class CaseBranchContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public WHEN(): TerminalNode {
-        return this.getToken(SDBLParser.WHEN, 0);
+    public WHEN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.WHEN, 0)!;
     }
 
-    public logicalExpression_list(): LogicalExpressionContext[] {
-        return this.getTypedRuleContexts(LogicalExpressionContext) as LogicalExpressionContext[];
+    public logicalExpression(): LogicalExpressionContext[];
+
+    public logicalExpression(i: number): LogicalExpressionContext | null;
+
+    public logicalExpression(i?: number): LogicalExpressionContext[] | LogicalExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(LogicalExpressionContext);
+        }
+
+        return this.getRuleContext(i, LogicalExpressionContext);
     }
 
-    public logicalExpression(i: number): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, i) as LogicalExpressionContext;
+    public THEN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.THEN, 0)!;
     }
 
-    public THEN(): TerminalNode {
-        return this.getToken(SDBLParser.THEN, 0);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_caseBranch;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterCaseBranch) {
             listener.enterCaseBranch(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitCaseBranch) {
             listener.exitCaseBranch(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitCaseBranch) {
             return visitor.visitCaseBranch(this);
         } else {
@@ -8112,45 +8104,43 @@ export class CaseBranchContext extends BslParserRuleContext {
 }
 
 export class BracketExpressionContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LPAREN, 0);
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RPAREN, 0);
     }
 
-    public subquery(): SubqueryContext {
-        return this.getTypedRuleContext(SubqueryContext, 0) as SubqueryContext;
+    public subquery(): SubqueryContext | null {
+        return this.getRuleContext(0, SubqueryContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_bracketExpression;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterBracketExpression) {
             listener.enterBracketExpression(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitBracketExpression) {
             listener.exitBracketExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitBracketExpression) {
             return visitor.visitBracketExpression(this);
         } else {
@@ -8160,37 +8150,35 @@ export class BracketExpressionContext extends BslParserRuleContext {
 }
 
 export class UnaryExpressionContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public sign(): SignContext {
-        return this.getTypedRuleContext(SignContext, 0) as SignContext;
+        return this.getRuleContext(0, SignContext)!;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_unaryExpression;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterUnaryExpression) {
             listener.enterUnaryExpression(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitUnaryExpression) {
             listener.exitUnaryExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitUnaryExpression) {
             return visitor.visitUnaryExpression(this);
         } else {
@@ -8200,65 +8188,71 @@ export class UnaryExpressionContext extends BslParserRuleContext {
 }
 
 export class FunctionCallContext extends BslParserRuleContext {
-    public _identifier!: IdentifierContext;
+    public _identifier?: IdentifierContext;
 
     public _columnNames: IdentifierContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public aggregateFunctions(): AggregateFunctionsContext {
-        return this.getTypedRuleContext(AggregateFunctionsContext, 0) as AggregateFunctionsContext;
+    public aggregateFunctions(): AggregateFunctionsContext | null {
+        return this.getRuleContext(0, AggregateFunctionsContext);
     }
 
-    public builtInFunctions(): BuiltInFunctionsContext {
-        return this.getTypedRuleContext(BuiltInFunctionsContext, 0) as BuiltInFunctionsContext;
+    public builtInFunctions(): BuiltInFunctionsContext | null {
+        return this.getRuleContext(0, BuiltInFunctionsContext);
     }
 
-    public valueFunction(): ValueFunctionContext {
-        return this.getTypedRuleContext(ValueFunctionContext, 0) as ValueFunctionContext;
+    public valueFunction(): ValueFunctionContext | null {
+        return this.getRuleContext(0, ValueFunctionContext);
     }
 
-    public DOT_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.DOT);
+    public DOT(): antlr.TerminalNode[];
+
+    public DOT(i: number): antlr.TerminalNode | null;
+
+    public DOT(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.DOT);
+        } else {
+            return this.getToken(SDBLParser.DOT, i);
+        }
     }
 
-    public DOT(i: number): TerminalNode {
-        return this.getToken(SDBLParser.DOT, i);
+    public identifier(): IdentifierContext[];
+
+    public identifier(i: number): IdentifierContext | null;
+
+    public identifier(i?: number): IdentifierContext[] | IdentifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(IdentifierContext);
+        }
+
+        return this.getRuleContext(i, IdentifierContext);
     }
 
-    public identifier_list(): IdentifierContext[] {
-        return this.getTypedRuleContexts(IdentifierContext) as IdentifierContext[];
+    public castFunction(): CastFunctionContext | null {
+        return this.getRuleContext(0, CastFunctionContext);
     }
 
-    public identifier(i: number): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, i) as IdentifierContext;
-    }
-
-    public castFunction(): CastFunctionContext {
-        return this.getTypedRuleContext(CastFunctionContext, 0) as CastFunctionContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_functionCall;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterFunctionCall) {
             listener.enterFunctionCall(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitFunctionCall) {
             listener.exitFunctionCall(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitFunctionCall) {
             return visitor.visitFunctionCall(this);
         } else {
@@ -8268,269 +8262,279 @@ export class FunctionCallContext extends BslParserRuleContext {
 }
 
 export class BuiltInFunctionsContext extends BslParserRuleContext {
-    public _doCall!: Token;
+    public _doCall?: Token | null;
 
-    public _string_!: ExpressionContext;
+    public _string_?: ExpressionContext;
 
-    public _charNo!: ExpressionContext;
+    public _charNo?: ExpressionContext;
 
-    public _count!: ExpressionContext;
+    public _count?: ExpressionContext;
 
-    public _date!: ExpressionContext;
+    public _date?: ExpressionContext;
 
-    public _periodType!: Token;
+    public _periodType?: Token | null;
 
-    public _firstdate!: ExpressionContext;
+    public _firstdate?: ExpressionContext;
 
-    public _seconddate!: ExpressionContext;
+    public _seconddate?: ExpressionContext;
 
-    public _value!: ExpressionContext;
+    public _value?: ExpressionContext;
 
-    public _first!: LogicalExpressionContext;
+    public _first?: LogicalExpressionContext;
 
-    public _second!: LogicalExpressionContext;
+    public _second?: LogicalExpressionContext;
 
-    public _decimal!: ExpressionContext;
+    public _decimal?: ExpressionContext;
 
-    public _precise!: ExpressionContext;
+    public _precise?: ExpressionContext;
 
-    public _substring1!: ExpressionContext;
+    public _substring1?: ExpressionContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LPAREN, 0);
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RPAREN, 0);
     }
 
-    public SUBSTRING(): TerminalNode {
+    public SUBSTRING(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SUBSTRING, 0);
     }
 
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
-    }
-
-    public YEAR(): TerminalNode {
+    public YEAR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.YEAR, 0);
     }
 
-    public QUARTER(): TerminalNode {
+    public QUARTER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.QUARTER, 0);
     }
 
-    public MONTH(): TerminalNode {
+    public MONTH(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MONTH, 0);
     }
 
-    public DAYOFYEAR(): TerminalNode {
+    public DAYOFYEAR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DAYOFYEAR, 0);
     }
 
-    public DAY(): TerminalNode {
+    public DAY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DAY, 0);
     }
 
-    public WEEK(): TerminalNode {
+    public WEEK(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.WEEK, 0);
     }
 
-    public WEEKDAY(): TerminalNode {
+    public WEEKDAY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.WEEKDAY, 0);
     }
 
-    public HOUR(): TerminalNode {
+    public HOUR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HOUR, 0);
     }
 
-    public MINUTE(): TerminalNode {
+    public MINUTE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MINUTE, 0);
     }
 
-    public SECOND(): TerminalNode {
+    public SECOND(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SECOND, 0);
     }
 
-    public BEGINOFPERIOD(): TerminalNode {
+    public BEGINOFPERIOD(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BEGINOFPERIOD, 0);
     }
 
-    public ENDOFPERIOD(): TerminalNode {
+    public ENDOFPERIOD(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ENDOFPERIOD, 0);
     }
 
-    public TENDAYS(): TerminalNode {
+    public TENDAYS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TENDAYS, 0);
     }
 
-    public HALFYEAR(): TerminalNode {
+    public HALFYEAR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HALFYEAR, 0);
     }
 
-    public DATEADD(): TerminalNode {
+    public DATEADD(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATEADD, 0);
     }
 
-    public DATEDIFF(): TerminalNode {
+    public DATEDIFF(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATEDIFF, 0);
     }
 
-    public VALUETYPE(): TerminalNode {
+    public VALUETYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.VALUETYPE, 0);
     }
 
-    public PRESENTATION(): TerminalNode {
+    public PRESENTATION(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.PRESENTATION, 0);
     }
 
-    public REFPRESENTATION(): TerminalNode {
+    public REFPRESENTATION(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.REFPRESENTATION, 0);
     }
 
-    public GROUPEDBY(): TerminalNode {
+    public GROUPEDBY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.GROUPEDBY, 0);
     }
 
-    public ISNULL(): TerminalNode {
+    public ISNULL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ISNULL, 0);
     }
 
-    public logicalExpression_list(): LogicalExpressionContext[] {
-        return this.getTypedRuleContexts(LogicalExpressionContext) as LogicalExpressionContext[];
+    public logicalExpression(): LogicalExpressionContext[];
+
+    public logicalExpression(i: number): LogicalExpressionContext | null;
+
+    public logicalExpression(i?: number): LogicalExpressionContext[] | LogicalExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(LogicalExpressionContext);
+        }
+
+        return this.getRuleContext(i, LogicalExpressionContext);
     }
 
-    public logicalExpression(i: number): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, i) as LogicalExpressionContext;
-    }
-
-    public ACOS(): TerminalNode {
+    public ACOS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ACOS, 0);
     }
 
-    public ASIN(): TerminalNode {
+    public ASIN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ASIN, 0);
     }
 
-    public ATAN(): TerminalNode {
+    public ATAN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ATAN, 0);
     }
 
-    public COS(): TerminalNode {
+    public COS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.COS, 0);
     }
 
-    public SIN(): TerminalNode {
+    public SIN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SIN, 0);
     }
 
-    public TAN(): TerminalNode {
+    public TAN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TAN, 0);
     }
 
-    public LOG(): TerminalNode {
+    public LOG(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LOG, 0);
     }
 
-    public LOG10(): TerminalNode {
+    public LOG10(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LOG10, 0);
     }
 
-    public EXP(): TerminalNode {
+    public EXP(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXP, 0);
     }
 
-    public POW(): TerminalNode {
+    public POW(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.POW, 0);
     }
 
-    public SQRT(): TerminalNode {
+    public SQRT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SQRT, 0);
     }
 
-    public INT(): TerminalNode {
+    public INT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INT, 0);
     }
 
-    public LOWER(): TerminalNode {
+    public LOWER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LOWER, 0);
     }
 
-    public STRINGLENGTH(): TerminalNode {
+    public STRINGLENGTH(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRINGLENGTH, 0);
     }
 
-    public TRIMALL(): TerminalNode {
+    public TRIMALL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TRIMALL, 0);
     }
 
-    public TRIML(): TerminalNode {
+    public TRIML(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TRIML, 0);
     }
 
-    public TRIMR(): TerminalNode {
+    public TRIMR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TRIMR, 0);
     }
 
-    public UPPER(): TerminalNode {
+    public UPPER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.UPPER, 0);
     }
 
-    public ROUND(): TerminalNode {
+    public ROUND(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ROUND, 0);
     }
 
-    public STOREDDATASIZE(): TerminalNode {
+    public STOREDDATASIZE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STOREDDATASIZE, 0);
     }
 
-    public UUID(): TerminalNode {
+    public UUID(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.UUID, 0);
     }
 
-    public STRFIND(): TerminalNode {
+    public STRFIND(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRFIND, 0);
     }
 
-    public STRREPLACE(): TerminalNode {
+    public STRREPLACE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRREPLACE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_builtInFunctions;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterBuiltInFunctions) {
             listener.enterBuiltInFunctions(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitBuiltInFunctions) {
             listener.exitBuiltInFunctions(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitBuiltInFunctions) {
             return visitor.visitBuiltInFunctions(this);
         } else {
@@ -8540,71 +8544,69 @@ export class BuiltInFunctionsContext extends BslParserRuleContext {
 }
 
 export class AggregateFunctionsContext extends BslParserRuleContext {
-    public _doCall!: Token;
+    public _doCall?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LPAREN, 0);
     }
 
-    public logicalExpression(): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, 0) as LogicalExpressionContext;
+    public logicalExpression(): LogicalExpressionContext | null {
+        return this.getRuleContext(0, LogicalExpressionContext);
     }
 
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RPAREN, 0);
     }
 
-    public SUM(): TerminalNode {
+    public SUM(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SUM, 0);
     }
 
-    public AVG(): TerminalNode {
+    public AVG(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.AVG, 0);
     }
 
-    public MIN(): TerminalNode {
+    public MIN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MIN, 0);
     }
 
-    public MAX(): TerminalNode {
+    public MAX(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MAX, 0);
     }
 
-    public COUNT(): TerminalNode {
+    public COUNT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.COUNT, 0);
     }
 
-    public MUL(): TerminalNode {
+    public MUL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MUL, 0);
     }
 
-    public DISTINCT(): TerminalNode {
+    public DISTINCT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DISTINCT, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_aggregateFunctions;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterAggregateFunctions) {
             listener.enterAggregateFunctions(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitAggregateFunctions) {
             listener.exitAggregateFunctions(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitAggregateFunctions) {
             return visitor.visitAggregateFunctions(this);
         } else {
@@ -8614,127 +8616,133 @@ export class AggregateFunctionsContext extends BslParserRuleContext {
 }
 
 export class ValueFunctionContext extends BslParserRuleContext {
-    public _doCall!: Token;
+    public _doCall?: Token | null;
 
-    public _type_!: Token;
+    public _type_?: Token | null;
 
-    public _mdoName!: IdentifierContext;
+    public _mdoName?: IdentifierContext;
 
-    public _emptyFer!: Token;
+    public _emptyFer?: Token | null;
 
-    public _predefinedName!: IdentifierContext;
+    public _predefinedName?: IdentifierContext;
 
-    public _routePointName!: IdentifierContext;
+    public _routePointName?: IdentifierContext;
 
-    public _systemName!: IdentifierContext;
+    public _systemName?: IdentifierContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.LPAREN, 0)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(SDBLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.RPAREN, 0)!;
     }
 
-    public VALUE(): TerminalNode {
-        return this.getToken(SDBLParser.VALUE, 0);
+    public VALUE(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.VALUE, 0)!;
     }
 
-    public DOT_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.DOT);
+    public DOT(): antlr.TerminalNode[];
+
+    public DOT(i: number): antlr.TerminalNode | null;
+
+    public DOT(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.DOT);
+        } else {
+            return this.getToken(SDBLParser.DOT, i);
+        }
     }
 
-    public DOT(i: number): TerminalNode {
-        return this.getToken(SDBLParser.DOT, i);
-    }
-
-    public ROUTEPOINT_FIELD(): TerminalNode {
+    public ROUTEPOINT_FIELD(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ROUTEPOINT_FIELD, 0);
     }
 
-    public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
+    public mdo(): MdoContext | null {
+        return this.getRuleContext(0, MdoContext);
     }
 
-    public identifier_list(): IdentifierContext[] {
-        return this.getTypedRuleContexts(IdentifierContext) as IdentifierContext[];
+    public identifier(): IdentifierContext[];
+
+    public identifier(i: number): IdentifierContext | null;
+
+    public identifier(i?: number): IdentifierContext[] | IdentifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(IdentifierContext);
+        }
+
+        return this.getRuleContext(i, IdentifierContext);
     }
 
-    public identifier(i: number): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, i) as IdentifierContext;
-    }
-
-    public EMPTYREF(): TerminalNode {
+    public EMPTYREF(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EMPTYREF, 0);
     }
 
-    public BUSINESS_PROCESS_TYPE(): TerminalNode {
+    public BUSINESS_PROCESS_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BUSINESS_PROCESS_TYPE, 0);
     }
 
-    public CATALOG_TYPE(): TerminalNode {
+    public CATALOG_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CATALOG_TYPE, 0);
     }
 
-    public DOCUMENT_TYPE(): TerminalNode {
+    public DOCUMENT_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DOCUMENT_TYPE, 0);
     }
 
-    public FILTER_CRITERION_TYPE(): TerminalNode {
+    public FILTER_CRITERION_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FILTER_CRITERION_TYPE, 0);
     }
 
-    public EXCHANGE_PLAN_TYPE(): TerminalNode {
+    public EXCHANGE_PLAN_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXCHANGE_PLAN_TYPE, 0);
     }
 
-    public ENUM_TYPE(): TerminalNode {
+    public ENUM_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ENUM_TYPE, 0);
     }
 
-    public CHART_OF_CHARACTERISTIC_TYPES_TYPE(): TerminalNode {
+    public CHART_OF_CHARACTERISTIC_TYPES_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE, 0);
     }
 
-    public CHART_OF_ACCOUNTS_TYPE(): TerminalNode {
+    public CHART_OF_ACCOUNTS_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_ACCOUNTS_TYPE, 0);
     }
 
-    public CHART_OF_CALCULATION_TYPES_TYPE(): TerminalNode {
+    public CHART_OF_CALCULATION_TYPES_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE, 0);
     }
 
-    public TASK_TYPE(): TerminalNode {
+    public TASK_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TASK_TYPE, 0);
     }
 
-    public EXTERNAL_DATA_SOURCE_TYPE(): TerminalNode {
+    public EXTERNAL_DATA_SOURCE_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXTERNAL_DATA_SOURCE_TYPE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_valueFunction;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterValueFunction) {
             listener.enterValueFunction(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitValueFunction) {
             listener.exitValueFunction(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitValueFunction) {
             return visitor.visitValueFunction(this);
         } else {
@@ -8744,99 +8752,109 @@ export class ValueFunctionContext extends BslParserRuleContext {
 }
 
 export class CastFunctionContext extends BslParserRuleContext {
-    public _doCall!: Token;
+    public _doCall?: Token | null;
 
-    public _value!: ExpressionContext;
+    public _value?: ExpressionContext;
 
-    public _type_!: Token;
+    public _type_?: Token | null;
 
-    public _len!: Token;
+    public _len?: Token | null;
 
-    public _prec!: Token;
+    public _prec?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.LPAREN);
+    public LPAREN(): antlr.TerminalNode[];
+
+    public LPAREN(i: number): antlr.TerminalNode | null;
+
+    public LPAREN(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.LPAREN);
+        } else {
+            return this.getToken(SDBLParser.LPAREN, i);
+        }
     }
 
-    public LPAREN(i: number): TerminalNode {
-        return this.getToken(SDBLParser.LPAREN, i);
-    }
-
-    public AS(): TerminalNode {
+    public AS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.AS, 0);
     }
 
-    public RPAREN_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.RPAREN);
+    public RPAREN(): antlr.TerminalNode[];
+
+    public RPAREN(i: number): antlr.TerminalNode | null;
+
+    public RPAREN(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.RPAREN);
+        } else {
+            return this.getToken(SDBLParser.RPAREN, i);
+        }
     }
 
-    public RPAREN(i: number): TerminalNode {
-        return this.getToken(SDBLParser.RPAREN, i);
-    }
-
-    public CAST(): TerminalNode {
+    public CAST(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CAST, 0);
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
+    public mdo(): MdoContext | null {
+        return this.getRuleContext(0, MdoContext);
     }
 
-    public BOOLEAN(): TerminalNode {
+    public BOOLEAN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BOOLEAN, 0);
     }
 
-    public DATE(): TerminalNode {
+    public DATE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATE, 0);
     }
 
-    public NUMBER(): TerminalNode {
+    public NUMBER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.NUMBER, 0);
     }
 
-    public STRING(): TerminalNode {
+    public STRING(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRING, 0);
     }
 
-    public DECIMAL_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.DECIMAL);
+    public DECIMAL(): antlr.TerminalNode[];
+
+    public DECIMAL(i: number): antlr.TerminalNode | null;
+
+    public DECIMAL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.DECIMAL);
+        } else {
+            return this.getToken(SDBLParser.DECIMAL, i);
+        }
     }
 
-    public DECIMAL(i: number): TerminalNode {
-        return this.getToken(SDBLParser.DECIMAL, i);
-    }
-
-    public COMMA(): TerminalNode {
+    public COMMA(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.COMMA, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_castFunction;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterCastFunction) {
             listener.enterCastFunction(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitCastFunction) {
             listener.exitCastFunction(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitCastFunction) {
             return visitor.visitCastFunction(this);
         } else {
@@ -8846,57 +8864,67 @@ export class CastFunctionContext extends BslParserRuleContext {
 }
 
 export class LogicalExpressionContext extends BslParserRuleContext {
-    public _predicate!: PredicateContext;
+    public _predicate?: PredicateContext;
 
     public _condidions: PredicateContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public predicate_list(): PredicateContext[] {
-        return this.getTypedRuleContexts(PredicateContext) as PredicateContext[];
+    public predicate(): PredicateContext[];
+
+    public predicate(i: number): PredicateContext | null;
+
+    public predicate(i?: number): PredicateContext[] | PredicateContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PredicateContext);
+        }
+
+        return this.getRuleContext(i, PredicateContext);
     }
 
-    public predicate(i: number): PredicateContext {
-        return this.getTypedRuleContext(PredicateContext, i) as PredicateContext;
+    public AND(): antlr.TerminalNode[];
+
+    public AND(i: number): antlr.TerminalNode | null;
+
+    public AND(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.AND);
+        } else {
+            return this.getToken(SDBLParser.AND, i);
+        }
     }
 
-    public AND_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.AND);
+    public OR(): antlr.TerminalNode[];
+
+    public OR(i: number): antlr.TerminalNode | null;
+
+    public OR(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.OR);
+        } else {
+            return this.getToken(SDBLParser.OR, i);
+        }
     }
 
-    public AND(i: number): TerminalNode {
-        return this.getToken(SDBLParser.AND, i);
-    }
-
-    public OR_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.OR);
-    }
-
-    public OR(i: number): TerminalNode {
-        return this.getToken(SDBLParser.OR, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_logicalExpression;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterLogicalExpression) {
             listener.enterLogicalExpression(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitLogicalExpression) {
             listener.exitLogicalExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitLogicalExpression) {
             return visitor.visitLogicalExpression(this);
         } else {
@@ -8906,79 +8934,81 @@ export class LogicalExpressionContext extends BslParserRuleContext {
 }
 
 export class PredicateContext extends BslParserRuleContext {
-    public _booleanPredicate!: ExpressionContext;
+    public _booleanPredicate?: ExpressionContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public likePredicate(): LikePredicateContext {
-        return this.getTypedRuleContext(LikePredicateContext, 0) as LikePredicateContext;
+    public likePredicate(): LikePredicateContext | null {
+        return this.getRuleContext(0, LikePredicateContext);
     }
 
-    public isNullPredicate(): IsNullPredicateContext {
-        return this.getTypedRuleContext(IsNullPredicateContext, 0) as IsNullPredicateContext;
+    public isNullPredicate(): IsNullPredicateContext | null {
+        return this.getRuleContext(0, IsNullPredicateContext);
     }
 
-    public comparePredicate(): ComparePredicateContext {
-        return this.getTypedRuleContext(ComparePredicateContext, 0) as ComparePredicateContext;
+    public comparePredicate(): ComparePredicateContext | null {
+        return this.getRuleContext(0, ComparePredicateContext);
     }
 
-    public betweenPredicate(): BetweenPredicateContext {
-        return this.getTypedRuleContext(BetweenPredicateContext, 0) as BetweenPredicateContext;
+    public betweenPredicate(): BetweenPredicateContext | null {
+        return this.getRuleContext(0, BetweenPredicateContext);
     }
 
-    public inPredicate(): InPredicateContext {
-        return this.getTypedRuleContext(InPredicateContext, 0) as InPredicateContext;
+    public inPredicate(): InPredicateContext | null {
+        return this.getRuleContext(0, InPredicateContext);
     }
 
-    public refsPredicate(): RefsPredicateContext {
-        return this.getTypedRuleContext(RefsPredicateContext, 0) as RefsPredicateContext;
+    public refsPredicate(): RefsPredicateContext | null {
+        return this.getRuleContext(0, RefsPredicateContext);
     }
 
-    public NOT_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.NOT);
+    public NOT(): antlr.TerminalNode[];
+
+    public NOT(i: number): antlr.TerminalNode | null;
+
+    public NOT(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.NOT);
+        } else {
+            return this.getToken(SDBLParser.NOT, i);
+        }
     }
 
-    public NOT(i: number): TerminalNode {
-        return this.getToken(SDBLParser.NOT, i);
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
-    }
-
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LPAREN, 0);
     }
 
-    public logicalExpression(): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, 0) as LogicalExpressionContext;
+    public logicalExpression(): LogicalExpressionContext | null {
+        return this.getRuleContext(0, LogicalExpressionContext);
     }
 
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RPAREN, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_predicate;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterPredicate) {
             listener.enterPredicate(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitPredicate) {
             listener.exitPredicate(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitPredicate) {
             return visitor.visitPredicate(this);
         } else {
@@ -8988,59 +9018,65 @@ export class PredicateContext extends BslParserRuleContext {
 }
 
 export class LikePredicateContext extends BslParserRuleContext {
-    public _escape!: MultiStringContext;
+    public _escape?: MultiStringContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
+    public LIKE(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.LIKE, 0)!;
     }
 
-    public LIKE(): TerminalNode {
-        return this.getToken(SDBLParser.LIKE, 0);
+    public NOT(): antlr.TerminalNode[];
+
+    public NOT(i: number): antlr.TerminalNode | null;
+
+    public NOT(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.NOT);
+        } else {
+            return this.getToken(SDBLParser.NOT, i);
+        }
     }
 
-    public NOT_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.NOT);
-    }
-
-    public NOT(i: number): TerminalNode {
-        return this.getToken(SDBLParser.NOT, i);
-    }
-
-    public ESCAPE(): TerminalNode {
+    public ESCAPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ESCAPE, 0);
     }
 
-    public multiString(): MultiStringContext {
-        return this.getTypedRuleContext(MultiStringContext, 0) as MultiStringContext;
+    public multiString(): MultiStringContext | null {
+        return this.getRuleContext(0, MultiStringContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_likePredicate;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterLikePredicate) {
             listener.enterLikePredicate(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitLikePredicate) {
             listener.exitLikePredicate(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitLikePredicate) {
             return visitor.visitLikePredicate(this);
         } else {
@@ -9050,45 +9086,43 @@ export class LikePredicateContext extends BslParserRuleContext {
 }
 
 export class IsNullPredicateContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public IS(): TerminalNode {
-        return this.getToken(SDBLParser.IS, 0);
+    public IS(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.IS, 0)!;
     }
 
-    public NULL(): TerminalNode {
-        return this.getToken(SDBLParser.NULL, 0);
+    public NULL(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.NULL, 0)!;
     }
 
-    public NOT(): TerminalNode {
+    public NOT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.NOT, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_isNullPredicate;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterIsNullPredicate) {
             listener.enterIsNullPredicate(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitIsNullPredicate) {
             listener.exitIsNullPredicate(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitIsNullPredicate) {
             return visitor.visitIsNullPredicate(this);
         } else {
@@ -9098,63 +9132,65 @@ export class IsNullPredicateContext extends BslParserRuleContext {
 }
 
 export class ComparePredicateContext extends BslParserRuleContext {
-    public _compareOperation!: Token;
+    public _compareOperation?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
-    }
-
-    public LESS(): TerminalNode {
+    public LESS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LESS, 0);
     }
 
-    public LESS_OR_EQUAL(): TerminalNode {
+    public LESS_OR_EQUAL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LESS_OR_EQUAL, 0);
     }
 
-    public GREATER(): TerminalNode {
+    public GREATER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.GREATER, 0);
     }
 
-    public GREATER_OR_EQUAL(): TerminalNode {
+    public GREATER_OR_EQUAL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.GREATER_OR_EQUAL, 0);
     }
 
-    public ASSIGN(): TerminalNode {
+    public ASSIGN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ASSIGN, 0);
     }
 
-    public NOT_EQUAL(): TerminalNode {
+    public NOT_EQUAL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.NOT_EQUAL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_comparePredicate;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterComparePredicate) {
             listener.enterComparePredicate(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitComparePredicate) {
             listener.exitComparePredicate(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitComparePredicate) {
             return visitor.visitComparePredicate(this);
         } else {
@@ -9164,45 +9200,47 @@ export class ComparePredicateContext extends BslParserRuleContext {
 }
 
 export class BetweenPredicateContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
+    public BETWEEN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.BETWEEN, 0)!;
     }
 
-    public BETWEEN(): TerminalNode {
-        return this.getToken(SDBLParser.BETWEEN, 0);
+    public AND(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.AND, 0)!;
     }
 
-    public AND(): TerminalNode {
-        return this.getToken(SDBLParser.AND, 0);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_betweenPredicate;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterBetweenPredicate) {
             listener.enterBetweenPredicate(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitBetweenPredicate) {
             listener.exitBetweenPredicate(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitBetweenPredicate) {
             return visitor.visitBetweenPredicate(this);
         } else {
@@ -9212,77 +9250,91 @@ export class BetweenPredicateContext extends BslParserRuleContext {
 }
 
 export class InPredicateContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IN(): TerminalNode {
-        return this.getToken(SDBLParser.IN, 0);
+    public IN(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.IN, 0)!;
     }
 
-    public LPAREN_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.LPAREN);
+    public LPAREN(): antlr.TerminalNode[];
+
+    public LPAREN(i: number): antlr.TerminalNode | null;
+
+    public LPAREN(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.LPAREN);
+        } else {
+            return this.getToken(SDBLParser.LPAREN, i);
+        }
     }
 
-    public LPAREN(i: number): TerminalNode {
-        return this.getToken(SDBLParser.LPAREN, i);
+    public RPAREN(): antlr.TerminalNode[];
+
+    public RPAREN(i: number): antlr.TerminalNode | null;
+
+    public RPAREN(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.RPAREN);
+        } else {
+            return this.getToken(SDBLParser.RPAREN, i);
+        }
     }
 
-    public RPAREN_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.RPAREN);
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public RPAREN(i: number): TerminalNode {
-        return this.getToken(SDBLParser.RPAREN, i);
+    public subquery(): SubqueryContext | null {
+        return this.getRuleContext(0, SubqueryContext);
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expressionList(): ExpressionListContext[];
+
+    public expressionList(i: number): ExpressionListContext | null;
+
+    public expressionList(i?: number): ExpressionListContext[] | ExpressionListContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionListContext);
+        }
+
+        return this.getRuleContext(i, ExpressionListContext);
     }
 
-    public subquery(): SubqueryContext {
-        return this.getTypedRuleContext(SubqueryContext, 0) as SubqueryContext;
+    public NOT(): antlr.TerminalNode[];
+
+    public NOT(i: number): antlr.TerminalNode | null;
+
+    public NOT(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.NOT);
+        } else {
+            return this.getToken(SDBLParser.NOT, i);
+        }
     }
 
-    public expressionList_list(): ExpressionListContext[] {
-        return this.getTypedRuleContexts(ExpressionListContext) as ExpressionListContext[];
-    }
-
-    public expressionList(i: number): ExpressionListContext {
-        return this.getTypedRuleContext(ExpressionListContext, i) as ExpressionListContext;
-    }
-
-    public NOT_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.NOT);
-    }
-
-    public NOT(i: number): TerminalNode {
-        return this.getToken(SDBLParser.NOT, i);
-    }
-
-    public HIERARCHY_FOR_IN(): TerminalNode {
+    public HIERARCHY_FOR_IN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HIERARCHY_FOR_IN, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_inPredicate;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterInPredicate) {
             listener.enterInPredicate(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitInPredicate) {
             listener.exitInPredicate(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitInPredicate) {
             return visitor.visitInPredicate(this);
         } else {
@@ -9292,41 +9344,39 @@ export class InPredicateContext extends BslParserRuleContext {
 }
 
 export class RefsPredicateContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public REFS(): TerminalNode {
-        return this.getToken(SDBLParser.REFS, 0);
+    public REFS(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.REFS, 0)!;
     }
 
     public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
+        return this.getRuleContext(0, MdoContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_refsPredicate;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterRefsPredicate) {
             listener.enterRefsPredicate(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitRefsPredicate) {
             listener.exitRefsPredicate(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitRefsPredicate) {
             return visitor.visitRefsPredicate(this);
         } else {
@@ -9336,49 +9386,55 @@ export class RefsPredicateContext extends BslParserRuleContext {
 }
 
 export class ExpressionListContext extends BslParserRuleContext {
-    public _logicalExpression!: LogicalExpressionContext;
+    public _logicalExpression?: LogicalExpressionContext;
 
     public _exp: LogicalExpressionContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public logicalExpression_list(): LogicalExpressionContext[] {
-        return this.getTypedRuleContexts(LogicalExpressionContext) as LogicalExpressionContext[];
+    public logicalExpression(): LogicalExpressionContext[];
+
+    public logicalExpression(i: number): LogicalExpressionContext | null;
+
+    public logicalExpression(i?: number): LogicalExpressionContext[] | LogicalExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(LogicalExpressionContext);
+        }
+
+        return this.getRuleContext(i, LogicalExpressionContext);
     }
 
-    public logicalExpression(i: number): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, i) as LogicalExpressionContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_expressionList;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterExpressionList) {
             listener.enterExpressionList(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitExpressionList) {
             listener.exitExpressionList(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitExpressionList) {
             return visitor.visitExpressionList(this);
         } else {
@@ -9388,49 +9444,55 @@ export class ExpressionListContext extends BslParserRuleContext {
 }
 
 export class DataSourcesContext extends BslParserRuleContext {
-    public _dataSource!: DataSourceContext;
+    public _dataSource?: DataSourceContext;
 
     public _tables: DataSourceContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public dataSource_list(): DataSourceContext[] {
-        return this.getTypedRuleContexts(DataSourceContext) as DataSourceContext[];
+    public dataSource(): DataSourceContext[];
+
+    public dataSource(i: number): DataSourceContext | null;
+
+    public dataSource(i?: number): DataSourceContext[] | DataSourceContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(DataSourceContext);
+        }
+
+        return this.getRuleContext(i, DataSourceContext);
     }
 
-    public dataSource(i: number): DataSourceContext {
-        return this.getTypedRuleContext(DataSourceContext, i) as DataSourceContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_dataSources;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterDataSources) {
             listener.enterDataSources(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitDataSources) {
             listener.exitDataSources(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitDataSources) {
             return visitor.visitDataSources(this);
         } else {
@@ -9440,77 +9502,79 @@ export class DataSourcesContext extends BslParserRuleContext {
 }
 
 export class DataSourceContext extends BslParserRuleContext {
-    public _joinPart!: JoinPartContext;
+    public _joinPart?: JoinPartContext;
 
     public _joins: JoinPartContext[] = [];
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LPAREN, 0);
     }
 
-    public dataSource(): DataSourceContext {
-        return this.getTypedRuleContext(DataSourceContext, 0) as DataSourceContext;
+    public dataSource(): DataSourceContext | null {
+        return this.getRuleContext(0, DataSourceContext);
     }
 
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RPAREN, 0);
     }
 
-    public joinPart_list(): JoinPartContext[] {
-        return this.getTypedRuleContexts(JoinPartContext) as JoinPartContext[];
+    public joinPart(): JoinPartContext[];
+
+    public joinPart(i: number): JoinPartContext | null;
+
+    public joinPart(i?: number): JoinPartContext[] | JoinPartContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(JoinPartContext);
+        }
+
+        return this.getRuleContext(i, JoinPartContext);
     }
 
-    public joinPart(i: number): JoinPartContext {
-        return this.getTypedRuleContext(JoinPartContext, i) as JoinPartContext;
+    public virtualTable(): VirtualTableContext | null {
+        return this.getRuleContext(0, VirtualTableContext);
     }
 
-    public virtualTable(): VirtualTableContext {
-        return this.getTypedRuleContext(VirtualTableContext, 0) as VirtualTableContext;
+    public table(): TableContext | null {
+        return this.getRuleContext(0, TableContext);
     }
 
-    public table(): TableContext {
-        return this.getTypedRuleContext(TableContext, 0) as TableContext;
+    public parameterTable(): ParameterTableContext | null {
+        return this.getRuleContext(0, ParameterTableContext);
     }
 
-    public parameterTable(): ParameterTableContext {
-        return this.getTypedRuleContext(ParameterTableContext, 0) as ParameterTableContext;
+    public externalDataSourceTable(): ExternalDataSourceTableContext | null {
+        return this.getRuleContext(0, ExternalDataSourceTableContext);
     }
 
-    public externalDataSourceTable(): ExternalDataSourceTableContext {
-        return this.getTypedRuleContext(ExternalDataSourceTableContext, 0) as ExternalDataSourceTableContext;
+    public subquery(): SubqueryContext | null {
+        return this.getRuleContext(0, SubqueryContext);
     }
 
-    public subquery(): SubqueryContext {
-        return this.getTypedRuleContext(SubqueryContext, 0) as SubqueryContext;
+    public alias(): AliasContext | null {
+        return this.getRuleContext(0, AliasContext);
     }
 
-    public alias(): AliasContext {
-        return this.getTypedRuleContext(AliasContext, 0) as AliasContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_dataSource;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterDataSource) {
             listener.enterDataSource(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitDataSource) {
             listener.exitDataSource(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitDataSource) {
             return visitor.visitDataSource(this);
         } else {
@@ -9520,45 +9584,43 @@ export class DataSourceContext extends BslParserRuleContext {
 }
 
 export class TableContext extends BslParserRuleContext {
-    public _objectTableName!: IdentifierContext;
+    public _objectTableName?: IdentifierContext;
 
-    public _tableName!: IdentifierContext;
+    public _tableName?: IdentifierContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
+    public mdo(): MdoContext | null {
+        return this.getRuleContext(0, MdoContext);
     }
 
-    public DOT(): TerminalNode {
+    public DOT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DOT, 0);
     }
 
-    public identifier(): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, 0) as IdentifierContext;
+    public identifier(): IdentifierContext | null {
+        return this.getRuleContext(0, IdentifierContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_table;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterTable) {
             listener.enterTable(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitTable) {
             listener.exitTable(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitTable) {
             return visitor.visitTable(this);
         } else {
@@ -9568,131 +9630,137 @@ export class TableContext extends BslParserRuleContext {
 }
 
 export class VirtualTableContext extends BslParserRuleContext {
-    public _virtualTableName!: Token;
+    public _virtualTableName?: Token | null;
 
-    public _virtualTableParameter!: VirtualTableParameterContext;
+    public _virtualTableParameter?: VirtualTableParameterContext;
 
     public _virtualTableParameters: VirtualTableParameterContext[] = [];
 
-    public _type_!: Token;
+    public _type_?: Token | null;
 
-    public _tableName!: IdentifierContext;
+    public _tableName?: IdentifierContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
+    public mdo(): MdoContext | null {
+        return this.getRuleContext(0, MdoContext);
     }
 
-    public DOT(): TerminalNode {
+    public DOT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DOT, 0);
     }
 
-    public SLICELAST_VT(): TerminalNode {
+    public SLICELAST_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SLICELAST_VT, 0);
     }
 
-    public SLICEFIRST_VT(): TerminalNode {
+    public SLICEFIRST_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SLICEFIRST_VT, 0);
     }
 
-    public BOUNDARIES_VT(): TerminalNode {
+    public BOUNDARIES_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BOUNDARIES_VT, 0);
     }
 
-    public TURNOVERS_VT(): TerminalNode {
+    public TURNOVERS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TURNOVERS_VT, 0);
     }
 
-    public BALANCE_VT(): TerminalNode {
+    public BALANCE_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BALANCE_VT, 0);
     }
 
-    public BALANCE_AND_TURNOVERS_VT(): TerminalNode {
+    public BALANCE_AND_TURNOVERS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BALANCE_AND_TURNOVERS_VT, 0);
     }
 
-    public EXT_DIMENSIONS_VT(): TerminalNode {
+    public EXT_DIMENSIONS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXT_DIMENSIONS_VT, 0);
     }
 
-    public RECORDS_WITH_EXT_DIMENSIONS_VT(): TerminalNode {
+    public RECORDS_WITH_EXT_DIMENSIONS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RECORDS_WITH_EXT_DIMENSIONS_VT, 0);
     }
 
-    public DR_CR_TURNOVERS_VT(): TerminalNode {
+    public DR_CR_TURNOVERS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DR_CR_TURNOVERS_VT, 0);
     }
 
-    public ACTUAL_ACTION_PERIOD_VT(): TerminalNode {
+    public ACTUAL_ACTION_PERIOD_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ACTUAL_ACTION_PERIOD_VT, 0);
     }
 
-    public SCHEDULE_DATA_VT(): TerminalNode {
+    public SCHEDULE_DATA_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SCHEDULE_DATA_VT, 0);
     }
 
-    public TASK_BY_PERFORMER_VT(): TerminalNode {
+    public TASK_BY_PERFORMER_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TASK_BY_PERFORMER_VT, 0);
     }
 
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LPAREN, 0);
     }
 
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RPAREN, 0);
     }
 
-    public virtualTableParameter_list(): VirtualTableParameterContext[] {
-        return this.getTypedRuleContexts(VirtualTableParameterContext) as VirtualTableParameterContext[];
+    public virtualTableParameter(): VirtualTableParameterContext[];
+
+    public virtualTableParameter(i: number): VirtualTableParameterContext | null;
+
+    public virtualTableParameter(i?: number): VirtualTableParameterContext[] | VirtualTableParameterContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(VirtualTableParameterContext);
+        }
+
+        return this.getRuleContext(i, VirtualTableParameterContext);
     }
 
-    public virtualTableParameter(i: number): VirtualTableParameterContext {
-        return this.getTypedRuleContext(VirtualTableParameterContext, i) as VirtualTableParameterContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.COMMA);
+        } else {
+            return this.getToken(SDBLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(SDBLParser.COMMA, i);
-    }
-
-    public FILTER_CRITERION_TYPE(): TerminalNode {
+    public FILTER_CRITERION_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FILTER_CRITERION_TYPE, 0);
     }
 
-    public identifier(): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, 0) as IdentifierContext;
+    public identifier(): IdentifierContext | null {
+        return this.getRuleContext(0, IdentifierContext);
     }
 
-    public parameter(): ParameterContext {
-        return this.getTypedRuleContext(ParameterContext, 0) as ParameterContext;
+    public parameter(): ParameterContext | null {
+        return this.getRuleContext(0, ParameterContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_virtualTable;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterVirtualTable) {
             listener.enterVirtualTable(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitVirtualTable) {
             listener.exitVirtualTable(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitVirtualTable) {
             return visitor.visitVirtualTable(this);
         } else {
@@ -9702,33 +9770,31 @@ export class VirtualTableContext extends BslParserRuleContext {
 }
 
 export class VirtualTableParameterContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public logicalExpression(): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, 0) as LogicalExpressionContext;
+    public logicalExpression(): LogicalExpressionContext | null {
+        return this.getRuleContext(0, LogicalExpressionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_virtualTableParameter;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterVirtualTableParameter) {
             listener.enterVirtualTableParameter(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitVirtualTableParameter) {
             listener.exitVirtualTableParameter(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitVirtualTableParameter) {
             return visitor.visitVirtualTableParameter(this);
         } else {
@@ -9738,33 +9804,31 @@ export class VirtualTableParameterContext extends BslParserRuleContext {
 }
 
 export class ParameterTableContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public parameter(): ParameterContext {
-        return this.getTypedRuleContext(ParameterContext, 0) as ParameterContext;
+        return this.getRuleContext(0, ParameterContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_parameterTable;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterParameterTable) {
             listener.enterParameterTable(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitParameterTable) {
             listener.exitParameterTable(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitParameterTable) {
             return visitor.visitParameterTable(this);
         } else {
@@ -9774,65 +9838,71 @@ export class ParameterTableContext extends BslParserRuleContext {
 }
 
 export class ExternalDataSourceTableContext extends BslParserRuleContext {
-    public _tableName!: IdentifierContext;
+    public _tableName?: IdentifierContext;
 
-    public _cubeName!: IdentifierContext;
+    public _cubeName?: IdentifierContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public mdo(): MdoContext {
-        return this.getTypedRuleContext(MdoContext, 0) as MdoContext;
+        return this.getRuleContext(0, MdoContext)!;
     }
 
-    public DOT_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.DOT);
+    public DOT(): antlr.TerminalNode[];
+
+    public DOT(i: number): antlr.TerminalNode | null;
+
+    public DOT(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.DOT);
+        } else {
+            return this.getToken(SDBLParser.DOT, i);
+        }
     }
 
-    public DOT(i: number): TerminalNode {
-        return this.getToken(SDBLParser.DOT, i);
-    }
-
-    public EDS_TABLE(): TerminalNode {
+    public EDS_TABLE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EDS_TABLE, 0);
     }
 
-    public identifier_list(): IdentifierContext[] {
-        return this.getTypedRuleContexts(IdentifierContext) as IdentifierContext[];
+    public identifier(): IdentifierContext[];
+
+    public identifier(i: number): IdentifierContext | null;
+
+    public identifier(i?: number): IdentifierContext[] | IdentifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(IdentifierContext);
+        }
+
+        return this.getRuleContext(i, IdentifierContext);
     }
 
-    public identifier(i: number): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, i) as IdentifierContext;
-    }
-
-    public EDS_CUBE(): TerminalNode {
+    public EDS_CUBE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EDS_CUBE, 0);
     }
 
-    public EDS_CUBE_DIMTABLE(): TerminalNode {
+    public EDS_CUBE_DIMTABLE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EDS_CUBE_DIMTABLE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_externalDataSourceTable;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterExternalDataSourceTable) {
             listener.enterExternalDataSourceTable(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitExternalDataSourceTable) {
             listener.exitExternalDataSourceTable(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitExternalDataSourceTable) {
             return visitor.visitExternalDataSourceTable(this);
         } else {
@@ -9842,77 +9912,75 @@ export class ExternalDataSourceTableContext extends BslParserRuleContext {
 }
 
 export class JoinPartContext extends BslParserRuleContext {
-    public _joinType!: Token;
+    public _joinType?: Token | null;
 
-    public _outerJoin!: Token;
+    public _outerJoin?: Token | null;
 
-    public _source!: DataSourceContext;
+    public _source?: DataSourceContext;
 
-    public _condition!: LogicalExpressionContext;
+    public _condition?: LogicalExpressionContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public dataSource(): DataSourceContext {
-        return this.getTypedRuleContext(DataSourceContext, 0) as DataSourceContext;
+        return this.getRuleContext(0, DataSourceContext)!;
     }
 
-    public ON_EN(): TerminalNode {
+    public ON_EN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ON_EN, 0);
     }
 
-    public PO_RU(): TerminalNode {
+    public PO_RU(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.PO_RU, 0);
     }
 
     public logicalExpression(): LogicalExpressionContext {
-        return this.getTypedRuleContext(LogicalExpressionContext, 0) as LogicalExpressionContext;
+        return this.getRuleContext(0, LogicalExpressionContext)!;
     }
 
-    public JOIN(): TerminalNode {
+    public JOIN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.JOIN, 0);
     }
 
-    public RIGHT(): TerminalNode {
+    public RIGHT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RIGHT, 0);
     }
 
-    public LEFT(): TerminalNode {
+    public LEFT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LEFT, 0);
     }
 
-    public FULL(): TerminalNode {
+    public FULL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FULL, 0);
     }
 
-    public INNER(): TerminalNode {
+    public INNER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INNER, 0);
     }
 
-    public OUTER(): TerminalNode {
+    public OUTER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.OUTER, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_joinPart;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterJoinPart) {
             listener.enterJoinPart(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitJoinPart) {
             listener.exitJoinPart(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitJoinPart) {
             return visitor.visitJoinPart(this);
         } else {
@@ -9922,39 +9990,37 @@ export class JoinPartContext extends BslParserRuleContext {
 }
 
 export class AliasContext extends BslParserRuleContext {
-    public _name!: IdentifierContext;
+    public _name?: IdentifierContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public identifier(): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, 0) as IdentifierContext;
+        return this.getRuleContext(0, IdentifierContext)!;
     }
 
-    public AS(): TerminalNode {
+    public AS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.AS, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_alias;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterAlias) {
             listener.enterAlias(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitAlias) {
             listener.exitAlias(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitAlias) {
             return visitor.visitAlias(this);
         } else {
@@ -9964,37 +10030,35 @@ export class AliasContext extends BslParserRuleContext {
 }
 
 export class DatePartContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public parameter(): ParameterContext {
-        return this.getTypedRuleContext(ParameterContext, 0) as ParameterContext;
+    public parameter(): ParameterContext | null {
+        return this.getRuleContext(0, ParameterContext);
     }
 
-    public DECIMAL(): TerminalNode {
+    public DECIMAL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DECIMAL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_datePart;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterDatePart) {
             listener.enterDatePart(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitDatePart) {
             listener.exitDatePart(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitDatePart) {
             return visitor.visitDatePart(this);
         } else {
@@ -10004,37 +10068,39 @@ export class DatePartContext extends BslParserRuleContext {
 }
 
 export class MultiStringContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public STR_list(): TerminalNode[] {
-        return this.getTokens(SDBLParser.STR);
+    public STR(): antlr.TerminalNode[];
+
+    public STR(i: number): antlr.TerminalNode | null;
+
+    public STR(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(SDBLParser.STR);
+        } else {
+            return this.getToken(SDBLParser.STR, i);
+        }
     }
 
-    public STR(i: number): TerminalNode {
-        return this.getToken(SDBLParser.STR, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_multiString;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterMultiString) {
             listener.enterMultiString(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitMultiString) {
             listener.exitMultiString(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitMultiString) {
             return visitor.visitMultiString(this);
         } else {
@@ -10044,37 +10110,35 @@ export class MultiStringContext extends BslParserRuleContext {
 }
 
 export class SignContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public MINUS(): TerminalNode {
+    public MINUS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MINUS, 0);
     }
 
-    public PLUS(): TerminalNode {
+    public PLUS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.PLUS, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_sign;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterSign) {
             listener.enterSign(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitSign) {
             listener.exitSign(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitSign) {
             return visitor.visitSign(this);
         } else {
@@ -10084,477 +10148,475 @@ export class SignContext extends BslParserRuleContext {
 }
 
 export class IdentifierContext extends BslParserRuleContext {
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
+    public IDENTIFIER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.IDENTIFIER, 0);
     }
 
-    public ACTUAL_ACTION_PERIOD_VT(): TerminalNode {
+    public ACTUAL_ACTION_PERIOD_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ACTUAL_ACTION_PERIOD_VT, 0);
     }
 
-    public BALANCE_VT(): TerminalNode {
+    public BALANCE_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BALANCE_VT, 0);
     }
 
-    public BALANCE_AND_TURNOVERS_VT(): TerminalNode {
+    public BALANCE_AND_TURNOVERS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BALANCE_AND_TURNOVERS_VT, 0);
     }
 
-    public BOUNDARIES_VT(): TerminalNode {
+    public BOUNDARIES_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BOUNDARIES_VT, 0);
     }
 
-    public DR_CR_TURNOVERS_VT(): TerminalNode {
+    public DR_CR_TURNOVERS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DR_CR_TURNOVERS_VT, 0);
     }
 
-    public EXT_DIMENSIONS_VT(): TerminalNode {
+    public EXT_DIMENSIONS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXT_DIMENSIONS_VT, 0);
     }
 
-    public RECORDS_WITH_EXT_DIMENSIONS_VT(): TerminalNode {
+    public RECORDS_WITH_EXT_DIMENSIONS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RECORDS_WITH_EXT_DIMENSIONS_VT, 0);
     }
 
-    public SCHEDULE_DATA_VT(): TerminalNode {
+    public SCHEDULE_DATA_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SCHEDULE_DATA_VT, 0);
     }
 
-    public SLICEFIRST_VT(): TerminalNode {
+    public SLICEFIRST_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SLICEFIRST_VT, 0);
     }
 
-    public SLICELAST_VT(): TerminalNode {
+    public SLICELAST_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SLICELAST_VT, 0);
     }
 
-    public TASK_BY_PERFORMER_VT(): TerminalNode {
+    public TASK_BY_PERFORMER_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TASK_BY_PERFORMER_VT, 0);
     }
 
-    public TURNOVERS_VT(): TerminalNode {
+    public TURNOVERS_VT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TURNOVERS_VT, 0);
     }
 
-    public ROUTEPOINT_FIELD(): TerminalNode {
+    public ROUTEPOINT_FIELD(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ROUTEPOINT_FIELD, 0);
     }
 
-    public BUSINESS_PROCESS_TYPE(): TerminalNode {
+    public BUSINESS_PROCESS_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BUSINESS_PROCESS_TYPE, 0);
     }
 
-    public CATALOG_TYPE(): TerminalNode {
+    public CATALOG_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CATALOG_TYPE, 0);
     }
 
-    public DOCUMENT_TYPE(): TerminalNode {
+    public DOCUMENT_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DOCUMENT_TYPE, 0);
     }
 
-    public INFORMATION_REGISTER_TYPE(): TerminalNode {
+    public INFORMATION_REGISTER_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INFORMATION_REGISTER_TYPE, 0);
     }
 
-    public CONSTANT_TYPE(): TerminalNode {
+    public CONSTANT_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CONSTANT_TYPE, 0);
     }
 
-    public FILTER_CRITERION_TYPE(): TerminalNode {
+    public FILTER_CRITERION_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FILTER_CRITERION_TYPE, 0);
     }
 
-    public EXCHANGE_PLAN_TYPE(): TerminalNode {
+    public EXCHANGE_PLAN_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXCHANGE_PLAN_TYPE, 0);
     }
 
-    public SEQUENCE_TYPE(): TerminalNode {
+    public SEQUENCE_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SEQUENCE_TYPE, 0);
     }
 
-    public DOCUMENT_JOURNAL_TYPE(): TerminalNode {
+    public DOCUMENT_JOURNAL_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DOCUMENT_JOURNAL_TYPE, 0);
     }
 
-    public ENUM_TYPE(): TerminalNode {
+    public ENUM_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ENUM_TYPE, 0);
     }
 
-    public CHART_OF_CHARACTERISTIC_TYPES_TYPE(): TerminalNode {
+    public CHART_OF_CHARACTERISTIC_TYPES_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE, 0);
     }
 
-    public CHART_OF_ACCOUNTS_TYPE(): TerminalNode {
+    public CHART_OF_ACCOUNTS_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_ACCOUNTS_TYPE, 0);
     }
 
-    public CHART_OF_CALCULATION_TYPES_TYPE(): TerminalNode {
+    public CHART_OF_CALCULATION_TYPES_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE, 0);
     }
 
-    public ACCUMULATION_REGISTER_TYPE(): TerminalNode {
+    public ACCUMULATION_REGISTER_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ACCUMULATION_REGISTER_TYPE, 0);
     }
 
-    public ACCOUNTING_REGISTER_TYPE(): TerminalNode {
+    public ACCOUNTING_REGISTER_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ACCOUNTING_REGISTER_TYPE, 0);
     }
 
-    public CALCULATION_REGISTER_TYPE(): TerminalNode {
+    public CALCULATION_REGISTER_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CALCULATION_REGISTER_TYPE, 0);
     }
 
-    public TASK_TYPE(): TerminalNode {
+    public TASK_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TASK_TYPE, 0);
     }
 
-    public EXTERNAL_DATA_SOURCE_TYPE(): TerminalNode {
+    public EXTERNAL_DATA_SOURCE_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXTERNAL_DATA_SOURCE_TYPE, 0);
     }
 
-    public DROP(): TerminalNode {
+    public DROP(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DROP, 0);
     }
 
-    public END(): TerminalNode {
+    public END(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.END, 0);
     }
 
-    public ISNULL(): TerminalNode {
+    public ISNULL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ISNULL, 0);
     }
 
-    public JOIN(): TerminalNode {
+    public JOIN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.JOIN, 0);
     }
 
-    public SELECT(): TerminalNode {
+    public SELECT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SELECT, 0);
     }
 
-    public TOTALS(): TerminalNode {
+    public TOTALS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TOTALS, 0);
     }
 
-    public UNION(): TerminalNode {
+    public UNION(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.UNION, 0);
     }
 
-    public UPDATE(): TerminalNode {
+    public UPDATE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.UPDATE, 0);
     }
 
-    public AVG(): TerminalNode {
+    public AVG(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.AVG, 0);
     }
 
-    public BEGINOFPERIOD(): TerminalNode {
+    public BEGINOFPERIOD(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BEGINOFPERIOD, 0);
     }
 
-    public BOOLEAN(): TerminalNode {
+    public BOOLEAN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BOOLEAN, 0);
     }
 
-    public COUNT(): TerminalNode {
+    public COUNT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.COUNT, 0);
     }
 
-    public DATE(): TerminalNode {
+    public DATE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATE, 0);
     }
 
-    public DATEADD(): TerminalNode {
+    public DATEADD(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATEADD, 0);
     }
 
-    public DATEDIFF(): TerminalNode {
+    public DATEDIFF(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATEDIFF, 0);
     }
 
-    public DATETIME(): TerminalNode {
+    public DATETIME(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DATETIME, 0);
     }
 
-    public DAY(): TerminalNode {
+    public DAY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DAY, 0);
     }
 
-    public DAYOFYEAR(): TerminalNode {
+    public DAYOFYEAR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DAYOFYEAR, 0);
     }
 
-    public EMPTYTABLE(): TerminalNode {
+    public EMPTYTABLE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EMPTYTABLE, 0);
     }
 
-    public EMPTYREF(): TerminalNode {
+    public EMPTYREF(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EMPTYREF, 0);
     }
 
-    public ENDOFPERIOD(): TerminalNode {
+    public ENDOFPERIOD(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ENDOFPERIOD, 0);
     }
 
-    public HALFYEAR(): TerminalNode {
+    public HALFYEAR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HALFYEAR, 0);
     }
 
-    public HOUR(): TerminalNode {
+    public HOUR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.HOUR, 0);
     }
 
-    public MAX(): TerminalNode {
+    public MAX(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MAX, 0);
     }
 
-    public MIN(): TerminalNode {
+    public MIN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MIN, 0);
     }
 
-    public MINUTE(): TerminalNode {
+    public MINUTE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MINUTE, 0);
     }
 
-    public MONTH(): TerminalNode {
+    public MONTH(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.MONTH, 0);
     }
 
-    public NUMBER(): TerminalNode {
+    public NUMBER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.NUMBER, 0);
     }
 
-    public QUARTER(): TerminalNode {
+    public QUARTER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.QUARTER, 0);
     }
 
-    public ONLY(): TerminalNode {
+    public ONLY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ONLY, 0);
     }
 
-    public PERIODS(): TerminalNode {
+    public PERIODS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.PERIODS, 0);
     }
 
-    public REFS(): TerminalNode {
+    public REFS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.REFS, 0);
     }
 
-    public PRESENTATION(): TerminalNode {
+    public PRESENTATION(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.PRESENTATION, 0);
     }
 
-    public RECORDAUTONUMBER(): TerminalNode {
+    public RECORDAUTONUMBER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RECORDAUTONUMBER, 0);
     }
 
-    public REFPRESENTATION(): TerminalNode {
+    public REFPRESENTATION(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.REFPRESENTATION, 0);
     }
 
-    public SECOND(): TerminalNode {
+    public SECOND(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SECOND, 0);
     }
 
-    public STRING(): TerminalNode {
+    public STRING(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRING, 0);
     }
 
-    public SUBSTRING(): TerminalNode {
+    public SUBSTRING(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SUBSTRING, 0);
     }
 
-    public SUM(): TerminalNode {
+    public SUM(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SUM, 0);
     }
 
-    public TENDAYS(): TerminalNode {
+    public TENDAYS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TENDAYS, 0);
     }
 
-    public TYPE(): TerminalNode {
+    public TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TYPE, 0);
     }
 
-    public VALUE(): TerminalNode {
+    public VALUE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.VALUE, 0);
     }
 
-    public VALUETYPE(): TerminalNode {
+    public VALUETYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.VALUETYPE, 0);
     }
 
-    public WEEK(): TerminalNode {
+    public WEEK(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.WEEK, 0);
     }
 
-    public WEEKDAY(): TerminalNode {
+    public WEEKDAY(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.WEEKDAY, 0);
     }
 
-    public YEAR(): TerminalNode {
+    public YEAR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.YEAR, 0);
     }
 
-    public ORDER(): TerminalNode {
+    public ORDER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ORDER, 0);
     }
 
-    public GROUP(): TerminalNode {
+    public GROUP(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.GROUP, 0);
     }
 
-    public INDEX(): TerminalNode {
+    public INDEX(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INDEX, 0);
     }
 
-    public SET(): TerminalNode {
+    public SET(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SET, 0);
     }
 
-    public RIGHT(): TerminalNode {
+    public RIGHT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.RIGHT, 0);
     }
 
-    public LEFT(): TerminalNode {
+    public LEFT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LEFT, 0);
     }
 
-    public INNER(): TerminalNode {
+    public INNER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INNER, 0);
     }
 
-    public FULL(): TerminalNode {
+    public FULL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FULL, 0);
     }
 
-    public OUTER(): TerminalNode {
+    public OUTER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.OUTER, 0);
     }
 
-    public FOR(): TerminalNode {
+    public FOR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FOR, 0);
     }
 
-    public ALL(): TerminalNode {
+    public ALL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ALL, 0);
     }
 
-    public ACOS(): TerminalNode {
+    public ACOS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ACOS, 0);
     }
 
-    public ASIN(): TerminalNode {
+    public ASIN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ASIN, 0);
     }
 
-    public ATAN(): TerminalNode {
+    public ATAN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ATAN, 0);
     }
 
-    public COS(): TerminalNode {
+    public COS(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.COS, 0);
     }
 
-    public SIN(): TerminalNode {
+    public SIN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SIN, 0);
     }
 
-    public TAN(): TerminalNode {
+    public TAN(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TAN, 0);
     }
 
-    public LOG(): TerminalNode {
+    public LOG(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LOG, 0);
     }
 
-    public LOG10(): TerminalNode {
+    public LOG10(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LOG10, 0);
     }
 
-    public EXP(): TerminalNode {
+    public EXP(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXP, 0);
     }
 
-    public POW(): TerminalNode {
+    public POW(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.POW, 0);
     }
 
-    public SQRT(): TerminalNode {
+    public SQRT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SQRT, 0);
     }
 
-    public INT(): TerminalNode {
+    public INT(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INT, 0);
     }
 
-    public LOWER(): TerminalNode {
+    public LOWER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.LOWER, 0);
     }
 
-    public STRINGLENGTH(): TerminalNode {
+    public STRINGLENGTH(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRINGLENGTH, 0);
     }
 
-    public TRIMALL(): TerminalNode {
+    public TRIMALL(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TRIMALL, 0);
     }
 
-    public TRIML(): TerminalNode {
+    public TRIML(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TRIML, 0);
     }
 
-    public TRIMR(): TerminalNode {
+    public TRIMR(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TRIMR, 0);
     }
 
-    public UPPER(): TerminalNode {
+    public UPPER(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.UPPER, 0);
     }
 
-    public ROUND(): TerminalNode {
+    public ROUND(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ROUND, 0);
     }
 
-    public STOREDDATASIZE(): TerminalNode {
+    public STOREDDATASIZE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STOREDDATASIZE, 0);
     }
 
-    public UUID(): TerminalNode {
+    public UUID(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.UUID, 0);
     }
 
-    public STRFIND(): TerminalNode {
+    public STRFIND(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRFIND, 0);
     }
 
-    public STRREPLACE(): TerminalNode {
+    public STRREPLACE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.STRREPLACE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_identifier;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterIdentifier) {
             listener.enterIdentifier(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitIdentifier) {
             listener.exitIdentifier(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitIdentifier) {
             return visitor.visitIdentifier(this);
         } else {
@@ -10564,39 +10626,37 @@ export class IdentifierContext extends BslParserRuleContext {
 }
 
 export class ParameterContext extends BslParserRuleContext {
-    public _name!: Token;
+    public _name?: Token | null;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public AMPERSAND(): TerminalNode {
-        return this.getToken(SDBLParser.AMPERSAND, 0);
+    public AMPERSAND(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.AMPERSAND, 0)!;
     }
 
-    public PARAMETER_IDENTIFIER(): TerminalNode {
-        return this.getToken(SDBLParser.PARAMETER_IDENTIFIER, 0);
+    public PARAMETER_IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.PARAMETER_IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_parameter;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterParameter) {
             listener.enterParameter(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitParameter) {
             listener.exitParameter(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitParameter) {
             return visitor.visitParameter(this);
         } else {
@@ -10606,113 +10666,111 @@ export class ParameterContext extends BslParserRuleContext {
 }
 
 export class MdoContext extends BslParserRuleContext {
-    public _type_!: Token;
+    public _type_?: Token | null;
 
-    public _tableName!: IdentifierContext;
+    public _tableName?: IdentifierContext;
 
-    constructor(parser?: SDBLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public DOT(): TerminalNode {
-        return this.getToken(SDBLParser.DOT, 0);
+    public DOT(): antlr.TerminalNode {
+        return this.getToken(SDBLParser.DOT, 0)!;
     }
 
     public identifier(): IdentifierContext {
-        return this.getTypedRuleContext(IdentifierContext, 0) as IdentifierContext;
+        return this.getRuleContext(0, IdentifierContext)!;
     }
 
-    public BUSINESS_PROCESS_TYPE(): TerminalNode {
+    public BUSINESS_PROCESS_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.BUSINESS_PROCESS_TYPE, 0);
     }
 
-    public CATALOG_TYPE(): TerminalNode {
+    public CATALOG_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CATALOG_TYPE, 0);
     }
 
-    public DOCUMENT_TYPE(): TerminalNode {
+    public DOCUMENT_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DOCUMENT_TYPE, 0);
     }
 
-    public INFORMATION_REGISTER_TYPE(): TerminalNode {
+    public INFORMATION_REGISTER_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.INFORMATION_REGISTER_TYPE, 0);
     }
 
-    public CONSTANT_TYPE(): TerminalNode {
+    public CONSTANT_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CONSTANT_TYPE, 0);
     }
 
-    public FILTER_CRITERION_TYPE(): TerminalNode {
+    public FILTER_CRITERION_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.FILTER_CRITERION_TYPE, 0);
     }
 
-    public EXCHANGE_PLAN_TYPE(): TerminalNode {
+    public EXCHANGE_PLAN_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXCHANGE_PLAN_TYPE, 0);
     }
 
-    public SEQUENCE_TYPE(): TerminalNode {
+    public SEQUENCE_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.SEQUENCE_TYPE, 0);
     }
 
-    public DOCUMENT_JOURNAL_TYPE(): TerminalNode {
+    public DOCUMENT_JOURNAL_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.DOCUMENT_JOURNAL_TYPE, 0);
     }
 
-    public ENUM_TYPE(): TerminalNode {
+    public ENUM_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ENUM_TYPE, 0);
     }
 
-    public CHART_OF_CHARACTERISTIC_TYPES_TYPE(): TerminalNode {
+    public CHART_OF_CHARACTERISTIC_TYPES_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_CHARACTERISTIC_TYPES_TYPE, 0);
     }
 
-    public CHART_OF_ACCOUNTS_TYPE(): TerminalNode {
+    public CHART_OF_ACCOUNTS_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_ACCOUNTS_TYPE, 0);
     }
 
-    public CHART_OF_CALCULATION_TYPES_TYPE(): TerminalNode {
+    public CHART_OF_CALCULATION_TYPES_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CHART_OF_CALCULATION_TYPES_TYPE, 0);
     }
 
-    public ACCUMULATION_REGISTER_TYPE(): TerminalNode {
+    public ACCUMULATION_REGISTER_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ACCUMULATION_REGISTER_TYPE, 0);
     }
 
-    public ACCOUNTING_REGISTER_TYPE(): TerminalNode {
+    public ACCOUNTING_REGISTER_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.ACCOUNTING_REGISTER_TYPE, 0);
     }
 
-    public CALCULATION_REGISTER_TYPE(): TerminalNode {
+    public CALCULATION_REGISTER_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.CALCULATION_REGISTER_TYPE, 0);
     }
 
-    public TASK_TYPE(): TerminalNode {
+    public TASK_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.TASK_TYPE, 0);
     }
 
-    public EXTERNAL_DATA_SOURCE_TYPE(): TerminalNode {
+    public EXTERNAL_DATA_SOURCE_TYPE(): antlr.TerminalNode | null {
         return this.getToken(SDBLParser.EXTERNAL_DATA_SOURCE_TYPE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return SDBLParser.RULE_mdo;
     }
 
-    public enterRule(listener: SDBLParserListener): void {
+    public override enterRule(listener: SDBLParserListener): void {
         if (listener.enterMdo) {
             listener.enterMdo(this);
         }
     }
 
-    public exitRule(listener: SDBLParserListener): void {
+    public override exitRule(listener: SDBLParserListener): void {
         if (listener.exitMdo) {
             listener.exitMdo(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: SDBLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: SDBLParserVisitor<Result>): Result | null {
         if (visitor.visitMdo) {
             return visitor.visitMdo(this);
         } else {

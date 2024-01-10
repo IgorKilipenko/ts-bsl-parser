@@ -1,20 +1,9 @@
 // Generated from ./src/antlr/BSLLexer.g4 by ANTLR 4.13.1
-// noinspection ES6UnusedImports,JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 
-import {
-    ATN,
-    ATNDeserializer,
-    CharStream,
-    DecisionState,
-    DFA,
-    Lexer,
-    LexerATNSimulator,
-    RuleContext,
-    PredictionContextCache,
-    Token,
-} from "antlr4";
+import * as antlr from "antlr4ng";
+import { Token } from "antlr4ng";
 
-export default class BSLLexer extends Lexer {
+export class BSLLexer extends antlr.Lexer {
     public static readonly LINE_COMMENT = 1;
 
     public static readonly WHITE_SPACE = 2;
@@ -267,8 +256,6 @@ export default class BSLLexer extends Lexer {
 
     public static readonly AWAIT_KEYWORD = 126;
 
-    public static readonly EOF = Token.EOF;
-
     public static readonly PREPROCESSOR_MODE = 1;
 
     public static readonly ANNOTATION_MODE = 2;
@@ -285,9 +272,9 @@ export default class BSLLexer extends Lexer {
 
     public static readonly ASYNC_MODE = 8;
 
-    public static readonly channelNames: string[] = ["DEFAULT_TOKEN_CHANNEL", "HIDDEN", "PREPROC_DELETE_CHANNEL"];
+    public static readonly channelNames = ["DEFAULT_TOKEN_CHANNEL", "HIDDEN", "PREPROC_DELETE_CHANNEL"];
 
-    public static readonly literalNames: (string | null)[] = [
+    public static readonly literalNames = [
         null,
         null,
         null,
@@ -369,7 +356,7 @@ export default class BSLLexer extends Lexer {
         "'!'",
     ];
 
-    public static readonly symbolicNames: (string | null)[] = [
+    public static readonly symbolicNames = [
         null,
         "LINE_COMMENT",
         "WHITE_SPACE",
@@ -499,7 +486,7 @@ export default class BSLLexer extends Lexer {
         "AWAIT_KEYWORD",
     ];
 
-    public static readonly modeNames: string[] = [
+    public static readonly modeNames = [
         "DEFAULT_MODE",
         "PREPROCESSOR_MODE",
         "ANNOTATION_MODE",
@@ -511,7 +498,7 @@ export default class BSLLexer extends Lexer {
         "ASYNC_MODE",
     ];
 
-    public static readonly ruleNames: string[] = [
+    public static readonly ruleNames = [
         "DIGIT",
         "LINE_COMMENT",
         "WHITE_SPACE",
@@ -790,13 +777,13 @@ export default class BSLLexer extends Lexer {
         "Async_UNKNOWN",
     ];
 
-    constructor(input: CharStream) {
+    public constructor(input: antlr.CharStream) {
         super(input);
-        this._interp = new LexerATNSimulator(
+        this.interpreter = new antlr.LexerATNSimulator(
             this,
             BSLLexer._ATN,
-            BSLLexer.DecisionsToDFA,
-            new PredictionContextCache()
+            BSLLexer.decisionsToDFA,
+            new antlr.PredictionContextCache()
         );
     }
 
@@ -1953,15 +1940,23 @@ export default class BSLLexer extends Lexer {
         67, 0, 7, 68, 0, 7, 69, 0, 7, 70, 0, 7, 71, 0, 7, 72, 0, 7, 73, 0, 7, 74, 0, 7, 77, 0,
     ];
 
-    private static __ATN: ATN;
+    private static __ATN: antlr.ATN;
 
-    public static get _ATN(): ATN {
+    public static get _ATN(): antlr.ATN {
         if (!BSLLexer.__ATN) {
-            BSLLexer.__ATN = new ATNDeserializer().deserialize(BSLLexer._serializedATN);
+            BSLLexer.__ATN = new antlr.ATNDeserializer().deserialize(BSLLexer._serializedATN);
         }
 
         return BSLLexer.__ATN;
     }
 
-    static DecisionsToDFA = BSLLexer._ATN.decisionToState.map((ds: DecisionState, index: number) => new DFA(ds, index));
+    private static readonly vocabulary = new antlr.Vocabulary(BSLLexer.literalNames, BSLLexer.symbolicNames, []);
+
+    public override get vocabulary(): antlr.Vocabulary {
+        return BSLLexer.vocabulary;
+    }
+
+    private static readonly decisionsToDFA = BSLLexer._ATN.decisionToState.map(
+        (ds: antlr.DecisionState, index: number) => new antlr.DFA(ds, index)
+    );
 }

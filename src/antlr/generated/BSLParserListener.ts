@@ -1,119 +1,119 @@
 // Generated from ./src/antlr/BSLParser.g4 by ANTLR 4.13.1
 
-import { ParseTreeListener } from "antlr4";
+import type { ErrorNode, ParseTreeListener, ParserRuleContext, TerminalNode } from "antlr4ng";
 
-import { BslParserRuleContext } from "../../core/context";
+import { BslParserRuleContext } from "../../core/context.js";
 
-import { FileContext } from "./BSLParser";
-import { Preproc_nativeContext } from "./BSLParser";
-import { UsedLibContext } from "./BSLParser";
-import { UseContext } from "./BSLParser";
-import { ModuleAnnotationsContext } from "./BSLParser";
-import { ShebangContext } from "./BSLParser";
-import { RegionStartContext } from "./BSLParser";
-import { RegionEndContext } from "./BSLParser";
-import { RegionNameContext } from "./BSLParser";
-import { Preproc_ifContext } from "./BSLParser";
-import { Preproc_elsifContext } from "./BSLParser";
-import { Preproc_elseContext } from "./BSLParser";
-import { Preproc_endifContext } from "./BSLParser";
-import { Preproc_expressionContext } from "./BSLParser";
-import { Preproc_logicalOperandContext } from "./BSLParser";
-import { Preproc_logicalExpressionContext } from "./BSLParser";
-import { Preproc_symbolContext } from "./BSLParser";
-import { Preproc_unknownSymbolContext } from "./BSLParser";
-import { Preproc_boolOperationContext } from "./BSLParser";
-import { PreprocessorContext } from "./BSLParser";
-import { CompilerDirectiveSymbolContext } from "./BSLParser";
-import { CompilerDirectiveContext } from "./BSLParser";
-import { AnnotationNameContext } from "./BSLParser";
-import { AnnotationParamNameContext } from "./BSLParser";
-import { AnnotationContext } from "./BSLParser";
-import { AnnotationParamsContext } from "./BSLParser";
-import { AnnotationParamContext } from "./BSLParser";
-import { Var_nameContext } from "./BSLParser";
-import { ModuleVarsContext } from "./BSLParser";
-import { ModuleVarContext } from "./BSLParser";
-import { ModuleVarsListContext } from "./BSLParser";
-import { ModuleVarDeclarationContext } from "./BSLParser";
-import { SubVarsContext } from "./BSLParser";
-import { SubVarContext } from "./BSLParser";
-import { SubVarsListContext } from "./BSLParser";
-import { SubVarDeclarationContext } from "./BSLParser";
-import { SubNameContext } from "./BSLParser";
-import { SubsContext } from "./BSLParser";
-import { SubContext } from "./BSLParser";
-import { ProcedureContext } from "./BSLParser";
-import { FunctionContext } from "./BSLParser";
-import { ProcDeclarationContext } from "./BSLParser";
-import { FuncDeclarationContext } from "./BSLParser";
-import { SubCodeBlockContext } from "./BSLParser";
-import { ContinueStatementContext } from "./BSLParser";
-import { BreakStatementContext } from "./BSLParser";
-import { RaiseStatementContext } from "./BSLParser";
-import { IfStatementContext } from "./BSLParser";
-import { IfBranchContext } from "./BSLParser";
-import { ElsifBranchContext } from "./BSLParser";
-import { ElseBranchContext } from "./BSLParser";
-import { WhileStatementContext } from "./BSLParser";
-import { ForStatementContext } from "./BSLParser";
-import { ForEachStatementContext } from "./BSLParser";
-import { TryStatementContext } from "./BSLParser";
-import { ReturnStatementContext } from "./BSLParser";
-import { ExecuteStatementContext } from "./BSLParser";
-import { CallStatementContext } from "./BSLParser";
-import { WaitStatementContext } from "./BSLParser";
-import { LabelNameContext } from "./BSLParser";
-import { LabelContext } from "./BSLParser";
-import { GotoStatementContext } from "./BSLParser";
-import { TryCodeBlockContext } from "./BSLParser";
-import { ExceptCodeBlockContext } from "./BSLParser";
-import { EventContext } from "./BSLParser";
-import { HandlerContext } from "./BSLParser";
-import { AddHandlerStatementContext } from "./BSLParser";
-import { RemoveHandlerStatementContext } from "./BSLParser";
-import { TernaryOperatorContext } from "./BSLParser";
-import { WaitExpressionContext } from "./BSLParser";
-import { FileCodeBlockBeforeSubContext } from "./BSLParser";
-import { FileCodeBlockContext } from "./BSLParser";
-import { CodeBlockContext } from "./BSLParser";
-import { NumericContext } from "./BSLParser";
-import { ParamListContext } from "./BSLParser";
-import { ParamContext } from "./BSLParser";
-import { DefaultValueContext } from "./BSLParser";
-import { ConstValueContext } from "./BSLParser";
-import { MultilineStringContext } from "./BSLParser";
-import { StringContext } from "./BSLParser";
-import { StatementContext } from "./BSLParser";
-import { AssignmentContext } from "./BSLParser";
-import { CallParamListContext } from "./BSLParser";
-import { CallParamContext } from "./BSLParser";
-import { ExpressionContext } from "./BSLParser";
-import { OperationContext } from "./BSLParser";
-import { CompareOperationContext } from "./BSLParser";
-import { BoolOperationContext } from "./BSLParser";
-import { UnaryModifierContext } from "./BSLParser";
-import { MemberContext } from "./BSLParser";
-import { NewExpressionContext } from "./BSLParser";
-import { TypeNameContext } from "./BSLParser";
-import { MethodCallContext } from "./BSLParser";
-import { GlobalMethodCallContext } from "./BSLParser";
-import { MethodNameContext } from "./BSLParser";
-import { ComplexIdentifierContext } from "./BSLParser";
-import { ModifierContext } from "./BSLParser";
-import { AcceptorContext } from "./BSLParser";
-import { LValueContext } from "./BSLParser";
-import { AccessCallContext } from "./BSLParser";
-import { AccessIndexContext } from "./BSLParser";
-import { AccessPropertyContext } from "./BSLParser";
-import { DoCallContext } from "./BSLParser";
-import { CompoundStatementContext } from "./BSLParser";
+import type { FileContext } from "./BSLParser.js";
+import type { Preproc_nativeContext } from "./BSLParser.js";
+import type { UsedLibContext } from "./BSLParser.js";
+import type { UseContext } from "./BSLParser.js";
+import type { ModuleAnnotationsContext } from "./BSLParser.js";
+import type { ShebangContext } from "./BSLParser.js";
+import type { RegionStartContext } from "./BSLParser.js";
+import type { RegionEndContext } from "./BSLParser.js";
+import type { RegionNameContext } from "./BSLParser.js";
+import type { Preproc_ifContext } from "./BSLParser.js";
+import type { Preproc_elsifContext } from "./BSLParser.js";
+import type { Preproc_elseContext } from "./BSLParser.js";
+import type { Preproc_endifContext } from "./BSLParser.js";
+import type { Preproc_expressionContext } from "./BSLParser.js";
+import type { Preproc_logicalOperandContext } from "./BSLParser.js";
+import type { Preproc_logicalExpressionContext } from "./BSLParser.js";
+import type { Preproc_symbolContext } from "./BSLParser.js";
+import type { Preproc_unknownSymbolContext } from "./BSLParser.js";
+import type { Preproc_boolOperationContext } from "./BSLParser.js";
+import type { PreprocessorContext } from "./BSLParser.js";
+import type { CompilerDirectiveSymbolContext } from "./BSLParser.js";
+import type { CompilerDirectiveContext } from "./BSLParser.js";
+import type { AnnotationNameContext } from "./BSLParser.js";
+import type { AnnotationParamNameContext } from "./BSLParser.js";
+import type { AnnotationContext } from "./BSLParser.js";
+import type { AnnotationParamsContext } from "./BSLParser.js";
+import type { AnnotationParamContext } from "./BSLParser.js";
+import type { Var_nameContext } from "./BSLParser.js";
+import type { ModuleVarsContext } from "./BSLParser.js";
+import type { ModuleVarContext } from "./BSLParser.js";
+import type { ModuleVarsListContext } from "./BSLParser.js";
+import type { ModuleVarDeclarationContext } from "./BSLParser.js";
+import type { SubVarsContext } from "./BSLParser.js";
+import type { SubVarContext } from "./BSLParser.js";
+import type { SubVarsListContext } from "./BSLParser.js";
+import type { SubVarDeclarationContext } from "./BSLParser.js";
+import type { SubNameContext } from "./BSLParser.js";
+import type { SubsContext } from "./BSLParser.js";
+import type { SubContext } from "./BSLParser.js";
+import type { ProcedureContext } from "./BSLParser.js";
+import type { FunctionContext } from "./BSLParser.js";
+import type { ProcDeclarationContext } from "./BSLParser.js";
+import type { FuncDeclarationContext } from "./BSLParser.js";
+import type { SubCodeBlockContext } from "./BSLParser.js";
+import type { ContinueStatementContext } from "./BSLParser.js";
+import type { BreakStatementContext } from "./BSLParser.js";
+import type { RaiseStatementContext } from "./BSLParser.js";
+import type { IfStatementContext } from "./BSLParser.js";
+import type { IfBranchContext } from "./BSLParser.js";
+import type { ElsifBranchContext } from "./BSLParser.js";
+import type { ElseBranchContext } from "./BSLParser.js";
+import type { WhileStatementContext } from "./BSLParser.js";
+import type { ForStatementContext } from "./BSLParser.js";
+import type { ForEachStatementContext } from "./BSLParser.js";
+import type { TryStatementContext } from "./BSLParser.js";
+import type { ReturnStatementContext } from "./BSLParser.js";
+import type { ExecuteStatementContext } from "./BSLParser.js";
+import type { CallStatementContext } from "./BSLParser.js";
+import type { WaitStatementContext } from "./BSLParser.js";
+import type { LabelNameContext } from "./BSLParser.js";
+import type { LabelContext } from "./BSLParser.js";
+import type { GotoStatementContext } from "./BSLParser.js";
+import type { TryCodeBlockContext } from "./BSLParser.js";
+import type { ExceptCodeBlockContext } from "./BSLParser.js";
+import type { EventContext } from "./BSLParser.js";
+import type { HandlerContext } from "./BSLParser.js";
+import type { AddHandlerStatementContext } from "./BSLParser.js";
+import type { RemoveHandlerStatementContext } from "./BSLParser.js";
+import type { TernaryOperatorContext } from "./BSLParser.js";
+import type { WaitExpressionContext } from "./BSLParser.js";
+import type { FileCodeBlockBeforeSubContext } from "./BSLParser.js";
+import type { FileCodeBlockContext } from "./BSLParser.js";
+import type { CodeBlockContext } from "./BSLParser.js";
+import type { NumericContext } from "./BSLParser.js";
+import type { ParamListContext } from "./BSLParser.js";
+import type { ParamContext } from "./BSLParser.js";
+import type { DefaultValueContext } from "./BSLParser.js";
+import type { ConstValueContext } from "./BSLParser.js";
+import type { MultilineStringContext } from "./BSLParser.js";
+import type { StringContext } from "./BSLParser.js";
+import type { StatementContext } from "./BSLParser.js";
+import type { AssignmentContext } from "./BSLParser.js";
+import type { CallParamListContext } from "./BSLParser.js";
+import type { CallParamContext } from "./BSLParser.js";
+import type { ExpressionContext } from "./BSLParser.js";
+import type { OperationContext } from "./BSLParser.js";
+import type { CompareOperationContext } from "./BSLParser.js";
+import type { BoolOperationContext } from "./BSLParser.js";
+import type { UnaryModifierContext } from "./BSLParser.js";
+import type { MemberContext } from "./BSLParser.js";
+import type { NewExpressionContext } from "./BSLParser.js";
+import type { TypeNameContext } from "./BSLParser.js";
+import type { MethodCallContext } from "./BSLParser.js";
+import type { GlobalMethodCallContext } from "./BSLParser.js";
+import type { MethodNameContext } from "./BSLParser.js";
+import type { ComplexIdentifierContext } from "./BSLParser.js";
+import type { ModifierContext } from "./BSLParser.js";
+import type { AcceptorContext } from "./BSLParser.js";
+import type { LValueContext } from "./BSLParser.js";
+import type { AccessCallContext } from "./BSLParser.js";
+import type { AccessIndexContext } from "./BSLParser.js";
+import type { AccessPropertyContext } from "./BSLParser.js";
+import type { DoCallContext } from "./BSLParser.js";
+import type { CompoundStatementContext } from "./BSLParser.js";
 
 /**
  * This interface defines a complete listener for a parse tree produced by
  * `BSLParser`.
  */
-export default class BSLParserListener extends ParseTreeListener {
+export class BSLParserListener implements ParseTreeListener {
     /**
      * Enter a parse tree produced by `BSLParser.file`.
      * @param ctx the parse tree
@@ -1361,4 +1361,12 @@ export default class BSLParserListener extends ParseTreeListener {
      * @param ctx the parse tree
      */
     exitCompoundStatement?: (ctx: CompoundStatementContext) => void;
+
+    visitTerminal(node: TerminalNode): void {}
+
+    visitErrorNode(node: ErrorNode): void {}
+
+    enterEveryRule(node: ParserRuleContext): void {}
+
+    exitEveryRule(node: ParserRuleContext): void {}
 }

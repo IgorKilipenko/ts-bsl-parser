@@ -1,73 +1,70 @@
 // Generated from ./src/antlr/SDBLParser.g4 by ANTLR 4.13.1
 
-import { ParseTreeVisitor } from 'antlr4';
+import { AbstractParseTreeVisitor } from "antlr4ng";
 
+import { BslParserRuleContext } from "../../core/context.js";
 
-import { BslParserRuleContext } from "../../core/context";
-
-
-import { QueryPackageContext } from "./SDBLParser";
-import { QueriesContext } from "./SDBLParser";
-import { DropTableQueryContext } from "./SDBLParser";
-import { SelectQueryContext } from "./SDBLParser";
-import { SubqueryContext } from "./SDBLParser";
-import { UnionContext } from "./SDBLParser";
-import { QueryContext } from "./SDBLParser";
-import { LimitationsContext } from "./SDBLParser";
-import { TopContext } from "./SDBLParser";
-import { SelectedFieldsContext } from "./SDBLParser";
-import { SelectedFieldContext } from "./SDBLParser";
-import { AsteriskFieldContext } from "./SDBLParser";
-import { ExpressionFieldContext } from "./SDBLParser";
-import { ColumnFieldContext } from "./SDBLParser";
-import { EmptyTableFieldContext } from "./SDBLParser";
-import { EmptyTableColumnsContext } from "./SDBLParser";
-import { InlineTableFieldContext } from "./SDBLParser";
-import { RecordAutoNumberFunctionContext } from "./SDBLParser";
-import { GroupByItemContext } from "./SDBLParser";
-import { IndexingItemContext } from "./SDBLParser";
-import { OrderByContext } from "./SDBLParser";
-import { OrdersByExpessionContext } from "./SDBLParser";
-import { TotalByContext } from "./SDBLParser";
-import { TotalsGroupContext } from "./SDBLParser";
-import { PeriodicContext } from "./SDBLParser";
-import { ColumnContext } from "./SDBLParser";
-import { ExpressionContext } from "./SDBLParser";
-import { PrimitiveExpressionContext } from "./SDBLParser";
-import { CaseExpressionContext } from "./SDBLParser";
-import { CaseBranchContext } from "./SDBLParser";
-import { BracketExpressionContext } from "./SDBLParser";
-import { UnaryExpressionContext } from "./SDBLParser";
-import { FunctionCallContext } from "./SDBLParser";
-import { BuiltInFunctionsContext } from "./SDBLParser";
-import { AggregateFunctionsContext } from "./SDBLParser";
-import { ValueFunctionContext } from "./SDBLParser";
-import { CastFunctionContext } from "./SDBLParser";
-import { LogicalExpressionContext } from "./SDBLParser";
-import { PredicateContext } from "./SDBLParser";
-import { LikePredicateContext } from "./SDBLParser";
-import { IsNullPredicateContext } from "./SDBLParser";
-import { ComparePredicateContext } from "./SDBLParser";
-import { BetweenPredicateContext } from "./SDBLParser";
-import { InPredicateContext } from "./SDBLParser";
-import { RefsPredicateContext } from "./SDBLParser";
-import { ExpressionListContext } from "./SDBLParser";
-import { DataSourcesContext } from "./SDBLParser";
-import { DataSourceContext } from "./SDBLParser";
-import { TableContext } from "./SDBLParser";
-import { VirtualTableContext } from "./SDBLParser";
-import { VirtualTableParameterContext } from "./SDBLParser";
-import { ParameterTableContext } from "./SDBLParser";
-import { ExternalDataSourceTableContext } from "./SDBLParser";
-import { JoinPartContext } from "./SDBLParser";
-import { AliasContext } from "./SDBLParser";
-import { DatePartContext } from "./SDBLParser";
-import { MultiStringContext } from "./SDBLParser";
-import { SignContext } from "./SDBLParser";
-import { IdentifierContext } from "./SDBLParser";
-import { ParameterContext } from "./SDBLParser";
-import { MdoContext } from "./SDBLParser";
-
+import type { QueryPackageContext } from "./SDBLParser.js";
+import type { QueriesContext } from "./SDBLParser.js";
+import type { DropTableQueryContext } from "./SDBLParser.js";
+import type { SelectQueryContext } from "./SDBLParser.js";
+import type { SubqueryContext } from "./SDBLParser.js";
+import type { UnionContext } from "./SDBLParser.js";
+import type { QueryContext } from "./SDBLParser.js";
+import type { LimitationsContext } from "./SDBLParser.js";
+import type { TopContext } from "./SDBLParser.js";
+import type { SelectedFieldsContext } from "./SDBLParser.js";
+import type { SelectedFieldContext } from "./SDBLParser.js";
+import type { AsteriskFieldContext } from "./SDBLParser.js";
+import type { ExpressionFieldContext } from "./SDBLParser.js";
+import type { ColumnFieldContext } from "./SDBLParser.js";
+import type { EmptyTableFieldContext } from "./SDBLParser.js";
+import type { EmptyTableColumnsContext } from "./SDBLParser.js";
+import type { InlineTableFieldContext } from "./SDBLParser.js";
+import type { RecordAutoNumberFunctionContext } from "./SDBLParser.js";
+import type { GroupByItemContext } from "./SDBLParser.js";
+import type { IndexingItemContext } from "./SDBLParser.js";
+import type { OrderByContext } from "./SDBLParser.js";
+import type { OrdersByExpessionContext } from "./SDBLParser.js";
+import type { TotalByContext } from "./SDBLParser.js";
+import type { TotalsGroupContext } from "./SDBLParser.js";
+import type { PeriodicContext } from "./SDBLParser.js";
+import type { ColumnContext } from "./SDBLParser.js";
+import type { ExpressionContext } from "./SDBLParser.js";
+import type { PrimitiveExpressionContext } from "./SDBLParser.js";
+import type { CaseExpressionContext } from "./SDBLParser.js";
+import type { CaseBranchContext } from "./SDBLParser.js";
+import type { BracketExpressionContext } from "./SDBLParser.js";
+import type { UnaryExpressionContext } from "./SDBLParser.js";
+import type { FunctionCallContext } from "./SDBLParser.js";
+import type { BuiltInFunctionsContext } from "./SDBLParser.js";
+import type { AggregateFunctionsContext } from "./SDBLParser.js";
+import type { ValueFunctionContext } from "./SDBLParser.js";
+import type { CastFunctionContext } from "./SDBLParser.js";
+import type { LogicalExpressionContext } from "./SDBLParser.js";
+import type { PredicateContext } from "./SDBLParser.js";
+import type { LikePredicateContext } from "./SDBLParser.js";
+import type { IsNullPredicateContext } from "./SDBLParser.js";
+import type { ComparePredicateContext } from "./SDBLParser.js";
+import type { BetweenPredicateContext } from "./SDBLParser.js";
+import type { InPredicateContext } from "./SDBLParser.js";
+import type { RefsPredicateContext } from "./SDBLParser.js";
+import type { ExpressionListContext } from "./SDBLParser.js";
+import type { DataSourcesContext } from "./SDBLParser.js";
+import type { DataSourceContext } from "./SDBLParser.js";
+import type { TableContext } from "./SDBLParser.js";
+import type { VirtualTableContext } from "./SDBLParser.js";
+import type { VirtualTableParameterContext } from "./SDBLParser.js";
+import type { ParameterTableContext } from "./SDBLParser.js";
+import type { ExternalDataSourceTableContext } from "./SDBLParser.js";
+import type { JoinPartContext } from "./SDBLParser.js";
+import type { AliasContext } from "./SDBLParser.js";
+import type { DatePartContext } from "./SDBLParser.js";
+import type { MultiStringContext } from "./SDBLParser.js";
+import type { SignContext } from "./SDBLParser.js";
+import type { IdentifierContext } from "./SDBLParser.js";
+import type { ParameterContext } from "./SDBLParser.js";
+import type { MdoContext } from "./SDBLParser.js";
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced
@@ -76,7 +73,7 @@ import { MdoContext } from "./SDBLParser";
  * @param <Result> The return type of the visit operation. Use `void` for
  * operations with no return type.
  */
-export default class SDBLParserVisitor<Result> extends ParseTreeVisitor<Result> {
+export class SDBLParserVisitor<Result> extends AbstractParseTreeVisitor<Result> {
     /**
      * Visit a parse tree produced by `SDBLParser.queryPackage`.
      * @param ctx the parse tree
@@ -504,4 +501,3 @@ export default class SDBLParserVisitor<Result> extends ParseTreeVisitor<Result> 
      */
     visitMdo?: (ctx: MdoContext) => Result;
 }
-

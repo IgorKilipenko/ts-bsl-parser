@@ -1,38 +1,18 @@
 // Generated from ./src/antlr/BSLParser.g4 by ANTLR 4.13.1
-// noinspection ES6UnusedImports,JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 
-import {
-    ATN,
-    ATNDeserializer,
-    DecisionState,
-    DFA,
-    FailedPredicateException,
-    RecognitionException,
-    NoViableAltException,
-    BailErrorStrategy,
-    Parser,
-    ParserATNSimulator,
-    RuleContext,
-    ParserRuleContext,
-    PredictionMode,
-    PredictionContextCache,
-    TerminalNode,
-    RuleNode,
-    Token,
-    TokenStream,
-    Interval,
-    IntervalSet,
-} from "antlr4";
-import BSLParserListener from "./BSLParserListener.js";
-import BSLParserVisitor from "./BSLParserVisitor.js";
+import * as antlr from "antlr4ng";
+import { Token } from "antlr4ng";
+
+import type { BSLParserListener } from "./BSLParserListener.js";
+import type { BSLParserVisitor } from "./BSLParserVisitor.js";
 
 // for running tests with parameters, TODO: discuss strategy for typed parameters in CI
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 type int = number;
 
-import { BslParserRuleContext } from "../../core/context";
+import { BslParserRuleContext } from "../../core/context.js";
 
-export default class BSLParser extends Parser {
+export class BSLParser extends antlr.Parser {
     public static readonly LINE_COMMENT = 1;
 
     public static readonly WHITE_SPACE = 2;
@@ -285,8 +265,6 @@ export default class BSLParser extends Parser {
 
     public static readonly AWAIT_KEYWORD = 126;
 
-    public static readonly EOF = Token.EOF;
-
     public static readonly RULE_file = 0;
 
     public static readonly RULE_preproc_native = 1;
@@ -495,7 +473,7 @@ export default class BSLParser extends Parser {
 
     public static readonly RULE_compoundStatement = 103;
 
-    public static readonly literalNames: (string | null)[] = [
+    public static readonly literalNames = [
         null,
         null,
         null,
@@ -577,7 +555,7 @@ export default class BSLParser extends Parser {
         "'!'",
     ];
 
-    public static readonly symbolicNames: (string | null)[] = [
+    public static readonly symbolicNames = [
         null,
         "LINE_COMMENT",
         "WHITE_SPACE",
@@ -707,7 +685,7 @@ export default class BSLParser extends Parser {
         "AWAIT_KEYWORD",
     ];
 
-    public static readonly ruleNames: string[] = [
+    public static readonly ruleNames = [
         "file",
         "preproc_native",
         "usedLib",
@@ -834,31 +812,30 @@ export default class BSLParser extends Parser {
         return BSLParser._serializedATN;
     }
 
-    protected createFailedPredicateException(predicate?: string, message?: string): FailedPredicateException {
-        return new FailedPredicateException(this, predicate, message);
+    protected createFailedPredicateException(predicate?: string, message?: string): antlr.FailedPredicateException {
+        return new antlr.FailedPredicateException(this, predicate, message);
     }
 
-    constructor(input: TokenStream) {
+    public constructor(input: antlr.TokenStream) {
         super(input);
-        this._interp = new ParserATNSimulator(
+        this.interpreter = new antlr.ParserATNSimulator(
             this,
             BSLParser._ATN,
-            BSLParser.DecisionsToDFA,
-            new PredictionContextCache()
+            BSLParser.decisionsToDFA,
+            new antlr.PredictionContextCache()
         );
     }
 
-    // @RuleVersion(0)
     public file(): FileContext {
-        let localctx: FileContext = new FileContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 0, BSLParser.RULE_file);
+        let localContext = new FileContext(this.context, this.state);
+        this.enterRule(localContext, 0, BSLParser.RULE_file);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 209;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 0, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 0, this.context)) {
                     case 1:
                         {
                             this.state = 208;
@@ -867,8 +844,8 @@ export default class BSLParser extends Parser {
                         break;
                 }
                 this.state = 212;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 1, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 1, this.context)) {
                     case 1:
                         {
                             this.state = 211;
@@ -877,10 +854,10 @@ export default class BSLParser extends Parser {
                         break;
                 }
                 this.state = 217;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 2, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 2, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             {
                                 this.state = 214;
@@ -889,12 +866,12 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 219;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 2, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 2, this.context);
                 }
                 this.state = 221;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 3, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 3, this.context)) {
                     case 1:
                         {
                             this.state = 220;
@@ -903,10 +880,10 @@ export default class BSLParser extends Parser {
                         break;
                 }
                 this.state = 226;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 4, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 4, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             {
                                 this.state = 223;
@@ -915,12 +892,12 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 228;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 4, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 4, this.context);
                 }
                 this.state = 232;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 5, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 5, this.context)) {
                     case 1:
                         {
                             this.state = 229;
@@ -936,25 +913,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.EOF);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_native(): Preproc_nativeContext {
-        let localctx: Preproc_nativeContext = new Preproc_nativeContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 2, BSLParser.RULE_preproc_native);
+        let localContext = new Preproc_nativeContext(this.context, this.state);
+        this.enterRule(localContext, 2, BSLParser.RULE_preproc_native);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 237;
                 this.match(BSLParser.HASH);
@@ -962,56 +938,54 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.PREPROC_NATIVE);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public usedLib(): UsedLibContext {
-        let localctx: UsedLibContext = new UsedLibContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 4, BSLParser.RULE_usedLib);
+        let localContext = new UsedLibContext(this.context, this.state);
+        this.enterRule(localContext, 4, BSLParser.RULE_usedLib);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 240;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 81 || _la === 110)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public use(): UseContext {
-        let localctx: UseContext = new UseContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 6, BSLParser.RULE_use);
+        let localContext = new UseContext(this.context, this.state);
+        this.enterRule(localContext, 6, BSLParser.RULE_use);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 242;
                 this.match(BSLParser.HASH);
@@ -1021,39 +995,38 @@ export default class BSLParser extends Parser {
                 this.usedLib();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public moduleAnnotations(): ModuleAnnotationsContext {
-        let localctx: ModuleAnnotationsContext = new ModuleAnnotationsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 8, BSLParser.RULE_moduleAnnotations);
+        let localContext = new ModuleAnnotationsContext(this.context, this.state);
+        this.enterRule(localContext, 8, BSLParser.RULE_moduleAnnotations);
         try {
-            let _alt: number;
+            let alternative: number;
             this.state = 267;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 10, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 10, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 246;
                             this.preproc_native();
                             this.state = 250;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 6, this._ctx);
-                            while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                if (_alt === 1) {
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 6, this.context);
+                            while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                if (alternative === 1) {
                                     {
                                         {
                                             this.state = 247;
@@ -1062,21 +1035,21 @@ export default class BSLParser extends Parser {
                                     }
                                 }
                                 this.state = 252;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 6, this._ctx);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 6, this.context);
                             }
                         }
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 254;
-                            this._errHandler.sync(this);
-                            _alt = 1;
+                            this.errorHandler.sync(this);
+                            alternative = 1;
                             do {
-                                switch (_alt) {
+                                switch (alternative) {
                                     case 1:
                                         {
                                             {
@@ -1086,15 +1059,15 @@ export default class BSLParser extends Parser {
                                         }
                                         break;
                                     default:
-                                        throw new NoViableAltException(this);
+                                        throw new antlr.NoViableAltException(this);
                                 }
                                 this.state = 256;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 7, this._ctx);
-                            } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 7, this.context);
+                            } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
                             this.state = 259;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 8, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 8, this.context)) {
                                 case 1:
                                     {
                                         this.state = 258;
@@ -1103,10 +1076,10 @@ export default class BSLParser extends Parser {
                                     break;
                             }
                             this.state = 264;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 9, this._ctx);
-                            while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                if (_alt === 1) {
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 9, this.context);
+                            while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                if (alternative === 1) {
                                     {
                                         {
                                             this.state = 261;
@@ -1115,80 +1088,78 @@ export default class BSLParser extends Parser {
                                     }
                                 }
                                 this.state = 266;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 9, this._ctx);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 9, this.context);
                             }
                         }
                     }
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public shebang(): ShebangContext {
-        let localctx: ShebangContext = new ShebangContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 10, BSLParser.RULE_shebang);
+        let localContext = new ShebangContext(this.context, this.state);
+        this.enterRule(localContext, 10, BSLParser.RULE_shebang);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 269;
                 this.match(BSLParser.HASH);
                 this.state = 270;
                 this.match(BSLParser.PREPROC_EXCLAMATION_MARK);
                 this.state = 274;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 110 || _la === 112) {
                     {
                         {
                             this.state = 271;
-                            _la = this._input.LA(1);
+                            _la = this.tokenStream.LA(1);
                             if (!(_la === 110 || _la === 112)) {
-                                this._errHandler.recoverInline(this);
+                                this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                         }
                     }
                     this.state = 276;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public regionStart(): RegionStartContext {
-        let localctx: RegionStartContext = new RegionStartContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 12, BSLParser.RULE_regionStart);
+        let localContext = new RegionStartContext(this.context, this.state);
+        this.enterRule(localContext, 12, BSLParser.RULE_regionStart);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 277;
                 this.match(BSLParser.PREPROC_REGION);
@@ -1196,73 +1167,70 @@ export default class BSLParser extends Parser {
                 this.regionName();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public regionEnd(): RegionEndContext {
-        let localctx: RegionEndContext = new RegionEndContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 14, BSLParser.RULE_regionEnd);
+        let localContext = new RegionEndContext(this.context, this.state);
+        this.enterRule(localContext, 14, BSLParser.RULE_regionEnd);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 280;
                 this.match(BSLParser.PREPROC_END_REGION);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public regionName(): RegionNameContext {
-        let localctx: RegionNameContext = new RegionNameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 16, BSLParser.RULE_regionName);
+        let localContext = new RegionNameContext(this.context, this.state);
+        this.enterRule(localContext, 16, BSLParser.RULE_regionName);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 282;
                 this.match(BSLParser.PREPROC_IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_if(): Preproc_ifContext {
-        let localctx: Preproc_ifContext = new Preproc_ifContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 18, BSLParser.RULE_preproc_if);
+        let localContext = new Preproc_ifContext(this.context, this.state);
+        this.enterRule(localContext, 18, BSLParser.RULE_preproc_if);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 284;
                 this.match(BSLParser.PREPROC_IF_KEYWORD);
@@ -1272,25 +1240,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.PREPROC_THEN_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_elsif(): Preproc_elsifContext {
-        let localctx: Preproc_elsifContext = new Preproc_elsifContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 20, BSLParser.RULE_preproc_elsif);
+        let localContext = new Preproc_elsifContext(this.context, this.state);
+        this.enterRule(localContext, 20, BSLParser.RULE_preproc_elsif);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 288;
                 this.match(BSLParser.PREPROC_ELSIF_KEYWORD);
@@ -1300,83 +1267,80 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.PREPROC_THEN_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_else(): Preproc_elseContext {
-        let localctx: Preproc_elseContext = new Preproc_elseContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 22, BSLParser.RULE_preproc_else);
+        let localContext = new Preproc_elseContext(this.context, this.state);
+        this.enterRule(localContext, 22, BSLParser.RULE_preproc_else);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 292;
                 this.match(BSLParser.PREPROC_ELSE_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_endif(): Preproc_endifContext {
-        let localctx: Preproc_endifContext = new Preproc_endifContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 24, BSLParser.RULE_preproc_endif);
+        let localContext = new Preproc_endifContext(this.context, this.state);
+        this.enterRule(localContext, 24, BSLParser.RULE_preproc_endif);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 294;
                 this.match(BSLParser.PREPROC_ENDIF_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_expression(): Preproc_expressionContext {
-        let localctx: Preproc_expressionContext = new Preproc_expressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 26, BSLParser.RULE_preproc_expression);
+        let localContext = new Preproc_expressionContext(this.context, this.state);
+        this.enterRule(localContext, 26, BSLParser.RULE_preproc_expression);
         let _la: number;
         try {
             this.state = 304;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 13, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 13, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 297;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 86) {
                                 {
                                     this.state = 296;
@@ -1396,7 +1360,7 @@ export default class BSLParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 303;
                         this.preproc_logicalExpression();
@@ -1404,37 +1368,36 @@ export default class BSLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_logicalOperand(): Preproc_logicalOperandContext {
-        let localctx: Preproc_logicalOperandContext = new Preproc_logicalOperandContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 28, BSLParser.RULE_preproc_logicalOperand);
+        let localContext = new Preproc_logicalOperandContext(this.context, this.state);
+        this.enterRule(localContext, 28, BSLParser.RULE_preproc_logicalOperand);
         let _la: number;
         try {
             this.state = 321;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 16, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 16, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 306;
                             this.match(BSLParser.PREPROC_LPAREN);
                             this.state = 308;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 14, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 14, this.context)) {
                                 case 1:
                                     {
                                         this.state = 307;
@@ -1450,12 +1413,12 @@ export default class BSLParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 314;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 86) {
                                 {
                                     this.state = 313;
@@ -1469,7 +1432,7 @@ export default class BSLParser extends Parser {
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         {
                             this.state = 317;
@@ -1483,36 +1446,31 @@ export default class BSLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_logicalExpression(): Preproc_logicalExpressionContext {
-        let localctx: Preproc_logicalExpressionContext = new Preproc_logicalExpressionContext(
-            this,
-            this._ctx,
-            this.state
-        );
-        this.enterRule(localctx, 30, BSLParser.RULE_preproc_logicalExpression);
+        let localContext = new Preproc_logicalExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 30, BSLParser.RULE_preproc_logicalExpression);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 323;
                 this.preproc_logicalOperand();
                 this.state = 329;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 87 || _la === 88) {
                     {
                         {
@@ -1523,326 +1481,320 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 331;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_symbol(): Preproc_symbolContext {
-        let localctx: Preproc_symbolContext = new Preproc_symbolContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 32, BSLParser.RULE_preproc_symbol);
+        let localContext = new Preproc_symbolContext(this.context, this.state);
+        this.enterRule(localContext, 32, BSLParser.RULE_preproc_symbol);
         try {
             this.state = 349;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 103:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case BSLParser.PREPROC_CLIENT_SYMBOL:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 332;
                         this.match(BSLParser.PREPROC_CLIENT_SYMBOL);
                     }
                     break;
-                case 102:
-                    this.enterOuterAlt(localctx, 2);
+                case BSLParser.PREPROC_ATCLIENT_SYMBOL:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 333;
                         this.match(BSLParser.PREPROC_ATCLIENT_SYMBOL);
                     }
                     break;
-                case 105:
-                    this.enterOuterAlt(localctx, 3);
+                case BSLParser.PREPROC_SERVER_SYMBOL:
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 334;
                         this.match(BSLParser.PREPROC_SERVER_SYMBOL);
                     }
                     break;
-                case 104:
-                    this.enterOuterAlt(localctx, 4);
+                case BSLParser.PREPROC_ATSERVER_SYMBOL:
+                    this.enterOuterAlt(localContext, 4);
                     {
                         this.state = 335;
                         this.match(BSLParser.PREPROC_ATSERVER_SYMBOL);
                     }
                     break;
-                case 94:
-                    this.enterOuterAlt(localctx, 5);
+                case BSLParser.PREPROC_MOBILEAPPCLIENT_SYMBOL:
+                    this.enterOuterAlt(localContext, 5);
                     {
                         this.state = 336;
                         this.match(BSLParser.PREPROC_MOBILEAPPCLIENT_SYMBOL);
                     }
                     break;
-                case 95:
-                    this.enterOuterAlt(localctx, 6);
+                case BSLParser.PREPROC_MOBILEAPPSERVER_SYMBOL:
+                    this.enterOuterAlt(localContext, 6);
                     {
                         this.state = 337;
                         this.match(BSLParser.PREPROC_MOBILEAPPSERVER_SYMBOL);
                     }
                     break;
-                case 96:
-                    this.enterOuterAlt(localctx, 7);
+                case BSLParser.PREPROC_MOBILECLIENT_SYMBOL:
+                    this.enterOuterAlt(localContext, 7);
                     {
                         this.state = 338;
                         this.match(BSLParser.PREPROC_MOBILECLIENT_SYMBOL);
                     }
                     break;
-                case 97:
-                    this.enterOuterAlt(localctx, 8);
+                case BSLParser.PREPROC_THICKCLIENTORDINARYAPPLICATION_SYMBOL:
+                    this.enterOuterAlt(localContext, 8);
                     {
                         this.state = 339;
                         this.match(BSLParser.PREPROC_THICKCLIENTORDINARYAPPLICATION_SYMBOL);
                     }
                     break;
-                case 98:
-                    this.enterOuterAlt(localctx, 9);
+                case BSLParser.PREPROC_THICKCLIENTMANAGEDAPPLICATION_SYMBOL:
+                    this.enterOuterAlt(localContext, 9);
                     {
                         this.state = 340;
                         this.match(BSLParser.PREPROC_THICKCLIENTMANAGEDAPPLICATION_SYMBOL);
                     }
                     break;
-                case 99:
-                    this.enterOuterAlt(localctx, 10);
+                case BSLParser.PREPROC_EXTERNALCONNECTION_SYMBOL:
+                    this.enterOuterAlt(localContext, 10);
                     {
                         this.state = 341;
                         this.match(BSLParser.PREPROC_EXTERNALCONNECTION_SYMBOL);
                     }
                     break;
-                case 100:
-                    this.enterOuterAlt(localctx, 11);
+                case BSLParser.PREPROC_THINCLIENT_SYMBOL:
+                    this.enterOuterAlt(localContext, 11);
                     {
                         this.state = 342;
                         this.match(BSLParser.PREPROC_THINCLIENT_SYMBOL);
                     }
                     break;
-                case 101:
-                    this.enterOuterAlt(localctx, 12);
+                case BSLParser.PREPROC_WEBCLIENT_SYMBOL:
+                    this.enterOuterAlt(localContext, 12);
                     {
                         this.state = 343;
                         this.match(BSLParser.PREPROC_WEBCLIENT_SYMBOL);
                     }
                     break;
-                case 106:
-                    this.enterOuterAlt(localctx, 13);
+                case BSLParser.PREPROC_MOBILE_STANDALONE_SERVER:
+                    this.enterOuterAlt(localContext, 13);
                     {
                         this.state = 344;
                         this.match(BSLParser.PREPROC_MOBILE_STANDALONE_SERVER);
                     }
                     break;
-                case 107:
-                    this.enterOuterAlt(localctx, 14);
+                case BSLParser.PREPROC_LINUX:
+                    this.enterOuterAlt(localContext, 14);
                     {
                         this.state = 345;
                         this.match(BSLParser.PREPROC_LINUX);
                     }
                     break;
-                case 108:
-                    this.enterOuterAlt(localctx, 15);
+                case BSLParser.PREPROC_WINDOWS:
+                    this.enterOuterAlt(localContext, 15);
                     {
                         this.state = 346;
                         this.match(BSLParser.PREPROC_WINDOWS);
                     }
                     break;
-                case 109:
-                    this.enterOuterAlt(localctx, 16);
+                case BSLParser.PREPROC_MACOS:
+                    this.enterOuterAlt(localContext, 16);
                     {
                         this.state = 347;
                         this.match(BSLParser.PREPROC_MACOS);
                     }
                     break;
-                case 110:
-                    this.enterOuterAlt(localctx, 17);
+                case BSLParser.PREPROC_IDENTIFIER:
+                    this.enterOuterAlt(localContext, 17);
                     {
                         this.state = 348;
                         this.preproc_unknownSymbol();
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_unknownSymbol(): Preproc_unknownSymbolContext {
-        let localctx: Preproc_unknownSymbolContext = new Preproc_unknownSymbolContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 34, BSLParser.RULE_preproc_unknownSymbol);
+        let localContext = new Preproc_unknownSymbolContext(this.context, this.state);
+        this.enterRule(localContext, 34, BSLParser.RULE_preproc_unknownSymbol);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 351;
                 this.match(BSLParser.PREPROC_IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preproc_boolOperation(): Preproc_boolOperationContext {
-        let localctx: Preproc_boolOperationContext = new Preproc_boolOperationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 36, BSLParser.RULE_preproc_boolOperation);
+        let localContext = new Preproc_boolOperationContext(this.context, this.state);
+        this.enterRule(localContext, 36, BSLParser.RULE_preproc_boolOperation);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 353;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 87 || _la === 88)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public preprocessor(): PreprocessorContext {
-        let localctx: PreprocessorContext = new PreprocessorContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 38, BSLParser.RULE_preprocessor);
+        let localContext = new PreprocessorContext(this.context, this.state);
+        this.enterRule(localContext, 38, BSLParser.RULE_preprocessor);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 355;
                 this.match(BSLParser.HASH);
                 this.state = 362;
-                this._errHandler.sync(this);
-                switch (this._input.LA(1)) {
-                    case 84:
+                this.errorHandler.sync(this);
+                switch (this.tokenStream.LA(1)) {
+                    case BSLParser.PREPROC_REGION:
                         {
                             this.state = 356;
                             this.regionStart();
                         }
                         break;
-                    case 85:
+                    case BSLParser.PREPROC_END_REGION:
                         {
                             this.state = 357;
                             this.regionEnd();
                         }
                         break;
-                    case 89:
+                    case BSLParser.PREPROC_IF_KEYWORD:
                         {
                             this.state = 358;
                             this.preproc_if();
                         }
                         break;
-                    case 91:
+                    case BSLParser.PREPROC_ELSIF_KEYWORD:
                         {
                             this.state = 359;
                             this.preproc_elsif();
                         }
                         break;
-                    case 93:
+                    case BSLParser.PREPROC_ELSE_KEYWORD:
                         {
                             this.state = 360;
                             this.preproc_else();
                         }
                         break;
-                    case 92:
+                    case BSLParser.PREPROC_ENDIF_KEYWORD:
                         {
                             this.state = 361;
                             this.preproc_endif();
                         }
                         break;
                     default:
-                        throw new NoViableAltException(this);
+                        throw new antlr.NoViableAltException(this);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public compilerDirectiveSymbol(): CompilerDirectiveSymbolContext {
-        let localctx: CompilerDirectiveSymbolContext = new CompilerDirectiveSymbolContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 40, BSLParser.RULE_compilerDirectiveSymbol);
+        let localContext = new CompilerDirectiveSymbolContext(this.context, this.state);
+        this.enterRule(localContext, 40, BSLParser.RULE_compilerDirectiveSymbol);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 364;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(((_la - 113) & ~0x1f) === 0 && ((1 << (_la - 113)) & 31) !== 0)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public compilerDirective(): CompilerDirectiveContext {
-        let localctx: CompilerDirectiveContext = new CompilerDirectiveContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 42, BSLParser.RULE_compilerDirective);
+        let localContext = new CompilerDirectiveContext(this.context, this.state);
+        this.enterRule(localContext, 42, BSLParser.RULE_compilerDirective);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 366;
                 this.match(BSLParser.AMPERSAND);
@@ -1850,89 +1802,86 @@ export default class BSLParser extends Parser {
                 this.compilerDirectiveSymbol();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public annotationName(): AnnotationNameContext {
-        let localctx: AnnotationNameContext = new AnnotationNameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 44, BSLParser.RULE_annotationName);
+        let localContext = new AnnotationNameContext(this.context, this.state);
+        this.enterRule(localContext, 44, BSLParser.RULE_annotationName);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 369;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(((_la - 118) & ~0x1f) === 0 && ((1 << (_la - 118)) & 31) !== 0)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public annotationParamName(): AnnotationParamNameContext {
-        let localctx: AnnotationParamNameContext = new AnnotationParamNameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 46, BSLParser.RULE_annotationParamName);
+        let localContext = new AnnotationParamNameContext(this.context, this.state);
+        this.enterRule(localContext, 46, BSLParser.RULE_annotationParamName);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 371;
                 this.match(BSLParser.IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public annotation(): AnnotationContext {
-        let localctx: AnnotationContext = new AnnotationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 48, BSLParser.RULE_annotation);
+        let localContext = new AnnotationContext(this.context, this.state);
+        this.enterRule(localContext, 48, BSLParser.RULE_annotation);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 373;
                 this.match(BSLParser.AMPERSAND);
                 this.state = 374;
                 this.annotationName();
                 this.state = 376;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 6) {
                     {
                         this.state = 375;
@@ -1941,39 +1890,38 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public annotationParams(): AnnotationParamsContext {
-        let localctx: AnnotationParamsContext = new AnnotationParamsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 50, BSLParser.RULE_annotationParams);
+        let localContext = new AnnotationParamsContext(this.context, this.state);
+        this.enterRule(localContext, 50, BSLParser.RULE_annotationParams);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 378;
                 this.match(BSLParser.LPAREN);
                 this.state = 387;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if ((((_la - 12) & ~0x1f) === 0 && ((1 << (_la - 12)) & 133955587) !== 0) || _la === 76) {
                     {
                         this.state = 379;
                         this.annotationParam();
                         this.state = 384;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
+                        this.errorHandler.sync(this);
+                        _la = this.tokenStream.LA(1);
                         while (_la === 10) {
                             {
                                 {
@@ -1984,8 +1932,8 @@ export default class BSLParser extends Parser {
                                 }
                             }
                             this.state = 386;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                         }
                     }
                 }
@@ -1994,37 +1942,36 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public annotationParam(): AnnotationParamContext {
-        let localctx: AnnotationParamContext = new AnnotationParamContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 52, BSLParser.RULE_annotationParam);
+        let localContext = new AnnotationParamContext(this.context, this.state);
+        this.enterRule(localContext, 52, BSLParser.RULE_annotationParam);
         let _la: number;
         try {
             this.state = 397;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 76:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case BSLParser.IDENTIFIER:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 391;
                             this.annotationParamName();
                             this.state = 394;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 11) {
                                 {
                                     this.state = 392;
@@ -2036,77 +1983,75 @@ export default class BSLParser extends Parser {
                         }
                     }
                     break;
-                case 12:
-                case 13:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                    this.enterOuterAlt(localctx, 2);
+                case BSLParser.PLUS:
+                case BSLParser.MINUS:
+                case BSLParser.TRUE:
+                case BSLParser.FALSE:
+                case BSLParser.UNDEFINED:
+                case BSLParser.NULL:
+                case BSLParser.DECIMAL:
+                case BSLParser.DATETIME:
+                case BSLParser.FLOAT:
+                case BSLParser.STRING:
+                case BSLParser.STRINGSTART:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 396;
                         this.constValue();
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public var_name(): Var_nameContext {
-        let localctx: Var_nameContext = new Var_nameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 54, BSLParser.RULE_var_name);
+        let localContext = new Var_nameContext(this.context, this.state);
+        this.enterRule(localContext, 54, BSLParser.RULE_var_name);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 399;
                 this.match(BSLParser.IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public moduleVars(): ModuleVarsContext {
-        let localctx: ModuleVarsContext = new ModuleVarsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 56, BSLParser.RULE_moduleVars);
+        let localContext = new ModuleVarsContext(this.context, this.state);
+        this.enterRule(localContext, 56, BSLParser.RULE_moduleVars);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 402;
-                this._errHandler.sync(this);
-                _alt = 1;
+                this.errorHandler.sync(this);
+                alternative = 1;
                 do {
-                    switch (_alt) {
+                    switch (alternative) {
                         case 1:
                             {
                                 {
@@ -2116,43 +2061,42 @@ export default class BSLParser extends Parser {
                             }
                             break;
                         default:
-                            throw new NoViableAltException(this);
+                            throw new antlr.NoViableAltException(this);
                     }
                     this.state = 404;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 25, this._ctx);
-                } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 25, this.context);
+                } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public moduleVar(): ModuleVarContext {
-        let localctx: ModuleVarContext = new ModuleVarContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 58, BSLParser.RULE_moduleVar);
+        let localContext = new ModuleVarContext(this.context, this.state);
+        this.enterRule(localContext, 58, BSLParser.RULE_moduleVar);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 411;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 23 || _la === 27) {
                     {
                         this.state = 409;
-                        this._errHandler.sync(this);
-                        switch (this._interp.adaptivePredict(this._input, 26, this._ctx)) {
+                        this.errorHandler.sync(this);
+                        switch (this.interpreter.adaptivePredict(this.tokenStream, 26, this.context)) {
                             case 1:
                                 {
                                     this.state = 406;
@@ -2174,16 +2118,16 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 413;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 414;
                 this.match(BSLParser.VAR_KEYWORD);
                 this.state = 415;
                 this.moduleVarsList();
                 this.state = 417;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 28, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 28, this.context)) {
                     case 1:
                         {
                             this.state = 416;
@@ -2193,32 +2137,31 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public moduleVarsList(): ModuleVarsListContext {
-        let localctx: ModuleVarsListContext = new ModuleVarsListContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 60, BSLParser.RULE_moduleVarsList);
+        let localContext = new ModuleVarsListContext(this.context, this.state);
+        this.enterRule(localContext, 60, BSLParser.RULE_moduleVarsList);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 419;
                 this.moduleVarDeclaration();
                 this.state = 424;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 10) {
                     {
                         {
@@ -2229,37 +2172,36 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 426;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public moduleVarDeclaration(): ModuleVarDeclarationContext {
-        let localctx: ModuleVarDeclarationContext = new ModuleVarDeclarationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 62, BSLParser.RULE_moduleVarDeclaration);
+        let localContext = new ModuleVarDeclarationContext(this.context, this.state);
+        this.enterRule(localContext, 62, BSLParser.RULE_moduleVarDeclaration);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 427;
                 this.var_name();
                 this.state = 429;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 45) {
                     {
                         this.state = 428;
@@ -2268,32 +2210,31 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subVars(): SubVarsContext {
-        let localctx: SubVarsContext = new SubVarsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 64, BSLParser.RULE_subVars);
+        let localContext = new SubVarsContext(this.context, this.state);
+        this.enterRule(localContext, 64, BSLParser.RULE_subVars);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 432;
-                this._errHandler.sync(this);
-                _alt = 1;
+                this.errorHandler.sync(this);
+                alternative = 1;
                 do {
-                    switch (_alt) {
+                    switch (alternative) {
                         case 1:
                             {
                                 {
@@ -2303,43 +2244,42 @@ export default class BSLParser extends Parser {
                             }
                             break;
                         default:
-                            throw new NoViableAltException(this);
+                            throw new antlr.NoViableAltException(this);
                     }
                     this.state = 434;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 31, this._ctx);
-                } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 31, this.context);
+                } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subVar(): SubVarContext {
-        let localctx: SubVarContext = new SubVarContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 66, BSLParser.RULE_subVar);
+        let localContext = new SubVarContext(this.context, this.state);
+        this.enterRule(localContext, 66, BSLParser.RULE_subVar);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 441;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 23 || _la === 27) {
                     {
                         this.state = 439;
-                        this._errHandler.sync(this);
-                        switch (this._interp.adaptivePredict(this._input, 32, this._ctx)) {
+                        this.errorHandler.sync(this);
+                        switch (this.interpreter.adaptivePredict(this.tokenStream, 32, this.context)) {
                             case 1:
                                 {
                                     this.state = 436;
@@ -2361,16 +2301,16 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 443;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 444;
                 this.match(BSLParser.VAR_KEYWORD);
                 this.state = 445;
                 this.subVarsList();
                 this.state = 447;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 34, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 34, this.context)) {
                     case 1:
                         {
                             this.state = 446;
@@ -2380,32 +2320,31 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subVarsList(): SubVarsListContext {
-        let localctx: SubVarsListContext = new SubVarsListContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 68, BSLParser.RULE_subVarsList);
+        let localContext = new SubVarsListContext(this.context, this.state);
+        this.enterRule(localContext, 68, BSLParser.RULE_subVarsList);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 449;
                 this.subVarDeclaration();
                 this.state = 454;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 10) {
                     {
                         {
@@ -2416,85 +2355,82 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 456;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subVarDeclaration(): SubVarDeclarationContext {
-        let localctx: SubVarDeclarationContext = new SubVarDeclarationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 70, BSLParser.RULE_subVarDeclaration);
+        let localContext = new SubVarDeclarationContext(this.context, this.state);
+        this.enterRule(localContext, 70, BSLParser.RULE_subVarDeclaration);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 457;
                 this.var_name();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subName(): SubNameContext {
-        let localctx: SubNameContext = new SubNameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 72, BSLParser.RULE_subName);
+        let localContext = new SubNameContext(this.context, this.state);
+        this.enterRule(localContext, 72, BSLParser.RULE_subName);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 459;
                 this.match(BSLParser.IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subs(): SubsContext {
-        let localctx: SubsContext = new SubsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 74, BSLParser.RULE_subs);
+        let localContext = new SubsContext(this.context, this.state);
+        this.enterRule(localContext, 74, BSLParser.RULE_subs);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 462;
-                this._errHandler.sync(this);
-                _alt = 1;
+                this.errorHandler.sync(this);
+                alternative = 1;
                 do {
-                    switch (_alt) {
+                    switch (alternative) {
                         case 1:
                             {
                                 {
@@ -2504,44 +2440,43 @@ export default class BSLParser extends Parser {
                             }
                             break;
                         default:
-                            throw new NoViableAltException(this);
+                            throw new antlr.NoViableAltException(this);
                     }
                     this.state = 464;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 36, this._ctx);
-                } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 36, this.context);
+                } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public sub(): SubContext {
-        let localctx: SubContext = new SubContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 76, BSLParser.RULE_sub);
+        let localContext = new SubContext(this.context, this.state);
+        this.enterRule(localContext, 76, BSLParser.RULE_sub);
         try {
             this.state = 468;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 37, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 37, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 466;
                         this.procedure();
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 467;
                         this.function_();
@@ -2549,25 +2484,24 @@ export default class BSLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public procedure(): ProcedureContext {
-        let localctx: ProcedureContext = new ProcedureContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 78, BSLParser.RULE_procedure);
+        let localContext = new ProcedureContext(this.context, this.state);
+        this.enterRule(localContext, 78, BSLParser.RULE_procedure);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 470;
                 this.procDeclaration();
@@ -2577,25 +2511,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.ENDPROCEDURE_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public function_(): FunctionContext {
-        let localctx: FunctionContext = new FunctionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 80, BSLParser.RULE_function);
+        let localContext = new FunctionContext(this.context, this.state);
+        this.enterRule(localContext, 80, BSLParser.RULE_function);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 474;
                 this.funcDeclaration();
@@ -2605,35 +2538,34 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.ENDFUNCTION_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public procDeclaration(): ProcDeclarationContext {
-        let localctx: ProcDeclarationContext = new ProcDeclarationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 82, BSLParser.RULE_procDeclaration);
+        let localContext = new ProcDeclarationContext(this.context, this.state);
+        this.enterRule(localContext, 82, BSLParser.RULE_procDeclaration);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 483;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 23 || _la === 27) {
                     {
                         this.state = 481;
-                        this._errHandler.sync(this);
-                        switch (this._interp.adaptivePredict(this._input, 38, this._ctx)) {
+                        this.errorHandler.sync(this);
+                        switch (this.interpreter.adaptivePredict(this.tokenStream, 38, this.context)) {
                             case 1:
                                 {
                                     this.state = 478;
@@ -2655,12 +2587,12 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 485;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 487;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 75) {
                     {
                         this.state = 486;
@@ -2675,8 +2607,8 @@ export default class BSLParser extends Parser {
                 this.state = 491;
                 this.match(BSLParser.LPAREN);
                 this.state = 493;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 23 || _la === 46 || _la === 76) {
                     {
                         this.state = 492;
@@ -2687,8 +2619,8 @@ export default class BSLParser extends Parser {
                 this.state = 495;
                 this.match(BSLParser.RPAREN);
                 this.state = 497;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 45) {
                     {
                         this.state = 496;
@@ -2697,35 +2629,34 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public funcDeclaration(): FuncDeclarationContext {
-        let localctx: FuncDeclarationContext = new FuncDeclarationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 84, BSLParser.RULE_funcDeclaration);
+        let localContext = new FuncDeclarationContext(this.context, this.state);
+        this.enterRule(localContext, 84, BSLParser.RULE_funcDeclaration);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 504;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 23 || _la === 27) {
                     {
                         this.state = 502;
-                        this._errHandler.sync(this);
-                        switch (this._interp.adaptivePredict(this._input, 43, this._ctx)) {
+                        this.errorHandler.sync(this);
+                        switch (this.interpreter.adaptivePredict(this.tokenStream, 43, this.context)) {
                             case 1:
                                 {
                                     this.state = 499;
@@ -2747,12 +2678,12 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 506;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 508;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 75) {
                     {
                         this.state = 507;
@@ -2767,8 +2698,8 @@ export default class BSLParser extends Parser {
                 this.state = 512;
                 this.match(BSLParser.LPAREN);
                 this.state = 514;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 23 || _la === 46 || _la === 76) {
                     {
                         this.state = 513;
@@ -2779,8 +2710,8 @@ export default class BSLParser extends Parser {
                 this.state = 516;
                 this.match(BSLParser.RPAREN);
                 this.state = 518;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 45) {
                     {
                         this.state = 517;
@@ -2789,29 +2720,28 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subCodeBlock(): SubCodeBlockContext {
-        let localctx: SubCodeBlockContext = new SubCodeBlockContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 86, BSLParser.RULE_subCodeBlock);
+        let localContext = new SubCodeBlockContext(this.context, this.state);
+        this.enterRule(localContext, 86, BSLParser.RULE_subCodeBlock);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 521;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 48, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 48, this.context)) {
                     case 1:
                         {
                             this.state = 520;
@@ -2823,79 +2753,76 @@ export default class BSLParser extends Parser {
                 this.codeBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public continueStatement(): ContinueStatementContext {
-        let localctx: ContinueStatementContext = new ContinueStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 88, BSLParser.RULE_continueStatement);
+        let localContext = new ContinueStatementContext(this.context, this.state);
+        this.enterRule(localContext, 88, BSLParser.RULE_continueStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 525;
                 this.match(BSLParser.CONTINUE_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public breakStatement(): BreakStatementContext {
-        let localctx: BreakStatementContext = new BreakStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 90, BSLParser.RULE_breakStatement);
+        let localContext = new BreakStatementContext(this.context, this.state);
+        this.enterRule(localContext, 90, BSLParser.RULE_breakStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 527;
                 this.match(BSLParser.BREAK_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public raiseStatement(): RaiseStatementContext {
-        let localctx: RaiseStatementContext = new RaiseStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 92, BSLParser.RULE_raiseStatement);
+        let localContext = new RaiseStatementContext(this.context, this.state);
+        this.enterRule(localContext, 92, BSLParser.RULE_raiseStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 529;
                 this.match(BSLParser.RAISE_KEYWORD);
                 this.state = 532;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 49, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 49, this.context)) {
                     case 1:
                         {
                             this.state = 530;
@@ -2911,32 +2838,31 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public ifStatement(): IfStatementContext {
-        let localctx: IfStatementContext = new IfStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 94, BSLParser.RULE_ifStatement);
+        let localContext = new IfStatementContext(this.context, this.state);
+        this.enterRule(localContext, 94, BSLParser.RULE_ifStatement);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 534;
                 this.ifBranch();
                 this.state = 538;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 50) {
                     {
                         {
@@ -2945,12 +2871,12 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 540;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 542;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 51) {
                     {
                         this.state = 541;
@@ -2962,25 +2888,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.ENDIF_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public ifBranch(): IfBranchContext {
-        let localctx: IfBranchContext = new IfBranchContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 96, BSLParser.RULE_ifBranch);
+        let localContext = new IfBranchContext(this.context, this.state);
+        this.enterRule(localContext, 96, BSLParser.RULE_ifBranch);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 546;
                 this.match(BSLParser.IF_KEYWORD);
@@ -2992,25 +2917,24 @@ export default class BSLParser extends Parser {
                 this.codeBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public elsifBranch(): ElsifBranchContext {
-        let localctx: ElsifBranchContext = new ElsifBranchContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 98, BSLParser.RULE_elsifBranch);
+        let localContext = new ElsifBranchContext(this.context, this.state);
+        this.enterRule(localContext, 98, BSLParser.RULE_elsifBranch);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 551;
                 this.match(BSLParser.ELSIF_KEYWORD);
@@ -3022,25 +2946,24 @@ export default class BSLParser extends Parser {
                 this.codeBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public elseBranch(): ElseBranchContext {
-        let localctx: ElseBranchContext = new ElseBranchContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 100, BSLParser.RULE_elseBranch);
+        let localContext = new ElseBranchContext(this.context, this.state);
+        this.enterRule(localContext, 100, BSLParser.RULE_elseBranch);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 556;
                 this.match(BSLParser.ELSE_KEYWORD);
@@ -3048,25 +2971,24 @@ export default class BSLParser extends Parser {
                 this.codeBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public whileStatement(): WhileStatementContext {
-        let localctx: WhileStatementContext = new WhileStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 102, BSLParser.RULE_whileStatement);
+        let localContext = new WhileStatementContext(this.context, this.state);
+        this.enterRule(localContext, 102, BSLParser.RULE_whileStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 559;
                 this.match(BSLParser.WHILE_KEYWORD);
@@ -3080,25 +3002,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.ENDDO_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public forStatement(): ForStatementContext {
-        let localctx: ForStatementContext = new ForStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 104, BSLParser.RULE_forStatement);
+        let localContext = new ForStatementContext(this.context, this.state);
+        this.enterRule(localContext, 104, BSLParser.RULE_forStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 565;
                 this.match(BSLParser.FOR_KEYWORD);
@@ -3120,25 +3041,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.ENDDO_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public forEachStatement(): ForEachStatementContext {
-        let localctx: ForEachStatementContext = new ForEachStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 106, BSLParser.RULE_forEachStatement);
+        let localContext = new ForEachStatementContext(this.context, this.state);
+        this.enterRule(localContext, 106, BSLParser.RULE_forEachStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 575;
                 this.match(BSLParser.FOR_KEYWORD);
@@ -3158,25 +3078,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.ENDDO_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public tryStatement(): TryStatementContext {
-        let localctx: TryStatementContext = new TryStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 108, BSLParser.RULE_tryStatement);
+        let localContext = new TryStatementContext(this.context, this.state);
+        this.enterRule(localContext, 108, BSLParser.RULE_tryStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 584;
                 this.match(BSLParser.TRY_KEYWORD);
@@ -3190,31 +3109,30 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.ENDTRY_KEYWORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public returnStatement(): ReturnStatementContext {
-        let localctx: ReturnStatementContext = new ReturnStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 110, BSLParser.RULE_returnStatement);
+        let localContext = new ReturnStatementContext(this.context, this.state);
+        this.enterRule(localContext, 110, BSLParser.RULE_returnStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 590;
                 this.match(BSLParser.RETURN_KEYWORD);
                 this.state = 592;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 52, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 52, this.context)) {
                     case 1:
                         {
                             this.state = 591;
@@ -3224,31 +3142,30 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public executeStatement(): ExecuteStatementContext {
-        let localctx: ExecuteStatementContext = new ExecuteStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 112, BSLParser.RULE_executeStatement);
+        let localContext = new ExecuteStatementContext(this.context, this.state);
+        this.enterRule(localContext, 112, BSLParser.RULE_executeStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 594;
                 this.match(BSLParser.EXECUTE_KEYWORD);
                 this.state = 597;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 53, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 53, this.context)) {
                     case 1:
                         {
                             this.state = 595;
@@ -3264,35 +3181,34 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public callStatement(): CallStatementContext {
-        let localctx: CallStatementContext = new CallStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 114, BSLParser.RULE_callStatement);
+        let localContext = new CallStatementContext(this.context, this.state);
+        this.enterRule(localContext, 114, BSLParser.RULE_callStatement);
         try {
-            let _alt: number;
+            let alternative: number;
             this.state = 611;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 56, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 56, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 601;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 54, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 54, this.context)) {
                                 case 1:
                                     {
                                         this.state = 599;
@@ -3307,10 +3223,10 @@ export default class BSLParser extends Parser {
                                     break;
                             }
                             this.state = 606;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 55, this._ctx);
-                            while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                if (_alt === 1) {
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 55, this.context);
+                            while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                if (alternative === 1) {
                                     {
                                         {
                                             this.state = 603;
@@ -3319,8 +3235,8 @@ export default class BSLParser extends Parser {
                                     }
                                 }
                                 this.state = 608;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 55, this._ctx);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 55, this.context);
                             }
                             this.state = 609;
                             this.accessCall();
@@ -3328,7 +3244,7 @@ export default class BSLParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 610;
                         this.globalMethodCall();
@@ -3336,73 +3252,70 @@ export default class BSLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public waitStatement(): WaitStatementContext {
-        let localctx: WaitStatementContext = new WaitStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 116, BSLParser.RULE_waitStatement);
+        let localContext = new WaitStatementContext(this.context, this.state);
+        this.enterRule(localContext, 116, BSLParser.RULE_waitStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 613;
                 this.waitExpression();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public labelName(): LabelNameContext {
-        let localctx: LabelNameContext = new LabelNameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 118, BSLParser.RULE_labelName);
+        let localContext = new LabelNameContext(this.context, this.state);
+        this.enterRule(localContext, 118, BSLParser.RULE_labelName);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 615;
                 this.match(BSLParser.IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public label(): LabelContext {
-        let localctx: LabelContext = new LabelContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 120, BSLParser.RULE_label);
+        let localContext = new LabelContext(this.context, this.state);
+        this.enterRule(localContext, 120, BSLParser.RULE_label);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 617;
                 this.match(BSLParser.TILDA);
@@ -3412,25 +3325,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.COLON);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public gotoStatement(): GotoStatementContext {
-        let localctx: GotoStatementContext = new GotoStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 122, BSLParser.RULE_gotoStatement);
+        let localContext = new GotoStatementContext(this.context, this.state);
+        this.enterRule(localContext, 122, BSLParser.RULE_gotoStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 621;
                 this.match(BSLParser.GOTO_KEYWORD);
@@ -3440,121 +3352,116 @@ export default class BSLParser extends Parser {
                 this.labelName();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public tryCodeBlock(): TryCodeBlockContext {
-        let localctx: TryCodeBlockContext = new TryCodeBlockContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 124, BSLParser.RULE_tryCodeBlock);
+        let localContext = new TryCodeBlockContext(this.context, this.state);
+        this.enterRule(localContext, 124, BSLParser.RULE_tryCodeBlock);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 625;
                 this.codeBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public exceptCodeBlock(): ExceptCodeBlockContext {
-        let localctx: ExceptCodeBlockContext = new ExceptCodeBlockContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 126, BSLParser.RULE_exceptCodeBlock);
+        let localContext = new ExceptCodeBlockContext(this.context, this.state);
+        this.enterRule(localContext, 126, BSLParser.RULE_exceptCodeBlock);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 627;
                 this.codeBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public event(): EventContext {
-        let localctx: EventContext = new EventContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 128, BSLParser.RULE_event);
+        let localContext = new EventContext(this.context, this.state);
+        this.enterRule(localContext, 128, BSLParser.RULE_event);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 629;
                 this.expression();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public handler(): HandlerContext {
-        let localctx: HandlerContext = new HandlerContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 130, BSLParser.RULE_handler);
+        let localContext = new HandlerContext(this.context, this.state);
+        this.enterRule(localContext, 130, BSLParser.RULE_handler);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 631;
                 this.expression();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public addHandlerStatement(): AddHandlerStatementContext {
-        let localctx: AddHandlerStatementContext = new AddHandlerStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 132, BSLParser.RULE_addHandlerStatement);
+        let localContext = new AddHandlerStatementContext(this.context, this.state);
+        this.enterRule(localContext, 132, BSLParser.RULE_addHandlerStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 633;
                 this.match(BSLParser.ADDHANDLER_KEYWORD);
@@ -3566,25 +3473,24 @@ export default class BSLParser extends Parser {
                 this.handler();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public removeHandlerStatement(): RemoveHandlerStatementContext {
-        let localctx: RemoveHandlerStatementContext = new RemoveHandlerStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 134, BSLParser.RULE_removeHandlerStatement);
+        let localContext = new RemoveHandlerStatementContext(this.context, this.state);
+        this.enterRule(localContext, 134, BSLParser.RULE_removeHandlerStatement);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 638;
                 this.match(BSLParser.REMOVEHANDLER_KEYWORD);
@@ -3596,25 +3502,24 @@ export default class BSLParser extends Parser {
                 this.handler();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public ternaryOperator(): TernaryOperatorContext {
-        let localctx: TernaryOperatorContext = new TernaryOperatorContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 136, BSLParser.RULE_ternaryOperator);
+        let localContext = new TernaryOperatorContext(this.context, this.state);
+        this.enterRule(localContext, 136, BSLParser.RULE_ternaryOperator);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 643;
                 this.match(BSLParser.QUESTION);
@@ -3634,25 +3539,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public waitExpression(): WaitExpressionContext {
-        let localctx: WaitExpressionContext = new WaitExpressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 138, BSLParser.RULE_waitExpression);
+        let localContext = new WaitExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 138, BSLParser.RULE_waitExpression);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 652;
                 this.match(BSLParser.AWAIT_KEYWORD);
@@ -3660,84 +3564,81 @@ export default class BSLParser extends Parser {
                 this.expression();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public fileCodeBlockBeforeSub(): FileCodeBlockBeforeSubContext {
-        let localctx: FileCodeBlockBeforeSubContext = new FileCodeBlockBeforeSubContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 140, BSLParser.RULE_fileCodeBlockBeforeSub);
+        let localContext = new FileCodeBlockBeforeSubContext(this.context, this.state);
+        this.enterRule(localContext, 140, BSLParser.RULE_fileCodeBlockBeforeSub);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 655;
                 this.codeBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public fileCodeBlock(): FileCodeBlockContext {
-        let localctx: FileCodeBlockContext = new FileCodeBlockContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 142, BSLParser.RULE_fileCodeBlock);
+        let localContext = new FileCodeBlockContext(this.context, this.state);
+        this.enterRule(localContext, 142, BSLParser.RULE_fileCodeBlock);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 657;
                 this.codeBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public codeBlock(): CodeBlockContext {
-        let localctx: CodeBlockContext = new CodeBlockContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 144, BSLParser.RULE_codeBlock);
+        let localContext = new CodeBlockContext(this.context, this.state);
+        this.enterRule(localContext, 144, BSLParser.RULE_codeBlock);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 663;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 58, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 58, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             this.state = 661;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 57, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 57, this.context)) {
                                 case 1:
                                     {
                                         this.state = 659;
@@ -3754,68 +3655,66 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 665;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 58, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 58, this.context);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public numeric(): NumericContext {
-        let localctx: NumericContext = new NumericContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 146, BSLParser.RULE_numeric);
+        let localContext = new NumericContext(this.context, this.state);
+        this.enterRule(localContext, 146, BSLParser.RULE_numeric);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 666;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 34 || _la === 36)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public paramList(): ParamListContext {
-        let localctx: ParamListContext = new ParamListContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 148, BSLParser.RULE_paramList);
+        let localContext = new ParamListContext(this.context, this.state);
+        this.enterRule(localContext, 148, BSLParser.RULE_paramList);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 668;
                 this.param();
                 this.state = 673;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 10) {
                     {
                         {
@@ -3826,35 +3725,34 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 675;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public param(): ParamContext {
-        let localctx: ParamContext = new ParamContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 150, BSLParser.RULE_param);
+        let localContext = new ParamContext(this.context, this.state);
+        this.enterRule(localContext, 150, BSLParser.RULE_param);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 679;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 23) {
                     {
                         {
@@ -3863,12 +3761,12 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 681;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 683;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 46) {
                     {
                         this.state = 682;
@@ -3879,8 +3777,8 @@ export default class BSLParser extends Parser {
                 this.state = 685;
                 this.match(BSLParser.IDENTIFIER);
                 this.state = 688;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 11) {
                     {
                         this.state = 686;
@@ -3891,69 +3789,67 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public defaultValue(): DefaultValueContext {
-        let localctx: DefaultValueContext = new DefaultValueContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 152, BSLParser.RULE_defaultValue);
+        let localContext = new DefaultValueContext(this.context, this.state);
+        this.enterRule(localContext, 152, BSLParser.RULE_defaultValue);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 690;
                 this.constValue();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public constValue(): ConstValueContext {
-        let localctx: ConstValueContext = new ConstValueContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 154, BSLParser.RULE_constValue);
+        let localContext = new ConstValueContext(this.context, this.state);
+        this.enterRule(localContext, 154, BSLParser.RULE_constValue);
         let _la: number;
         try {
             this.state = 702;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 12:
-                case 13:
-                case 34:
-                case 36:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case BSLParser.PLUS:
+                case BSLParser.MINUS:
+                case BSLParser.DECIMAL:
+                case BSLParser.FLOAT:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 693;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
+                        this.errorHandler.sync(this);
+                        _la = this.tokenStream.LA(1);
                         if (_la === 12 || _la === 13) {
                             {
                                 this.state = 692;
-                                _la = this._input.LA(1);
+                                _la = this.tokenStream.LA(1);
                                 if (!(_la === 12 || _la === 13)) {
-                                    this._errHandler.recoverInline(this);
+                                    this.errorHandler.recoverInline(this);
                                 } else {
-                                    this._errHandler.reportMatch(this);
+                                    this.errorHandler.reportMatch(this);
                                     this.consume();
                                 }
                             }
@@ -3963,216 +3859,215 @@ export default class BSLParser extends Parser {
                         this.numeric();
                     }
                     break;
-                case 37:
-                case 38:
-                    this.enterOuterAlt(localctx, 2);
+                case BSLParser.STRING:
+                case BSLParser.STRINGSTART:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 696;
                         this.string_();
                     }
                     break;
-                case 30:
-                    this.enterOuterAlt(localctx, 3);
+                case BSLParser.TRUE:
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 697;
                         this.match(BSLParser.TRUE);
                     }
                     break;
-                case 31:
-                    this.enterOuterAlt(localctx, 4);
+                case BSLParser.FALSE:
+                    this.enterOuterAlt(localContext, 4);
                     {
                         this.state = 698;
                         this.match(BSLParser.FALSE);
                     }
                     break;
-                case 32:
-                    this.enterOuterAlt(localctx, 5);
+                case BSLParser.UNDEFINED:
+                    this.enterOuterAlt(localContext, 5);
                     {
                         this.state = 699;
                         this.match(BSLParser.UNDEFINED);
                     }
                     break;
-                case 33:
-                    this.enterOuterAlt(localctx, 6);
+                case BSLParser.NULL:
+                    this.enterOuterAlt(localContext, 6);
                     {
                         this.state = 700;
                         this.match(BSLParser.NULL);
                     }
                     break;
-                case 35:
-                    this.enterOuterAlt(localctx, 7);
+                case BSLParser.DATETIME:
+                    this.enterOuterAlt(localContext, 7);
                     {
                         this.state = 701;
                         this.match(BSLParser.DATETIME);
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public multilineString(): MultilineStringContext {
-        let localctx: MultilineStringContext = new MultilineStringContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 156, BSLParser.RULE_multilineString);
+        let localContext = new MultilineStringContext(this.context, this.state);
+        this.enterRule(localContext, 156, BSLParser.RULE_multilineString);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 704;
                 this.match(BSLParser.STRINGSTART);
                 this.state = 710;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (((_la - 27) & ~0x1f) === 0 && ((1 << (_la - 27)) & 8195) !== 0) {
                     {
                         this.state = 708;
-                        this._errHandler.sync(this);
-                        switch (this._input.LA(1)) {
-                            case 40:
+                        this.errorHandler.sync(this);
+                        switch (this.tokenStream.LA(1)) {
+                            case BSLParser.STRINGPART:
                                 {
                                     this.state = 705;
                                     this.match(BSLParser.STRINGPART);
                                 }
                                 break;
-                            case 28:
+                            case BSLParser.BAR:
                                 {
                                     this.state = 706;
                                     this.match(BSLParser.BAR);
                                 }
                                 break;
-                            case 27:
+                            case BSLParser.HASH:
                                 {
                                     this.state = 707;
                                     this.preprocessor();
                                 }
                                 break;
                             default:
-                                throw new NoViableAltException(this);
+                                throw new antlr.NoViableAltException(this);
                         }
                     }
                     this.state = 712;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 713;
                 this.match(BSLParser.STRINGTAIL);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public string_(): StringContext {
-        let localctx: StringContext = new StringContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 158, BSLParser.RULE_string);
+        let localContext = new StringContext(this.context, this.state);
+        this.enterRule(localContext, 158, BSLParser.RULE_string);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 717;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 do {
                     {
                         this.state = 717;
-                        this._errHandler.sync(this);
-                        switch (this._input.LA(1)) {
-                            case 37:
+                        this.errorHandler.sync(this);
+                        switch (this.tokenStream.LA(1)) {
+                            case BSLParser.STRING:
                                 {
                                     this.state = 715;
                                     this.match(BSLParser.STRING);
                                 }
                                 break;
-                            case 38:
+                            case BSLParser.STRINGSTART:
                                 {
                                     this.state = 716;
                                     this.multilineString();
                                 }
                                 break;
                             default:
-                                throw new NoViableAltException(this);
+                                throw new antlr.NoViableAltException(this);
                         }
                     }
                     this.state = 719;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 } while (_la === 37 || _la === 38);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public statement(): StatementContext {
-        let localctx: StatementContext = new StatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 160, BSLParser.RULE_statement);
+        let localContext = new StatementContext(this.context, this.state);
+        this.enterRule(localContext, 160, BSLParser.RULE_statement);
         try {
             this.state = 742;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 27:
-                case 29:
-                case 49:
-                case 53:
-                case 55:
-                case 59:
-                case 62:
-                case 63:
-                case 64:
-                case 70:
-                case 71:
-                case 72:
-                case 73:
-                case 74:
-                case 76:
-                case 126:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case BSLParser.HASH:
+                case BSLParser.TILDA:
+                case BSLParser.IF_KEYWORD:
+                case BSLParser.WHILE_KEYWORD:
+                case BSLParser.FOR_KEYWORD:
+                case BSLParser.TRY_KEYWORD:
+                case BSLParser.RETURN_KEYWORD:
+                case BSLParser.CONTINUE_KEYWORD:
+                case BSLParser.RAISE_KEYWORD:
+                case BSLParser.GOTO_KEYWORD:
+                case BSLParser.BREAK_KEYWORD:
+                case BSLParser.EXECUTE_KEYWORD:
+                case BSLParser.ADDHANDLER_KEYWORD:
+                case BSLParser.REMOVEHANDLER_KEYWORD:
+                case BSLParser.IDENTIFIER:
+                case BSLParser.AWAIT_KEYWORD:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 736;
-                            this._errHandler.sync(this);
-                            switch (this._input.LA(1)) {
-                                case 29:
+                            this.errorHandler.sync(this);
+                            switch (this.tokenStream.LA(1)) {
+                                case BSLParser.TILDA:
                                     {
                                         {
                                             this.state = 721;
                                             this.label();
                                             this.state = 727;
-                                            this._errHandler.sync(this);
-                                            switch (this._interp.adaptivePredict(this._input, 69, this._ctx)) {
+                                            this.errorHandler.sync(this);
+                                            switch (
+                                                this.interpreter.adaptivePredict(this.tokenStream, 69, this.context)
+                                            ) {
                                                 case 1:
                                                     {
                                                         this.state = 722;
@@ -4207,25 +4102,25 @@ export default class BSLParser extends Parser {
                                         }
                                     }
                                     break;
-                                case 27:
-                                case 49:
-                                case 53:
-                                case 55:
-                                case 59:
-                                case 62:
-                                case 63:
-                                case 64:
-                                case 70:
-                                case 71:
-                                case 72:
-                                case 73:
-                                case 74:
-                                case 76:
-                                case 126:
+                                case BSLParser.HASH:
+                                case BSLParser.IF_KEYWORD:
+                                case BSLParser.WHILE_KEYWORD:
+                                case BSLParser.FOR_KEYWORD:
+                                case BSLParser.TRY_KEYWORD:
+                                case BSLParser.RETURN_KEYWORD:
+                                case BSLParser.CONTINUE_KEYWORD:
+                                case BSLParser.RAISE_KEYWORD:
+                                case BSLParser.GOTO_KEYWORD:
+                                case BSLParser.BREAK_KEYWORD:
+                                case BSLParser.EXECUTE_KEYWORD:
+                                case BSLParser.ADDHANDLER_KEYWORD:
+                                case BSLParser.REMOVEHANDLER_KEYWORD:
+                                case BSLParser.IDENTIFIER:
+                                case BSLParser.AWAIT_KEYWORD:
                                     {
                                         this.state = 734;
-                                        this._errHandler.sync(this);
-                                        switch (this._interp.adaptivePredict(this._input, 70, this._ctx)) {
+                                        this.errorHandler.sync(this);
+                                        switch (this.interpreter.adaptivePredict(this.tokenStream, 70, this.context)) {
                                             case 1:
                                                 {
                                                     this.state = 729;
@@ -4260,11 +4155,11 @@ export default class BSLParser extends Parser {
                                     }
                                     break;
                                 default:
-                                    throw new NoViableAltException(this);
+                                    throw new antlr.NoViableAltException(this);
                             }
                             this.state = 739;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 72, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 72, this.context)) {
                                 case 1:
                                     {
                                         this.state = 738;
@@ -4275,43 +4170,42 @@ export default class BSLParser extends Parser {
                         }
                     }
                     break;
-                case 9:
-                    this.enterOuterAlt(localctx, 2);
+                case BSLParser.SEMICOLON:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 741;
                         this.match(BSLParser.SEMICOLON);
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public assignment(): AssignmentContext {
-        let localctx: AssignmentContext = new AssignmentContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 162, BSLParser.RULE_assignment);
+        let localContext = new AssignmentContext(this.context, this.state);
+        this.enterRule(localContext, 162, BSLParser.RULE_assignment);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 744;
                 this.lValue();
                 this.state = 748;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 27) {
                     {
                         {
@@ -4320,15 +4214,15 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 750;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 751;
                 this.match(BSLParser.ASSIGN);
                 {
                     this.state = 755;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                     while (_la === 27) {
                         {
                             {
@@ -4337,40 +4231,39 @@ export default class BSLParser extends Parser {
                             }
                         }
                         this.state = 757;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
+                        this.errorHandler.sync(this);
+                        _la = this.tokenStream.LA(1);
                     }
                     this.state = 758;
                     this.expression();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public callParamList(): CallParamListContext {
-        let localctx: CallParamListContext = new CallParamListContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 164, BSLParser.RULE_callParamList);
+        let localContext = new CallParamListContext(this.context, this.state);
+        this.enterRule(localContext, 164, BSLParser.RULE_callParamList);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 760;
                 this.callParam();
                 this.state = 765;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 10) {
                     {
                         {
@@ -4381,34 +4274,33 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 767;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public callParam(): CallParamContext {
-        let localctx: CallParamContext = new CallParamContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 166, BSLParser.RULE_callParam);
+        let localContext = new CallParamContext(this.context, this.state);
+        this.enterRule(localContext, 166, BSLParser.RULE_callParam);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 769;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 77, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 77, this.context)) {
                     case 1:
                         {
                             this.state = 768;
@@ -4418,40 +4310,39 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public expression(): ExpressionContext {
-        let localctx: ExpressionContext = new ExpressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 168, BSLParser.RULE_expression);
+        let localContext = new ExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 168, BSLParser.RULE_expression);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 771;
                 this.member();
                 this.state = 794;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 81, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 81, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             {
                                 this.state = 775;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 while (_la === 27) {
                                     {
                                         {
@@ -4460,14 +4351,14 @@ export default class BSLParser extends Parser {
                                         }
                                     }
                                     this.state = 777;
-                                    this._errHandler.sync(this);
-                                    _la = this._input.LA(1);
+                                    this.errorHandler.sync(this);
+                                    _la = this.tokenStream.LA(1);
                                 }
                                 this.state = 778;
                                 this.operation();
                                 this.state = 782;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 while (_la === 27) {
                                     {
                                         {
@@ -4476,16 +4367,16 @@ export default class BSLParser extends Parser {
                                         }
                                     }
                                     this.state = 784;
-                                    this._errHandler.sync(this);
-                                    _la = this._input.LA(1);
+                                    this.errorHandler.sync(this);
+                                    _la = this.tokenStream.LA(1);
                                 }
                                 this.state = 785;
                                 this.member();
                                 this.state = 789;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 80, this._ctx);
-                                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                    if (_alt === 1) {
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 80, this.context);
+                                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                    if (alternative === 1) {
                                         {
                                             {
                                                 this.state = 786;
@@ -4494,215 +4385,210 @@ export default class BSLParser extends Parser {
                                         }
                                     }
                                     this.state = 791;
-                                    this._errHandler.sync(this);
-                                    _alt = this._interp.adaptivePredict(this._input, 80, this._ctx);
+                                    this.errorHandler.sync(this);
+                                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 80, this.context);
                                 }
                             }
                         }
                     }
                     this.state = 796;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 81, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 81, this.context);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public operation(): OperationContext {
-        let localctx: OperationContext = new OperationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 170, BSLParser.RULE_operation);
+        let localContext = new OperationContext(this.context, this.state);
+        this.enterRule(localContext, 170, BSLParser.RULE_operation);
         try {
             this.state = 804;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case 12:
-                    this.enterOuterAlt(localctx, 1);
+            this.errorHandler.sync(this);
+            switch (this.tokenStream.LA(1)) {
+                case BSLParser.PLUS:
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 797;
                         this.match(BSLParser.PLUS);
                     }
                     break;
-                case 13:
-                    this.enterOuterAlt(localctx, 2);
+                case BSLParser.MINUS:
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 798;
                         this.match(BSLParser.MINUS);
                     }
                     break;
-                case 19:
-                    this.enterOuterAlt(localctx, 3);
+                case BSLParser.MUL:
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 799;
                         this.match(BSLParser.MUL);
                     }
                     break;
-                case 20:
-                    this.enterOuterAlt(localctx, 4);
+                case BSLParser.QUOTIENT:
+                    this.enterOuterAlt(localContext, 4);
                     {
                         this.state = 800;
                         this.match(BSLParser.QUOTIENT);
                     }
                     break;
-                case 21:
-                    this.enterOuterAlt(localctx, 5);
+                case BSLParser.MODULO:
+                    this.enterOuterAlt(localContext, 5);
                     {
                         this.state = 801;
                         this.match(BSLParser.MODULO);
                     }
                     break;
-                case 67:
-                case 68:
-                    this.enterOuterAlt(localctx, 6);
+                case BSLParser.OR_KEYWORD:
+                case BSLParser.AND_KEYWORD:
+                    this.enterOuterAlt(localContext, 6);
                     {
                         this.state = 802;
                         this.boolOperation();
                     }
                     break;
-                case 11:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                    this.enterOuterAlt(localctx, 7);
+                case BSLParser.ASSIGN:
+                case BSLParser.LESS_OR_EQUAL:
+                case BSLParser.NOT_EQUAL:
+                case BSLParser.LESS:
+                case BSLParser.GREATER_OR_EQUAL:
+                case BSLParser.GREATER:
+                    this.enterOuterAlt(localContext, 7);
                     {
                         this.state = 803;
                         this.compareOperation();
                     }
                     break;
                 default:
-                    throw new NoViableAltException(this);
+                    throw new antlr.NoViableAltException(this);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public compareOperation(): CompareOperationContext {
-        let localctx: CompareOperationContext = new CompareOperationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 172, BSLParser.RULE_compareOperation);
+        let localContext = new CompareOperationContext(this.context, this.state);
+        this.enterRule(localContext, 172, BSLParser.RULE_compareOperation);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 806;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!((_la & ~0x1f) === 0 && ((1 << _la) & 509952) !== 0)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public boolOperation(): BoolOperationContext {
-        let localctx: BoolOperationContext = new BoolOperationContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 174, BSLParser.RULE_boolOperation);
+        let localContext = new BoolOperationContext(this.context, this.state);
+        this.enterRule(localContext, 174, BSLParser.RULE_boolOperation);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 808;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 67 || _la === 68)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public unaryModifier(): UnaryModifierContext {
-        let localctx: UnaryModifierContext = new UnaryModifierContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 176, BSLParser.RULE_unaryModifier);
+        let localContext = new UnaryModifierContext(this.context, this.state);
+        this.enterRule(localContext, 176, BSLParser.RULE_unaryModifier);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 810;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 12 || _la === 13 || _la === 66)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public member(): MemberContext {
-        let localctx: MemberContext = new MemberContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 178, BSLParser.RULE_member);
+        let localContext = new MemberContext(this.context, this.state);
+        this.enterRule(localContext, 178, BSLParser.RULE_member);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 813;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 83, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 83, this.context)) {
                     case 1:
                         {
                             this.state = 812;
@@ -4711,8 +4597,8 @@ export default class BSLParser extends Parser {
                         break;
                 }
                 this.state = 832;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 86, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 86, this.context)) {
                     case 1:
                         {
                             this.state = 815;
@@ -4737,8 +4623,8 @@ export default class BSLParser extends Parser {
                                     this.match(BSLParser.RPAREN);
                                 }
                                 this.state = 824;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 while (_la === 3 || _la === 4) {
                                     {
                                         {
@@ -4747,8 +4633,8 @@ export default class BSLParser extends Parser {
                                         }
                                     }
                                     this.state = 826;
-                                    this._errHandler.sync(this);
-                                    _la = this._input.LA(1);
+                                    this.errorHandler.sync(this);
+                                    _la = this.tokenStream.LA(1);
                                 }
                             }
                         }
@@ -4756,8 +4642,8 @@ export default class BSLParser extends Parser {
                     case 4:
                         {
                             this.state = 829;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 85, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 85, this.context)) {
                                 case 1:
                                     {
                                         this.state = 827;
@@ -4782,38 +4668,37 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public newExpression(): NewExpressionContext {
-        let localctx: NewExpressionContext = new NewExpressionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 180, BSLParser.RULE_newExpression);
+        let localContext = new NewExpressionContext(this.context, this.state);
+        this.enterRule(localContext, 180, BSLParser.RULE_newExpression);
         let _la: number;
         try {
             this.state = 841;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 88, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 88, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 834;
                         this.match(BSLParser.NEW_KEYWORD);
                         this.state = 835;
                         this.typeName();
                         this.state = 837;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
+                        this.errorHandler.sync(this);
+                        _la = this.tokenStream.LA(1);
                         if (_la === 6) {
                             {
                                 this.state = 836;
@@ -4823,7 +4708,7 @@ export default class BSLParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 839;
                         this.match(BSLParser.NEW_KEYWORD);
@@ -4833,49 +4718,47 @@ export default class BSLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public typeName(): TypeNameContext {
-        let localctx: TypeNameContext = new TypeNameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 182, BSLParser.RULE_typeName);
+        let localContext = new TypeNameContext(this.context, this.state);
+        this.enterRule(localContext, 182, BSLParser.RULE_typeName);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 843;
                 this.match(BSLParser.IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public methodCall(): MethodCallContext {
-        let localctx: MethodCallContext = new MethodCallContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 184, BSLParser.RULE_methodCall);
+        let localContext = new MethodCallContext(this.context, this.state);
+        this.enterRule(localContext, 184, BSLParser.RULE_methodCall);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 845;
                 this.methodName();
@@ -4883,25 +4766,24 @@ export default class BSLParser extends Parser {
                 this.doCall();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public globalMethodCall(): GlobalMethodCallContext {
-        let localctx: GlobalMethodCallContext = new GlobalMethodCallContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 186, BSLParser.RULE_globalMethodCall);
+        let localContext = new GlobalMethodCallContext(this.context, this.state);
+        this.enterRule(localContext, 186, BSLParser.RULE_globalMethodCall);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 848;
                 this.methodName();
@@ -4909,54 +4791,52 @@ export default class BSLParser extends Parser {
                 this.doCall();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public methodName(): MethodNameContext {
-        let localctx: MethodNameContext = new MethodNameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 188, BSLParser.RULE_methodName);
+        let localContext = new MethodNameContext(this.context, this.state);
+        this.enterRule(localContext, 188, BSLParser.RULE_methodName);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 851;
                 this.match(BSLParser.IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public complexIdentifier(): ComplexIdentifierContext {
-        let localctx: ComplexIdentifierContext = new ComplexIdentifierContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 190, BSLParser.RULE_complexIdentifier);
+        let localContext = new ComplexIdentifierContext(this.context, this.state);
+        this.enterRule(localContext, 190, BSLParser.RULE_complexIdentifier);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 857;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 89, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 89, this.context)) {
                     case 1:
                         {
                             this.state = 853;
@@ -4983,8 +4863,8 @@ export default class BSLParser extends Parser {
                         break;
                 }
                 this.state = 862;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while (_la === 3 || _la === 4) {
                     {
                         {
@@ -4993,48 +4873,47 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 864;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public modifier(): ModifierContext {
-        let localctx: ModifierContext = new ModifierContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 192, BSLParser.RULE_modifier);
+        let localContext = new ModifierContext(this.context, this.state);
+        this.enterRule(localContext, 192, BSLParser.RULE_modifier);
         try {
             this.state = 868;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 91, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 91, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 865;
                         this.accessProperty();
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 866;
                         this.accessIndex();
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 867;
                         this.accessCall();
@@ -5042,32 +4921,31 @@ export default class BSLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public acceptor(): AcceptorContext {
-        let localctx: AcceptorContext = new AcceptorContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 194, BSLParser.RULE_acceptor);
+        let localContext = new AcceptorContext(this.context, this.state);
+        this.enterRule(localContext, 194, BSLParser.RULE_acceptor);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 873;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 92, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 92, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             {
                                 this.state = 870;
@@ -5076,53 +4954,52 @@ export default class BSLParser extends Parser {
                         }
                     }
                     this.state = 875;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 92, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 92, this.context);
                 }
                 this.state = 878;
-                this._errHandler.sync(this);
-                switch (this._input.LA(1)) {
-                    case 3:
+                this.errorHandler.sync(this);
+                switch (this.tokenStream.LA(1)) {
+                    case BSLParser.DOT:
                         {
                             this.state = 876;
                             this.accessProperty();
                         }
                         break;
-                    case 4:
+                    case BSLParser.LBRACK:
                         {
                             this.state = 877;
                             this.accessIndex();
                         }
                         break;
                     default:
-                        throw new NoViableAltException(this);
+                        throw new antlr.NoViableAltException(this);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public lValue(): LValueContext {
-        let localctx: LValueContext = new LValueContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 196, BSLParser.RULE_lValue);
+        let localContext = new LValueContext(this.context, this.state);
+        this.enterRule(localContext, 196, BSLParser.RULE_lValue);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 882;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 94, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 94, this.context)) {
                     case 1:
                         {
                             this.state = 880;
@@ -5137,8 +5014,8 @@ export default class BSLParser extends Parser {
                         break;
                 }
                 this.state = 885;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 3 || _la === 4) {
                     {
                         this.state = 884;
@@ -5147,25 +5024,24 @@ export default class BSLParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public accessCall(): AccessCallContext {
-        let localctx: AccessCallContext = new AccessCallContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 198, BSLParser.RULE_accessCall);
+        let localContext = new AccessCallContext(this.context, this.state);
+        this.enterRule(localContext, 198, BSLParser.RULE_accessCall);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 887;
                 this.match(BSLParser.DOT);
@@ -5173,25 +5049,24 @@ export default class BSLParser extends Parser {
                 this.methodCall();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public accessIndex(): AccessIndexContext {
-        let localctx: AccessIndexContext = new AccessIndexContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 200, BSLParser.RULE_accessIndex);
+        let localContext = new AccessIndexContext(this.context, this.state);
+        this.enterRule(localContext, 200, BSLParser.RULE_accessIndex);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 890;
                 this.match(BSLParser.LBRACK);
@@ -5201,25 +5076,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.RBRACK);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public accessProperty(): AccessPropertyContext {
-        let localctx: AccessPropertyContext = new AccessPropertyContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 202, BSLParser.RULE_accessProperty);
+        let localContext = new AccessPropertyContext(this.context, this.state);
+        this.enterRule(localContext, 202, BSLParser.RULE_accessProperty);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 894;
                 this.match(BSLParser.DOT);
@@ -5227,25 +5101,24 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.IDENTIFIER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public doCall(): DoCallContext {
-        let localctx: DoCallContext = new DoCallContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 204, BSLParser.RULE_doCall);
+        let localContext = new DoCallContext(this.context, this.state);
+        this.enterRule(localContext, 204, BSLParser.RULE_doCall);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 897;
                 this.match(BSLParser.LPAREN);
@@ -5255,113 +5128,112 @@ export default class BSLParser extends Parser {
                 this.match(BSLParser.RPAREN);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public compoundStatement(): CompoundStatementContext {
-        let localctx: CompoundStatementContext = new CompoundStatementContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 206, BSLParser.RULE_compoundStatement);
+        let localContext = new CompoundStatementContext(this.context, this.state);
+        this.enterRule(localContext, 206, BSLParser.RULE_compoundStatement);
         try {
             this.state = 914;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 96, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 96, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 901;
                         this.ifStatement();
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 902;
                         this.whileStatement();
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 903;
                         this.forStatement();
                     }
                     break;
                 case 4:
-                    this.enterOuterAlt(localctx, 4);
+                    this.enterOuterAlt(localContext, 4);
                     {
                         this.state = 904;
                         this.forEachStatement();
                     }
                     break;
                 case 5:
-                    this.enterOuterAlt(localctx, 5);
+                    this.enterOuterAlt(localContext, 5);
                     {
                         this.state = 905;
                         this.tryStatement();
                     }
                     break;
                 case 6:
-                    this.enterOuterAlt(localctx, 6);
+                    this.enterOuterAlt(localContext, 6);
                     {
                         this.state = 906;
                         this.returnStatement();
                     }
                     break;
                 case 7:
-                    this.enterOuterAlt(localctx, 7);
+                    this.enterOuterAlt(localContext, 7);
                     {
                         this.state = 907;
                         this.continueStatement();
                     }
                     break;
                 case 8:
-                    this.enterOuterAlt(localctx, 8);
+                    this.enterOuterAlt(localContext, 8);
                     {
                         this.state = 908;
                         this.breakStatement();
                     }
                     break;
                 case 9:
-                    this.enterOuterAlt(localctx, 9);
+                    this.enterOuterAlt(localContext, 9);
                     {
                         this.state = 909;
                         this.raiseStatement();
                     }
                     break;
                 case 10:
-                    this.enterOuterAlt(localctx, 10);
+                    this.enterOuterAlt(localContext, 10);
                     {
                         this.state = 910;
                         this.executeStatement();
                     }
                     break;
                 case 11:
-                    this.enterOuterAlt(localctx, 11);
+                    this.enterOuterAlt(localContext, 11);
                     {
                         this.state = 911;
                         this.gotoStatement();
                     }
                     break;
                 case 12:
-                    this.enterOuterAlt(localctx, 12);
+                    this.enterOuterAlt(localContext, 12);
                     {
                         this.state = 912;
                         this.addHandlerStatement();
                     }
                     break;
                 case 13:
-                    this.enterOuterAlt(localctx, 13);
+                    this.enterOuterAlt(localContext, 13);
                     {
                         this.state = 913;
                         this.removeHandlerStatement();
@@ -5369,17 +5241,17 @@ export default class BSLParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
     public static readonly _serializedATN: number[] = [
@@ -5655,81 +5527,89 @@ export default class BSLParser extends Parser {
         789, 794, 804, 813, 824, 829, 832, 837, 841, 857, 862, 868, 873, 878, 882, 885, 914,
     ];
 
-    private static __ATN: ATN;
+    private static __ATN: antlr.ATN;
 
-    public static get _ATN(): ATN {
+    public static get _ATN(): antlr.ATN {
         if (!BSLParser.__ATN) {
-            BSLParser.__ATN = new ATNDeserializer().deserialize(BSLParser._serializedATN);
+            BSLParser.__ATN = new antlr.ATNDeserializer().deserialize(BSLParser._serializedATN);
         }
 
         return BSLParser.__ATN;
     }
 
-    static DecisionsToDFA = BSLParser._ATN.decisionToState.map(
-        (ds: DecisionState, index: number) => new DFA(ds, index)
+    private static readonly vocabulary = new antlr.Vocabulary(BSLParser.literalNames, BSLParser.symbolicNames, []);
+
+    public override get vocabulary(): antlr.Vocabulary {
+        return BSLParser.vocabulary;
+    }
+
+    private static readonly decisionsToDFA = BSLParser._ATN.decisionToState.map(
+        (ds: antlr.DecisionState, index: number) => new antlr.DFA(ds, index)
     );
 }
 
 export class FileContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public fileCodeBlock(): FileCodeBlockContext {
-        return this.getTypedRuleContext(FileCodeBlockContext, 0) as FileCodeBlockContext;
+        return this.getRuleContext(0, FileCodeBlockContext)!;
     }
 
-    public EOF(): TerminalNode {
-        return this.getToken(BSLParser.EOF, 0);
+    public EOF(): antlr.TerminalNode {
+        return this.getToken(BSLParser.EOF, 0)!;
     }
 
-    public shebang(): ShebangContext {
-        return this.getTypedRuleContext(ShebangContext, 0) as ShebangContext;
+    public shebang(): ShebangContext | null {
+        return this.getRuleContext(0, ShebangContext);
     }
 
-    public moduleAnnotations(): ModuleAnnotationsContext {
-        return this.getTypedRuleContext(ModuleAnnotationsContext, 0) as ModuleAnnotationsContext;
+    public moduleAnnotations(): ModuleAnnotationsContext | null {
+        return this.getRuleContext(0, ModuleAnnotationsContext);
     }
 
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
+    public moduleVars(): ModuleVarsContext | null {
+        return this.getRuleContext(0, ModuleVarsContext);
     }
 
-    public moduleVars(): ModuleVarsContext {
-        return this.getTypedRuleContext(ModuleVarsContext, 0) as ModuleVarsContext;
+    public fileCodeBlockBeforeSub(): FileCodeBlockBeforeSubContext | null {
+        return this.getRuleContext(0, FileCodeBlockBeforeSubContext);
     }
 
-    public fileCodeBlockBeforeSub(): FileCodeBlockBeforeSubContext {
-        return this.getTypedRuleContext(FileCodeBlockBeforeSubContext, 0) as FileCodeBlockBeforeSubContext;
+    public subs(): SubsContext | null {
+        return this.getRuleContext(0, SubsContext);
     }
 
-    public subs(): SubsContext {
-        return this.getTypedRuleContext(SubsContext, 0) as SubsContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_file;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterFile) {
             listener.enterFile(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitFile) {
             listener.exitFile(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitFile) {
             return visitor.visitFile(this);
         } else {
@@ -5739,37 +5619,35 @@ export class FileContext extends BslParserRuleContext {
 }
 
 export class Preproc_nativeContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public HASH(): TerminalNode {
-        return this.getToken(BSLParser.HASH, 0);
+    public HASH(): antlr.TerminalNode {
+        return this.getToken(BSLParser.HASH, 0)!;
     }
 
-    public PREPROC_NATIVE(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_NATIVE, 0);
+    public PREPROC_NATIVE(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_NATIVE, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_native;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_native) {
             listener.enterPreproc_native(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_native) {
             listener.exitPreproc_native(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_native) {
             return visitor.visitPreproc_native(this);
         } else {
@@ -5779,37 +5657,35 @@ export class Preproc_nativeContext extends BslParserRuleContext {
 }
 
 export class UsedLibContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_STRING(): TerminalNode {
+    public PREPROC_STRING(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_STRING, 0);
     }
 
-    public PREPROC_IDENTIFIER(): TerminalNode {
+    public PREPROC_IDENTIFIER(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_IDENTIFIER, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_usedLib;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterUsedLib) {
             listener.enterUsedLib(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitUsedLib) {
             listener.exitUsedLib(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitUsedLib) {
             return visitor.visitUsedLib(this);
         } else {
@@ -5819,41 +5695,39 @@ export class UsedLibContext extends BslParserRuleContext {
 }
 
 export class UseContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public HASH(): TerminalNode {
-        return this.getToken(BSLParser.HASH, 0);
+    public HASH(): antlr.TerminalNode {
+        return this.getToken(BSLParser.HASH, 0)!;
     }
 
-    public PREPROC_USE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_USE_KEYWORD, 0);
+    public PREPROC_USE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_USE_KEYWORD, 0)!;
     }
 
     public usedLib(): UsedLibContext {
-        return this.getTypedRuleContext(UsedLibContext, 0) as UsedLibContext;
+        return this.getRuleContext(0, UsedLibContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_use;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterUse) {
             listener.enterUse(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitUse) {
             listener.exitUse(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitUse) {
             return visitor.visitUse(this);
         } else {
@@ -5863,41 +5737,43 @@ export class UseContext extends BslParserRuleContext {
 }
 
 export class ModuleAnnotationsContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public preproc_native(): Preproc_nativeContext {
-        return this.getTypedRuleContext(Preproc_nativeContext, 0) as Preproc_nativeContext;
+    public preproc_native(): Preproc_nativeContext | null {
+        return this.getRuleContext(0, Preproc_nativeContext);
     }
 
-    public use_list(): UseContext[] {
-        return this.getTypedRuleContexts(UseContext) as UseContext[];
+    public use(): UseContext[];
+
+    public use(i: number): UseContext | null;
+
+    public use(i?: number): UseContext[] | UseContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(UseContext);
+        }
+
+        return this.getRuleContext(i, UseContext);
     }
 
-    public use(i: number): UseContext {
-        return this.getTypedRuleContext(UseContext, i) as UseContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_moduleAnnotations;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterModuleAnnotations) {
             listener.enterModuleAnnotations(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitModuleAnnotations) {
             listener.exitModuleAnnotations(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitModuleAnnotations) {
             return visitor.visitModuleAnnotations(this);
         } else {
@@ -5907,53 +5783,59 @@ export class ModuleAnnotationsContext extends BslParserRuleContext {
 }
 
 export class ShebangContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public HASH(): TerminalNode {
-        return this.getToken(BSLParser.HASH, 0);
+    public HASH(): antlr.TerminalNode {
+        return this.getToken(BSLParser.HASH, 0)!;
     }
 
-    public PREPROC_EXCLAMATION_MARK(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_EXCLAMATION_MARK, 0);
+    public PREPROC_EXCLAMATION_MARK(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_EXCLAMATION_MARK, 0)!;
     }
 
-    public PREPROC_ANY_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.PREPROC_ANY);
+    public PREPROC_ANY(): antlr.TerminalNode[];
+
+    public PREPROC_ANY(i: number): antlr.TerminalNode | null;
+
+    public PREPROC_ANY(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.PREPROC_ANY);
+        } else {
+            return this.getToken(BSLParser.PREPROC_ANY, i);
+        }
     }
 
-    public PREPROC_ANY(i: number): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_ANY, i);
+    public PREPROC_IDENTIFIER(): antlr.TerminalNode[];
+
+    public PREPROC_IDENTIFIER(i: number): antlr.TerminalNode | null;
+
+    public PREPROC_IDENTIFIER(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.PREPROC_IDENTIFIER);
+        } else {
+            return this.getToken(BSLParser.PREPROC_IDENTIFIER, i);
+        }
     }
 
-    public PREPROC_IDENTIFIER_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.PREPROC_IDENTIFIER);
-    }
-
-    public PREPROC_IDENTIFIER(i: number): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_IDENTIFIER, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_shebang;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterShebang) {
             listener.enterShebang(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitShebang) {
             listener.exitShebang(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitShebang) {
             return visitor.visitShebang(this);
         } else {
@@ -5963,37 +5845,35 @@ export class ShebangContext extends BslParserRuleContext {
 }
 
 export class RegionStartContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_REGION(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_REGION, 0);
+    public PREPROC_REGION(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_REGION, 0)!;
     }
 
     public regionName(): RegionNameContext {
-        return this.getTypedRuleContext(RegionNameContext, 0) as RegionNameContext;
+        return this.getRuleContext(0, RegionNameContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_regionStart;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterRegionStart) {
             listener.enterRegionStart(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitRegionStart) {
             listener.exitRegionStart(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitRegionStart) {
             return visitor.visitRegionStart(this);
         } else {
@@ -6003,33 +5883,31 @@ export class RegionStartContext extends BslParserRuleContext {
 }
 
 export class RegionEndContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_END_REGION(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_END_REGION, 0);
+    public PREPROC_END_REGION(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_END_REGION, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_regionEnd;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterRegionEnd) {
             listener.enterRegionEnd(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitRegionEnd) {
             listener.exitRegionEnd(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitRegionEnd) {
             return visitor.visitRegionEnd(this);
         } else {
@@ -6039,33 +5917,31 @@ export class RegionEndContext extends BslParserRuleContext {
 }
 
 export class RegionNameContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_IDENTIFIER, 0);
+    public PREPROC_IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_regionName;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterRegionName) {
             listener.enterRegionName(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitRegionName) {
             listener.exitRegionName(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitRegionName) {
             return visitor.visitRegionName(this);
         } else {
@@ -6075,41 +5951,39 @@ export class RegionNameContext extends BslParserRuleContext {
 }
 
 export class Preproc_ifContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_IF_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_IF_KEYWORD, 0);
+    public PREPROC_IF_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_IF_KEYWORD, 0)!;
     }
 
     public preproc_expression(): Preproc_expressionContext {
-        return this.getTypedRuleContext(Preproc_expressionContext, 0) as Preproc_expressionContext;
+        return this.getRuleContext(0, Preproc_expressionContext)!;
     }
 
-    public PREPROC_THEN_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_THEN_KEYWORD, 0);
+    public PREPROC_THEN_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_THEN_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_if;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_if) {
             listener.enterPreproc_if(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_if) {
             listener.exitPreproc_if(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_if) {
             return visitor.visitPreproc_if(this);
         } else {
@@ -6119,41 +5993,39 @@ export class Preproc_ifContext extends BslParserRuleContext {
 }
 
 export class Preproc_elsifContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_ELSIF_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_ELSIF_KEYWORD, 0);
+    public PREPROC_ELSIF_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_ELSIF_KEYWORD, 0)!;
     }
 
     public preproc_expression(): Preproc_expressionContext {
-        return this.getTypedRuleContext(Preproc_expressionContext, 0) as Preproc_expressionContext;
+        return this.getRuleContext(0, Preproc_expressionContext)!;
     }
 
-    public PREPROC_THEN_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_THEN_KEYWORD, 0);
+    public PREPROC_THEN_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_THEN_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_elsif;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_elsif) {
             listener.enterPreproc_elsif(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_elsif) {
             listener.exitPreproc_elsif(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_elsif) {
             return visitor.visitPreproc_elsif(this);
         } else {
@@ -6163,33 +6035,31 @@ export class Preproc_elsifContext extends BslParserRuleContext {
 }
 
 export class Preproc_elseContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_ELSE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_ELSE_KEYWORD, 0);
+    public PREPROC_ELSE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_ELSE_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_else;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_else) {
             listener.enterPreproc_else(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_else) {
             listener.exitPreproc_else(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_else) {
             return visitor.visitPreproc_else(this);
         } else {
@@ -6199,33 +6069,31 @@ export class Preproc_elseContext extends BslParserRuleContext {
 }
 
 export class Preproc_endifContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_ENDIF_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_ENDIF_KEYWORD, 0);
+    public PREPROC_ENDIF_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_ENDIF_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_endif;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_endif) {
             listener.enterPreproc_endif(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_endif) {
             listener.exitPreproc_endif(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_endif) {
             return visitor.visitPreproc_endif(this);
         } else {
@@ -6235,49 +6103,47 @@ export class Preproc_endifContext extends BslParserRuleContext {
 }
 
 export class Preproc_expressionContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_LPAREN(): TerminalNode {
+    public PREPROC_LPAREN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_LPAREN, 0);
     }
 
-    public preproc_expression(): Preproc_expressionContext {
-        return this.getTypedRuleContext(Preproc_expressionContext, 0) as Preproc_expressionContext;
+    public preproc_expression(): Preproc_expressionContext | null {
+        return this.getRuleContext(0, Preproc_expressionContext);
     }
 
-    public PREPROC_RPAREN(): TerminalNode {
+    public PREPROC_RPAREN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_RPAREN, 0);
     }
 
-    public PREPROC_NOT_KEYWORD(): TerminalNode {
+    public PREPROC_NOT_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_NOT_KEYWORD, 0);
     }
 
-    public preproc_logicalExpression(): Preproc_logicalExpressionContext {
-        return this.getTypedRuleContext(Preproc_logicalExpressionContext, 0) as Preproc_logicalExpressionContext;
+    public preproc_logicalExpression(): Preproc_logicalExpressionContext | null {
+        return this.getRuleContext(0, Preproc_logicalExpressionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_expression;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_expression) {
             listener.enterPreproc_expression(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_expression) {
             listener.exitPreproc_expression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_expression) {
             return visitor.visitPreproc_expression(this);
         } else {
@@ -6287,53 +6153,51 @@ export class Preproc_expressionContext extends BslParserRuleContext {
 }
 
 export class Preproc_logicalOperandContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_LPAREN(): TerminalNode {
+    public PREPROC_LPAREN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_LPAREN, 0);
     }
 
-    public preproc_logicalOperand(): Preproc_logicalOperandContext {
-        return this.getTypedRuleContext(Preproc_logicalOperandContext, 0) as Preproc_logicalOperandContext;
+    public preproc_logicalOperand(): Preproc_logicalOperandContext | null {
+        return this.getRuleContext(0, Preproc_logicalOperandContext);
     }
 
-    public PREPROC_RPAREN(): TerminalNode {
+    public PREPROC_RPAREN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_RPAREN, 0);
     }
 
-    public PREPROC_NOT_KEYWORD(): TerminalNode {
+    public PREPROC_NOT_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_NOT_KEYWORD, 0);
     }
 
-    public preproc_symbol(): Preproc_symbolContext {
-        return this.getTypedRuleContext(Preproc_symbolContext, 0) as Preproc_symbolContext;
+    public preproc_symbol(): Preproc_symbolContext | null {
+        return this.getRuleContext(0, Preproc_symbolContext);
     }
 
-    public preproc_logicalExpression(): Preproc_logicalExpressionContext {
-        return this.getTypedRuleContext(Preproc_logicalExpressionContext, 0) as Preproc_logicalExpressionContext;
+    public preproc_logicalExpression(): Preproc_logicalExpressionContext | null {
+        return this.getRuleContext(0, Preproc_logicalExpressionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_logicalOperand;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_logicalOperand) {
             listener.enterPreproc_logicalOperand(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_logicalOperand) {
             listener.exitPreproc_logicalOperand(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_logicalOperand) {
             return visitor.visitPreproc_logicalOperand(this);
         } else {
@@ -6343,45 +6207,51 @@ export class Preproc_logicalOperandContext extends BslParserRuleContext {
 }
 
 export class Preproc_logicalExpressionContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public preproc_logicalOperand_list(): Preproc_logicalOperandContext[] {
-        return this.getTypedRuleContexts(Preproc_logicalOperandContext) as Preproc_logicalOperandContext[];
+    public preproc_logicalOperand(): Preproc_logicalOperandContext[];
+
+    public preproc_logicalOperand(i: number): Preproc_logicalOperandContext | null;
+
+    public preproc_logicalOperand(i?: number): Preproc_logicalOperandContext[] | Preproc_logicalOperandContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(Preproc_logicalOperandContext);
+        }
+
+        return this.getRuleContext(i, Preproc_logicalOperandContext);
     }
 
-    public preproc_logicalOperand(i: number): Preproc_logicalOperandContext {
-        return this.getTypedRuleContext(Preproc_logicalOperandContext, i) as Preproc_logicalOperandContext;
+    public preproc_boolOperation(): Preproc_boolOperationContext[];
+
+    public preproc_boolOperation(i: number): Preproc_boolOperationContext | null;
+
+    public preproc_boolOperation(i?: number): Preproc_boolOperationContext[] | Preproc_boolOperationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(Preproc_boolOperationContext);
+        }
+
+        return this.getRuleContext(i, Preproc_boolOperationContext);
     }
 
-    public preproc_boolOperation_list(): Preproc_boolOperationContext[] {
-        return this.getTypedRuleContexts(Preproc_boolOperationContext) as Preproc_boolOperationContext[];
-    }
-
-    public preproc_boolOperation(i: number): Preproc_boolOperationContext {
-        return this.getTypedRuleContext(Preproc_boolOperationContext, i) as Preproc_boolOperationContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_logicalExpression;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_logicalExpression) {
             listener.enterPreproc_logicalExpression(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_logicalExpression) {
             listener.exitPreproc_logicalExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_logicalExpression) {
             return visitor.visitPreproc_logicalExpression(this);
         } else {
@@ -6391,97 +6261,95 @@ export class Preproc_logicalExpressionContext extends BslParserRuleContext {
 }
 
 export class Preproc_symbolContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_CLIENT_SYMBOL(): TerminalNode {
+    public PREPROC_CLIENT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_CLIENT_SYMBOL, 0);
     }
 
-    public PREPROC_ATCLIENT_SYMBOL(): TerminalNode {
+    public PREPROC_ATCLIENT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_ATCLIENT_SYMBOL, 0);
     }
 
-    public PREPROC_SERVER_SYMBOL(): TerminalNode {
+    public PREPROC_SERVER_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_SERVER_SYMBOL, 0);
     }
 
-    public PREPROC_ATSERVER_SYMBOL(): TerminalNode {
+    public PREPROC_ATSERVER_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_ATSERVER_SYMBOL, 0);
     }
 
-    public PREPROC_MOBILEAPPCLIENT_SYMBOL(): TerminalNode {
+    public PREPROC_MOBILEAPPCLIENT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_MOBILEAPPCLIENT_SYMBOL, 0);
     }
 
-    public PREPROC_MOBILEAPPSERVER_SYMBOL(): TerminalNode {
+    public PREPROC_MOBILEAPPSERVER_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_MOBILEAPPSERVER_SYMBOL, 0);
     }
 
-    public PREPROC_MOBILECLIENT_SYMBOL(): TerminalNode {
+    public PREPROC_MOBILECLIENT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_MOBILECLIENT_SYMBOL, 0);
     }
 
-    public PREPROC_THICKCLIENTORDINARYAPPLICATION_SYMBOL(): TerminalNode {
+    public PREPROC_THICKCLIENTORDINARYAPPLICATION_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_THICKCLIENTORDINARYAPPLICATION_SYMBOL, 0);
     }
 
-    public PREPROC_THICKCLIENTMANAGEDAPPLICATION_SYMBOL(): TerminalNode {
+    public PREPROC_THICKCLIENTMANAGEDAPPLICATION_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_THICKCLIENTMANAGEDAPPLICATION_SYMBOL, 0);
     }
 
-    public PREPROC_EXTERNALCONNECTION_SYMBOL(): TerminalNode {
+    public PREPROC_EXTERNALCONNECTION_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_EXTERNALCONNECTION_SYMBOL, 0);
     }
 
-    public PREPROC_THINCLIENT_SYMBOL(): TerminalNode {
+    public PREPROC_THINCLIENT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_THINCLIENT_SYMBOL, 0);
     }
 
-    public PREPROC_WEBCLIENT_SYMBOL(): TerminalNode {
+    public PREPROC_WEBCLIENT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_WEBCLIENT_SYMBOL, 0);
     }
 
-    public PREPROC_MOBILE_STANDALONE_SERVER(): TerminalNode {
+    public PREPROC_MOBILE_STANDALONE_SERVER(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_MOBILE_STANDALONE_SERVER, 0);
     }
 
-    public PREPROC_LINUX(): TerminalNode {
+    public PREPROC_LINUX(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_LINUX, 0);
     }
 
-    public PREPROC_WINDOWS(): TerminalNode {
+    public PREPROC_WINDOWS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_WINDOWS, 0);
     }
 
-    public PREPROC_MACOS(): TerminalNode {
+    public PREPROC_MACOS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_MACOS, 0);
     }
 
-    public preproc_unknownSymbol(): Preproc_unknownSymbolContext {
-        return this.getTypedRuleContext(Preproc_unknownSymbolContext, 0) as Preproc_unknownSymbolContext;
+    public preproc_unknownSymbol(): Preproc_unknownSymbolContext | null {
+        return this.getRuleContext(0, Preproc_unknownSymbolContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_symbol;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_symbol) {
             listener.enterPreproc_symbol(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_symbol) {
             listener.exitPreproc_symbol(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_symbol) {
             return visitor.visitPreproc_symbol(this);
         } else {
@@ -6491,33 +6359,31 @@ export class Preproc_symbolContext extends BslParserRuleContext {
 }
 
 export class Preproc_unknownSymbolContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.PREPROC_IDENTIFIER, 0);
+    public PREPROC_IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PREPROC_IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_unknownSymbol;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_unknownSymbol) {
             listener.enterPreproc_unknownSymbol(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_unknownSymbol) {
             listener.exitPreproc_unknownSymbol(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_unknownSymbol) {
             return visitor.visitPreproc_unknownSymbol(this);
         } else {
@@ -6527,37 +6393,35 @@ export class Preproc_unknownSymbolContext extends BslParserRuleContext {
 }
 
 export class Preproc_boolOperationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PREPROC_OR_KEYWORD(): TerminalNode {
+    public PREPROC_OR_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_OR_KEYWORD, 0);
     }
 
-    public PREPROC_AND_KEYWORD(): TerminalNode {
+    public PREPROC_AND_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PREPROC_AND_KEYWORD, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preproc_boolOperation;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreproc_boolOperation) {
             listener.enterPreproc_boolOperation(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreproc_boolOperation) {
             listener.exitPreproc_boolOperation(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreproc_boolOperation) {
             return visitor.visitPreproc_boolOperation(this);
         } else {
@@ -6567,57 +6431,55 @@ export class Preproc_boolOperationContext extends BslParserRuleContext {
 }
 
 export class PreprocessorContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public HASH(): TerminalNode {
-        return this.getToken(BSLParser.HASH, 0);
+    public HASH(): antlr.TerminalNode {
+        return this.getToken(BSLParser.HASH, 0)!;
     }
 
-    public regionStart(): RegionStartContext {
-        return this.getTypedRuleContext(RegionStartContext, 0) as RegionStartContext;
+    public regionStart(): RegionStartContext | null {
+        return this.getRuleContext(0, RegionStartContext);
     }
 
-    public regionEnd(): RegionEndContext {
-        return this.getTypedRuleContext(RegionEndContext, 0) as RegionEndContext;
+    public regionEnd(): RegionEndContext | null {
+        return this.getRuleContext(0, RegionEndContext);
     }
 
-    public preproc_if(): Preproc_ifContext {
-        return this.getTypedRuleContext(Preproc_ifContext, 0) as Preproc_ifContext;
+    public preproc_if(): Preproc_ifContext | null {
+        return this.getRuleContext(0, Preproc_ifContext);
     }
 
-    public preproc_elsif(): Preproc_elsifContext {
-        return this.getTypedRuleContext(Preproc_elsifContext, 0) as Preproc_elsifContext;
+    public preproc_elsif(): Preproc_elsifContext | null {
+        return this.getRuleContext(0, Preproc_elsifContext);
     }
 
-    public preproc_else(): Preproc_elseContext {
-        return this.getTypedRuleContext(Preproc_elseContext, 0) as Preproc_elseContext;
+    public preproc_else(): Preproc_elseContext | null {
+        return this.getRuleContext(0, Preproc_elseContext);
     }
 
-    public preproc_endif(): Preproc_endifContext {
-        return this.getTypedRuleContext(Preproc_endifContext, 0) as Preproc_endifContext;
+    public preproc_endif(): Preproc_endifContext | null {
+        return this.getRuleContext(0, Preproc_endifContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_preprocessor;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterPreprocessor) {
             listener.enterPreprocessor(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitPreprocessor) {
             listener.exitPreprocessor(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitPreprocessor) {
             return visitor.visitPreprocessor(this);
         } else {
@@ -6627,49 +6489,47 @@ export class PreprocessorContext extends BslParserRuleContext {
 }
 
 export class CompilerDirectiveSymbolContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public ANNOTATION_ATSERVERNOCONTEXT_SYMBOL(): TerminalNode {
+    public ANNOTATION_ATSERVERNOCONTEXT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_ATSERVERNOCONTEXT_SYMBOL, 0);
     }
 
-    public ANNOTATION_ATCLIENTATSERVERNOCONTEXT_SYMBOL(): TerminalNode {
+    public ANNOTATION_ATCLIENTATSERVERNOCONTEXT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_ATCLIENTATSERVERNOCONTEXT_SYMBOL, 0);
     }
 
-    public ANNOTATION_ATCLIENTATSERVER_SYMBOL(): TerminalNode {
+    public ANNOTATION_ATCLIENTATSERVER_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_ATCLIENTATSERVER_SYMBOL, 0);
     }
 
-    public ANNOTATION_ATCLIENT_SYMBOL(): TerminalNode {
+    public ANNOTATION_ATCLIENT_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_ATCLIENT_SYMBOL, 0);
     }
 
-    public ANNOTATION_ATSERVER_SYMBOL(): TerminalNode {
+    public ANNOTATION_ATSERVER_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_ATSERVER_SYMBOL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_compilerDirectiveSymbol;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterCompilerDirectiveSymbol) {
             listener.enterCompilerDirectiveSymbol(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitCompilerDirectiveSymbol) {
             listener.exitCompilerDirectiveSymbol(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitCompilerDirectiveSymbol) {
             return visitor.visitCompilerDirectiveSymbol(this);
         } else {
@@ -6679,37 +6539,35 @@ export class CompilerDirectiveSymbolContext extends BslParserRuleContext {
 }
 
 export class CompilerDirectiveContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public AMPERSAND(): TerminalNode {
-        return this.getToken(BSLParser.AMPERSAND, 0);
+    public AMPERSAND(): antlr.TerminalNode {
+        return this.getToken(BSLParser.AMPERSAND, 0)!;
     }
 
     public compilerDirectiveSymbol(): CompilerDirectiveSymbolContext {
-        return this.getTypedRuleContext(CompilerDirectiveSymbolContext, 0) as CompilerDirectiveSymbolContext;
+        return this.getRuleContext(0, CompilerDirectiveSymbolContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_compilerDirective;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterCompilerDirective) {
             listener.enterCompilerDirective(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitCompilerDirective) {
             listener.exitCompilerDirective(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitCompilerDirective) {
             return visitor.visitCompilerDirective(this);
         } else {
@@ -6719,49 +6577,47 @@ export class CompilerDirectiveContext extends BslParserRuleContext {
 }
 
 export class AnnotationNameContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public ANNOTATION_CUSTOM_SYMBOL(): TerminalNode {
+    public ANNOTATION_CUSTOM_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_CUSTOM_SYMBOL, 0);
     }
 
-    public ANNOTATION_BEFORE_SYMBOL(): TerminalNode {
+    public ANNOTATION_BEFORE_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_BEFORE_SYMBOL, 0);
     }
 
-    public ANNOTATION_AFTER_SYMBOL(): TerminalNode {
+    public ANNOTATION_AFTER_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_AFTER_SYMBOL, 0);
     }
 
-    public ANNOTATION_AROUND_SYMBOL(): TerminalNode {
+    public ANNOTATION_AROUND_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_AROUND_SYMBOL, 0);
     }
 
-    public ANNOTATION_CHANGEANDVALIDATE_SYMBOL(): TerminalNode {
+    public ANNOTATION_CHANGEANDVALIDATE_SYMBOL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ANNOTATION_CHANGEANDVALIDATE_SYMBOL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_annotationName;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAnnotationName) {
             listener.enterAnnotationName(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAnnotationName) {
             listener.exitAnnotationName(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAnnotationName) {
             return visitor.visitAnnotationName(this);
         } else {
@@ -6771,33 +6627,31 @@ export class AnnotationNameContext extends BslParserRuleContext {
 }
 
 export class AnnotationParamNameContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_annotationParamName;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAnnotationParamName) {
             listener.enterAnnotationParamName(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAnnotationParamName) {
             listener.exitAnnotationParamName(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAnnotationParamName) {
             return visitor.visitAnnotationParamName(this);
         } else {
@@ -6807,41 +6661,39 @@ export class AnnotationParamNameContext extends BslParserRuleContext {
 }
 
 export class AnnotationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public AMPERSAND(): TerminalNode {
-        return this.getToken(BSLParser.AMPERSAND, 0);
+    public AMPERSAND(): antlr.TerminalNode {
+        return this.getToken(BSLParser.AMPERSAND, 0)!;
     }
 
     public annotationName(): AnnotationNameContext {
-        return this.getTypedRuleContext(AnnotationNameContext, 0) as AnnotationNameContext;
+        return this.getRuleContext(0, AnnotationNameContext)!;
     }
 
-    public annotationParams(): AnnotationParamsContext {
-        return this.getTypedRuleContext(AnnotationParamsContext, 0) as AnnotationParamsContext;
+    public annotationParams(): AnnotationParamsContext | null {
+        return this.getRuleContext(0, AnnotationParamsContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_annotation;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAnnotation) {
             listener.enterAnnotation(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAnnotation) {
             listener.exitAnnotation(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAnnotation) {
             return visitor.visitAnnotation(this);
         } else {
@@ -6851,53 +6703,59 @@ export class AnnotationContext extends BslParserRuleContext {
 }
 
 export class AnnotationParamsContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(BSLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.LPAREN, 0)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(BSLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.RPAREN, 0)!;
     }
 
-    public annotationParam_list(): AnnotationParamContext[] {
-        return this.getTypedRuleContexts(AnnotationParamContext) as AnnotationParamContext[];
+    public annotationParam(): AnnotationParamContext[];
+
+    public annotationParam(i: number): AnnotationParamContext | null;
+
+    public annotationParam(i?: number): AnnotationParamContext[] | AnnotationParamContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(AnnotationParamContext);
+        }
+
+        return this.getRuleContext(i, AnnotationParamContext);
     }
 
-    public annotationParam(i: number): AnnotationParamContext {
-        return this.getTypedRuleContext(AnnotationParamContext, i) as AnnotationParamContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.COMMA);
+        } else {
+            return this.getToken(BSLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(BSLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_annotationParams;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAnnotationParams) {
             listener.enterAnnotationParams(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAnnotationParams) {
             listener.exitAnnotationParams(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAnnotationParams) {
             return visitor.visitAnnotationParams(this);
         } else {
@@ -6907,41 +6765,39 @@ export class AnnotationParamsContext extends BslParserRuleContext {
 }
 
 export class AnnotationParamContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public annotationParamName(): AnnotationParamNameContext {
-        return this.getTypedRuleContext(AnnotationParamNameContext, 0) as AnnotationParamNameContext;
+    public annotationParamName(): AnnotationParamNameContext | null {
+        return this.getRuleContext(0, AnnotationParamNameContext);
     }
 
-    public ASSIGN(): TerminalNode {
+    public ASSIGN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ASSIGN, 0);
     }
 
-    public constValue(): ConstValueContext {
-        return this.getTypedRuleContext(ConstValueContext, 0) as ConstValueContext;
+    public constValue(): ConstValueContext | null {
+        return this.getRuleContext(0, ConstValueContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_annotationParam;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAnnotationParam) {
             listener.enterAnnotationParam(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAnnotationParam) {
             listener.exitAnnotationParam(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAnnotationParam) {
             return visitor.visitAnnotationParam(this);
         } else {
@@ -6951,33 +6807,31 @@ export class AnnotationParamContext extends BslParserRuleContext {
 }
 
 export class Var_nameContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_var_name;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterVar_name) {
             listener.enterVar_name(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitVar_name) {
             listener.exitVar_name(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitVar_name) {
             return visitor.visitVar_name(this);
         } else {
@@ -6987,37 +6841,39 @@ export class Var_nameContext extends BslParserRuleContext {
 }
 
 export class ModuleVarsContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public moduleVar_list(): ModuleVarContext[] {
-        return this.getTypedRuleContexts(ModuleVarContext) as ModuleVarContext[];
+    public moduleVar(): ModuleVarContext[];
+
+    public moduleVar(i: number): ModuleVarContext | null;
+
+    public moduleVar(i?: number): ModuleVarContext[] | ModuleVarContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ModuleVarContext);
+        }
+
+        return this.getRuleContext(i, ModuleVarContext);
     }
 
-    public moduleVar(i: number): ModuleVarContext {
-        return this.getTypedRuleContext(ModuleVarContext, i) as ModuleVarContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_moduleVars;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterModuleVars) {
             listener.enterModuleVars(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitModuleVars) {
             listener.exitModuleVars(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitModuleVars) {
             return visitor.visitModuleVars(this);
         } else {
@@ -7027,65 +6883,75 @@ export class ModuleVarsContext extends BslParserRuleContext {
 }
 
 export class ModuleVarContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public VAR_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.VAR_KEYWORD, 0);
+    public VAR_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.VAR_KEYWORD, 0)!;
     }
 
     public moduleVarsList(): ModuleVarsListContext {
-        return this.getTypedRuleContext(ModuleVarsListContext, 0) as ModuleVarsListContext;
+        return this.getRuleContext(0, ModuleVarsListContext)!;
     }
 
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
+    public compilerDirective(): CompilerDirectiveContext[];
+
+    public compilerDirective(i: number): CompilerDirectiveContext | null;
+
+    public compilerDirective(i?: number): CompilerDirectiveContext[] | CompilerDirectiveContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(CompilerDirectiveContext);
+        }
+
+        return this.getRuleContext(i, CompilerDirectiveContext);
     }
 
-    public compilerDirective_list(): CompilerDirectiveContext[] {
-        return this.getTypedRuleContexts(CompilerDirectiveContext) as CompilerDirectiveContext[];
+    public annotation(): AnnotationContext[];
+
+    public annotation(i: number): AnnotationContext | null;
+
+    public annotation(i?: number): AnnotationContext[] | AnnotationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(AnnotationContext);
+        }
+
+        return this.getRuleContext(i, AnnotationContext);
     }
 
-    public compilerDirective(i: number): CompilerDirectiveContext {
-        return this.getTypedRuleContext(CompilerDirectiveContext, i) as CompilerDirectiveContext;
-    }
-
-    public annotation_list(): AnnotationContext[] {
-        return this.getTypedRuleContexts(AnnotationContext) as AnnotationContext[];
-    }
-
-    public annotation(i: number): AnnotationContext {
-        return this.getTypedRuleContext(AnnotationContext, i) as AnnotationContext;
-    }
-
-    public SEMICOLON(): TerminalNode {
+    public SEMICOLON(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.SEMICOLON, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_moduleVar;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterModuleVar) {
             listener.enterModuleVar(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitModuleVar) {
             listener.exitModuleVar(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitModuleVar) {
             return visitor.visitModuleVar(this);
         } else {
@@ -7095,45 +6961,51 @@ export class ModuleVarContext extends BslParserRuleContext {
 }
 
 export class ModuleVarsListContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public moduleVarDeclaration_list(): ModuleVarDeclarationContext[] {
-        return this.getTypedRuleContexts(ModuleVarDeclarationContext) as ModuleVarDeclarationContext[];
+    public moduleVarDeclaration(): ModuleVarDeclarationContext[];
+
+    public moduleVarDeclaration(i: number): ModuleVarDeclarationContext | null;
+
+    public moduleVarDeclaration(i?: number): ModuleVarDeclarationContext[] | ModuleVarDeclarationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ModuleVarDeclarationContext);
+        }
+
+        return this.getRuleContext(i, ModuleVarDeclarationContext);
     }
 
-    public moduleVarDeclaration(i: number): ModuleVarDeclarationContext {
-        return this.getTypedRuleContext(ModuleVarDeclarationContext, i) as ModuleVarDeclarationContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.COMMA);
+        } else {
+            return this.getToken(BSLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(BSLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_moduleVarsList;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterModuleVarsList) {
             listener.enterModuleVarsList(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitModuleVarsList) {
             listener.exitModuleVarsList(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitModuleVarsList) {
             return visitor.visitModuleVarsList(this);
         } else {
@@ -7143,37 +7015,35 @@ export class ModuleVarsListContext extends BslParserRuleContext {
 }
 
 export class ModuleVarDeclarationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public var_name(): Var_nameContext {
-        return this.getTypedRuleContext(Var_nameContext, 0) as Var_nameContext;
+        return this.getRuleContext(0, Var_nameContext)!;
     }
 
-    public EXPORT_KEYWORD(): TerminalNode {
+    public EXPORT_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.EXPORT_KEYWORD, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_moduleVarDeclaration;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterModuleVarDeclaration) {
             listener.enterModuleVarDeclaration(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitModuleVarDeclaration) {
             listener.exitModuleVarDeclaration(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitModuleVarDeclaration) {
             return visitor.visitModuleVarDeclaration(this);
         } else {
@@ -7183,37 +7053,39 @@ export class ModuleVarDeclarationContext extends BslParserRuleContext {
 }
 
 export class SubVarsContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public subVar_list(): SubVarContext[] {
-        return this.getTypedRuleContexts(SubVarContext) as SubVarContext[];
+    public subVar(): SubVarContext[];
+
+    public subVar(i: number): SubVarContext | null;
+
+    public subVar(i?: number): SubVarContext[] | SubVarContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(SubVarContext);
+        }
+
+        return this.getRuleContext(i, SubVarContext);
     }
 
-    public subVar(i: number): SubVarContext {
-        return this.getTypedRuleContext(SubVarContext, i) as SubVarContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_subVars;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterSubVars) {
             listener.enterSubVars(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitSubVars) {
             listener.exitSubVars(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitSubVars) {
             return visitor.visitSubVars(this);
         } else {
@@ -7223,65 +7095,75 @@ export class SubVarsContext extends BslParserRuleContext {
 }
 
 export class SubVarContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public VAR_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.VAR_KEYWORD, 0);
+    public VAR_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.VAR_KEYWORD, 0)!;
     }
 
     public subVarsList(): SubVarsListContext {
-        return this.getTypedRuleContext(SubVarsListContext, 0) as SubVarsListContext;
+        return this.getRuleContext(0, SubVarsListContext)!;
     }
 
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
+    public compilerDirective(): CompilerDirectiveContext[];
+
+    public compilerDirective(i: number): CompilerDirectiveContext | null;
+
+    public compilerDirective(i?: number): CompilerDirectiveContext[] | CompilerDirectiveContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(CompilerDirectiveContext);
+        }
+
+        return this.getRuleContext(i, CompilerDirectiveContext);
     }
 
-    public compilerDirective_list(): CompilerDirectiveContext[] {
-        return this.getTypedRuleContexts(CompilerDirectiveContext) as CompilerDirectiveContext[];
+    public annotation(): AnnotationContext[];
+
+    public annotation(i: number): AnnotationContext | null;
+
+    public annotation(i?: number): AnnotationContext[] | AnnotationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(AnnotationContext);
+        }
+
+        return this.getRuleContext(i, AnnotationContext);
     }
 
-    public compilerDirective(i: number): CompilerDirectiveContext {
-        return this.getTypedRuleContext(CompilerDirectiveContext, i) as CompilerDirectiveContext;
-    }
-
-    public annotation_list(): AnnotationContext[] {
-        return this.getTypedRuleContexts(AnnotationContext) as AnnotationContext[];
-    }
-
-    public annotation(i: number): AnnotationContext {
-        return this.getTypedRuleContext(AnnotationContext, i) as AnnotationContext;
-    }
-
-    public SEMICOLON(): TerminalNode {
+    public SEMICOLON(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.SEMICOLON, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_subVar;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterSubVar) {
             listener.enterSubVar(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitSubVar) {
             listener.exitSubVar(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitSubVar) {
             return visitor.visitSubVar(this);
         } else {
@@ -7291,45 +7173,51 @@ export class SubVarContext extends BslParserRuleContext {
 }
 
 export class SubVarsListContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public subVarDeclaration_list(): SubVarDeclarationContext[] {
-        return this.getTypedRuleContexts(SubVarDeclarationContext) as SubVarDeclarationContext[];
+    public subVarDeclaration(): SubVarDeclarationContext[];
+
+    public subVarDeclaration(i: number): SubVarDeclarationContext | null;
+
+    public subVarDeclaration(i?: number): SubVarDeclarationContext[] | SubVarDeclarationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(SubVarDeclarationContext);
+        }
+
+        return this.getRuleContext(i, SubVarDeclarationContext);
     }
 
-    public subVarDeclaration(i: number): SubVarDeclarationContext {
-        return this.getTypedRuleContext(SubVarDeclarationContext, i) as SubVarDeclarationContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.COMMA);
+        } else {
+            return this.getToken(BSLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(BSLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_subVarsList;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterSubVarsList) {
             listener.enterSubVarsList(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitSubVarsList) {
             listener.exitSubVarsList(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitSubVarsList) {
             return visitor.visitSubVarsList(this);
         } else {
@@ -7339,33 +7227,31 @@ export class SubVarsListContext extends BslParserRuleContext {
 }
 
 export class SubVarDeclarationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public var_name(): Var_nameContext {
-        return this.getTypedRuleContext(Var_nameContext, 0) as Var_nameContext;
+        return this.getRuleContext(0, Var_nameContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_subVarDeclaration;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterSubVarDeclaration) {
             listener.enterSubVarDeclaration(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitSubVarDeclaration) {
             listener.exitSubVarDeclaration(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitSubVarDeclaration) {
             return visitor.visitSubVarDeclaration(this);
         } else {
@@ -7375,33 +7261,31 @@ export class SubVarDeclarationContext extends BslParserRuleContext {
 }
 
 export class SubNameContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_subName;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterSubName) {
             listener.enterSubName(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitSubName) {
             listener.exitSubName(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitSubName) {
             return visitor.visitSubName(this);
         } else {
@@ -7411,37 +7295,39 @@ export class SubNameContext extends BslParserRuleContext {
 }
 
 export class SubsContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public sub_list(): SubContext[] {
-        return this.getTypedRuleContexts(SubContext) as SubContext[];
+    public sub(): SubContext[];
+
+    public sub(i: number): SubContext | null;
+
+    public sub(i?: number): SubContext[] | SubContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(SubContext);
+        }
+
+        return this.getRuleContext(i, SubContext);
     }
 
-    public sub(i: number): SubContext {
-        return this.getTypedRuleContext(SubContext, i) as SubContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_subs;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterSubs) {
             listener.enterSubs(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitSubs) {
             listener.exitSubs(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitSubs) {
             return visitor.visitSubs(this);
         } else {
@@ -7451,37 +7337,35 @@ export class SubsContext extends BslParserRuleContext {
 }
 
 export class SubContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public procedure(): ProcedureContext {
-        return this.getTypedRuleContext(ProcedureContext, 0) as ProcedureContext;
+    public procedure(): ProcedureContext | null {
+        return this.getRuleContext(0, ProcedureContext);
     }
 
-    public function_(): FunctionContext {
-        return this.getTypedRuleContext(FunctionContext, 0) as FunctionContext;
+    public function(): FunctionContext | null {
+        return this.getRuleContext(0, FunctionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_sub;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterSub) {
             listener.enterSub(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitSub) {
             listener.exitSub(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitSub) {
             return visitor.visitSub(this);
         } else {
@@ -7491,41 +7375,39 @@ export class SubContext extends BslParserRuleContext {
 }
 
 export class ProcedureContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public procDeclaration(): ProcDeclarationContext {
-        return this.getTypedRuleContext(ProcDeclarationContext, 0) as ProcDeclarationContext;
+        return this.getRuleContext(0, ProcDeclarationContext)!;
     }
 
     public subCodeBlock(): SubCodeBlockContext {
-        return this.getTypedRuleContext(SubCodeBlockContext, 0) as SubCodeBlockContext;
+        return this.getRuleContext(0, SubCodeBlockContext)!;
     }
 
-    public ENDPROCEDURE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ENDPROCEDURE_KEYWORD, 0);
+    public ENDPROCEDURE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ENDPROCEDURE_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_procedure;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterProcedure) {
             listener.enterProcedure(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitProcedure) {
             listener.exitProcedure(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitProcedure) {
             return visitor.visitProcedure(this);
         } else {
@@ -7535,41 +7417,39 @@ export class ProcedureContext extends BslParserRuleContext {
 }
 
 export class FunctionContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public funcDeclaration(): FuncDeclarationContext {
-        return this.getTypedRuleContext(FuncDeclarationContext, 0) as FuncDeclarationContext;
+        return this.getRuleContext(0, FuncDeclarationContext)!;
     }
 
     public subCodeBlock(): SubCodeBlockContext {
-        return this.getTypedRuleContext(SubCodeBlockContext, 0) as SubCodeBlockContext;
+        return this.getRuleContext(0, SubCodeBlockContext)!;
     }
 
-    public ENDFUNCTION_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ENDFUNCTION_KEYWORD, 0);
+    public ENDFUNCTION_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ENDFUNCTION_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_function;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterFunction) {
             listener.enterFunction(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitFunction) {
             listener.exitFunction(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitFunction) {
             return visitor.visitFunction(this);
         } else {
@@ -7579,81 +7459,91 @@ export class FunctionContext extends BslParserRuleContext {
 }
 
 export class ProcDeclarationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PROCEDURE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.PROCEDURE_KEYWORD, 0);
+    public PROCEDURE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.PROCEDURE_KEYWORD, 0)!;
     }
 
     public subName(): SubNameContext {
-        return this.getTypedRuleContext(SubNameContext, 0) as SubNameContext;
+        return this.getRuleContext(0, SubNameContext)!;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(BSLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.LPAREN, 0)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(BSLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.RPAREN, 0)!;
     }
 
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
+    public compilerDirective(): CompilerDirectiveContext[];
+
+    public compilerDirective(i: number): CompilerDirectiveContext | null;
+
+    public compilerDirective(i?: number): CompilerDirectiveContext[] | CompilerDirectiveContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(CompilerDirectiveContext);
+        }
+
+        return this.getRuleContext(i, CompilerDirectiveContext);
     }
 
-    public compilerDirective_list(): CompilerDirectiveContext[] {
-        return this.getTypedRuleContexts(CompilerDirectiveContext) as CompilerDirectiveContext[];
+    public annotation(): AnnotationContext[];
+
+    public annotation(i: number): AnnotationContext | null;
+
+    public annotation(i?: number): AnnotationContext[] | AnnotationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(AnnotationContext);
+        }
+
+        return this.getRuleContext(i, AnnotationContext);
     }
 
-    public compilerDirective(i: number): CompilerDirectiveContext {
-        return this.getTypedRuleContext(CompilerDirectiveContext, i) as CompilerDirectiveContext;
-    }
-
-    public annotation_list(): AnnotationContext[] {
-        return this.getTypedRuleContexts(AnnotationContext) as AnnotationContext[];
-    }
-
-    public annotation(i: number): AnnotationContext {
-        return this.getTypedRuleContext(AnnotationContext, i) as AnnotationContext;
-    }
-
-    public ASYNC_KEYWORD(): TerminalNode {
+    public ASYNC_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ASYNC_KEYWORD, 0);
     }
 
-    public paramList(): ParamListContext {
-        return this.getTypedRuleContext(ParamListContext, 0) as ParamListContext;
+    public paramList(): ParamListContext | null {
+        return this.getRuleContext(0, ParamListContext);
     }
 
-    public EXPORT_KEYWORD(): TerminalNode {
+    public EXPORT_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.EXPORT_KEYWORD, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_procDeclaration;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterProcDeclaration) {
             listener.enterProcDeclaration(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitProcDeclaration) {
             listener.exitProcDeclaration(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitProcDeclaration) {
             return visitor.visitProcDeclaration(this);
         } else {
@@ -7663,81 +7553,91 @@ export class ProcDeclarationContext extends BslParserRuleContext {
 }
 
 export class FuncDeclarationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public FUNCTION_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.FUNCTION_KEYWORD, 0);
+    public FUNCTION_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.FUNCTION_KEYWORD, 0)!;
     }
 
     public subName(): SubNameContext {
-        return this.getTypedRuleContext(SubNameContext, 0) as SubNameContext;
+        return this.getRuleContext(0, SubNameContext)!;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(BSLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.LPAREN, 0)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(BSLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.RPAREN, 0)!;
     }
 
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
+    public compilerDirective(): CompilerDirectiveContext[];
+
+    public compilerDirective(i: number): CompilerDirectiveContext | null;
+
+    public compilerDirective(i?: number): CompilerDirectiveContext[] | CompilerDirectiveContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(CompilerDirectiveContext);
+        }
+
+        return this.getRuleContext(i, CompilerDirectiveContext);
     }
 
-    public compilerDirective_list(): CompilerDirectiveContext[] {
-        return this.getTypedRuleContexts(CompilerDirectiveContext) as CompilerDirectiveContext[];
+    public annotation(): AnnotationContext[];
+
+    public annotation(i: number): AnnotationContext | null;
+
+    public annotation(i?: number): AnnotationContext[] | AnnotationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(AnnotationContext);
+        }
+
+        return this.getRuleContext(i, AnnotationContext);
     }
 
-    public compilerDirective(i: number): CompilerDirectiveContext {
-        return this.getTypedRuleContext(CompilerDirectiveContext, i) as CompilerDirectiveContext;
-    }
-
-    public annotation_list(): AnnotationContext[] {
-        return this.getTypedRuleContexts(AnnotationContext) as AnnotationContext[];
-    }
-
-    public annotation(i: number): AnnotationContext {
-        return this.getTypedRuleContext(AnnotationContext, i) as AnnotationContext;
-    }
-
-    public ASYNC_KEYWORD(): TerminalNode {
+    public ASYNC_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ASYNC_KEYWORD, 0);
     }
 
-    public paramList(): ParamListContext {
-        return this.getTypedRuleContext(ParamListContext, 0) as ParamListContext;
+    public paramList(): ParamListContext | null {
+        return this.getRuleContext(0, ParamListContext);
     }
 
-    public EXPORT_KEYWORD(): TerminalNode {
+    public EXPORT_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.EXPORT_KEYWORD, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_funcDeclaration;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterFuncDeclaration) {
             listener.enterFuncDeclaration(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitFuncDeclaration) {
             listener.exitFuncDeclaration(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitFuncDeclaration) {
             return visitor.visitFuncDeclaration(this);
         } else {
@@ -7747,37 +7647,35 @@ export class FuncDeclarationContext extends BslParserRuleContext {
 }
 
 export class SubCodeBlockContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public subVars(): SubVarsContext {
-        return this.getTypedRuleContext(SubVarsContext, 0) as SubVarsContext;
+    public subVars(): SubVarsContext | null {
+        return this.getRuleContext(0, SubVarsContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_subCodeBlock;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterSubCodeBlock) {
             listener.enterSubCodeBlock(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitSubCodeBlock) {
             listener.exitSubCodeBlock(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitSubCodeBlock) {
             return visitor.visitSubCodeBlock(this);
         } else {
@@ -7787,33 +7685,31 @@ export class SubCodeBlockContext extends BslParserRuleContext {
 }
 
 export class ContinueStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public CONTINUE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.CONTINUE_KEYWORD, 0);
+    public CONTINUE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.CONTINUE_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_continueStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterContinueStatement) {
             listener.enterContinueStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitContinueStatement) {
             listener.exitContinueStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitContinueStatement) {
             return visitor.visitContinueStatement(this);
         } else {
@@ -7823,33 +7719,31 @@ export class ContinueStatementContext extends BslParserRuleContext {
 }
 
 export class BreakStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public BREAK_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.BREAK_KEYWORD, 0);
+    public BREAK_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.BREAK_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_breakStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterBreakStatement) {
             listener.enterBreakStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitBreakStatement) {
             listener.exitBreakStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitBreakStatement) {
             return visitor.visitBreakStatement(this);
         } else {
@@ -7859,41 +7753,39 @@ export class BreakStatementContext extends BslParserRuleContext {
 }
 
 export class RaiseStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public RAISE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.RAISE_KEYWORD, 0);
+    public RAISE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.RAISE_KEYWORD, 0)!;
     }
 
-    public doCall(): DoCallContext {
-        return this.getTypedRuleContext(DoCallContext, 0) as DoCallContext;
+    public doCall(): DoCallContext | null {
+        return this.getRuleContext(0, DoCallContext);
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_raiseStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterRaiseStatement) {
             listener.enterRaiseStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitRaiseStatement) {
             listener.exitRaiseStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitRaiseStatement) {
             return visitor.visitRaiseStatement(this);
         } else {
@@ -7903,49 +7795,51 @@ export class RaiseStatementContext extends BslParserRuleContext {
 }
 
 export class IfStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public ifBranch(): IfBranchContext {
-        return this.getTypedRuleContext(IfBranchContext, 0) as IfBranchContext;
+        return this.getRuleContext(0, IfBranchContext)!;
     }
 
-    public ENDIF_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ENDIF_KEYWORD, 0);
+    public ENDIF_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ENDIF_KEYWORD, 0)!;
     }
 
-    public elsifBranch_list(): ElsifBranchContext[] {
-        return this.getTypedRuleContexts(ElsifBranchContext) as ElsifBranchContext[];
+    public elsifBranch(): ElsifBranchContext[];
+
+    public elsifBranch(i: number): ElsifBranchContext | null;
+
+    public elsifBranch(i?: number): ElsifBranchContext[] | ElsifBranchContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ElsifBranchContext);
+        }
+
+        return this.getRuleContext(i, ElsifBranchContext);
     }
 
-    public elsifBranch(i: number): ElsifBranchContext {
-        return this.getTypedRuleContext(ElsifBranchContext, i) as ElsifBranchContext;
+    public elseBranch(): ElseBranchContext | null {
+        return this.getRuleContext(0, ElseBranchContext);
     }
 
-    public elseBranch(): ElseBranchContext {
-        return this.getTypedRuleContext(ElseBranchContext, 0) as ElseBranchContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_ifStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterIfStatement) {
             listener.enterIfStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitIfStatement) {
             listener.exitIfStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitIfStatement) {
             return visitor.visitIfStatement(this);
         } else {
@@ -7955,45 +7849,43 @@ export class IfStatementContext extends BslParserRuleContext {
 }
 
 export class IfBranchContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IF_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.IF_KEYWORD, 0);
+    public IF_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IF_KEYWORD, 0)!;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public THEN_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.THEN_KEYWORD, 0);
+    public THEN_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.THEN_KEYWORD, 0)!;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_ifBranch;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterIfBranch) {
             listener.enterIfBranch(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitIfBranch) {
             listener.exitIfBranch(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitIfBranch) {
             return visitor.visitIfBranch(this);
         } else {
@@ -8003,45 +7895,43 @@ export class IfBranchContext extends BslParserRuleContext {
 }
 
 export class ElsifBranchContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public ELSIF_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ELSIF_KEYWORD, 0);
+    public ELSIF_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ELSIF_KEYWORD, 0)!;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public THEN_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.THEN_KEYWORD, 0);
+    public THEN_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.THEN_KEYWORD, 0)!;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_elsifBranch;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterElsifBranch) {
             listener.enterElsifBranch(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitElsifBranch) {
             listener.exitElsifBranch(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitElsifBranch) {
             return visitor.visitElsifBranch(this);
         } else {
@@ -8051,37 +7941,35 @@ export class ElsifBranchContext extends BslParserRuleContext {
 }
 
 export class ElseBranchContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public ELSE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ELSE_KEYWORD, 0);
+    public ELSE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ELSE_KEYWORD, 0)!;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_elseBranch;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterElseBranch) {
             listener.enterElseBranch(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitElseBranch) {
             listener.exitElseBranch(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitElseBranch) {
             return visitor.visitElseBranch(this);
         } else {
@@ -8091,49 +7979,47 @@ export class ElseBranchContext extends BslParserRuleContext {
 }
 
 export class WhileStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public WHILE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.WHILE_KEYWORD, 0);
+    public WHILE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.WHILE_KEYWORD, 0)!;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public DO_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.DO_KEYWORD, 0);
+    public DO_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.DO_KEYWORD, 0)!;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public ENDDO_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ENDDO_KEYWORD, 0);
+    public ENDDO_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ENDDO_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_whileStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterWhileStatement) {
             listener.enterWhileStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitWhileStatement) {
             listener.exitWhileStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitWhileStatement) {
             return visitor.visitWhileStatement(this);
         } else {
@@ -8143,65 +8029,67 @@ export class WhileStatementContext extends BslParserRuleContext {
 }
 
 export class ForStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public FOR_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.FOR_KEYWORD, 0);
+    public FOR_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.FOR_KEYWORD, 0)!;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public ASSIGN(): TerminalNode {
-        return this.getToken(BSLParser.ASSIGN, 0);
+    public ASSIGN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ASSIGN, 0)!;
     }
 
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
+    public TO_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.TO_KEYWORD, 0)!;
     }
 
-    public TO_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.TO_KEYWORD, 0);
-    }
-
-    public DO_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.DO_KEYWORD, 0);
+    public DO_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.DO_KEYWORD, 0)!;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public ENDDO_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ENDDO_KEYWORD, 0);
+    public ENDDO_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ENDDO_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_forStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterForStatement) {
             listener.enterForStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitForStatement) {
             listener.exitForStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitForStatement) {
             return visitor.visitForStatement(this);
         } else {
@@ -8211,61 +8099,59 @@ export class ForStatementContext extends BslParserRuleContext {
 }
 
 export class ForEachStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public FOR_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.FOR_KEYWORD, 0);
+    public FOR_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.FOR_KEYWORD, 0)!;
     }
 
-    public EACH_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.EACH_KEYWORD, 0);
+    public EACH_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.EACH_KEYWORD, 0)!;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public IN_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.IN_KEYWORD, 0);
+    public IN_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IN_KEYWORD, 0)!;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public DO_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.DO_KEYWORD, 0);
+    public DO_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.DO_KEYWORD, 0)!;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public ENDDO_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ENDDO_KEYWORD, 0);
+    public ENDDO_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ENDDO_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_forEachStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterForEachStatement) {
             listener.enterForEachStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitForEachStatement) {
             listener.exitForEachStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitForEachStatement) {
             return visitor.visitForEachStatement(this);
         } else {
@@ -8275,49 +8161,47 @@ export class ForEachStatementContext extends BslParserRuleContext {
 }
 
 export class TryStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public TRY_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.TRY_KEYWORD, 0);
+    public TRY_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.TRY_KEYWORD, 0)!;
     }
 
     public tryCodeBlock(): TryCodeBlockContext {
-        return this.getTypedRuleContext(TryCodeBlockContext, 0) as TryCodeBlockContext;
+        return this.getRuleContext(0, TryCodeBlockContext)!;
     }
 
-    public EXCEPT_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.EXCEPT_KEYWORD, 0);
+    public EXCEPT_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.EXCEPT_KEYWORD, 0)!;
     }
 
     public exceptCodeBlock(): ExceptCodeBlockContext {
-        return this.getTypedRuleContext(ExceptCodeBlockContext, 0) as ExceptCodeBlockContext;
+        return this.getRuleContext(0, ExceptCodeBlockContext)!;
     }
 
-    public ENDTRY_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ENDTRY_KEYWORD, 0);
+    public ENDTRY_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ENDTRY_KEYWORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_tryStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterTryStatement) {
             listener.enterTryStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitTryStatement) {
             listener.exitTryStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitTryStatement) {
             return visitor.visitTryStatement(this);
         } else {
@@ -8327,37 +8211,35 @@ export class TryStatementContext extends BslParserRuleContext {
 }
 
 export class ReturnStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public RETURN_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.RETURN_KEYWORD, 0);
+    public RETURN_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.RETURN_KEYWORD, 0)!;
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_returnStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterReturnStatement) {
             listener.enterReturnStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitReturnStatement) {
             listener.exitReturnStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitReturnStatement) {
             return visitor.visitReturnStatement(this);
         } else {
@@ -8367,41 +8249,39 @@ export class ReturnStatementContext extends BslParserRuleContext {
 }
 
 export class ExecuteStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public EXECUTE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.EXECUTE_KEYWORD, 0);
+    public EXECUTE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.EXECUTE_KEYWORD, 0)!;
     }
 
-    public doCall(): DoCallContext {
-        return this.getTypedRuleContext(DoCallContext, 0) as DoCallContext;
+    public doCall(): DoCallContext | null {
+        return this.getRuleContext(0, DoCallContext);
     }
 
-    public callParamList(): CallParamListContext {
-        return this.getTypedRuleContext(CallParamListContext, 0) as CallParamListContext;
+    public callParamList(): CallParamListContext | null {
+        return this.getRuleContext(0, CallParamListContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_executeStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterExecuteStatement) {
             listener.enterExecuteStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitExecuteStatement) {
             listener.exitExecuteStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitExecuteStatement) {
             return visitor.visitExecuteStatement(this);
         } else {
@@ -8411,49 +8291,51 @@ export class ExecuteStatementContext extends BslParserRuleContext {
 }
 
 export class CallStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public accessCall(): AccessCallContext {
-        return this.getTypedRuleContext(AccessCallContext, 0) as AccessCallContext;
+    public accessCall(): AccessCallContext | null {
+        return this.getRuleContext(0, AccessCallContext);
     }
 
-    public IDENTIFIER(): TerminalNode {
+    public IDENTIFIER(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.IDENTIFIER, 0);
     }
 
-    public globalMethodCall(): GlobalMethodCallContext {
-        return this.getTypedRuleContext(GlobalMethodCallContext, 0) as GlobalMethodCallContext;
+    public globalMethodCall(): GlobalMethodCallContext | null {
+        return this.getRuleContext(0, GlobalMethodCallContext);
     }
 
-    public modifier_list(): ModifierContext[] {
-        return this.getTypedRuleContexts(ModifierContext) as ModifierContext[];
+    public modifier(): ModifierContext[];
+
+    public modifier(i: number): ModifierContext | null;
+
+    public modifier(i?: number): ModifierContext[] | ModifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ModifierContext);
+        }
+
+        return this.getRuleContext(i, ModifierContext);
     }
 
-    public modifier(i: number): ModifierContext {
-        return this.getTypedRuleContext(ModifierContext, i) as ModifierContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_callStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterCallStatement) {
             listener.enterCallStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitCallStatement) {
             listener.exitCallStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitCallStatement) {
             return visitor.visitCallStatement(this);
         } else {
@@ -8463,33 +8345,31 @@ export class CallStatementContext extends BslParserRuleContext {
 }
 
 export class WaitStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public waitExpression(): WaitExpressionContext {
-        return this.getTypedRuleContext(WaitExpressionContext, 0) as WaitExpressionContext;
+        return this.getRuleContext(0, WaitExpressionContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_waitStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterWaitStatement) {
             listener.enterWaitStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitWaitStatement) {
             listener.exitWaitStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitWaitStatement) {
             return visitor.visitWaitStatement(this);
         } else {
@@ -8499,33 +8379,31 @@ export class WaitStatementContext extends BslParserRuleContext {
 }
 
 export class LabelNameContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_labelName;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterLabelName) {
             listener.enterLabelName(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitLabelName) {
             listener.exitLabelName(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitLabelName) {
             return visitor.visitLabelName(this);
         } else {
@@ -8535,41 +8413,39 @@ export class LabelNameContext extends BslParserRuleContext {
 }
 
 export class LabelContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public TILDA(): TerminalNode {
-        return this.getToken(BSLParser.TILDA, 0);
+    public TILDA(): antlr.TerminalNode {
+        return this.getToken(BSLParser.TILDA, 0)!;
     }
 
     public labelName(): LabelNameContext {
-        return this.getTypedRuleContext(LabelNameContext, 0) as LabelNameContext;
+        return this.getRuleContext(0, LabelNameContext)!;
     }
 
-    public COLON(): TerminalNode {
-        return this.getToken(BSLParser.COLON, 0);
+    public COLON(): antlr.TerminalNode {
+        return this.getToken(BSLParser.COLON, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_label;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterLabel) {
             listener.enterLabel(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitLabel) {
             listener.exitLabel(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitLabel) {
             return visitor.visitLabel(this);
         } else {
@@ -8579,41 +8455,39 @@ export class LabelContext extends BslParserRuleContext {
 }
 
 export class GotoStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public GOTO_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.GOTO_KEYWORD, 0);
+    public GOTO_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.GOTO_KEYWORD, 0)!;
     }
 
-    public TILDA(): TerminalNode {
-        return this.getToken(BSLParser.TILDA, 0);
+    public TILDA(): antlr.TerminalNode {
+        return this.getToken(BSLParser.TILDA, 0)!;
     }
 
     public labelName(): LabelNameContext {
-        return this.getTypedRuleContext(LabelNameContext, 0) as LabelNameContext;
+        return this.getRuleContext(0, LabelNameContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_gotoStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterGotoStatement) {
             listener.enterGotoStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitGotoStatement) {
             listener.exitGotoStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitGotoStatement) {
             return visitor.visitGotoStatement(this);
         } else {
@@ -8623,33 +8497,31 @@ export class GotoStatementContext extends BslParserRuleContext {
 }
 
 export class TryCodeBlockContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_tryCodeBlock;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterTryCodeBlock) {
             listener.enterTryCodeBlock(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitTryCodeBlock) {
             listener.exitTryCodeBlock(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitTryCodeBlock) {
             return visitor.visitTryCodeBlock(this);
         } else {
@@ -8659,33 +8531,31 @@ export class TryCodeBlockContext extends BslParserRuleContext {
 }
 
 export class ExceptCodeBlockContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_exceptCodeBlock;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterExceptCodeBlock) {
             listener.enterExceptCodeBlock(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitExceptCodeBlock) {
             listener.exitExceptCodeBlock(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitExceptCodeBlock) {
             return visitor.visitExceptCodeBlock(this);
         } else {
@@ -8695,33 +8565,31 @@ export class ExceptCodeBlockContext extends BslParserRuleContext {
 }
 
 export class EventContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_event;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterEvent) {
             listener.enterEvent(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitEvent) {
             listener.exitEvent(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitEvent) {
             return visitor.visitEvent(this);
         } else {
@@ -8731,33 +8599,31 @@ export class EventContext extends BslParserRuleContext {
 }
 
 export class HandlerContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_handler;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterHandler) {
             listener.enterHandler(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitHandler) {
             listener.exitHandler(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitHandler) {
             return visitor.visitHandler(this);
         } else {
@@ -8767,45 +8633,43 @@ export class HandlerContext extends BslParserRuleContext {
 }
 
 export class AddHandlerStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public ADDHANDLER_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.ADDHANDLER_KEYWORD, 0);
+    public ADDHANDLER_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ADDHANDLER_KEYWORD, 0)!;
     }
 
     public event(): EventContext {
-        return this.getTypedRuleContext(EventContext, 0) as EventContext;
+        return this.getRuleContext(0, EventContext)!;
     }
 
-    public COMMA(): TerminalNode {
-        return this.getToken(BSLParser.COMMA, 0);
+    public COMMA(): antlr.TerminalNode {
+        return this.getToken(BSLParser.COMMA, 0)!;
     }
 
     public handler(): HandlerContext {
-        return this.getTypedRuleContext(HandlerContext, 0) as HandlerContext;
+        return this.getRuleContext(0, HandlerContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_addHandlerStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAddHandlerStatement) {
             listener.enterAddHandlerStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAddHandlerStatement) {
             listener.exitAddHandlerStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAddHandlerStatement) {
             return visitor.visitAddHandlerStatement(this);
         } else {
@@ -8815,45 +8679,43 @@ export class AddHandlerStatementContext extends BslParserRuleContext {
 }
 
 export class RemoveHandlerStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public REMOVEHANDLER_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.REMOVEHANDLER_KEYWORD, 0);
+    public REMOVEHANDLER_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.REMOVEHANDLER_KEYWORD, 0)!;
     }
 
     public event(): EventContext {
-        return this.getTypedRuleContext(EventContext, 0) as EventContext;
+        return this.getRuleContext(0, EventContext)!;
     }
 
-    public COMMA(): TerminalNode {
-        return this.getToken(BSLParser.COMMA, 0);
+    public COMMA(): antlr.TerminalNode {
+        return this.getToken(BSLParser.COMMA, 0)!;
     }
 
     public handler(): HandlerContext {
-        return this.getTypedRuleContext(HandlerContext, 0) as HandlerContext;
+        return this.getRuleContext(0, HandlerContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_removeHandlerStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterRemoveHandlerStatement) {
             listener.enterRemoveHandlerStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitRemoveHandlerStatement) {
             listener.exitRemoveHandlerStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitRemoveHandlerStatement) {
             return visitor.visitRemoveHandlerStatement(this);
         } else {
@@ -8863,57 +8725,63 @@ export class RemoveHandlerStatementContext extends BslParserRuleContext {
 }
 
 export class TernaryOperatorContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public QUESTION(): TerminalNode {
-        return this.getToken(BSLParser.QUESTION, 0);
+    public QUESTION(): antlr.TerminalNode {
+        return this.getToken(BSLParser.QUESTION, 0)!;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(BSLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.LPAREN, 0)!;
     }
 
-    public expression_list(): ExpressionContext[] {
-        return this.getTypedRuleContexts(ExpressionContext) as ExpressionContext[];
+    public expression(): ExpressionContext[];
+
+    public expression(i: number): ExpressionContext | null;
+
+    public expression(i?: number): ExpressionContext[] | ExpressionContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExpressionContext);
+        }
+
+        return this.getRuleContext(i, ExpressionContext);
     }
 
-    public expression(i: number): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, i) as ExpressionContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.COMMA);
+        } else {
+            return this.getToken(BSLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.COMMA);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.RPAREN, 0)!;
     }
 
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(BSLParser.COMMA, i);
-    }
-
-    public RPAREN(): TerminalNode {
-        return this.getToken(BSLParser.RPAREN, 0);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_ternaryOperator;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterTernaryOperator) {
             listener.enterTernaryOperator(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitTernaryOperator) {
             listener.exitTernaryOperator(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitTernaryOperator) {
             return visitor.visitTernaryOperator(this);
         } else {
@@ -8923,37 +8791,35 @@ export class TernaryOperatorContext extends BslParserRuleContext {
 }
 
 export class WaitExpressionContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public AWAIT_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.AWAIT_KEYWORD, 0);
+    public AWAIT_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.AWAIT_KEYWORD, 0)!;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_waitExpression;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterWaitExpression) {
             listener.enterWaitExpression(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitWaitExpression) {
             listener.exitWaitExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitWaitExpression) {
             return visitor.visitWaitExpression(this);
         } else {
@@ -8963,33 +8829,31 @@ export class WaitExpressionContext extends BslParserRuleContext {
 }
 
 export class FileCodeBlockBeforeSubContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_fileCodeBlockBeforeSub;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterFileCodeBlockBeforeSub) {
             listener.enterFileCodeBlockBeforeSub(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitFileCodeBlockBeforeSub) {
             listener.exitFileCodeBlockBeforeSub(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitFileCodeBlockBeforeSub) {
             return visitor.visitFileCodeBlockBeforeSub(this);
         } else {
@@ -8999,33 +8863,31 @@ export class FileCodeBlockBeforeSubContext extends BslParserRuleContext {
 }
 
 export class FileCodeBlockContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public codeBlock(): CodeBlockContext {
-        return this.getTypedRuleContext(CodeBlockContext, 0) as CodeBlockContext;
+        return this.getRuleContext(0, CodeBlockContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_fileCodeBlock;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterFileCodeBlock) {
             listener.enterFileCodeBlock(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitFileCodeBlock) {
             listener.exitFileCodeBlock(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitFileCodeBlock) {
             return visitor.visitFileCodeBlock(this);
         } else {
@@ -9035,45 +8897,51 @@ export class FileCodeBlockContext extends BslParserRuleContext {
 }
 
 export class CodeBlockContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public statement_list(): StatementContext[] {
-        return this.getTypedRuleContexts(StatementContext) as StatementContext[];
+    public statement(): StatementContext[];
+
+    public statement(i: number): StatementContext | null;
+
+    public statement(i?: number): StatementContext[] | StatementContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(StatementContext);
+        }
+
+        return this.getRuleContext(i, StatementContext);
     }
 
-    public statement(i: number): StatementContext {
-        return this.getTypedRuleContext(StatementContext, i) as StatementContext;
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
-    }
-
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_codeBlock;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterCodeBlock) {
             listener.enterCodeBlock(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitCodeBlock) {
             listener.exitCodeBlock(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitCodeBlock) {
             return visitor.visitCodeBlock(this);
         } else {
@@ -9083,37 +8951,35 @@ export class CodeBlockContext extends BslParserRuleContext {
 }
 
 export class NumericContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public FLOAT(): TerminalNode {
+    public FLOAT(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.FLOAT, 0);
     }
 
-    public DECIMAL(): TerminalNode {
+    public DECIMAL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.DECIMAL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_numeric;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterNumeric) {
             listener.enterNumeric(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitNumeric) {
             listener.exitNumeric(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitNumeric) {
             return visitor.visitNumeric(this);
         } else {
@@ -9123,45 +8989,51 @@ export class NumericContext extends BslParserRuleContext {
 }
 
 export class ParamListContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public param_list(): ParamContext[] {
-        return this.getTypedRuleContexts(ParamContext) as ParamContext[];
+    public param(): ParamContext[];
+
+    public param(i: number): ParamContext | null;
+
+    public param(i?: number): ParamContext[] | ParamContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ParamContext);
+        }
+
+        return this.getRuleContext(i, ParamContext);
     }
 
-    public param(i: number): ParamContext {
-        return this.getTypedRuleContext(ParamContext, i) as ParamContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.COMMA);
+        } else {
+            return this.getToken(BSLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(BSLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_paramList;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterParamList) {
             listener.enterParamList(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitParamList) {
             listener.exitParamList(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitParamList) {
             return visitor.visitParamList(this);
         } else {
@@ -9171,53 +9043,55 @@ export class ParamListContext extends BslParserRuleContext {
 }
 
 export class ParamContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public annotation_list(): AnnotationContext[] {
-        return this.getTypedRuleContexts(AnnotationContext) as AnnotationContext[];
+    public annotation(): AnnotationContext[];
+
+    public annotation(i: number): AnnotationContext | null;
+
+    public annotation(i?: number): AnnotationContext[] | AnnotationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(AnnotationContext);
+        }
+
+        return this.getRuleContext(i, AnnotationContext);
     }
 
-    public annotation(i: number): AnnotationContext {
-        return this.getTypedRuleContext(AnnotationContext, i) as AnnotationContext;
-    }
-
-    public VAL_KEYWORD(): TerminalNode {
+    public VAL_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.VAL_KEYWORD, 0);
     }
 
-    public ASSIGN(): TerminalNode {
+    public ASSIGN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ASSIGN, 0);
     }
 
-    public defaultValue(): DefaultValueContext {
-        return this.getTypedRuleContext(DefaultValueContext, 0) as DefaultValueContext;
+    public defaultValue(): DefaultValueContext | null {
+        return this.getRuleContext(0, DefaultValueContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_param;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterParam) {
             listener.enterParam(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitParam) {
             listener.exitParam(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitParam) {
             return visitor.visitParam(this);
         } else {
@@ -9227,33 +9101,31 @@ export class ParamContext extends BslParserRuleContext {
 }
 
 export class DefaultValueContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public constValue(): ConstValueContext {
-        return this.getTypedRuleContext(ConstValueContext, 0) as ConstValueContext;
+        return this.getRuleContext(0, ConstValueContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_defaultValue;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterDefaultValue) {
             listener.enterDefaultValue(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitDefaultValue) {
             listener.exitDefaultValue(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitDefaultValue) {
             return visitor.visitDefaultValue(this);
         } else {
@@ -9263,65 +9135,63 @@ export class DefaultValueContext extends BslParserRuleContext {
 }
 
 export class ConstValueContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public numeric(): NumericContext {
-        return this.getTypedRuleContext(NumericContext, 0) as NumericContext;
+    public numeric(): NumericContext | null {
+        return this.getRuleContext(0, NumericContext);
     }
 
-    public MINUS(): TerminalNode {
+    public MINUS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.MINUS, 0);
     }
 
-    public PLUS(): TerminalNode {
+    public PLUS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PLUS, 0);
     }
 
-    public string_(): StringContext {
-        return this.getTypedRuleContext(StringContext, 0) as StringContext;
+    public string(): StringContext | null {
+        return this.getRuleContext(0, StringContext);
     }
 
-    public TRUE(): TerminalNode {
+    public TRUE(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.TRUE, 0);
     }
 
-    public FALSE(): TerminalNode {
+    public FALSE(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.FALSE, 0);
     }
 
-    public UNDEFINED(): TerminalNode {
+    public UNDEFINED(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.UNDEFINED, 0);
     }
 
-    public NULL(): TerminalNode {
+    public NULL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.NULL, 0);
     }
 
-    public DATETIME(): TerminalNode {
+    public DATETIME(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.DATETIME, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_constValue;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterConstValue) {
             listener.enterConstValue(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitConstValue) {
             listener.exitConstValue(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitConstValue) {
             return visitor.visitConstValue(this);
         } else {
@@ -9331,61 +9201,71 @@ export class ConstValueContext extends BslParserRuleContext {
 }
 
 export class MultilineStringContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public STRINGSTART(): TerminalNode {
-        return this.getToken(BSLParser.STRINGSTART, 0);
+    public STRINGSTART(): antlr.TerminalNode {
+        return this.getToken(BSLParser.STRINGSTART, 0)!;
     }
 
-    public STRINGTAIL(): TerminalNode {
-        return this.getToken(BSLParser.STRINGTAIL, 0);
+    public STRINGTAIL(): antlr.TerminalNode {
+        return this.getToken(BSLParser.STRINGTAIL, 0)!;
     }
 
-    public STRINGPART_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.STRINGPART);
+    public STRINGPART(): antlr.TerminalNode[];
+
+    public STRINGPART(i: number): antlr.TerminalNode | null;
+
+    public STRINGPART(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.STRINGPART);
+        } else {
+            return this.getToken(BSLParser.STRINGPART, i);
+        }
     }
 
-    public STRINGPART(i: number): TerminalNode {
-        return this.getToken(BSLParser.STRINGPART, i);
+    public BAR(): antlr.TerminalNode[];
+
+    public BAR(i: number): antlr.TerminalNode | null;
+
+    public BAR(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.BAR);
+        } else {
+            return this.getToken(BSLParser.BAR, i);
+        }
     }
 
-    public BAR_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.BAR);
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public BAR(i: number): TerminalNode {
-        return this.getToken(BSLParser.BAR, i);
-    }
-
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
-    }
-
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_multilineString;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterMultilineString) {
             listener.enterMultilineString(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitMultilineString) {
             listener.exitMultilineString(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitMultilineString) {
             return visitor.visitMultilineString(this);
         } else {
@@ -9395,45 +9275,51 @@ export class MultilineStringContext extends BslParserRuleContext {
 }
 
 export class StringContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public STRING_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.STRING);
+    public STRING(): antlr.TerminalNode[];
+
+    public STRING(i: number): antlr.TerminalNode | null;
+
+    public STRING(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.STRING);
+        } else {
+            return this.getToken(BSLParser.STRING, i);
+        }
     }
 
-    public STRING(i: number): TerminalNode {
-        return this.getToken(BSLParser.STRING, i);
+    public multilineString(): MultilineStringContext[];
+
+    public multilineString(i: number): MultilineStringContext | null;
+
+    public multilineString(i?: number): MultilineStringContext[] | MultilineStringContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(MultilineStringContext);
+        }
+
+        return this.getRuleContext(i, MultilineStringContext);
     }
 
-    public multilineString_list(): MultilineStringContext[] {
-        return this.getTypedRuleContexts(MultilineStringContext) as MultilineStringContext[];
-    }
-
-    public multilineString(i: number): MultilineStringContext {
-        return this.getTypedRuleContext(MultilineStringContext, i) as MultilineStringContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_string;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterString) {
             listener.enterString(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitString) {
             listener.exitString(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitString) {
             return visitor.visitString(this);
         } else {
@@ -9443,57 +9329,55 @@ export class StringContext extends BslParserRuleContext {
 }
 
 export class StatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public SEMICOLON(): TerminalNode {
+    public SEMICOLON(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.SEMICOLON, 0);
     }
 
-    public label(): LabelContext {
-        return this.getTypedRuleContext(LabelContext, 0) as LabelContext;
+    public label(): LabelContext | null {
+        return this.getRuleContext(0, LabelContext);
     }
 
-    public callStatement(): CallStatementContext {
-        return this.getTypedRuleContext(CallStatementContext, 0) as CallStatementContext;
+    public callStatement(): CallStatementContext | null {
+        return this.getRuleContext(0, CallStatementContext);
     }
 
-    public waitStatement(): WaitStatementContext {
-        return this.getTypedRuleContext(WaitStatementContext, 0) as WaitStatementContext;
+    public waitStatement(): WaitStatementContext | null {
+        return this.getRuleContext(0, WaitStatementContext);
     }
 
-    public compoundStatement(): CompoundStatementContext {
-        return this.getTypedRuleContext(CompoundStatementContext, 0) as CompoundStatementContext;
+    public compoundStatement(): CompoundStatementContext | null {
+        return this.getRuleContext(0, CompoundStatementContext);
     }
 
-    public assignment(): AssignmentContext {
-        return this.getTypedRuleContext(AssignmentContext, 0) as AssignmentContext;
+    public assignment(): AssignmentContext | null {
+        return this.getRuleContext(0, AssignmentContext);
     }
 
-    public preprocessor(): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, 0) as PreprocessorContext;
+    public preprocessor(): PreprocessorContext | null {
+        return this.getRuleContext(0, PreprocessorContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_statement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterStatement) {
             listener.enterStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitStatement) {
             listener.exitStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitStatement) {
             return visitor.visitStatement(this);
         } else {
@@ -9503,49 +9387,51 @@ export class StatementContext extends BslParserRuleContext {
 }
 
 export class AssignmentContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public lValue(): LValueContext {
-        return this.getTypedRuleContext(LValueContext, 0) as LValueContext;
+        return this.getRuleContext(0, LValueContext)!;
     }
 
-    public ASSIGN(): TerminalNode {
-        return this.getToken(BSLParser.ASSIGN, 0);
+    public ASSIGN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.ASSIGN, 0)!;
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_assignment;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAssignment) {
             listener.enterAssignment(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAssignment) {
             listener.exitAssignment(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAssignment) {
             return visitor.visitAssignment(this);
         } else {
@@ -9555,45 +9441,51 @@ export class AssignmentContext extends BslParserRuleContext {
 }
 
 export class CallParamListContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public callParam_list(): CallParamContext[] {
-        return this.getTypedRuleContexts(CallParamContext) as CallParamContext[];
+    public callParam(): CallParamContext[];
+
+    public callParam(i: number): CallParamContext | null;
+
+    public callParam(i?: number): CallParamContext[] | CallParamContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(CallParamContext);
+        }
+
+        return this.getRuleContext(i, CallParamContext);
     }
 
-    public callParam(i: number): CallParamContext {
-        return this.getTypedRuleContext(CallParamContext, i) as CallParamContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLParser.COMMA);
+        } else {
+            return this.getToken(BSLParser.COMMA, i);
+        }
     }
 
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(BSLParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(BSLParser.COMMA, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_callParamList;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterCallParamList) {
             listener.enterCallParamList(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitCallParamList) {
             listener.exitCallParamList(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitCallParamList) {
             return visitor.visitCallParamList(this);
         } else {
@@ -9603,33 +9495,31 @@ export class CallParamListContext extends BslParserRuleContext {
 }
 
 export class CallParamContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_callParam;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterCallParam) {
             listener.enterCallParam(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitCallParam) {
             listener.exitCallParam(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitCallParam) {
             return visitor.visitCallParam(this);
         } else {
@@ -9639,53 +9529,63 @@ export class CallParamContext extends BslParserRuleContext {
 }
 
 export class ExpressionContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public member_list(): MemberContext[] {
-        return this.getTypedRuleContexts(MemberContext) as MemberContext[];
+    public member(): MemberContext[];
+
+    public member(i: number): MemberContext | null;
+
+    public member(i?: number): MemberContext[] | MemberContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(MemberContext);
+        }
+
+        return this.getRuleContext(i, MemberContext);
     }
 
-    public member(i: number): MemberContext {
-        return this.getTypedRuleContext(MemberContext, i) as MemberContext;
+    public operation(): OperationContext[];
+
+    public operation(i: number): OperationContext | null;
+
+    public operation(i?: number): OperationContext[] | OperationContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(OperationContext);
+        }
+
+        return this.getRuleContext(i, OperationContext);
     }
 
-    public operation_list(): OperationContext[] {
-        return this.getTypedRuleContexts(OperationContext) as OperationContext[];
+    public preprocessor(): PreprocessorContext[];
+
+    public preprocessor(i: number): PreprocessorContext | null;
+
+    public preprocessor(i?: number): PreprocessorContext[] | PreprocessorContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(PreprocessorContext);
+        }
+
+        return this.getRuleContext(i, PreprocessorContext);
     }
 
-    public operation(i: number): OperationContext {
-        return this.getTypedRuleContext(OperationContext, i) as OperationContext;
-    }
-
-    public preprocessor_list(): PreprocessorContext[] {
-        return this.getTypedRuleContexts(PreprocessorContext) as PreprocessorContext[];
-    }
-
-    public preprocessor(i: number): PreprocessorContext {
-        return this.getTypedRuleContext(PreprocessorContext, i) as PreprocessorContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_expression;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterExpression) {
             listener.enterExpression(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitExpression) {
             listener.exitExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitExpression) {
             return visitor.visitExpression(this);
         } else {
@@ -9695,57 +9595,55 @@ export class ExpressionContext extends BslParserRuleContext {
 }
 
 export class OperationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public PLUS(): TerminalNode {
+    public PLUS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PLUS, 0);
     }
 
-    public MINUS(): TerminalNode {
+    public MINUS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.MINUS, 0);
     }
 
-    public MUL(): TerminalNode {
+    public MUL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.MUL, 0);
     }
 
-    public QUOTIENT(): TerminalNode {
+    public QUOTIENT(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.QUOTIENT, 0);
     }
 
-    public MODULO(): TerminalNode {
+    public MODULO(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.MODULO, 0);
     }
 
-    public boolOperation(): BoolOperationContext {
-        return this.getTypedRuleContext(BoolOperationContext, 0) as BoolOperationContext;
+    public boolOperation(): BoolOperationContext | null {
+        return this.getRuleContext(0, BoolOperationContext);
     }
 
-    public compareOperation(): CompareOperationContext {
-        return this.getTypedRuleContext(CompareOperationContext, 0) as CompareOperationContext;
+    public compareOperation(): CompareOperationContext | null {
+        return this.getRuleContext(0, CompareOperationContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_operation;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterOperation) {
             listener.enterOperation(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitOperation) {
             listener.exitOperation(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitOperation) {
             return visitor.visitOperation(this);
         } else {
@@ -9753,54 +9651,53 @@ export class OperationContext extends BslParserRuleContext {
         }
     }
 }
+
 export class CompareOperationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LESS(): TerminalNode {
+    public LESS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.LESS, 0);
     }
 
-    public LESS_OR_EQUAL(): TerminalNode {
+    public LESS_OR_EQUAL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.LESS_OR_EQUAL, 0);
     }
 
-    public GREATER(): TerminalNode {
+    public GREATER(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.GREATER, 0);
     }
 
-    public GREATER_OR_EQUAL(): TerminalNode {
+    public GREATER_OR_EQUAL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.GREATER_OR_EQUAL, 0);
     }
 
-    public ASSIGN(): TerminalNode {
+    public ASSIGN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.ASSIGN, 0);
     }
 
-    public NOT_EQUAL(): TerminalNode {
+    public NOT_EQUAL(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.NOT_EQUAL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_compareOperation;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterCompareOperation) {
             listener.enterCompareOperation(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitCompareOperation) {
             listener.exitCompareOperation(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitCompareOperation) {
             return visitor.visitCompareOperation(this);
         } else {
@@ -9810,37 +9707,35 @@ export class CompareOperationContext extends BslParserRuleContext {
 }
 
 export class BoolOperationContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public OR_KEYWORD(): TerminalNode {
+    public OR_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.OR_KEYWORD, 0);
     }
 
-    public AND_KEYWORD(): TerminalNode {
+    public AND_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.AND_KEYWORD, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_boolOperation;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterBoolOperation) {
             listener.enterBoolOperation(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitBoolOperation) {
             listener.exitBoolOperation(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitBoolOperation) {
             return visitor.visitBoolOperation(this);
         } else {
@@ -9850,41 +9745,39 @@ export class BoolOperationContext extends BslParserRuleContext {
 }
 
 export class UnaryModifierContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public NOT_KEYWORD(): TerminalNode {
+    public NOT_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.NOT_KEYWORD, 0);
     }
 
-    public MINUS(): TerminalNode {
+    public MINUS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.MINUS, 0);
     }
 
-    public PLUS(): TerminalNode {
+    public PLUS(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.PLUS, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_unaryModifier;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterUnaryModifier) {
             listener.enterUnaryModifier(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitUnaryModifier) {
             listener.exitUnaryModifier(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitUnaryModifier) {
             return visitor.visitUnaryModifier(this);
         } else {
@@ -9894,73 +9787,75 @@ export class UnaryModifierContext extends BslParserRuleContext {
 }
 
 export class MemberContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public constValue(): ConstValueContext {
-        return this.getTypedRuleContext(ConstValueContext, 0) as ConstValueContext;
+    public constValue(): ConstValueContext | null {
+        return this.getRuleContext(0, ConstValueContext);
     }
 
-    public complexIdentifier(): ComplexIdentifierContext {
-        return this.getTypedRuleContext(ComplexIdentifierContext, 0) as ComplexIdentifierContext;
+    public complexIdentifier(): ComplexIdentifierContext | null {
+        return this.getRuleContext(0, ComplexIdentifierContext);
     }
 
-    public waitExpression(): WaitExpressionContext {
-        return this.getTypedRuleContext(WaitExpressionContext, 0) as WaitExpressionContext;
+    public waitExpression(): WaitExpressionContext | null {
+        return this.getRuleContext(0, WaitExpressionContext);
     }
 
-    public unaryModifier(): UnaryModifierContext {
-        return this.getTypedRuleContext(UnaryModifierContext, 0) as UnaryModifierContext;
+    public unaryModifier(): UnaryModifierContext | null {
+        return this.getRuleContext(0, UnaryModifierContext);
     }
 
-    public IDENTIFIER(): TerminalNode {
+    public IDENTIFIER(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.IDENTIFIER, 0);
     }
 
-    public globalMethodCall(): GlobalMethodCallContext {
-        return this.getTypedRuleContext(GlobalMethodCallContext, 0) as GlobalMethodCallContext;
+    public globalMethodCall(): GlobalMethodCallContext | null {
+        return this.getRuleContext(0, GlobalMethodCallContext);
     }
 
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.LPAREN, 0);
     }
 
-    public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+    public expression(): ExpressionContext | null {
+        return this.getRuleContext(0, ExpressionContext);
     }
 
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.RPAREN, 0);
     }
 
-    public modifier_list(): ModifierContext[] {
-        return this.getTypedRuleContexts(ModifierContext) as ModifierContext[];
+    public modifier(): ModifierContext[];
+
+    public modifier(i: number): ModifierContext | null;
+
+    public modifier(i?: number): ModifierContext[] | ModifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ModifierContext);
+        }
+
+        return this.getRuleContext(i, ModifierContext);
     }
 
-    public modifier(i: number): ModifierContext {
-        return this.getTypedRuleContext(ModifierContext, i) as ModifierContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_member;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterMember) {
             listener.enterMember(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitMember) {
             listener.exitMember(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitMember) {
             return visitor.visitMember(this);
         } else {
@@ -9970,41 +9865,39 @@ export class MemberContext extends BslParserRuleContext {
 }
 
 export class NewExpressionContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public NEW_KEYWORD(): TerminalNode {
-        return this.getToken(BSLParser.NEW_KEYWORD, 0);
+    public NEW_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLParser.NEW_KEYWORD, 0)!;
     }
 
-    public typeName(): TypeNameContext {
-        return this.getTypedRuleContext(TypeNameContext, 0) as TypeNameContext;
+    public typeName(): TypeNameContext | null {
+        return this.getRuleContext(0, TypeNameContext);
     }
 
-    public doCall(): DoCallContext {
-        return this.getTypedRuleContext(DoCallContext, 0) as DoCallContext;
+    public doCall(): DoCallContext | null {
+        return this.getRuleContext(0, DoCallContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_newExpression;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterNewExpression) {
             listener.enterNewExpression(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitNewExpression) {
             listener.exitNewExpression(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitNewExpression) {
             return visitor.visitNewExpression(this);
         } else {
@@ -10014,33 +9907,31 @@ export class NewExpressionContext extends BslParserRuleContext {
 }
 
 export class TypeNameContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_typeName;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterTypeName) {
             listener.enterTypeName(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitTypeName) {
             listener.exitTypeName(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitTypeName) {
             return visitor.visitTypeName(this);
         } else {
@@ -10050,37 +9941,35 @@ export class TypeNameContext extends BslParserRuleContext {
 }
 
 export class MethodCallContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public methodName(): MethodNameContext {
-        return this.getTypedRuleContext(MethodNameContext, 0) as MethodNameContext;
+        return this.getRuleContext(0, MethodNameContext)!;
     }
 
     public doCall(): DoCallContext {
-        return this.getTypedRuleContext(DoCallContext, 0) as DoCallContext;
+        return this.getRuleContext(0, DoCallContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_methodCall;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterMethodCall) {
             listener.enterMethodCall(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitMethodCall) {
             listener.exitMethodCall(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitMethodCall) {
             return visitor.visitMethodCall(this);
         } else {
@@ -10090,37 +9979,35 @@ export class MethodCallContext extends BslParserRuleContext {
 }
 
 export class GlobalMethodCallContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public methodName(): MethodNameContext {
-        return this.getTypedRuleContext(MethodNameContext, 0) as MethodNameContext;
+        return this.getRuleContext(0, MethodNameContext)!;
     }
 
     public doCall(): DoCallContext {
-        return this.getTypedRuleContext(DoCallContext, 0) as DoCallContext;
+        return this.getRuleContext(0, DoCallContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_globalMethodCall;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterGlobalMethodCall) {
             listener.enterGlobalMethodCall(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitGlobalMethodCall) {
             listener.exitGlobalMethodCall(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitGlobalMethodCall) {
             return visitor.visitGlobalMethodCall(this);
         } else {
@@ -10130,33 +10017,31 @@ export class GlobalMethodCallContext extends BslParserRuleContext {
 }
 
 export class MethodNameContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_methodName;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterMethodName) {
             listener.enterMethodName(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitMethodName) {
             listener.exitMethodName(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitMethodName) {
             return visitor.visitMethodName(this);
         } else {
@@ -10166,53 +10051,55 @@ export class MethodNameContext extends BslParserRuleContext {
 }
 
 export class ComplexIdentifierContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
+    public IDENTIFIER(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.IDENTIFIER, 0);
     }
 
-    public newExpression(): NewExpressionContext {
-        return this.getTypedRuleContext(NewExpressionContext, 0) as NewExpressionContext;
+    public newExpression(): NewExpressionContext | null {
+        return this.getRuleContext(0, NewExpressionContext);
     }
 
-    public ternaryOperator(): TernaryOperatorContext {
-        return this.getTypedRuleContext(TernaryOperatorContext, 0) as TernaryOperatorContext;
+    public ternaryOperator(): TernaryOperatorContext | null {
+        return this.getRuleContext(0, TernaryOperatorContext);
     }
 
-    public globalMethodCall(): GlobalMethodCallContext {
-        return this.getTypedRuleContext(GlobalMethodCallContext, 0) as GlobalMethodCallContext;
+    public globalMethodCall(): GlobalMethodCallContext | null {
+        return this.getRuleContext(0, GlobalMethodCallContext);
     }
 
-    public modifier_list(): ModifierContext[] {
-        return this.getTypedRuleContexts(ModifierContext) as ModifierContext[];
+    public modifier(): ModifierContext[];
+
+    public modifier(i: number): ModifierContext | null;
+
+    public modifier(i?: number): ModifierContext[] | ModifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ModifierContext);
+        }
+
+        return this.getRuleContext(i, ModifierContext);
     }
 
-    public modifier(i: number): ModifierContext {
-        return this.getTypedRuleContext(ModifierContext, i) as ModifierContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_complexIdentifier;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterComplexIdentifier) {
             listener.enterComplexIdentifier(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitComplexIdentifier) {
             listener.exitComplexIdentifier(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitComplexIdentifier) {
             return visitor.visitComplexIdentifier(this);
         } else {
@@ -10222,41 +10109,39 @@ export class ComplexIdentifierContext extends BslParserRuleContext {
 }
 
 export class ModifierContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public accessProperty(): AccessPropertyContext {
-        return this.getTypedRuleContext(AccessPropertyContext, 0) as AccessPropertyContext;
+    public accessProperty(): AccessPropertyContext | null {
+        return this.getRuleContext(0, AccessPropertyContext);
     }
 
-    public accessIndex(): AccessIndexContext {
-        return this.getTypedRuleContext(AccessIndexContext, 0) as AccessIndexContext;
+    public accessIndex(): AccessIndexContext | null {
+        return this.getRuleContext(0, AccessIndexContext);
     }
 
-    public accessCall(): AccessCallContext {
-        return this.getTypedRuleContext(AccessCallContext, 0) as AccessCallContext;
+    public accessCall(): AccessCallContext | null {
+        return this.getRuleContext(0, AccessCallContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_modifier;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterModifier) {
             listener.enterModifier(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitModifier) {
             listener.exitModifier(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitModifier) {
             return visitor.visitModifier(this);
         } else {
@@ -10266,45 +10151,47 @@ export class ModifierContext extends BslParserRuleContext {
 }
 
 export class AcceptorContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public accessProperty(): AccessPropertyContext {
-        return this.getTypedRuleContext(AccessPropertyContext, 0) as AccessPropertyContext;
+    public accessProperty(): AccessPropertyContext | null {
+        return this.getRuleContext(0, AccessPropertyContext);
     }
 
-    public accessIndex(): AccessIndexContext {
-        return this.getTypedRuleContext(AccessIndexContext, 0) as AccessIndexContext;
+    public accessIndex(): AccessIndexContext | null {
+        return this.getRuleContext(0, AccessIndexContext);
     }
 
-    public modifier_list(): ModifierContext[] {
-        return this.getTypedRuleContexts(ModifierContext) as ModifierContext[];
+    public modifier(): ModifierContext[];
+
+    public modifier(i: number): ModifierContext | null;
+
+    public modifier(i?: number): ModifierContext[] | ModifierContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ModifierContext);
+        }
+
+        return this.getRuleContext(i, ModifierContext);
     }
 
-    public modifier(i: number): ModifierContext {
-        return this.getTypedRuleContext(ModifierContext, i) as ModifierContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_acceptor;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAcceptor) {
             listener.enterAcceptor(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAcceptor) {
             listener.exitAcceptor(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAcceptor) {
             return visitor.visitAcceptor(this);
         } else {
@@ -10314,41 +10201,39 @@ export class AcceptorContext extends BslParserRuleContext {
 }
 
 export class LValueContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public IDENTIFIER(): TerminalNode {
+    public IDENTIFIER(): antlr.TerminalNode | null {
         return this.getToken(BSLParser.IDENTIFIER, 0);
     }
 
-    public globalMethodCall(): GlobalMethodCallContext {
-        return this.getTypedRuleContext(GlobalMethodCallContext, 0) as GlobalMethodCallContext;
+    public globalMethodCall(): GlobalMethodCallContext | null {
+        return this.getRuleContext(0, GlobalMethodCallContext);
     }
 
-    public acceptor(): AcceptorContext {
-        return this.getTypedRuleContext(AcceptorContext, 0) as AcceptorContext;
+    public acceptor(): AcceptorContext | null {
+        return this.getRuleContext(0, AcceptorContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_lValue;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterLValue) {
             listener.enterLValue(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitLValue) {
             listener.exitLValue(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitLValue) {
             return visitor.visitLValue(this);
         } else {
@@ -10358,37 +10243,35 @@ export class LValueContext extends BslParserRuleContext {
 }
 
 export class AccessCallContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public DOT(): TerminalNode {
-        return this.getToken(BSLParser.DOT, 0);
+    public DOT(): antlr.TerminalNode {
+        return this.getToken(BSLParser.DOT, 0)!;
     }
 
     public methodCall(): MethodCallContext {
-        return this.getTypedRuleContext(MethodCallContext, 0) as MethodCallContext;
+        return this.getRuleContext(0, MethodCallContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_accessCall;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAccessCall) {
             listener.enterAccessCall(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAccessCall) {
             listener.exitAccessCall(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAccessCall) {
             return visitor.visitAccessCall(this);
         } else {
@@ -10398,41 +10281,39 @@ export class AccessCallContext extends BslParserRuleContext {
 }
 
 export class AccessIndexContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LBRACK(): TerminalNode {
-        return this.getToken(BSLParser.LBRACK, 0);
+    public LBRACK(): antlr.TerminalNode {
+        return this.getToken(BSLParser.LBRACK, 0)!;
     }
 
     public expression(): ExpressionContext {
-        return this.getTypedRuleContext(ExpressionContext, 0) as ExpressionContext;
+        return this.getRuleContext(0, ExpressionContext)!;
     }
 
-    public RBRACK(): TerminalNode {
-        return this.getToken(BSLParser.RBRACK, 0);
+    public RBRACK(): antlr.TerminalNode {
+        return this.getToken(BSLParser.RBRACK, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_accessIndex;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAccessIndex) {
             listener.enterAccessIndex(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAccessIndex) {
             listener.exitAccessIndex(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAccessIndex) {
             return visitor.visitAccessIndex(this);
         } else {
@@ -10442,37 +10323,35 @@ export class AccessIndexContext extends BslParserRuleContext {
 }
 
 export class AccessPropertyContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public DOT(): TerminalNode {
-        return this.getToken(BSLParser.DOT, 0);
+    public DOT(): antlr.TerminalNode {
+        return this.getToken(BSLParser.DOT, 0)!;
     }
 
-    public IDENTIFIER(): TerminalNode {
-        return this.getToken(BSLParser.IDENTIFIER, 0);
+    public IDENTIFIER(): antlr.TerminalNode {
+        return this.getToken(BSLParser.IDENTIFIER, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_accessProperty;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterAccessProperty) {
             listener.enterAccessProperty(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitAccessProperty) {
             listener.exitAccessProperty(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitAccessProperty) {
             return visitor.visitAccessProperty(this);
         } else {
@@ -10482,41 +10361,39 @@ export class AccessPropertyContext extends BslParserRuleContext {
 }
 
 export class DoCallContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public LPAREN(): TerminalNode {
-        return this.getToken(BSLParser.LPAREN, 0);
+    public LPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.LPAREN, 0)!;
     }
 
     public callParamList(): CallParamListContext {
-        return this.getTypedRuleContext(CallParamListContext, 0) as CallParamListContext;
+        return this.getRuleContext(0, CallParamListContext)!;
     }
 
-    public RPAREN(): TerminalNode {
-        return this.getToken(BSLParser.RPAREN, 0);
+    public RPAREN(): antlr.TerminalNode {
+        return this.getToken(BSLParser.RPAREN, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_doCall;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterDoCall) {
             listener.enterDoCall(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitDoCall) {
             listener.exitDoCall(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitDoCall) {
             return visitor.visitDoCall(this);
         } else {
@@ -10526,81 +10403,79 @@ export class DoCallContext extends BslParserRuleContext {
 }
 
 export class CompoundStatementContext extends BslParserRuleContext {
-    constructor(parser?: BSLParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public ifStatement(): IfStatementContext {
-        return this.getTypedRuleContext(IfStatementContext, 0) as IfStatementContext;
+    public ifStatement(): IfStatementContext | null {
+        return this.getRuleContext(0, IfStatementContext);
     }
 
-    public whileStatement(): WhileStatementContext {
-        return this.getTypedRuleContext(WhileStatementContext, 0) as WhileStatementContext;
+    public whileStatement(): WhileStatementContext | null {
+        return this.getRuleContext(0, WhileStatementContext);
     }
 
-    public forStatement(): ForStatementContext {
-        return this.getTypedRuleContext(ForStatementContext, 0) as ForStatementContext;
+    public forStatement(): ForStatementContext | null {
+        return this.getRuleContext(0, ForStatementContext);
     }
 
-    public forEachStatement(): ForEachStatementContext {
-        return this.getTypedRuleContext(ForEachStatementContext, 0) as ForEachStatementContext;
+    public forEachStatement(): ForEachStatementContext | null {
+        return this.getRuleContext(0, ForEachStatementContext);
     }
 
-    public tryStatement(): TryStatementContext {
-        return this.getTypedRuleContext(TryStatementContext, 0) as TryStatementContext;
+    public tryStatement(): TryStatementContext | null {
+        return this.getRuleContext(0, TryStatementContext);
     }
 
-    public returnStatement(): ReturnStatementContext {
-        return this.getTypedRuleContext(ReturnStatementContext, 0) as ReturnStatementContext;
+    public returnStatement(): ReturnStatementContext | null {
+        return this.getRuleContext(0, ReturnStatementContext);
     }
 
-    public continueStatement(): ContinueStatementContext {
-        return this.getTypedRuleContext(ContinueStatementContext, 0) as ContinueStatementContext;
+    public continueStatement(): ContinueStatementContext | null {
+        return this.getRuleContext(0, ContinueStatementContext);
     }
 
-    public breakStatement(): BreakStatementContext {
-        return this.getTypedRuleContext(BreakStatementContext, 0) as BreakStatementContext;
+    public breakStatement(): BreakStatementContext | null {
+        return this.getRuleContext(0, BreakStatementContext);
     }
 
-    public raiseStatement(): RaiseStatementContext {
-        return this.getTypedRuleContext(RaiseStatementContext, 0) as RaiseStatementContext;
+    public raiseStatement(): RaiseStatementContext | null {
+        return this.getRuleContext(0, RaiseStatementContext);
     }
 
-    public executeStatement(): ExecuteStatementContext {
-        return this.getTypedRuleContext(ExecuteStatementContext, 0) as ExecuteStatementContext;
+    public executeStatement(): ExecuteStatementContext | null {
+        return this.getRuleContext(0, ExecuteStatementContext);
     }
 
-    public gotoStatement(): GotoStatementContext {
-        return this.getTypedRuleContext(GotoStatementContext, 0) as GotoStatementContext;
+    public gotoStatement(): GotoStatementContext | null {
+        return this.getRuleContext(0, GotoStatementContext);
     }
 
-    public addHandlerStatement(): AddHandlerStatementContext {
-        return this.getTypedRuleContext(AddHandlerStatementContext, 0) as AddHandlerStatementContext;
+    public addHandlerStatement(): AddHandlerStatementContext | null {
+        return this.getRuleContext(0, AddHandlerStatementContext);
     }
 
-    public removeHandlerStatement(): RemoveHandlerStatementContext {
-        return this.getTypedRuleContext(RemoveHandlerStatementContext, 0) as RemoveHandlerStatementContext;
+    public removeHandlerStatement(): RemoveHandlerStatementContext | null {
+        return this.getRuleContext(0, RemoveHandlerStatementContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLParser.RULE_compoundStatement;
     }
 
-    public enterRule(listener: BSLParserListener): void {
+    public override enterRule(listener: BSLParserListener): void {
         if (listener.enterCompoundStatement) {
             listener.enterCompoundStatement(this);
         }
     }
 
-    public exitRule(listener: BSLParserListener): void {
+    public override exitRule(listener: BSLParserListener): void {
         if (listener.exitCompoundStatement) {
             listener.exitCompoundStatement(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLParserVisitor<Result>): Result | null {
         if (visitor.visitCompoundStatement) {
             return visitor.visitCompoundStatement(this);
         } else {

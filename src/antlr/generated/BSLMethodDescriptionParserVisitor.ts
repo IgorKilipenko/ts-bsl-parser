@@ -1,37 +1,40 @@
 // Generated from ./src/antlr/BSLMethodDescriptionParser.g4 by ANTLR 4.13.1
 
-import { ParseTreeVisitor } from "antlr4";
+import { AbstractParseTreeVisitor } from "antlr4ng";
 
-import { BslParserRuleContext } from "../../core/context";
 
-import { MethodDescriptionContext } from "./BSLMethodDescriptionParser";
-import { DeprecateContext } from "./BSLMethodDescriptionParser";
-import { DeprecateDescriptionContext } from "./BSLMethodDescriptionParser";
-import { DescriptionBlockContext } from "./BSLMethodDescriptionParser";
-import { DescriptionContext } from "./BSLMethodDescriptionParser";
-import { DescriptionStringContext } from "./BSLMethodDescriptionParser";
-import { ExamplesContext } from "./BSLMethodDescriptionParser";
-import { ExamplesStringContext } from "./BSLMethodDescriptionParser";
-import { CallOptionsContext } from "./BSLMethodDescriptionParser";
-import { CallOptionsStringContext } from "./BSLMethodDescriptionParser";
-import { ParametersContext } from "./BSLMethodDescriptionParser";
-import { ParameterStringContext } from "./BSLMethodDescriptionParser";
-import { ParameterContext } from "./BSLMethodDescriptionParser";
-import { SubParameterContext } from "./BSLMethodDescriptionParser";
-import { ParameterNameContext } from "./BSLMethodDescriptionParser";
-import { ReturnsValuesContext } from "./BSLMethodDescriptionParser";
-import { ReturnsValuesStringContext } from "./BSLMethodDescriptionParser";
-import { ReturnsValueContext } from "./BSLMethodDescriptionParser";
-import { TypesBlockContext } from "./BSLMethodDescriptionParser";
-import { TypeDescriptionContext } from "./BSLMethodDescriptionParser";
-import { TypeContext } from "./BSLMethodDescriptionParser";
-import { SimpleTypeContext } from "./BSLMethodDescriptionParser";
-import { ListTypesContext } from "./BSLMethodDescriptionParser";
-import { ComplexTypeContext } from "./BSLMethodDescriptionParser";
-import { HyperlinkTypeContext } from "./BSLMethodDescriptionParser";
-import { SpitterContext } from "./BSLMethodDescriptionParser";
-import { HyperlinkBlockContext } from "./BSLMethodDescriptionParser";
-import { StartPartContext } from "./BSLMethodDescriptionParser";
+import { BslParserRuleContext } from "../../core/context.js";
+
+
+import type { MethodDescriptionContext } from "./BSLMethodDescriptionParser.js";
+import type { DeprecateContext } from "./BSLMethodDescriptionParser.js";
+import type { DeprecateDescriptionContext } from "./BSLMethodDescriptionParser.js";
+import type { DescriptionBlockContext } from "./BSLMethodDescriptionParser.js";
+import type { DescriptionContext } from "./BSLMethodDescriptionParser.js";
+import type { DescriptionStringContext } from "./BSLMethodDescriptionParser.js";
+import type { ExamplesContext } from "./BSLMethodDescriptionParser.js";
+import type { ExamplesStringContext } from "./BSLMethodDescriptionParser.js";
+import type { CallOptionsContext } from "./BSLMethodDescriptionParser.js";
+import type { CallOptionsStringContext } from "./BSLMethodDescriptionParser.js";
+import type { ParametersContext } from "./BSLMethodDescriptionParser.js";
+import type { ParameterStringContext } from "./BSLMethodDescriptionParser.js";
+import type { ParameterContext } from "./BSLMethodDescriptionParser.js";
+import type { SubParameterContext } from "./BSLMethodDescriptionParser.js";
+import type { ParameterNameContext } from "./BSLMethodDescriptionParser.js";
+import type { ReturnsValuesContext } from "./BSLMethodDescriptionParser.js";
+import type { ReturnsValuesStringContext } from "./BSLMethodDescriptionParser.js";
+import type { ReturnsValueContext } from "./BSLMethodDescriptionParser.js";
+import type { TypesBlockContext } from "./BSLMethodDescriptionParser.js";
+import type { TypeDescriptionContext } from "./BSLMethodDescriptionParser.js";
+import type { TypeContext } from "./BSLMethodDescriptionParser.js";
+import type { SimpleTypeContext } from "./BSLMethodDescriptionParser.js";
+import type { ListTypesContext } from "./BSLMethodDescriptionParser.js";
+import type { ComplexTypeContext } from "./BSLMethodDescriptionParser.js";
+import type { HyperlinkTypeContext } from "./BSLMethodDescriptionParser.js";
+import type { SpitterContext } from "./BSLMethodDescriptionParser.js";
+import type { HyperlinkBlockContext } from "./BSLMethodDescriptionParser.js";
+import type { StartPartContext } from "./BSLMethodDescriptionParser.js";
+
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced
@@ -40,7 +43,7 @@ import { StartPartContext } from "./BSLMethodDescriptionParser";
  * @param <Result> The return type of the visit operation. Use `void` for
  * operations with no return type.
  */
-export default class BSLMethodDescriptionParserVisitor<Result> extends ParseTreeVisitor<Result> {
+export class BSLMethodDescriptionParserVisitor<Result> extends AbstractParseTreeVisitor<Result> {
     /**
      * Visit a parse tree produced by `BSLMethodDescriptionParser.methodDescription`.
      * @param ctx the parse tree
@@ -237,3 +240,4 @@ export default class BSLMethodDescriptionParserVisitor<Result> extends ParseTree
      */
     visitStartPart?: (ctx: StartPartContext) => Result;
 }
+

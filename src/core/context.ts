@@ -1,15 +1,20 @@
-import { type ParseTree, ParserRuleContext, TerminalNode } from "antlr4";
+import { type ParseTree, ParserRuleContext, TerminalNode } from "antlr4ng";
+import { FileContext } from "../antlr/generated/BSLParser.js";
 
 export class BslParserRuleContext extends ParserRuleContext {
-    constructor(parent?: ParserRuleContext, invokingStateNumber?: number) {
+    constructor(parent: ParserRuleContext | null, invokingStateNumber: number) {
         super(parent, invokingStateNumber);
     }
 
-    get isTerminalNode() {
+    get isTerminalNode() : boolean {
         return this instanceof TerminalNode;
     }
 
-    public readonly findAllNodes = (filter?: (node: TerminalNode | ParserRuleContext) => boolean): Array<ParseTree> => {
+    get isModule() : boolean {
+        return this instanceof FileContext && this.parent === null;
+    }
+
+    public readonly findAllNodes = (filter?: (node: TerminalNode | ParserRuleContext) => boolean): Array<ParseTree> | null => {
         const findNodes = (tree: ParseTree, result: Array<ParseTree>) => {
             const node = tree instanceof TerminalNode ? tree as TerminalNode : tree instanceof ParserRuleContext
                 ? tree as ParserRuleContext : null;
@@ -22,16 +27,16 @@ export class BslParserRuleContext extends ParserRuleContext {
                 result.push(node);
 
             node && node instanceof ParserRuleContext &&
-                node.children.forEach((tree) => {
+                node.children?.forEach((tree) => {
                     findNodes(tree as ParserRuleContext, result);
                 });
 
             return result;
         };
 
-        return this.children.reduce<Array<ParseTree>>((res, tree) => {
+        return this.children?.reduce<Array<ParseTree>>((res, tree) => {
             findNodes(tree, res);
             return res;
-        }, []);
+        }, []) ?? null;
     };
 }

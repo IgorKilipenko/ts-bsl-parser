@@ -1,11 +1,11 @@
-import { type ParseTree } from "antlr4";
-import { type FileContext, SubsContext } from "./antlr/generated/BSLParser";
-import BSLParserVisitor from "./antlr/generated/BSLParserVisitor";
-import { BslGrammarParser } from "./bslGrammarParser";
+import { Interval, ParseTreeVisitor, Parser, type ParseTree } from "antlr4ng";
+import { type FileContext, SubsContext } from "./antlr/generated/BSLParser.js";
+import { BSLParserVisitor as BSLParserVisitor } from "./antlr/generated/BSLParserVisitor.js";
+import { BslGrammarParser } from "./bslGrammarParser.js";
 
 export interface IContextTree {
-    isModule: boolean
-    isFunction: boolean
+    isModule: boolean;
+    isFunction: boolean;
 }
 
 class ContextTree implements IContextTree {
@@ -21,29 +21,55 @@ class ContextTree implements IContextTree {
         return false;
     }
 
-    public readonly asModule = () : MainTree => {
-        return this.isModule && (this as unknown as MainTree);
+    public readonly asModule = (): MainTree | null => {
+        return this.isModule ? (this as unknown as MainTree) : null;
     };
 }
 
 export interface IModuleTree extends IContextTree {
-    subContext: SubsContext;
+    subContext: SubsContext | null;
 }
 
 export class MainTree extends ContextTree implements IModuleTree, ParseTree {
     //private _ctx: FileContext;
     private _subContext: SubsContext;
 
-    constructor (private readonly ctx: FileContext) {
+    constructor(private readonly ctx: FileContext) {
         super();
-        this._subContext = ctx.children.find((tree) => tree instanceof SubsContext) as SubsContext;
+        this._subContext = ctx.children?.find((tree) => tree instanceof SubsContext) as SubsContext;
+    }
+
+    parent: ParseTree;
+
+    getPayload(): unknown {
+        throw new Error("Method not implemented.");
+    }
+
+    getChild(i: number): ParseTree {
+        throw new Error("Method not implemented.");
+    }
+
+    accept<T>(visitor: ParseTreeVisitor<T>): T {
+        throw new Error("Method not implemented.");
+    }
+
+    getChildCount(): number {
+        throw new Error("Method not implemented.");
+    }
+
+    toStringTree(ruleNames: string[], recog: Parser): string {
+        throw new Error("Method not implemented.");
+    }
+
+    getSourceInterval(): Interval {
+        throw new Error("Method not implemented.");
     }
 
     get subContext(): SubsContext | null {
         return this._subContext;
     }
 
-    getText = () =>  {
+    getText = () => {
         return this.ctx.getText();
     };
 
@@ -53,12 +79,12 @@ export class MainTree extends ContextTree implements IModuleTree, ParseTree {
 }
 
 export class BslVisitor extends BSLParserVisitor<IContextTree> {
-	/**
-	 * Visit a parse tree produced by `BSLParser.file`.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	public override visitFile = (ctx: FileContext) => {
+    /**
+     * Visit a parse tree produced by `BSLParser.file`.
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    public override visitFile = (ctx: FileContext) => {
         return new MainTree(ctx);
     };
 }

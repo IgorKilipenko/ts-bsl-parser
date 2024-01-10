@@ -1,19 +1,9 @@
 // Generated from ./src/antlr/SDBLLexer.g4 by ANTLR 4.13.1
-// noinspection ES6UnusedImports,JSUnusedGlobalSymbols,JSUnusedLocalSymbols
-import {
-    ATN,
-    ATNDeserializer,
-    CharStream,
-    DecisionState,
-    DFA,
-    Lexer,
-    LexerATNSimulator,
-    RuleContext,
-    PredictionContextCache,
-    Token,
-} from "antlr4";
 
-export default class SDBLLexer extends Lexer {
+import * as antlr from "antlr4ng";
+import { Token } from "antlr4ng";
+
+export class SDBLLexer extends antlr.Lexer {
     public static readonly WHITE_SPACE = 1;
 
     public static readonly LINE_COMMENT = 2;
@@ -372,8 +362,6 @@ export default class SDBLLexer extends Lexer {
 
     public static readonly EDS_CUBE_DIMTABLE = 179;
 
-    public static readonly EOF = Token.EOF;
-
     public static readonly STRINGS = 1;
 
     public static readonly PARAMETER_MODE = 2;
@@ -386,9 +374,9 @@ export default class SDBLLexer extends Lexer {
 
     public static readonly EXTERNAL_DATA_SOURCE_MODE = 6;
 
-    public static readonly channelNames: string[] = ["DEFAULT_TOKEN_CHANNEL", "HIDDEN"];
+    public static readonly channelNames = ["DEFAULT_TOKEN_CHANNEL", "HIDDEN"];
 
-    public static readonly literalNames: (string | null)[] = [
+    public static readonly literalNames = [
         null,
         null,
         null,
@@ -550,7 +538,7 @@ export default class SDBLLexer extends Lexer {
         "'\"'",
     ];
 
-    public static readonly symbolicNames: (string | null)[] = [
+    public static readonly symbolicNames = [
         null,
         "WHITE_SPACE",
         "LINE_COMMENT",
@@ -733,7 +721,7 @@ export default class SDBLLexer extends Lexer {
         "EDS_CUBE_DIMTABLE",
     ];
 
-    public static readonly modeNames: string[] = [
+    public static readonly modeNames = [
         "DEFAULT_MODE",
         "STRINGS",
         "PARAMETER_MODE",
@@ -743,7 +731,7 @@ export default class SDBLLexer extends Lexer {
         "EXTERNAL_DATA_SOURCE_MODE",
     ];
 
-    public static readonly ruleNames: string[] = [
+    public static readonly ruleNames = [
         "WHITE_SPACE",
         "LINE_COMMENT",
         "DOT",
@@ -1035,13 +1023,13 @@ export default class SDBLLexer extends Lexer {
         "EDS_IDENTIFIER",
     ];
 
-    constructor(input: CharStream) {
+    public constructor(input: antlr.CharStream) {
         super(input);
-        this._interp = new LexerATNSimulator(
+        this.interpreter = new antlr.LexerATNSimulator(
             this,
             SDBLLexer._ATN,
-            SDBLLexer.DecisionsToDFA,
-            new PredictionContextCache()
+            SDBLLexer.decisionsToDFA,
+            new antlr.PredictionContextCache()
         );
     }
 
@@ -2367,17 +2355,23 @@ export default class SDBLLexer extends Lexer {
         7, 125, 0, 7, 126, 0, 7, 128, 0, 7, 130, 0, 7, 131, 0, 7, 136, 0, 7, 3, 0,
     ];
 
-    private static __ATN: ATN;
+    private static __ATN: antlr.ATN;
 
-    public static get _ATN(): ATN {
+    public static get _ATN(): antlr.ATN {
         if (!SDBLLexer.__ATN) {
-            SDBLLexer.__ATN = new ATNDeserializer().deserialize(SDBLLexer._serializedATN);
+            SDBLLexer.__ATN = new antlr.ATNDeserializer().deserialize(SDBLLexer._serializedATN);
         }
 
         return SDBLLexer.__ATN;
     }
 
-    static DecisionsToDFA = SDBLLexer._ATN.decisionToState.map(
-        (ds: DecisionState, index: number) => new DFA(ds, index)
+    private static readonly vocabulary = new antlr.Vocabulary(SDBLLexer.literalNames, SDBLLexer.symbolicNames, []);
+
+    public override get vocabulary(): antlr.Vocabulary {
+        return SDBLLexer.vocabulary;
+    }
+
+    private static readonly decisionsToDFA = SDBLLexer._ATN.decisionToState.map(
+        (ds: antlr.DecisionState, index: number) => new antlr.DFA(ds, index)
     );
 }

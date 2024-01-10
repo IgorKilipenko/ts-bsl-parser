@@ -1,38 +1,18 @@
 // Generated from ./src/antlr/BSLMethodDescriptionParser.g4 by ANTLR 4.13.1
-// noinspection ES6UnusedImports,JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 
-import {
-    ATN,
-    ATNDeserializer,
-    DecisionState,
-    DFA,
-    FailedPredicateException,
-    RecognitionException,
-    NoViableAltException,
-    BailErrorStrategy,
-    Parser,
-    ParserATNSimulator,
-    RuleContext,
-    ParserRuleContext,
-    PredictionMode,
-    PredictionContextCache,
-    TerminalNode,
-    RuleNode,
-    Token,
-    TokenStream,
-    Interval,
-    IntervalSet,
-} from "antlr4";
-import BSLMethodDescriptionParserListener from "./BSLMethodDescriptionParserListener.js";
-import BSLMethodDescriptionParserVisitor from "./BSLMethodDescriptionParserVisitor.js";
+import * as antlr from "antlr4ng";
+import type { Token } from "antlr4ng";
+
+import type { BSLMethodDescriptionParserListener } from "./BSLMethodDescriptionParserListener.js";
+import type { BSLMethodDescriptionParserVisitor } from "./BSLMethodDescriptionParserVisitor.js";
 
 // for running tests with parameters, TODO: discuss strategy for typed parameters in CI
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 type int = number;
 
-import { BslParserRuleContext } from "../../core/context";
+import { BslParserRuleContext } from "../../core/context.js";
 
-export default class BSLMethodDescriptionParser extends Parser {
+export class BSLMethodDescriptionParser extends antlr.Parser {
     public static readonly PARAMETERS_KEYWORD = 1;
 
     public static readonly RETURNS_KEYWORD = 2;
@@ -70,8 +50,6 @@ export default class BSLMethodDescriptionParser extends Parser {
     public static readonly RPAREN = 18;
 
     public static readonly ANYSYMBOL = 19;
-
-    public static readonly EOF = Token.EOF;
 
     public static readonly RULE_methodDescription = 0;
 
@@ -129,7 +107,7 @@ export default class BSLMethodDescriptionParser extends Parser {
 
     public static readonly RULE_startPart = 27;
 
-    public static readonly literalNames: (string | null)[] = [
+    public static readonly literalNames = [
         null,
         null,
         null,
@@ -151,7 +129,7 @@ export default class BSLMethodDescriptionParser extends Parser {
         "')'",
     ];
 
-    public static readonly symbolicNames: (string | null)[] = [
+    public static readonly symbolicNames = [
         null,
         "PARAMETERS_KEYWORD",
         "RETURNS_KEYWORD",
@@ -174,8 +152,7 @@ export default class BSLMethodDescriptionParser extends Parser {
         "ANYSYMBOL",
     ];
 
-    // tslint:disable:no-trailing-whitespace
-    public static readonly ruleNames: string[] = [
+    public static readonly ruleNames = [
         "methodDescription",
         "deprecate",
         "deprecateDescription",
@@ -226,37 +203,36 @@ export default class BSLMethodDescriptionParser extends Parser {
         return BSLMethodDescriptionParser._serializedATN;
     }
 
-    protected createFailedPredicateException(predicate?: string, message?: string): FailedPredicateException {
-        return new FailedPredicateException(this, predicate, message);
+    protected createFailedPredicateException(predicate?: string, message?: string): antlr.FailedPredicateException {
+        return new antlr.FailedPredicateException(this, predicate, message);
     }
 
-    constructor(input: TokenStream) {
+    public constructor(input: antlr.TokenStream) {
         super(input);
-        this._interp = new ParserATNSimulator(
+        this.interpreter = new antlr.ParserATNSimulator(
             this,
             BSLMethodDescriptionParser._ATN,
-            BSLMethodDescriptionParser.DecisionsToDFA,
-            new PredictionContextCache()
+            BSLMethodDescriptionParser.decisionsToDFA,
+            new antlr.PredictionContextCache()
         );
     }
 
-    // @RuleVersion(0)
     public methodDescription(): MethodDescriptionContext {
-        let localctx: MethodDescriptionContext = new MethodDescriptionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 0, BSLMethodDescriptionParser.RULE_methodDescription);
+        let localContext = new MethodDescriptionContext(this.context, this.state);
+        this.enterRule(localContext, 0, BSLMethodDescriptionParser.RULE_methodDescription);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 200;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 48, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 48, this.context)) {
                     case 1:
                         {
                             {
                                 this.state = 57;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 0, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 0, this.context)) {
                                     case 1:
                                         {
                                             this.state = 56;
@@ -265,8 +241,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 60;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 1, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 1, this.context)) {
                                     case 1:
                                         {
                                             this.state = 59;
@@ -275,8 +251,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 63;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 2, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 2, this.context)) {
                                     case 1:
                                         {
                                             this.state = 62;
@@ -285,8 +261,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 66;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 3, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 3, this.context)) {
                                     case 1:
                                         {
                                             this.state = 65;
@@ -295,8 +271,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 69;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 4, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 4, this.context)) {
                                     case 1:
                                         {
                                             this.state = 68;
@@ -305,8 +281,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 72;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 9 || _la === 14) {
                                     {
                                         this.state = 71;
@@ -320,8 +296,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         {
                             {
                                 this.state = 75;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 6, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 6, this.context)) {
                                     case 1:
                                         {
                                             this.state = 74;
@@ -330,8 +306,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 78;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 7, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 7, this.context)) {
                                     case 1:
                                         {
                                             this.state = 77;
@@ -340,8 +316,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 81;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 8, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 8, this.context)) {
                                     case 1:
                                         {
                                             this.state = 80;
@@ -350,8 +326,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 84;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 9, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 9, this.context)) {
                                     case 1:
                                         {
                                             this.state = 83;
@@ -360,8 +336,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 87;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 10, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 10, this.context)) {
                                     case 1:
                                         {
                                             this.state = 86;
@@ -370,8 +346,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 90;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 9 || _la === 14) {
                                     {
                                         this.state = 89;
@@ -385,8 +361,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         {
                             {
                                 this.state = 93;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 12, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 12, this.context)) {
                                     case 1:
                                         {
                                             this.state = 92;
@@ -395,8 +371,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 96;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 13, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 13, this.context)) {
                                     case 1:
                                         {
                                             this.state = 95;
@@ -405,8 +381,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 99;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 14, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 14, this.context)) {
                                     case 1:
                                         {
                                             this.state = 98;
@@ -415,8 +391,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 102;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 15, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 15, this.context)) {
                                     case 1:
                                         {
                                             this.state = 101;
@@ -425,8 +401,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 105;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 16, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 16, this.context)) {
                                     case 1:
                                         {
                                             this.state = 104;
@@ -435,8 +411,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 108;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 9 || _la === 14) {
                                     {
                                         this.state = 107;
@@ -450,8 +426,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         {
                             {
                                 this.state = 111;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 18, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 18, this.context)) {
                                     case 1:
                                         {
                                             this.state = 110;
@@ -460,8 +436,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 114;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 19, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 19, this.context)) {
                                     case 1:
                                         {
                                             this.state = 113;
@@ -470,8 +446,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 117;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 20, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 20, this.context)) {
                                     case 1:
                                         {
                                             this.state = 116;
@@ -480,8 +456,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 120;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 21, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 21, this.context)) {
                                     case 1:
                                         {
                                             this.state = 119;
@@ -490,8 +466,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 123;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 22, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 22, this.context)) {
                                     case 1:
                                         {
                                             this.state = 122;
@@ -500,8 +476,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 126;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 9 || _la === 14) {
                                     {
                                         this.state = 125;
@@ -515,8 +491,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         {
                             {
                                 this.state = 129;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 24, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 24, this.context)) {
                                     case 1:
                                         {
                                             this.state = 128;
@@ -525,8 +501,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 132;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 25, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 25, this.context)) {
                                     case 1:
                                         {
                                             this.state = 131;
@@ -535,8 +511,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 135;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 26, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 26, this.context)) {
                                     case 1:
                                         {
                                             this.state = 134;
@@ -545,8 +521,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 138;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 27, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 27, this.context)) {
                                     case 1:
                                         {
                                             this.state = 137;
@@ -555,8 +531,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 141;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 28, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 28, this.context)) {
                                     case 1:
                                         {
                                             this.state = 140;
@@ -565,8 +541,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 144;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 9 || _la === 14) {
                                     {
                                         this.state = 143;
@@ -580,8 +556,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         {
                             {
                                 this.state = 147;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 30, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 30, this.context)) {
                                     case 1:
                                         {
                                             this.state = 146;
@@ -590,8 +566,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 150;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 31, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 31, this.context)) {
                                     case 1:
                                         {
                                             this.state = 149;
@@ -600,8 +576,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 153;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 32, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 32, this.context)) {
                                     case 1:
                                         {
                                             this.state = 152;
@@ -610,8 +586,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 156;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 33, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 33, this.context)) {
                                     case 1:
                                         {
                                             this.state = 155;
@@ -620,8 +596,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 159;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 34, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 34, this.context)) {
                                     case 1:
                                         {
                                             this.state = 158;
@@ -630,8 +606,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 162;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 9 || _la === 14) {
                                     {
                                         this.state = 161;
@@ -645,8 +621,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         {
                             {
                                 this.state = 165;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 36, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 36, this.context)) {
                                     case 1:
                                         {
                                             this.state = 164;
@@ -655,8 +631,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 168;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 37, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 37, this.context)) {
                                     case 1:
                                         {
                                             this.state = 167;
@@ -665,8 +641,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 171;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 38, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 38, this.context)) {
                                     case 1:
                                         {
                                             this.state = 170;
@@ -675,8 +651,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 174;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 39, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 39, this.context)) {
                                     case 1:
                                         {
                                             this.state = 173;
@@ -685,8 +661,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 177;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 40, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 40, this.context)) {
                                     case 1:
                                         {
                                             this.state = 176;
@@ -695,8 +671,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 180;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 9 || _la === 14) {
                                     {
                                         this.state = 179;
@@ -710,8 +686,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         {
                             {
                                 this.state = 183;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 42, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 42, this.context)) {
                                     case 1:
                                         {
                                             this.state = 182;
@@ -720,8 +696,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 186;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 43, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 43, this.context)) {
                                     case 1:
                                         {
                                             this.state = 185;
@@ -730,8 +706,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 189;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 44, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 44, this.context)) {
                                     case 1:
                                         {
                                             this.state = 188;
@@ -740,8 +716,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 192;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 45, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 45, this.context)) {
                                     case 1:
                                         {
                                             this.state = 191;
@@ -750,8 +726,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 195;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 46, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 46, this.context)) {
                                     case 1:
                                         {
                                             this.state = 194;
@@ -760,8 +736,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                         break;
                                 }
                                 this.state = 198;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
+                                this.errorHandler.sync(this);
+                                _la = this.tokenStream.LA(1);
                                 if (_la === 9 || _la === 14) {
                                     {
                                         this.state = 197;
@@ -776,34 +752,33 @@ export default class BSLMethodDescriptionParser extends Parser {
                 this.match(BSLMethodDescriptionParser.EOF);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public deprecate(): DeprecateContext {
-        let localctx: DeprecateContext = new DeprecateContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 2, BSLMethodDescriptionParser.RULE_deprecate);
+        let localContext = new DeprecateContext(this.context, this.state);
+        this.enterRule(localContext, 2, BSLMethodDescriptionParser.RULE_deprecate);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 204;
                 this.startPart();
                 this.state = 205;
                 this.match(BSLMethodDescriptionParser.DEPRECATE_KEYWORD);
                 this.state = 208;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 49, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 49, this.context)) {
                     case 1:
                         {
                             this.state = 206;
@@ -814,8 +789,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         break;
                 }
                 this.state = 211;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 8) {
                     {
                         this.state = 210;
@@ -824,84 +799,82 @@ export default class BSLMethodDescriptionParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public deprecateDescription(): DeprecateDescriptionContext {
-        let localctx: DeprecateDescriptionContext = new DeprecateDescriptionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 4, BSLMethodDescriptionParser.RULE_deprecateDescription);
+        let localContext = new DeprecateDescriptionContext(this.context, this.state);
+        this.enterRule(localContext, 4, BSLMethodDescriptionParser.RULE_deprecateDescription);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 213;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (_la <= 0 || _la === 8 || _la === 9) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 217;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 51, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 51, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             {
                                 this.state = 214;
-                                _la = this._input.LA(1);
+                                _la = this.tokenStream.LA(1);
                                 if (_la <= 0 || _la === 8) {
-                                    this._errHandler.recoverInline(this);
+                                    this.errorHandler.recoverInline(this);
                                 } else {
-                                    this._errHandler.reportMatch(this);
+                                    this.errorHandler.reportMatch(this);
                                     this.consume();
                                 }
                             }
                         }
                     }
                     this.state = 219;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 51, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 51, this.context);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public descriptionBlock(): DescriptionBlockContext {
-        let localctx: DescriptionBlockContext = new DescriptionBlockContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 6, BSLMethodDescriptionParser.RULE_descriptionBlock);
+        let localContext = new DescriptionBlockContext(this.context, this.state);
+        this.enterRule(localContext, 6, BSLMethodDescriptionParser.RULE_descriptionBlock);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 222;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 52, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 52, this.context)) {
                     case 1:
                         {
                             this.state = 220;
@@ -916,8 +889,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         break;
                 }
                 this.state = 225;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 8) {
                     {
                         this.state = 224;
@@ -926,32 +899,31 @@ export default class BSLMethodDescriptionParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public description(): DescriptionContext {
-        let localctx: DescriptionContext = new DescriptionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 8, BSLMethodDescriptionParser.RULE_description);
+        let localContext = new DescriptionContext(this.context, this.state);
+        this.enterRule(localContext, 8, BSLMethodDescriptionParser.RULE_description);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 228;
-                this._errHandler.sync(this);
-                _alt = 1;
+                this.errorHandler.sync(this);
+                alternative = 1;
                 do {
-                    switch (_alt) {
+                    switch (alternative) {
                         case 1:
                             {
                                 {
@@ -961,76 +933,75 @@ export default class BSLMethodDescriptionParser extends Parser {
                             }
                             break;
                         default:
-                            throw new NoViableAltException(this);
+                            throw new antlr.NoViableAltException(this);
                     }
                     this.state = 230;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 54, this._ctx);
-                } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 54, this.context);
+                } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public descriptionString(): DescriptionStringContext {
-        let localctx: DescriptionStringContext = new DescriptionStringContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 10, BSLMethodDescriptionParser.RULE_descriptionString);
+        let localContext = new DescriptionStringContext(this.context, this.state);
+        this.enterRule(localContext, 10, BSLMethodDescriptionParser.RULE_descriptionString);
         let _la: number;
         try {
-            let _alt: number;
+            let alternative: number;
             this.state = 246;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 57, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 57, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 232;
                             this.startPart();
                             this.state = 233;
-                            _la = this._input.LA(1);
+                            _la = this.tokenStream.LA(1);
                             if (_la <= 0 || ((_la & ~0x1f) === 0 && ((1 << _la) & 830) !== 0)) {
-                                this._errHandler.recoverInline(this);
+                                this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 237;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 55, this._ctx);
-                            while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                if (_alt === 1) {
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 55, this.context);
+                            while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                if (alternative === 1) {
                                     {
                                         {
                                             this.state = 234;
-                                            _la = this._input.LA(1);
+                                            _la = this.tokenStream.LA(1);
                                             if (_la <= 0 || _la === 8) {
-                                                this._errHandler.recoverInline(this);
+                                                this.errorHandler.recoverInline(this);
                                             } else {
-                                                this._errHandler.reportMatch(this);
+                                                this.errorHandler.reportMatch(this);
                                                 this.consume();
                                             }
                                         }
                                     }
                                 }
                                 this.state = 239;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 55, this._ctx);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 55, this.context);
                             }
                             this.state = 241;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 56, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 56, this.context)) {
                                 case 1:
                                     {
                                         this.state = 240;
@@ -1042,7 +1013,7 @@ export default class BSLMethodDescriptionParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 243;
@@ -1054,44 +1025,43 @@ export default class BSLMethodDescriptionParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public examples(): ExamplesContext {
-        let localctx: ExamplesContext = new ExamplesContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 12, BSLMethodDescriptionParser.RULE_examples);
+        let localContext = new ExamplesContext(this.context, this.state);
+        this.enterRule(localContext, 12, BSLMethodDescriptionParser.RULE_examples);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 248;
                 this.startPart();
                 this.state = 249;
                 this.match(BSLMethodDescriptionParser.EXAMPLE_KEYWORD);
                 this.state = 257;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 8) {
                     {
                         this.state = 250;
                         this.match(BSLMethodDescriptionParser.EOL);
                         this.state = 254;
-                        this._errHandler.sync(this);
-                        _alt = this._interp.adaptivePredict(this._input, 58, this._ctx);
-                        while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                            if (_alt === 1) {
+                        this.errorHandler.sync(this);
+                        alternative = this.interpreter.adaptivePredict(this.tokenStream, 58, this.context);
+                        while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                            if (alternative === 1) {
                                 {
                                     {
                                         this.state = 251;
@@ -1100,75 +1070,74 @@ export default class BSLMethodDescriptionParser extends Parser {
                                 }
                             }
                             this.state = 256;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 58, this._ctx);
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 58, this.context);
                         }
                     }
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public examplesString(): ExamplesStringContext {
-        let localctx: ExamplesStringContext = new ExamplesStringContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 14, BSLMethodDescriptionParser.RULE_examplesString);
+        let localContext = new ExamplesStringContext(this.context, this.state);
+        this.enterRule(localContext, 14, BSLMethodDescriptionParser.RULE_examplesString);
         let _la: number;
         try {
-            let _alt: number;
+            let alternative: number;
             this.state = 274;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 63, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 63, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 259;
                             this.startPart();
                             this.state = 260;
-                            _la = this._input.LA(1);
+                            _la = this.tokenStream.LA(1);
                             if (_la <= 0 || ((_la & ~0x1f) === 0 && ((1 << _la) & 788) !== 0)) {
-                                this._errHandler.recoverInline(this);
+                                this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 264;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 60, this._ctx);
-                            while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                if (_alt === 1) {
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 60, this.context);
+                            while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                if (alternative === 1) {
                                     {
                                         {
                                             this.state = 261;
-                                            _la = this._input.LA(1);
+                                            _la = this.tokenStream.LA(1);
                                             if (_la <= 0 || _la === 8) {
-                                                this._errHandler.recoverInline(this);
+                                                this.errorHandler.recoverInline(this);
                                             } else {
-                                                this._errHandler.reportMatch(this);
+                                                this.errorHandler.reportMatch(this);
                                                 this.consume();
                                             }
                                         }
                                     }
                                 }
                                 this.state = 266;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 60, this._ctx);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 60, this.context);
                             }
                             this.state = 268;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 8) {
                                 {
                                     this.state = 267;
@@ -1179,14 +1148,14 @@ export default class BSLMethodDescriptionParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 270;
                             this.startPart();
                             this.state = 272;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 8) {
                                 {
                                     this.state = 271;
@@ -1198,44 +1167,43 @@ export default class BSLMethodDescriptionParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public callOptions(): CallOptionsContext {
-        let localctx: CallOptionsContext = new CallOptionsContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 16, BSLMethodDescriptionParser.RULE_callOptions);
+        let localContext = new CallOptionsContext(this.context, this.state);
+        this.enterRule(localContext, 16, BSLMethodDescriptionParser.RULE_callOptions);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 276;
                 this.startPart();
                 this.state = 277;
                 this.match(BSLMethodDescriptionParser.CALL_OPTIONS_KEYWORD);
                 this.state = 285;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 8) {
                     {
                         this.state = 278;
                         this.match(BSLMethodDescriptionParser.EOL);
                         this.state = 282;
-                        this._errHandler.sync(this);
-                        _alt = this._interp.adaptivePredict(this._input, 64, this._ctx);
-                        while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                            if (_alt === 1) {
+                        this.errorHandler.sync(this);
+                        alternative = this.interpreter.adaptivePredict(this.tokenStream, 64, this.context);
+                        while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                            if (alternative === 1) {
                                 {
                                     {
                                         this.state = 279;
@@ -1244,75 +1212,74 @@ export default class BSLMethodDescriptionParser extends Parser {
                                 }
                             }
                             this.state = 284;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 64, this._ctx);
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 64, this.context);
                         }
                     }
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public callOptionsString(): CallOptionsStringContext {
-        let localctx: CallOptionsStringContext = new CallOptionsStringContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 18, BSLMethodDescriptionParser.RULE_callOptionsString);
+        let localContext = new CallOptionsStringContext(this.context, this.state);
+        this.enterRule(localContext, 18, BSLMethodDescriptionParser.RULE_callOptionsString);
         let _la: number;
         try {
-            let _alt: number;
+            let alternative: number;
             this.state = 302;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 69, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 69, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         {
                             this.state = 287;
                             this.startPart();
                             this.state = 288;
-                            _la = this._input.LA(1);
+                            _la = this.tokenStream.LA(1);
                             if (_la <= 0 || ((_la & ~0x1f) === 0 && ((1 << _la) & 780) !== 0)) {
-                                this._errHandler.recoverInline(this);
+                                this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                             this.state = 292;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 66, this._ctx);
-                            while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                                if (_alt === 1) {
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 66, this.context);
+                            while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                                if (alternative === 1) {
                                     {
                                         {
                                             this.state = 289;
-                                            _la = this._input.LA(1);
+                                            _la = this.tokenStream.LA(1);
                                             if (_la <= 0 || _la === 8) {
-                                                this._errHandler.recoverInline(this);
+                                                this.errorHandler.recoverInline(this);
                                             } else {
-                                                this._errHandler.reportMatch(this);
+                                                this.errorHandler.reportMatch(this);
                                                 this.consume();
                                             }
                                         }
                                     }
                                 }
                                 this.state = 294;
-                                this._errHandler.sync(this);
-                                _alt = this._interp.adaptivePredict(this._input, 66, this._ctx);
+                                this.errorHandler.sync(this);
+                                alternative = this.interpreter.adaptivePredict(this.tokenStream, 66, this.context);
                             }
                             this.state = 296;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 8) {
                                 {
                                     this.state = 295;
@@ -1323,14 +1290,14 @@ export default class BSLMethodDescriptionParser extends Parser {
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 298;
                             this.startPart();
                             this.state = 300;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 8) {
                                 {
                                     this.state = 299;
@@ -1342,35 +1309,34 @@ export default class BSLMethodDescriptionParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public parameters(): ParametersContext {
-        let localctx: ParametersContext = new ParametersContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 20, BSLMethodDescriptionParser.RULE_parameters);
+        let localContext = new ParametersContext(this.context, this.state);
+        this.enterRule(localContext, 20, BSLMethodDescriptionParser.RULE_parameters);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 304;
                 this.startPart();
                 this.state = 305;
                 this.match(BSLMethodDescriptionParser.PARAMETERS_KEYWORD);
                 this.state = 307;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 70, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 70, this.context)) {
                     case 1:
                         {
                             this.state = 306;
@@ -1379,15 +1345,15 @@ export default class BSLMethodDescriptionParser extends Parser {
                         break;
                 }
                 this.state = 318;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 73, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 73, this.context)) {
                     case 1:
                         {
                             this.state = 309;
                             this.match(BSLMethodDescriptionParser.EOL);
                             this.state = 316;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 72, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 72, this.context)) {
                                 case 1:
                                     {
                                         this.state = 310;
@@ -1397,10 +1363,10 @@ export default class BSLMethodDescriptionParser extends Parser {
                                 case 2:
                                     {
                                         this.state = 312;
-                                        this._errHandler.sync(this);
-                                        _alt = 1;
+                                        this.errorHandler.sync(this);
+                                        alternative = 1;
                                         do {
-                                            switch (_alt) {
+                                            switch (alternative) {
                                                 case 1:
                                                     {
                                                         {
@@ -1410,12 +1376,16 @@ export default class BSLMethodDescriptionParser extends Parser {
                                                     }
                                                     break;
                                                 default:
-                                                    throw new NoViableAltException(this);
+                                                    throw new antlr.NoViableAltException(this);
                                             }
                                             this.state = 314;
-                                            this._errHandler.sync(this);
-                                            _alt = this._interp.adaptivePredict(this._input, 71, this._ctx);
-                                        } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                                            this.errorHandler.sync(this);
+                                            alternative = this.interpreter.adaptivePredict(
+                                                this.tokenStream,
+                                                71,
+                                                this.context
+                                            );
+                                        } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
                                     }
                                     break;
                             }
@@ -1423,8 +1393,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         break;
                 }
                 this.state = 321;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 8) {
                     {
                         this.state = 320;
@@ -1433,36 +1403,35 @@ export default class BSLMethodDescriptionParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public parameterString(): ParameterStringContext {
-        let localctx: ParameterStringContext = new ParameterStringContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 22, BSLMethodDescriptionParser.RULE_parameterString);
+        let localContext = new ParameterStringContext(this.context, this.state);
+        this.enterRule(localContext, 22, BSLMethodDescriptionParser.RULE_parameterString);
         try {
             this.state = 335;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 76, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 76, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 323;
                         this.parameter();
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 324;
@@ -1473,14 +1442,14 @@ export default class BSLMethodDescriptionParser extends Parser {
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 327;
                         this.subParameter();
                     }
                     break;
                 case 4:
-                    this.enterOuterAlt(localctx, 4);
+                    this.enterOuterAlt(localContext, 4);
                     {
                         {
                             this.state = 328;
@@ -1491,14 +1460,14 @@ export default class BSLMethodDescriptionParser extends Parser {
                     }
                     break;
                 case 5:
-                    this.enterOuterAlt(localctx, 5);
+                    this.enterOuterAlt(localContext, 5);
                     {
                         {
                             this.state = 331;
                             this.startPart();
                             this.state = 333;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 75, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 75, this.context)) {
                                 case 1:
                                     {
                                         this.state = 332;
@@ -1511,25 +1480,24 @@ export default class BSLMethodDescriptionParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public parameter(): ParameterContext {
-        let localctx: ParameterContext = new ParameterContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 24, BSLMethodDescriptionParser.RULE_parameter);
+        let localContext = new ParameterContext(this.context, this.state);
+        this.enterRule(localContext, 24, BSLMethodDescriptionParser.RULE_parameter);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 337;
                 this.startPart();
@@ -1539,34 +1507,33 @@ export default class BSLMethodDescriptionParser extends Parser {
                 this.typesBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public subParameter(): SubParameterContext {
-        let localctx: SubParameterContext = new SubParameterContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 26, BSLMethodDescriptionParser.RULE_subParameter);
+        let localContext = new SubParameterContext(this.context, this.state);
+        this.enterRule(localContext, 26, BSLMethodDescriptionParser.RULE_subParameter);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 341;
                 this.startPart();
                 this.state = 342;
                 this.match(BSLMethodDescriptionParser.STAR);
                 this.state = 344;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 9) {
                     {
                         this.state = 343;
@@ -1580,59 +1547,57 @@ export default class BSLMethodDescriptionParser extends Parser {
                 this.typesBlock();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public parameterName(): ParameterNameContext {
-        let localctx: ParameterNameContext = new ParameterNameContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 28, BSLMethodDescriptionParser.RULE_parameterName);
+        let localContext = new ParameterNameContext(this.context, this.state);
+        this.enterRule(localContext, 28, BSLMethodDescriptionParser.RULE_parameterName);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 349;
                 this.match(BSLMethodDescriptionParser.WORD);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public returnsValues(): ReturnsValuesContext {
-        let localctx: ReturnsValuesContext = new ReturnsValuesContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 30, BSLMethodDescriptionParser.RULE_returnsValues);
+        let localContext = new ReturnsValuesContext(this.context, this.state);
+        this.enterRule(localContext, 30, BSLMethodDescriptionParser.RULE_returnsValues);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 351;
                 this.startPart();
                 this.state = 352;
                 this.match(BSLMethodDescriptionParser.RETURNS_KEYWORD);
                 this.state = 354;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 78, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 78, this.context)) {
                     case 1:
                         {
                             this.state = 353;
@@ -1641,15 +1606,15 @@ export default class BSLMethodDescriptionParser extends Parser {
                         break;
                 }
                 this.state = 365;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 81, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 81, this.context)) {
                     case 1:
                         {
                             this.state = 356;
                             this.match(BSLMethodDescriptionParser.EOL);
                             this.state = 363;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 80, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 80, this.context)) {
                                 case 1:
                                     {
                                         this.state = 357;
@@ -1659,10 +1624,10 @@ export default class BSLMethodDescriptionParser extends Parser {
                                 case 2:
                                     {
                                         this.state = 359;
-                                        this._errHandler.sync(this);
-                                        _alt = 1;
+                                        this.errorHandler.sync(this);
+                                        alternative = 1;
                                         do {
-                                            switch (_alt) {
+                                            switch (alternative) {
                                                 case 1:
                                                     {
                                                         {
@@ -1672,12 +1637,16 @@ export default class BSLMethodDescriptionParser extends Parser {
                                                     }
                                                     break;
                                                 default:
-                                                    throw new NoViableAltException(this);
+                                                    throw new antlr.NoViableAltException(this);
                                             }
                                             this.state = 361;
-                                            this._errHandler.sync(this);
-                                            _alt = this._interp.adaptivePredict(this._input, 79, this._ctx);
-                                        } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                                            this.errorHandler.sync(this);
+                                            alternative = this.interpreter.adaptivePredict(
+                                                this.tokenStream,
+                                                79,
+                                                this.context
+                                            );
+                                        } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
                                     }
                                     break;
                             }
@@ -1685,8 +1654,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                         break;
                 }
                 this.state = 368;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 8) {
                     {
                         this.state = 367;
@@ -1695,36 +1664,35 @@ export default class BSLMethodDescriptionParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public returnsValuesString(): ReturnsValuesStringContext {
-        let localctx: ReturnsValuesStringContext = new ReturnsValuesStringContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 32, BSLMethodDescriptionParser.RULE_returnsValuesString);
+        let localContext = new ReturnsValuesStringContext(this.context, this.state);
+        this.enterRule(localContext, 32, BSLMethodDescriptionParser.RULE_returnsValuesString);
         try {
             this.state = 382;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 84, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 84, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 370;
                         this.returnsValue();
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         {
                             this.state = 371;
@@ -1735,14 +1703,14 @@ export default class BSLMethodDescriptionParser extends Parser {
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         this.state = 374;
                         this.subParameter();
                     }
                     break;
                 case 4:
-                    this.enterOuterAlt(localctx, 4);
+                    this.enterOuterAlt(localContext, 4);
                     {
                         {
                             this.state = 375;
@@ -1753,14 +1721,14 @@ export default class BSLMethodDescriptionParser extends Parser {
                     }
                     break;
                 case 5:
-                    this.enterOuterAlt(localctx, 5);
+                    this.enterOuterAlt(localContext, 5);
                     {
                         {
                             this.state = 378;
                             this.startPart();
                             this.state = 380;
-                            this._errHandler.sync(this);
-                            switch (this._interp.adaptivePredict(this._input, 83, this._ctx)) {
+                            this.errorHandler.sync(this);
+                            switch (this.interpreter.adaptivePredict(this.tokenStream, 83, this.context)) {
                                 case 1:
                                     {
                                         this.state = 379;
@@ -1773,42 +1741,41 @@ export default class BSLMethodDescriptionParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public returnsValue(): ReturnsValueContext {
-        let localctx: ReturnsValueContext = new ReturnsValueContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 34, BSLMethodDescriptionParser.RULE_returnsValue);
+        let localContext = new ReturnsValueContext(this.context, this.state);
+        this.enterRule(localContext, 34, BSLMethodDescriptionParser.RULE_returnsValue);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 384;
                 this.startPart();
                 this.state = 385;
                 this.type_();
                 this.state = 391;
-                this._errHandler.sync(this);
-                switch (this._input.LA(1)) {
-                    case 9:
-                    case 11:
+                this.errorHandler.sync(this);
+                switch (this.tokenStream.LA(1)) {
+                    case BSLMethodDescriptionParser.SPACE:
+                    case BSLMethodDescriptionParser.DASH:
                         {
                             {
                                 this.state = 386;
                                 this.spitter();
                                 this.state = 388;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 85, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 85, this.context)) {
                                     case 1:
                                         {
                                             this.state = 387;
@@ -1819,53 +1786,52 @@ export default class BSLMethodDescriptionParser extends Parser {
                             }
                         }
                         break;
-                    case 8:
+                    case BSLMethodDescriptionParser.EOL:
                         {
                             this.state = 390;
                             this.match(BSLMethodDescriptionParser.EOL);
                         }
                         break;
                     default:
-                        throw new NoViableAltException(this);
+                        throw new antlr.NoViableAltException(this);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public typesBlock(): TypesBlockContext {
-        let localctx: TypesBlockContext = new TypesBlockContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 36, BSLMethodDescriptionParser.RULE_typesBlock);
+        let localContext = new TypesBlockContext(this.context, this.state);
+        this.enterRule(localContext, 36, BSLMethodDescriptionParser.RULE_typesBlock);
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 393;
                 this.spitter();
                 this.state = 394;
                 this.type_();
                 this.state = 400;
-                this._errHandler.sync(this);
-                switch (this._input.LA(1)) {
-                    case 9:
-                    case 11:
+                this.errorHandler.sync(this);
+                switch (this.tokenStream.LA(1)) {
+                    case BSLMethodDescriptionParser.SPACE:
+                    case BSLMethodDescriptionParser.DASH:
                         {
                             {
                                 this.state = 395;
                                 this.spitter();
                                 this.state = 397;
-                                this._errHandler.sync(this);
-                                switch (this._interp.adaptivePredict(this._input, 87, this._ctx)) {
+                                this.errorHandler.sync(this);
+                                switch (this.interpreter.adaptivePredict(this.tokenStream, 87, this.context)) {
                                     case 1:
                                         {
                                             this.state = 396;
@@ -1876,41 +1842,40 @@ export default class BSLMethodDescriptionParser extends Parser {
                             }
                         }
                         break;
-                    case 8:
+                    case BSLMethodDescriptionParser.EOL:
                         {
                             this.state = 399;
                             this.match(BSLMethodDescriptionParser.EOL);
                         }
                         break;
                     default:
-                        throw new NoViableAltException(this);
+                        throw new antlr.NoViableAltException(this);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public typeDescription(): TypeDescriptionContext {
-        let localctx: TypeDescriptionContext = new TypeDescriptionContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 38, BSLMethodDescriptionParser.RULE_typeDescription);
+        let localContext = new TypeDescriptionContext(this.context, this.state);
+        this.enterRule(localContext, 38, BSLMethodDescriptionParser.RULE_typeDescription);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 403;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 9) {
                     {
                         this.state = 402;
@@ -1919,82 +1884,81 @@ export default class BSLMethodDescriptionParser extends Parser {
                 }
 
                 this.state = 405;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (_la <= 0 || ((_la & ~0x1f) === 0 && ((1 << _la) & 1820) !== 0)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 409;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 while ((_la & ~0x1f) === 0 && ((1 << _la) & 1048318) !== 0) {
                     {
                         {
                             this.state = 406;
-                            _la = this._input.LA(1);
+                            _la = this.tokenStream.LA(1);
                             if (_la <= 0 || _la === 8) {
-                                this._errHandler.recoverInline(this);
+                                this.errorHandler.recoverInline(this);
                             } else {
-                                this._errHandler.reportMatch(this);
+                                this.errorHandler.reportMatch(this);
                                 this.consume();
                             }
                         }
                     }
                     this.state = 411;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
+                    this.errorHandler.sync(this);
+                    _la = this.tokenStream.LA(1);
                 }
                 this.state = 412;
                 this.match(BSLMethodDescriptionParser.EOL);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public type_(): TypeContext {
-        let localctx: TypeContext = new TypeContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 40, BSLMethodDescriptionParser.RULE_type);
+        let localContext = new TypeContext(this.context, this.state);
+        this.enterRule(localContext, 40, BSLMethodDescriptionParser.RULE_type);
         let _la: number;
         try {
             this.state = 421;
-            this._errHandler.sync(this);
-            switch (this._interp.adaptivePredict(this._input, 92, this._ctx)) {
+            this.errorHandler.sync(this);
+            switch (this.interpreter.adaptivePredict(this.tokenStream, 92, this.context)) {
                 case 1:
-                    this.enterOuterAlt(localctx, 1);
+                    this.enterOuterAlt(localContext, 1);
                     {
                         this.state = 414;
                         this.hyperlinkType();
                     }
                     break;
                 case 2:
-                    this.enterOuterAlt(localctx, 2);
+                    this.enterOuterAlt(localContext, 2);
                     {
                         this.state = 415;
                         this.listTypes();
                     }
                     break;
                 case 3:
-                    this.enterOuterAlt(localctx, 3);
+                    this.enterOuterAlt(localContext, 3);
                     {
                         {
                             this.state = 416;
                             this.simpleType();
                             this.state = 418;
-                            this._errHandler.sync(this);
-                            _la = this._input.LA(1);
+                            this.errorHandler.sync(this);
+                            _la = this.tokenStream.LA(1);
                             if (_la === 12) {
                                 {
                                     this.state = 417;
@@ -2005,7 +1969,7 @@ export default class BSLMethodDescriptionParser extends Parser {
                     }
                     break;
                 case 4:
-                    this.enterOuterAlt(localctx, 4);
+                    this.enterOuterAlt(localContext, 4);
                     {
                         this.state = 420;
                         this.complexType();
@@ -2013,62 +1977,60 @@ export default class BSLMethodDescriptionParser extends Parser {
                     break;
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public simpleType(): SimpleTypeContext {
-        let localctx: SimpleTypeContext = new SimpleTypeContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 42, BSLMethodDescriptionParser.RULE_simpleType);
+        let localContext = new SimpleTypeContext(this.context, this.state);
+        this.enterRule(localContext, 42, BSLMethodDescriptionParser.RULE_simpleType);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 423;
-                _la = this._input.LA(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 15 || _la === 16)) {
-                    this._errHandler.recoverInline(this);
+                    this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public listTypes(): ListTypesContext {
-        let localctx: ListTypesContext = new ListTypesContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 44, BSLMethodDescriptionParser.RULE_listTypes);
+        let localContext = new ListTypesContext(this.context, this.state);
+        this.enterRule(localContext, 44, BSLMethodDescriptionParser.RULE_listTypes);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 428;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 93, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 93, this.context)) {
                     case 1:
                         {
                             this.state = 425;
@@ -2089,18 +2051,18 @@ export default class BSLMethodDescriptionParser extends Parser {
                         break;
                 }
                 this.state = 439;
-                this._errHandler.sync(this);
-                _alt = 1;
+                this.errorHandler.sync(this);
+                alternative = 1;
                 do {
-                    switch (_alt) {
+                    switch (alternative) {
                         case 1:
                             {
                                 {
                                     this.state = 430;
                                     this.match(BSLMethodDescriptionParser.COMMA);
                                     this.state = 432;
-                                    this._errHandler.sync(this);
-                                    _la = this._input.LA(1);
+                                    this.errorHandler.sync(this);
+                                    _la = this.tokenStream.LA(1);
                                     if (_la === 9) {
                                         {
                                             this.state = 431;
@@ -2109,8 +2071,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                                     }
 
                                     this.state = 437;
-                                    this._errHandler.sync(this);
-                                    switch (this._interp.adaptivePredict(this._input, 95, this._ctx)) {
+                                    this.errorHandler.sync(this);
+                                    switch (this.interpreter.adaptivePredict(this.tokenStream, 95, this.context)) {
                                         case 1:
                                             {
                                                 this.state = 434;
@@ -2134,42 +2096,41 @@ export default class BSLMethodDescriptionParser extends Parser {
                             }
                             break;
                         default:
-                            throw new NoViableAltException(this);
+                            throw new antlr.NoViableAltException(this);
                     }
                     this.state = 441;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 96, this._ctx);
-                } while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 96, this.context);
+                } while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER);
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public complexType(): ComplexTypeContext {
-        let localctx: ComplexTypeContext = new ComplexTypeContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 46, BSLMethodDescriptionParser.RULE_complexType);
+        let localContext = new ComplexTypeContext(this.context, this.state);
+        this.enterRule(localContext, 46, BSLMethodDescriptionParser.RULE_complexType);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 443;
-                localctx._collection = this._input.LT(1);
-                _la = this._input.LA(1);
+                localContext._collection = this.tokenStream.LT(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 15 || _la === 16)) {
-                    localctx._collection = this._errHandler.recoverInline(this);
+                    localContext._collection = this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 444;
@@ -2182,70 +2143,69 @@ export default class BSLMethodDescriptionParser extends Parser {
                 this.type_();
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public hyperlinkType(): HyperlinkTypeContext {
-        let localctx: HyperlinkTypeContext = new HyperlinkTypeContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 48, BSLMethodDescriptionParser.RULE_hyperlinkType);
+        let localContext = new HyperlinkTypeContext(this.context, this.state);
+        this.enterRule(localContext, 48, BSLMethodDescriptionParser.RULE_hyperlinkType);
         let _la: number;
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 449;
                 this.match(BSLMethodDescriptionParser.SEE_KEYWORD);
                 this.state = 450;
                 this.match(BSLMethodDescriptionParser.SPACE);
                 this.state = 451;
-                localctx._link = this._input.LT(1);
-                _la = this._input.LA(1);
+                localContext._link = this.tokenStream.LT(1);
+                _la = this.tokenStream.LA(1);
                 if (!(_la === 15 || _la === 16)) {
-                    localctx._link = this._errHandler.recoverInline(this);
+                    localContext._link = this.errorHandler.recoverInline(this);
                 } else {
-                    this._errHandler.reportMatch(this);
+                    this.errorHandler.reportMatch(this);
                     this.consume();
                 }
                 this.state = 460;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 17) {
                     {
                         this.state = 452;
                         this.match(BSLMethodDescriptionParser.LPAREN);
                         this.state = 456;
-                        this._errHandler.sync(this);
-                        _alt = this._interp.adaptivePredict(this._input, 97, this._ctx);
-                        while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                            if (_alt === 1) {
+                        this.errorHandler.sync(this);
+                        alternative = this.interpreter.adaptivePredict(this.tokenStream, 97, this.context);
+                        while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                            if (alternative === 1) {
                                 {
                                     {
                                         this.state = 453;
-                                        localctx._linkParams = this._input.LT(1);
-                                        _la = this._input.LA(1);
+                                        localContext._linkParams = this.tokenStream.LT(1);
+                                        _la = this.tokenStream.LA(1);
                                         if (_la <= 0 || _la === 8) {
-                                            localctx._linkParams = this._errHandler.recoverInline(this);
+                                            localContext._linkParams = this.errorHandler.recoverInline(this);
                                         } else {
-                                            this._errHandler.reportMatch(this);
+                                            this.errorHandler.reportMatch(this);
                                             this.consume();
                                         }
                                     }
                                 }
                             }
                             this.state = 458;
-                            this._errHandler.sync(this);
-                            _alt = this._interp.adaptivePredict(this._input, 97, this._ctx);
+                            this.errorHandler.sync(this);
+                            alternative = this.interpreter.adaptivePredict(this.tokenStream, 97, this.context);
                         }
                         this.state = 459;
                         this.match(BSLMethodDescriptionParser.RPAREN);
@@ -2253,30 +2213,29 @@ export default class BSLMethodDescriptionParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public spitter(): SpitterContext {
-        let localctx: SpitterContext = new SpitterContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 50, BSLMethodDescriptionParser.RULE_spitter);
+        let localContext = new SpitterContext(this.context, this.state);
+        this.enterRule(localContext, 50, BSLMethodDescriptionParser.RULE_spitter);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 463;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 9) {
                     {
                         this.state = 462;
@@ -2287,8 +2246,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                 this.state = 465;
                 this.match(BSLMethodDescriptionParser.DASH);
                 this.state = 467;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 100, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 100, this.context)) {
                     case 1:
                         {
                             this.state = 466;
@@ -2298,32 +2257,31 @@ export default class BSLMethodDescriptionParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public hyperlinkBlock(): HyperlinkBlockContext {
-        let localctx: HyperlinkBlockContext = new HyperlinkBlockContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 52, BSLMethodDescriptionParser.RULE_hyperlinkBlock);
+        let localContext = new HyperlinkBlockContext(this.context, this.state);
+        this.enterRule(localContext, 52, BSLMethodDescriptionParser.RULE_hyperlinkBlock);
         try {
-            let _alt: number;
-            this.enterOuterAlt(localctx, 1);
+            let alternative: number;
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 474;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 101, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 101, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             {
                                 this.state = 469;
@@ -2334,16 +2292,16 @@ export default class BSLMethodDescriptionParser extends Parser {
                         }
                     }
                     this.state = 476;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 101, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 101, this.context);
                 }
                 this.state = 477;
                 this.startPart();
                 this.state = 478;
                 this.hyperlinkType();
                 this.state = 480;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 102, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 102, this.context)) {
                     case 1:
                         {
                             this.state = 479;
@@ -2352,10 +2310,10 @@ export default class BSLMethodDescriptionParser extends Parser {
                         break;
                 }
                 this.state = 486;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input, 103, this._ctx);
-                while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
+                this.errorHandler.sync(this);
+                alternative = this.interpreter.adaptivePredict(this.tokenStream, 103, this.context);
+                while (alternative !== 2 && alternative !== antlr.ATN.INVALID_ALT_NUMBER) {
+                    if (alternative === 1) {
                         {
                             {
                                 this.state = 482;
@@ -2366,35 +2324,34 @@ export default class BSLMethodDescriptionParser extends Parser {
                         }
                     }
                     this.state = 488;
-                    this._errHandler.sync(this);
-                    _alt = this._interp.adaptivePredict(this._input, 103, this._ctx);
+                    this.errorHandler.sync(this);
+                    alternative = this.interpreter.adaptivePredict(this.tokenStream, 103, this.context);
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
-    // @RuleVersion(0)
     public startPart(): StartPartContext {
-        let localctx: StartPartContext = new StartPartContext(this, this._ctx, this.state);
-        this.enterRule(localctx, 54, BSLMethodDescriptionParser.RULE_startPart);
+        let localContext = new StartPartContext(this.context, this.state);
+        this.enterRule(localContext, 54, BSLMethodDescriptionParser.RULE_startPart);
         let _la: number;
         try {
-            this.enterOuterAlt(localctx, 1);
+            this.enterOuterAlt(localContext, 1);
             {
                 this.state = 490;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
+                this.errorHandler.sync(this);
+                _la = this.tokenStream.LA(1);
                 if (_la === 9) {
                     {
                         this.state = 489;
@@ -2405,8 +2362,8 @@ export default class BSLMethodDescriptionParser extends Parser {
                 this.state = 492;
                 this.match(BSLMethodDescriptionParser.COMMENT);
                 this.state = 494;
-                this._errHandler.sync(this);
-                switch (this._interp.adaptivePredict(this._input, 105, this._ctx)) {
+                this.errorHandler.sync(this);
+                switch (this.interpreter.adaptivePredict(this.tokenStream, 105, this.context)) {
                     case 1:
                         {
                             this.state = 493;
@@ -2416,17 +2373,17 @@ export default class BSLMethodDescriptionParser extends Parser {
                 }
             }
         } catch (re) {
-            if (re instanceof RecognitionException) {
-                localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
+            if (re instanceof antlr.RecognitionException) {
+                localContext.exception = re;
+                this.errorHandler.reportError(this, re);
+                this.errorHandler.recover(this, re);
             } else {
                 throw re;
             }
         } finally {
             this.exitRule();
         }
-        return localctx;
+        return localContext;
     }
 
     public static readonly _serializedATN: number[] = [
@@ -2591,11 +2548,11 @@ export default class BSLMethodDescriptionParser extends Parser {
         490, 494,
     ];
 
-    private static __ATN: ATN;
+    private static __ATN: antlr.ATN;
 
-    public static get _ATN(): ATN {
+    public static get _ATN(): antlr.ATN {
         if (!BSLMethodDescriptionParser.__ATN) {
-            BSLMethodDescriptionParser.__ATN = new ATNDeserializer().deserialize(
+            BSLMethodDescriptionParser.__ATN = new antlr.ATNDeserializer().deserialize(
                 BSLMethodDescriptionParser._serializedATN
             );
         }
@@ -2603,63 +2560,71 @@ export default class BSLMethodDescriptionParser extends Parser {
         return BSLMethodDescriptionParser.__ATN;
     }
 
-    static DecisionsToDFA = BSLMethodDescriptionParser._ATN.decisionToState.map(
-        (ds: DecisionState, index: number) => new DFA(ds, index)
+    private static readonly vocabulary = new antlr.Vocabulary(
+        BSLMethodDescriptionParser.literalNames,
+        BSLMethodDescriptionParser.symbolicNames,
+        []
+    );
+
+    public override get vocabulary(): antlr.Vocabulary {
+        return BSLMethodDescriptionParser.vocabulary;
+    }
+
+    private static readonly decisionsToDFA = BSLMethodDescriptionParser._ATN.decisionToState.map(
+        (ds: antlr.DecisionState, index: number) => new antlr.DFA(ds, index)
     );
 }
 
 export class MethodDescriptionContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public EOF(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOF, 0);
+    public EOF(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.EOF, 0)!;
     }
 
-    public deprecate(): DeprecateContext {
-        return this.getTypedRuleContext(DeprecateContext, 0) as DeprecateContext;
+    public deprecate(): DeprecateContext | null {
+        return this.getRuleContext(0, DeprecateContext);
     }
 
-    public descriptionBlock(): DescriptionBlockContext {
-        return this.getTypedRuleContext(DescriptionBlockContext, 0) as DescriptionBlockContext;
+    public descriptionBlock(): DescriptionBlockContext | null {
+        return this.getRuleContext(0, DescriptionBlockContext);
     }
 
-    public parameters(): ParametersContext {
-        return this.getTypedRuleContext(ParametersContext, 0) as ParametersContext;
+    public parameters(): ParametersContext | null {
+        return this.getRuleContext(0, ParametersContext);
     }
 
-    public callOptions(): CallOptionsContext {
-        return this.getTypedRuleContext(CallOptionsContext, 0) as CallOptionsContext;
+    public callOptions(): CallOptionsContext | null {
+        return this.getRuleContext(0, CallOptionsContext);
     }
 
-    public returnsValues(): ReturnsValuesContext {
-        return this.getTypedRuleContext(ReturnsValuesContext, 0) as ReturnsValuesContext;
+    public returnsValues(): ReturnsValuesContext | null {
+        return this.getRuleContext(0, ReturnsValuesContext);
     }
 
-    public examples(): ExamplesContext {
-        return this.getTypedRuleContext(ExamplesContext, 0) as ExamplesContext;
+    public examples(): ExamplesContext | null {
+        return this.getRuleContext(0, ExamplesContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_methodDescription;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterMethodDescription) {
             listener.enterMethodDescription(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitMethodDescription) {
             listener.exitMethodDescription(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitMethodDescription) {
             return visitor.visitMethodDescription(this);
         } else {
@@ -2669,49 +2634,47 @@ export class MethodDescriptionContext extends BslParserRuleContext {
 }
 
 export class DeprecateContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+        return this.getRuleContext(0, StartPartContext)!;
     }
 
-    public DEPRECATE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.DEPRECATE_KEYWORD, 0);
+    public DEPRECATE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.DEPRECATE_KEYWORD, 0)!;
     }
 
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public deprecateDescription(): DeprecateDescriptionContext {
-        return this.getTypedRuleContext(DeprecateDescriptionContext, 0) as DeprecateDescriptionContext;
+    public deprecateDescription(): DeprecateDescriptionContext | null {
+        return this.getRuleContext(0, DeprecateDescriptionContext);
     }
 
-    public EOL(): TerminalNode {
+    public EOL(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EOL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_deprecate;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterDeprecate) {
             listener.enterDeprecate(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitDeprecate) {
             listener.exitDeprecate(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitDeprecate) {
             return visitor.visitDeprecate(this);
         } else {
@@ -2721,41 +2684,43 @@ export class DeprecateContext extends BslParserRuleContext {
 }
 
 export class DeprecateDescriptionContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_deprecateDescription;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterDeprecateDescription) {
             listener.enterDeprecateDescription(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitDeprecateDescription) {
             listener.exitDeprecateDescription(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitDeprecateDescription) {
             return visitor.visitDeprecateDescription(this);
         } else {
@@ -2765,41 +2730,39 @@ export class DeprecateDescriptionContext extends BslParserRuleContext {
 }
 
 export class DescriptionBlockContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public hyperlinkBlock(): HyperlinkBlockContext {
-        return this.getTypedRuleContext(HyperlinkBlockContext, 0) as HyperlinkBlockContext;
+    public hyperlinkBlock(): HyperlinkBlockContext | null {
+        return this.getRuleContext(0, HyperlinkBlockContext);
     }
 
-    public description(): DescriptionContext {
-        return this.getTypedRuleContext(DescriptionContext, 0) as DescriptionContext;
+    public description(): DescriptionContext | null {
+        return this.getRuleContext(0, DescriptionContext);
     }
 
-    public EOL(): TerminalNode {
+    public EOL(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EOL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_descriptionBlock;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterDescriptionBlock) {
             listener.enterDescriptionBlock(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitDescriptionBlock) {
             listener.exitDescriptionBlock(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitDescriptionBlock) {
             return visitor.visitDescriptionBlock(this);
         } else {
@@ -2809,37 +2772,39 @@ export class DescriptionBlockContext extends BslParserRuleContext {
 }
 
 export class DescriptionContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public descriptionString_list(): DescriptionStringContext[] {
-        return this.getTypedRuleContexts(DescriptionStringContext) as DescriptionStringContext[];
+    public descriptionString(): DescriptionStringContext[];
+
+    public descriptionString(i: number): DescriptionStringContext | null;
+
+    public descriptionString(i?: number): DescriptionStringContext[] | DescriptionStringContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(DescriptionStringContext);
+        }
+
+        return this.getRuleContext(i, DescriptionStringContext);
     }
 
-    public descriptionString(i: number): DescriptionStringContext {
-        return this.getTypedRuleContext(DescriptionStringContext, i) as DescriptionStringContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_description;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterDescription) {
             listener.enterDescription(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitDescription) {
             listener.exitDescription(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitDescription) {
             return visitor.visitDescription(this);
         } else {
@@ -2849,65 +2814,67 @@ export class DescriptionContext extends BslParserRuleContext {
 }
 
 export class DescriptionStringContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+    public startPart(): StartPartContext | null {
+        return this.getRuleContext(0, StartPartContext);
     }
 
-    public PARAMETERS_KEYWORD(): TerminalNode {
+    public PARAMETERS_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.PARAMETERS_KEYWORD, 0);
     }
 
-    public RETURNS_KEYWORD(): TerminalNode {
+    public RETURNS_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.RETURNS_KEYWORD, 0);
     }
 
-    public EXAMPLE_KEYWORD(): TerminalNode {
+    public EXAMPLE_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EXAMPLE_KEYWORD, 0);
     }
 
-    public CALL_OPTIONS_KEYWORD(): TerminalNode {
+    public CALL_OPTIONS_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.CALL_OPTIONS_KEYWORD, 0);
     }
 
-    public DEPRECATE_KEYWORD(): TerminalNode {
+    public DEPRECATE_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.DEPRECATE_KEYWORD, 0);
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
-    }
-
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_descriptionString;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterDescriptionString) {
             listener.enterDescriptionString(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitDescriptionString) {
             listener.exitDescriptionString(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitDescriptionString) {
             return visitor.visitDescriptionString(this);
         } else {
@@ -2917,49 +2884,51 @@ export class DescriptionStringContext extends BslParserRuleContext {
 }
 
 export class ExamplesContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+        return this.getRuleContext(0, StartPartContext)!;
     }
 
-    public EXAMPLE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EXAMPLE_KEYWORD, 0);
+    public EXAMPLE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.EXAMPLE_KEYWORD, 0)!;
     }
 
-    public EOL(): TerminalNode {
+    public EOL(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EOL, 0);
     }
 
-    public examplesString_list(): ExamplesStringContext[] {
-        return this.getTypedRuleContexts(ExamplesStringContext) as ExamplesStringContext[];
+    public examplesString(): ExamplesStringContext[];
+
+    public examplesString(i: number): ExamplesStringContext | null;
+
+    public examplesString(i?: number): ExamplesStringContext[] | ExamplesStringContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ExamplesStringContext);
+        }
+
+        return this.getRuleContext(i, ExamplesStringContext);
     }
 
-    public examplesString(i: number): ExamplesStringContext {
-        return this.getTypedRuleContext(ExamplesStringContext, i) as ExamplesStringContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_examples;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterExamples) {
             listener.enterExamples(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitExamples) {
             listener.exitExamples(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitExamples) {
             return visitor.visitExamples(this);
         } else {
@@ -2969,53 +2938,55 @@ export class ExamplesContext extends BslParserRuleContext {
 }
 
 export class ExamplesStringContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+    public startPart(): StartPartContext | null {
+        return this.getRuleContext(0, StartPartContext);
     }
 
-    public CALL_OPTIONS_KEYWORD(): TerminalNode {
+    public CALL_OPTIONS_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.CALL_OPTIONS_KEYWORD, 0);
     }
 
-    public RETURNS_KEYWORD(): TerminalNode {
+    public RETURNS_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.RETURNS_KEYWORD, 0);
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
-    }
-
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_examplesString;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterExamplesString) {
             listener.enterExamplesString(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitExamplesString) {
             listener.exitExamplesString(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitExamplesString) {
             return visitor.visitExamplesString(this);
         } else {
@@ -3025,49 +2996,51 @@ export class ExamplesStringContext extends BslParserRuleContext {
 }
 
 export class CallOptionsContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+        return this.getRuleContext(0, StartPartContext)!;
     }
 
-    public CALL_OPTIONS_KEYWORD(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.CALL_OPTIONS_KEYWORD, 0);
+    public CALL_OPTIONS_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.CALL_OPTIONS_KEYWORD, 0)!;
     }
 
-    public EOL(): TerminalNode {
+    public EOL(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EOL, 0);
     }
 
-    public callOptionsString_list(): CallOptionsStringContext[] {
-        return this.getTypedRuleContexts(CallOptionsStringContext) as CallOptionsStringContext[];
+    public callOptionsString(): CallOptionsStringContext[];
+
+    public callOptionsString(i: number): CallOptionsStringContext | null;
+
+    public callOptionsString(i?: number): CallOptionsStringContext[] | CallOptionsStringContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(CallOptionsStringContext);
+        }
+
+        return this.getRuleContext(i, CallOptionsStringContext);
     }
 
-    public callOptionsString(i: number): CallOptionsStringContext {
-        return this.getTypedRuleContext(CallOptionsStringContext, i) as CallOptionsStringContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_callOptions;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterCallOptions) {
             listener.enterCallOptions(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitCallOptions) {
             listener.exitCallOptions(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitCallOptions) {
             return visitor.visitCallOptions(this);
         } else {
@@ -3077,53 +3050,55 @@ export class CallOptionsContext extends BslParserRuleContext {
 }
 
 export class CallOptionsStringContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+    public startPart(): StartPartContext | null {
+        return this.getRuleContext(0, StartPartContext);
     }
 
-    public RETURNS_KEYWORD(): TerminalNode {
+    public RETURNS_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.RETURNS_KEYWORD, 0);
     }
 
-    public EXAMPLE_KEYWORD(): TerminalNode {
+    public EXAMPLE_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EXAMPLE_KEYWORD, 0);
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
-    }
-
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_callOptionsString;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterCallOptionsString) {
             listener.enterCallOptionsString(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitCallOptionsString) {
             listener.exitCallOptionsString(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitCallOptionsString) {
             return visitor.visitCallOptionsString(this);
         } else {
@@ -3133,61 +3108,67 @@ export class CallOptionsStringContext extends BslParserRuleContext {
 }
 
 export class ParametersContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+        return this.getRuleContext(0, StartPartContext)!;
     }
 
-    public PARAMETERS_KEYWORD(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.PARAMETERS_KEYWORD, 0);
+    public PARAMETERS_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.PARAMETERS_KEYWORD, 0)!;
     }
 
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
+    public hyperlinkBlock(): HyperlinkBlockContext | null {
+        return this.getRuleContext(0, HyperlinkBlockContext);
     }
 
-    public hyperlinkBlock(): HyperlinkBlockContext {
-        return this.getTypedRuleContext(HyperlinkBlockContext, 0) as HyperlinkBlockContext;
+    public parameterString(): ParameterStringContext[];
+
+    public parameterString(i: number): ParameterStringContext | null;
+
+    public parameterString(i?: number): ParameterStringContext[] | ParameterStringContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ParameterStringContext);
+        }
+
+        return this.getRuleContext(i, ParameterStringContext);
     }
 
-    public parameterString_list(): ParameterStringContext[] {
-        return this.getTypedRuleContexts(ParameterStringContext) as ParameterStringContext[];
-    }
-
-    public parameterString(i: number): ParameterStringContext {
-        return this.getTypedRuleContext(ParameterStringContext, i) as ParameterStringContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_parameters;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterParameters) {
             listener.enterParameters(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitParameters) {
             listener.exitParameters(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitParameters) {
             return visitor.visitParameters(this);
         } else {
@@ -3197,53 +3178,51 @@ export class ParametersContext extends BslParserRuleContext {
 }
 
 export class ParameterStringContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public parameter(): ParameterContext {
-        return this.getTypedRuleContext(ParameterContext, 0) as ParameterContext;
+    public parameter(): ParameterContext | null {
+        return this.getRuleContext(0, ParameterContext);
     }
 
-    public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+    public startPart(): StartPartContext | null {
+        return this.getRuleContext(0, StartPartContext);
     }
 
-    public typesBlock(): TypesBlockContext {
-        return this.getTypedRuleContext(TypesBlockContext, 0) as TypesBlockContext;
+    public typesBlock(): TypesBlockContext | null {
+        return this.getRuleContext(0, TypesBlockContext);
     }
 
-    public subParameter(): SubParameterContext {
-        return this.getTypedRuleContext(SubParameterContext, 0) as SubParameterContext;
+    public subParameter(): SubParameterContext | null {
+        return this.getRuleContext(0, SubParameterContext);
     }
 
-    public typeDescription(): TypeDescriptionContext {
-        return this.getTypedRuleContext(TypeDescriptionContext, 0) as TypeDescriptionContext;
+    public typeDescription(): TypeDescriptionContext | null {
+        return this.getRuleContext(0, TypeDescriptionContext);
     }
 
-    public EOL(): TerminalNode {
+    public EOL(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EOL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_parameterString;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterParameterString) {
             listener.enterParameterString(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitParameterString) {
             listener.exitParameterString(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitParameterString) {
             return visitor.visitParameterString(this);
         } else {
@@ -3253,41 +3232,39 @@ export class ParameterStringContext extends BslParserRuleContext {
 }
 
 export class ParameterContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+        return this.getRuleContext(0, StartPartContext)!;
     }
 
     public parameterName(): ParameterNameContext {
-        return this.getTypedRuleContext(ParameterNameContext, 0) as ParameterNameContext;
+        return this.getRuleContext(0, ParameterNameContext)!;
     }
 
     public typesBlock(): TypesBlockContext {
-        return this.getTypedRuleContext(TypesBlockContext, 0) as TypesBlockContext;
+        return this.getRuleContext(0, TypesBlockContext)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_parameter;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterParameter) {
             listener.enterParameter(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitParameter) {
             listener.exitParameter(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitParameter) {
             return visitor.visitParameter(this);
         } else {
@@ -3297,49 +3274,47 @@ export class ParameterContext extends BslParserRuleContext {
 }
 
 export class SubParameterContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+        return this.getRuleContext(0, StartPartContext)!;
     }
 
-    public STAR(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.STAR, 0);
+    public STAR(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.STAR, 0)!;
     }
 
     public parameterName(): ParameterNameContext {
-        return this.getTypedRuleContext(ParameterNameContext, 0) as ParameterNameContext;
+        return this.getRuleContext(0, ParameterNameContext)!;
     }
 
     public typesBlock(): TypesBlockContext {
-        return this.getTypedRuleContext(TypesBlockContext, 0) as TypesBlockContext;
+        return this.getRuleContext(0, TypesBlockContext)!;
     }
 
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_subParameter;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterSubParameter) {
             listener.enterSubParameter(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitSubParameter) {
             listener.exitSubParameter(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitSubParameter) {
             return visitor.visitSubParameter(this);
         } else {
@@ -3349,33 +3324,31 @@ export class SubParameterContext extends BslParserRuleContext {
 }
 
 export class ParameterNameContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public WORD(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.WORD, 0);
+    public WORD(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.WORD, 0)!;
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_parameterName;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterParameterName) {
             listener.enterParameterName(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitParameterName) {
             listener.exitParameterName(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitParameterName) {
             return visitor.visitParameterName(this);
         } else {
@@ -3385,61 +3358,67 @@ export class ParameterNameContext extends BslParserRuleContext {
 }
 
 export class ReturnsValuesContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+        return this.getRuleContext(0, StartPartContext)!;
     }
 
-    public RETURNS_KEYWORD(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.RETURNS_KEYWORD, 0);
+    public RETURNS_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.RETURNS_KEYWORD, 0)!;
     }
 
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
+    public hyperlinkBlock(): HyperlinkBlockContext | null {
+        return this.getRuleContext(0, HyperlinkBlockContext);
     }
 
-    public hyperlinkBlock(): HyperlinkBlockContext {
-        return this.getTypedRuleContext(HyperlinkBlockContext, 0) as HyperlinkBlockContext;
+    public returnsValuesString(): ReturnsValuesStringContext[];
+
+    public returnsValuesString(i: number): ReturnsValuesStringContext | null;
+
+    public returnsValuesString(i?: number): ReturnsValuesStringContext[] | ReturnsValuesStringContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ReturnsValuesStringContext);
+        }
+
+        return this.getRuleContext(i, ReturnsValuesStringContext);
     }
 
-    public returnsValuesString_list(): ReturnsValuesStringContext[] {
-        return this.getTypedRuleContexts(ReturnsValuesStringContext) as ReturnsValuesStringContext[];
-    }
-
-    public returnsValuesString(i: number): ReturnsValuesStringContext {
-        return this.getTypedRuleContext(ReturnsValuesStringContext, i) as ReturnsValuesStringContext;
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_returnsValues;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterReturnsValues) {
             listener.enterReturnsValues(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitReturnsValues) {
             listener.exitReturnsValues(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitReturnsValues) {
             return visitor.visitReturnsValues(this);
         } else {
@@ -3449,53 +3428,51 @@ export class ReturnsValuesContext extends BslParserRuleContext {
 }
 
 export class ReturnsValuesStringContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public returnsValue(): ReturnsValueContext {
-        return this.getTypedRuleContext(ReturnsValueContext, 0) as ReturnsValueContext;
+    public returnsValue(): ReturnsValueContext | null {
+        return this.getRuleContext(0, ReturnsValueContext);
     }
 
-    public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+    public startPart(): StartPartContext | null {
+        return this.getRuleContext(0, StartPartContext);
     }
 
-    public typesBlock(): TypesBlockContext {
-        return this.getTypedRuleContext(TypesBlockContext, 0) as TypesBlockContext;
+    public typesBlock(): TypesBlockContext | null {
+        return this.getRuleContext(0, TypesBlockContext);
     }
 
-    public subParameter(): SubParameterContext {
-        return this.getTypedRuleContext(SubParameterContext, 0) as SubParameterContext;
+    public subParameter(): SubParameterContext | null {
+        return this.getRuleContext(0, SubParameterContext);
     }
 
-    public typeDescription(): TypeDescriptionContext {
-        return this.getTypedRuleContext(TypeDescriptionContext, 0) as TypeDescriptionContext;
+    public typeDescription(): TypeDescriptionContext | null {
+        return this.getRuleContext(0, TypeDescriptionContext);
     }
 
-    public EOL(): TerminalNode {
+    public EOL(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EOL, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_returnsValuesString;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterReturnsValuesString) {
             listener.enterReturnsValuesString(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitReturnsValuesString) {
             listener.exitReturnsValuesString(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitReturnsValuesString) {
             return visitor.visitReturnsValuesString(this);
         } else {
@@ -3505,49 +3482,47 @@ export class ReturnsValuesStringContext extends BslParserRuleContext {
 }
 
 export class ReturnsValueContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
     public startPart(): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, 0) as StartPartContext;
+        return this.getRuleContext(0, StartPartContext)!;
     }
 
-    public type_(): TypeContext {
-        return this.getTypedRuleContext(TypeContext, 0) as TypeContext;
+    public type(): TypeContext {
+        return this.getRuleContext(0, TypeContext)!;
     }
 
-    public EOL(): TerminalNode {
+    public EOL(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EOL, 0);
     }
 
-    public spitter(): SpitterContext {
-        return this.getTypedRuleContext(SpitterContext, 0) as SpitterContext;
+    public spitter(): SpitterContext | null {
+        return this.getRuleContext(0, SpitterContext);
     }
 
-    public typeDescription(): TypeDescriptionContext {
-        return this.getTypedRuleContext(TypeDescriptionContext, 0) as TypeDescriptionContext;
+    public typeDescription(): TypeDescriptionContext | null {
+        return this.getRuleContext(0, TypeDescriptionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_returnsValue;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterReturnsValue) {
             listener.enterReturnsValue(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitReturnsValue) {
             listener.exitReturnsValue(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitReturnsValue) {
             return visitor.visitReturnsValue(this);
         } else {
@@ -3557,49 +3532,51 @@ export class ReturnsValueContext extends BslParserRuleContext {
 }
 
 export class TypesBlockContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public spitter_list(): SpitterContext[] {
-        return this.getTypedRuleContexts(SpitterContext) as SpitterContext[];
+    public spitter(): SpitterContext[];
+
+    public spitter(i: number): SpitterContext | null;
+
+    public spitter(i?: number): SpitterContext[] | SpitterContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(SpitterContext);
+        }
+
+        return this.getRuleContext(i, SpitterContext);
     }
 
-    public spitter(i: number): SpitterContext {
-        return this.getTypedRuleContext(SpitterContext, i) as SpitterContext;
+    public type(): TypeContext {
+        return this.getRuleContext(0, TypeContext)!;
     }
 
-    public type_(): TypeContext {
-        return this.getTypedRuleContext(TypeContext, 0) as TypeContext;
-    }
-
-    public EOL(): TerminalNode {
+    public EOL(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EOL, 0);
     }
 
-    public typeDescription(): TypeDescriptionContext {
-        return this.getTypedRuleContext(TypeDescriptionContext, 0) as TypeDescriptionContext;
+    public typeDescription(): TypeDescriptionContext | null {
+        return this.getRuleContext(0, TypeDescriptionContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_typesBlock;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterTypesBlock) {
             listener.enterTypesBlock(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitTypesBlock) {
             listener.exitTypesBlock(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitTypesBlock) {
             return visitor.visitTypesBlock(this);
         } else {
@@ -3609,61 +3586,67 @@ export class TypesBlockContext extends BslParserRuleContext {
 }
 
 export class TypeDescriptionContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
-    }
-
-    public RETURNS_KEYWORD(): TerminalNode {
+    public RETURNS_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.RETURNS_KEYWORD, 0);
     }
 
-    public EXAMPLE_KEYWORD(): TerminalNode {
+    public EXAMPLE_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.EXAMPLE_KEYWORD, 0);
     }
 
-    public CALL_OPTIONS_KEYWORD(): TerminalNode {
+    public CALL_OPTIONS_KEYWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.CALL_OPTIONS_KEYWORD, 0);
     }
 
-    public SPACE_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.SPACE);
+    public SPACE(): antlr.TerminalNode[];
+
+    public SPACE(i: number): antlr.TerminalNode | null;
+
+    public SPACE(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.SPACE);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.SPACE, i);
+        }
     }
 
-    public SPACE(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.SPACE, i);
-    }
-
-    public STAR(): TerminalNode {
+    public STAR(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.STAR, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_typeDescription;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterTypeDescription) {
             listener.enterTypeDescription(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitTypeDescription) {
             listener.exitTypeDescription(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitTypeDescription) {
             return visitor.visitTypeDescription(this);
         } else {
@@ -3673,49 +3656,47 @@ export class TypeDescriptionContext extends BslParserRuleContext {
 }
 
 export class TypeContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public hyperlinkType(): HyperlinkTypeContext {
-        return this.getTypedRuleContext(HyperlinkTypeContext, 0) as HyperlinkTypeContext;
+    public hyperlinkType(): HyperlinkTypeContext | null {
+        return this.getRuleContext(0, HyperlinkTypeContext);
     }
 
-    public listTypes(): ListTypesContext {
-        return this.getTypedRuleContext(ListTypesContext, 0) as ListTypesContext;
+    public listTypes(): ListTypesContext | null {
+        return this.getRuleContext(0, ListTypesContext);
     }
 
-    public simpleType(): SimpleTypeContext {
-        return this.getTypedRuleContext(SimpleTypeContext, 0) as SimpleTypeContext;
+    public simpleType(): SimpleTypeContext | null {
+        return this.getRuleContext(0, SimpleTypeContext);
     }
 
-    public COLON(): TerminalNode {
+    public COLON(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.COLON, 0);
     }
 
-    public complexType(): ComplexTypeContext {
-        return this.getTypedRuleContext(ComplexTypeContext, 0) as ComplexTypeContext;
+    public complexType(): ComplexTypeContext | null {
+        return this.getRuleContext(0, ComplexTypeContext);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_type;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterType) {
             listener.enterType(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitType) {
             listener.exitType(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitType) {
             return visitor.visitType(this);
         } else {
@@ -3725,37 +3706,35 @@ export class TypeContext extends BslParserRuleContext {
 }
 
 export class SimpleTypeContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public WORD(): TerminalNode {
+    public WORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.WORD, 0);
     }
 
-    public DOTSWORD(): TerminalNode {
+    public DOTSWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.DOTSWORD, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_simpleType;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterSimpleType) {
             listener.enterSimpleType(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitSimpleType) {
             listener.exitSimpleType(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitSimpleType) {
             return visitor.visitSimpleType(this);
         } else {
@@ -3765,69 +3744,87 @@ export class SimpleTypeContext extends BslParserRuleContext {
 }
 
 export class ListTypesContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public simpleType_list(): SimpleTypeContext[] {
-        return this.getTypedRuleContexts(SimpleTypeContext) as SimpleTypeContext[];
+    public simpleType(): SimpleTypeContext[];
+
+    public simpleType(i: number): SimpleTypeContext | null;
+
+    public simpleType(i?: number): SimpleTypeContext[] | SimpleTypeContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(SimpleTypeContext);
+        }
+
+        return this.getRuleContext(i, SimpleTypeContext);
     }
 
-    public simpleType(i: number): SimpleTypeContext {
-        return this.getTypedRuleContext(SimpleTypeContext, i) as SimpleTypeContext;
+    public complexType(): ComplexTypeContext[];
+
+    public complexType(i: number): ComplexTypeContext | null;
+
+    public complexType(i?: number): ComplexTypeContext[] | ComplexTypeContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(ComplexTypeContext);
+        }
+
+        return this.getRuleContext(i, ComplexTypeContext);
     }
 
-    public complexType_list(): ComplexTypeContext[] {
-        return this.getTypedRuleContexts(ComplexTypeContext) as ComplexTypeContext[];
+    public hyperlinkType(): HyperlinkTypeContext[];
+
+    public hyperlinkType(i: number): HyperlinkTypeContext | null;
+
+    public hyperlinkType(i?: number): HyperlinkTypeContext[] | HyperlinkTypeContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(HyperlinkTypeContext);
+        }
+
+        return this.getRuleContext(i, HyperlinkTypeContext);
     }
 
-    public complexType(i: number): ComplexTypeContext {
-        return this.getTypedRuleContext(ComplexTypeContext, i) as ComplexTypeContext;
+    public COMMA(): antlr.TerminalNode[];
+
+    public COMMA(i: number): antlr.TerminalNode | null;
+
+    public COMMA(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.COMMA);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.COMMA, i);
+        }
     }
 
-    public hyperlinkType_list(): HyperlinkTypeContext[] {
-        return this.getTypedRuleContexts(HyperlinkTypeContext) as HyperlinkTypeContext[];
+    public SPACE(): antlr.TerminalNode[];
+
+    public SPACE(i: number): antlr.TerminalNode | null;
+
+    public SPACE(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.SPACE);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.SPACE, i);
+        }
     }
 
-    public hyperlinkType(i: number): HyperlinkTypeContext {
-        return this.getTypedRuleContext(HyperlinkTypeContext, i) as HyperlinkTypeContext;
-    }
-
-    public COMMA_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.COMMA);
-    }
-
-    public COMMA(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.COMMA, i);
-    }
-
-    public SPACE_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.SPACE);
-    }
-
-    public SPACE(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.SPACE, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_listTypes;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterListTypes) {
             listener.enterListTypes(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitListTypes) {
             listener.exitListTypes(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitListTypes) {
             return visitor.visitListTypes(this);
         } else {
@@ -3837,55 +3834,57 @@ export class ListTypesContext extends BslParserRuleContext {
 }
 
 export class ComplexTypeContext extends BslParserRuleContext {
-    public _collection!: Token;
+    public _collection?: Token | null;
 
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public SPACE_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.SPACE);
+    public SPACE(): antlr.TerminalNode[];
+
+    public SPACE(i: number): antlr.TerminalNode | null;
+
+    public SPACE(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.SPACE);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.SPACE, i);
+        }
     }
 
-    public SPACE(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.SPACE, i);
+    public OF_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.OF_KEYWORD, 0)!;
     }
 
-    public OF_KEYWORD(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.OF_KEYWORD, 0);
+    public type(): TypeContext {
+        return this.getRuleContext(0, TypeContext)!;
     }
 
-    public type_(): TypeContext {
-        return this.getTypedRuleContext(TypeContext, 0) as TypeContext;
-    }
-
-    public WORD(): TerminalNode {
+    public WORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.WORD, 0);
     }
 
-    public DOTSWORD(): TerminalNode {
+    public DOTSWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.DOTSWORD, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_complexType;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterComplexType) {
             listener.enterComplexType(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitComplexType) {
             listener.exitComplexType(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitComplexType) {
             return visitor.visitComplexType(this);
         } else {
@@ -3895,65 +3894,67 @@ export class ComplexTypeContext extends BslParserRuleContext {
 }
 
 export class HyperlinkTypeContext extends BslParserRuleContext {
-    public _link!: Token;
+    public _link?: Token | null;
 
-    public _linkParams!: Token;
+    public _linkParams?: Token | null;
 
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public SEE_KEYWORD(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.SEE_KEYWORD, 0);
+    public SEE_KEYWORD(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.SEE_KEYWORD, 0)!;
     }
 
-    public SPACE(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
+    public SPACE(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.SPACE, 0)!;
     }
 
-    public WORD(): TerminalNode {
+    public WORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.WORD, 0);
     }
 
-    public DOTSWORD(): TerminalNode {
+    public DOTSWORD(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.DOTSWORD, 0);
     }
 
-    public LPAREN(): TerminalNode {
+    public LPAREN(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.LPAREN, 0);
     }
 
-    public RPAREN(): TerminalNode {
+    public RPAREN(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.RPAREN, 0);
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_hyperlinkType;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterHyperlinkType) {
             listener.enterHyperlinkType(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitHyperlinkType) {
             listener.exitHyperlinkType(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitHyperlinkType) {
             return visitor.visitHyperlinkType(this);
         } else {
@@ -3963,41 +3964,43 @@ export class HyperlinkTypeContext extends BslParserRuleContext {
 }
 
 export class SpitterContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public DASH(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.DASH, 0);
+    public DASH(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.DASH, 0)!;
     }
 
-    public SPACE_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.SPACE);
+    public SPACE(): antlr.TerminalNode[];
+
+    public SPACE(i: number): antlr.TerminalNode | null;
+
+    public SPACE(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.SPACE);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.SPACE, i);
+        }
     }
 
-    public SPACE(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.SPACE, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_spitter;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterSpitter) {
             listener.enterSpitter(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitSpitter) {
             listener.exitSpitter(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitSpitter) {
             return visitor.visitSpitter(this);
         } else {
@@ -4007,53 +4010,59 @@ export class SpitterContext extends BslParserRuleContext {
 }
 
 export class HyperlinkBlockContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public startPart_list(): StartPartContext[] {
-        return this.getTypedRuleContexts(StartPartContext) as StartPartContext[];
-    }
+    public startPart(): StartPartContext[];
 
-    public startPart(i: number): StartPartContext {
-        return this.getTypedRuleContext(StartPartContext, i) as StartPartContext;
+    public startPart(i: number): StartPartContext | null;
+
+    public startPart(i?: number): StartPartContext[] | StartPartContext | null {
+        if (i === undefined) {
+            return this.getRuleContexts(StartPartContext);
+        }
+
+        return this.getRuleContext(i, StartPartContext);
     }
 
     public hyperlinkType(): HyperlinkTypeContext {
-        return this.getTypedRuleContext(HyperlinkTypeContext, 0) as HyperlinkTypeContext;
+        return this.getRuleContext(0, HyperlinkTypeContext)!;
     }
 
-    public EOL_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.EOL);
+    public EOL(): antlr.TerminalNode[];
+
+    public EOL(i: number): antlr.TerminalNode | null;
+
+    public EOL(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.EOL);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.EOL, i);
+        }
     }
 
-    public EOL(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.EOL, i);
-    }
-
-    public SPACE(): TerminalNode {
+    public SPACE(): antlr.TerminalNode | null {
         return this.getToken(BSLMethodDescriptionParser.SPACE, 0);
     }
 
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_hyperlinkBlock;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterHyperlinkBlock) {
             listener.enterHyperlinkBlock(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitHyperlinkBlock) {
             listener.exitHyperlinkBlock(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitHyperlinkBlock) {
             return visitor.visitHyperlinkBlock(this);
         } else {
@@ -4063,41 +4072,43 @@ export class HyperlinkBlockContext extends BslParserRuleContext {
 }
 
 export class StartPartContext extends BslParserRuleContext {
-    constructor(parser?: BSLMethodDescriptionParser, parent?: ParserRuleContext, invokingState?: number) {
+    public constructor(parent: antlr.ParserRuleContext | null, invokingState: number) {
         super(parent, invokingState);
-        this.parser = parser;
     }
 
-    public COMMENT(): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.COMMENT, 0);
+    public COMMENT(): antlr.TerminalNode {
+        return this.getToken(BSLMethodDescriptionParser.COMMENT, 0)!;
     }
 
-    public SPACE_list(): TerminalNode[] {
-        return this.getTokens(BSLMethodDescriptionParser.SPACE);
+    public SPACE(): antlr.TerminalNode[];
+
+    public SPACE(i: number): antlr.TerminalNode | null;
+
+    public SPACE(i?: number): antlr.TerminalNode | null | antlr.TerminalNode[] {
+        if (i === undefined) {
+            return this.getTokens(BSLMethodDescriptionParser.SPACE);
+        } else {
+            return this.getToken(BSLMethodDescriptionParser.SPACE, i);
+        }
     }
 
-    public SPACE(i: number): TerminalNode {
-        return this.getToken(BSLMethodDescriptionParser.SPACE, i);
-    }
-
-    public get ruleIndex(): number {
+    public override get ruleIndex(): number {
         return BSLMethodDescriptionParser.RULE_startPart;
     }
 
-    public enterRule(listener: BSLMethodDescriptionParserListener): void {
+    public override enterRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.enterStartPart) {
             listener.enterStartPart(this);
         }
     }
 
-    public exitRule(listener: BSLMethodDescriptionParserListener): void {
+    public override exitRule(listener: BSLMethodDescriptionParserListener): void {
         if (listener.exitStartPart) {
             listener.exitStartPart(this);
         }
     }
 
-    // @Override
-    public accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result {
+    public override accept<Result>(visitor: BSLMethodDescriptionParserVisitor<Result>): Result | null {
         if (visitor.visitStartPart) {
             return visitor.visitStartPart(this);
         } else {

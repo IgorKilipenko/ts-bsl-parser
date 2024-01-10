@@ -1,14 +1,27 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "NodeNext",
         "target": "ES2022",
         "outDir": "out",
-        "lib": [
-            "ES2022"
-        ],
         "sourceMap": true,
-        "rootDir": ".",
-        "importHelpers": true
+        "strict": false,
+        "lib": [
+            "ES2023"
+        ],
+        "noEmit": false,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "declaration": true,
+        "emitDeclarationOnly": false,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "preserveConstEnums": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+    },
+    "ts-node": {
+        "esm": true
     },
     "include": [
         "src/**/*.ts",

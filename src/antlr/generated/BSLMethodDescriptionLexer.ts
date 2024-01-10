@@ -1,20 +1,9 @@
 // Generated from ./src/antlr/BSLMethodDescriptionLexer.g4 by ANTLR 4.13.1
-// noinspection ES6UnusedImports,JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 
-import {
-    ATN,
-    ATNDeserializer,
-    CharStream,
-    DecisionState,
-    DFA,
-    Lexer,
-    LexerATNSimulator,
-    RuleContext,
-    PredictionContextCache,
-    Token,
-} from "antlr4";
+import * as antlr from "antlr4ng";
+import { Token } from "antlr4ng";
 
-export default class BSLMethodDescriptionLexer extends Lexer {
+export class BSLMethodDescriptionLexer extends antlr.Lexer {
     public static readonly PARAMETERS_KEYWORD = 1;
 
     public static readonly RETURNS_KEYWORD = 2;
@@ -53,11 +42,9 @@ export default class BSLMethodDescriptionLexer extends Lexer {
 
     public static readonly ANYSYMBOL = 19;
 
-    public static readonly EOF = Token.EOF;
+    public static readonly channelNames = ["DEFAULT_TOKEN_CHANNEL", "HIDDEN"];
 
-    public static readonly channelNames: string[] = ["DEFAULT_TOKEN_CHANNEL", "HIDDEN"];
-
-    public static readonly literalNames: (string | null)[] = [
+    public static readonly literalNames = [
         null,
         null,
         null,
@@ -79,7 +66,7 @@ export default class BSLMethodDescriptionLexer extends Lexer {
         "')'",
     ];
 
-    public static readonly symbolicNames: (string | null)[] = [
+    public static readonly symbolicNames = [
         null,
         "PARAMETERS_KEYWORD",
         "RETURNS_KEYWORD",
@@ -102,9 +89,9 @@ export default class BSLMethodDescriptionLexer extends Lexer {
         "ANYSYMBOL",
     ];
 
-    public static readonly modeNames: string[] = ["DEFAULT_MODE"];
+    public static readonly modeNames = ["DEFAULT_MODE"];
 
-    public static readonly ruleNames: string[] = [
+    public static readonly ruleNames = [
         "PARAMETERS_KEYWORD",
         "RETURNS_KEYWORD",
         "EXAMPLE_KEYWORD",
@@ -186,13 +173,13 @@ export default class BSLMethodDescriptionLexer extends Lexer {
         "LETTER",
     ];
 
-    constructor(input: CharStream) {
+    public constructor(input: antlr.CharStream) {
         super(input);
-        this._interp = new LexerATNSimulator(
+        this.interpreter = new antlr.LexerATNSimulator(
             this,
             BSLMethodDescriptionLexer._ATN,
-            BSLMethodDescriptionLexer.DecisionsToDFA,
-            new PredictionContextCache()
+            BSLMethodDescriptionLexer.decisionsToDFA,
+            new antlr.PredictionContextCache()
         );
     }
 
@@ -454,11 +441,11 @@ export default class BSLMethodDescriptionLexer extends Lexer {
         362, 369, 371, 376, 503, 0,
     ];
 
-    private static __ATN: ATN;
+    private static __ATN: antlr.ATN;
 
-    public static get _ATN(): ATN {
+    public static get _ATN(): antlr.ATN {
         if (!BSLMethodDescriptionLexer.__ATN) {
-            BSLMethodDescriptionLexer.__ATN = new ATNDeserializer().deserialize(
+            BSLMethodDescriptionLexer.__ATN = new antlr.ATNDeserializer().deserialize(
                 BSLMethodDescriptionLexer._serializedATN
             );
         }
@@ -466,7 +453,17 @@ export default class BSLMethodDescriptionLexer extends Lexer {
         return BSLMethodDescriptionLexer.__ATN;
     }
 
-    static DecisionsToDFA = BSLMethodDescriptionLexer._ATN.decisionToState.map(
-        (ds: DecisionState, index: number) => new DFA(ds, index)
+    private static readonly vocabulary = new antlr.Vocabulary(
+        BSLMethodDescriptionLexer.literalNames,
+        BSLMethodDescriptionLexer.symbolicNames,
+        []
+    );
+
+    public override get vocabulary(): antlr.Vocabulary {
+        return BSLMethodDescriptionLexer.vocabulary;
+    }
+
+    private static readonly decisionsToDFA = BSLMethodDescriptionLexer._ATN.decisionToState.map(
+        (ds: antlr.DecisionState, index: number) => new antlr.DFA(ds, index)
     );
 }
