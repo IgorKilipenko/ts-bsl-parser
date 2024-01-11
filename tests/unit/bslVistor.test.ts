@@ -1,5 +1,5 @@
-import { BslVisitor } from "../../src/bslVisitor.js";
-import { createParser } from "./utils.js";
+import { BslVisitor } from "../../src/bslVisitor";
+import { createParser } from "./utils";
 
 describe("Bsl Visitor tests", () => {
     test("check TerminalNode", () => {

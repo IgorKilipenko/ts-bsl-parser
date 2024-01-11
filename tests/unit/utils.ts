@@ -1,6 +1,6 @@
 import { CharStreams, CommonTokenStream } from "antlr4ng";
-import { BslGrammarLexer } from "../../src/bslGrammarLexer.js";
-import { BslGrammarParser } from "../../src/bslGrammarParser.js";
+import { BslGrammarLexer } from "../../src/bslGrammarLexer";
+import { BslGrammarParser } from "../../src/bslGrammarParser";
 
 export const createTokenStream = (data: string) : CommonTokenStream => {
     const chars = CharStreams.fromString(data);

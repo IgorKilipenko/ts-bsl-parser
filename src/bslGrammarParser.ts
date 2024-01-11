@@ -1,3 +1,3 @@
-import { BSLParser as BSLParserBase } from "./antlr/generated/BSLParser.js";
+import { BSLParser as BSLParserBase } from "./antlr/generated/BSLParser";
 
 export class BslGrammarParser extends BSLParserBase {}

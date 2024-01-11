@@ -22,7 +22,7 @@
 parser grammar BSLParser;
 
 @header {
-import { BslParserRuleContext } from "../../core/context.js";
+import { BslParserRuleContext } from "../../core/context";
 }
 
 options {

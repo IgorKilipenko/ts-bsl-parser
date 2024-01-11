@@ -8,6 +8,10 @@
         "lib": [
             "ES2023"
         ],
+        "types": [
+            "node",
+            "jest"
+        ],
         "noEmit": false,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
@@ -21,7 +25,7 @@
         "noImplicitThis": true,
     },
     "ts-node": {
-        "esm": true
+        "esm": false
     },
     "include": [
         "src/**/*.ts",

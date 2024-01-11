@@ -1,13 +1,13 @@
-import { CharStreams, CommonTokenStream } from "antlr4ng";
+import { CharStream, CharStreams, CommonTokenStream } from "antlr4ng";
 
-import { BslGrammarParser } from "./bslGrammarParser.js";
-import { BslGrammarLexer } from "./bslGrammarLexer.js";
+import { BslGrammarParser } from "./bslGrammarParser";
+import { BslGrammarLexer } from "./bslGrammarLexer";
 
-// export {
-//     BslGrammarParser,
-//     CharStream, CommonTokenStream,
-//     BslGrammarLexer
-// };
+export {
+    BslGrammarParser,
+    CharStream, CommonTokenStream,
+    BslGrammarLexer
+};
 
 export const createTokenStream = (data: string) : CommonTokenStream => {
     const chars = CharStreams.fromString(data);
@@ -19,16 +19,16 @@ export const createParser = (data: string) : BslGrammarParser => {
     return new BslGrammarParser(createTokenStream(data));
 };
 
-const bslCode = `
-Процедура Тест(арг1)
-    текст = "Привет!";
-    Сообщить(текст);
-КонецПроцедуры
-`;
+// const bslCode = `
+// Процедура Тест(арг1)
+//     текст = "Привет!";
+//     Сообщить(текст);
+// КонецПроцедуры
+// `;
 
-const chars = CharStreams.fromString(bslCode);
-const lexer = new BslGrammarLexer(chars);
-const tokens = new CommonTokenStream(lexer);
-const parser = new BslGrammarParser(tokens);
-const tree = parser.procDeclaration();
-console.log({ tree });
+// const chars = CharStreams.fromString(bslCode);
+// const lexer = new BslGrammarLexer(chars);
+// const tokens = new CommonTokenStream(lexer);
+// const parser = new BslGrammarParser(tokens);
+// const tree = parser.procDeclaration();
+// console.log({ tree });

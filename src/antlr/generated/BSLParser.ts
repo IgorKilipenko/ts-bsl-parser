@@ -3,14 +3,14 @@
 import * as antlr from "antlr4ng";
 import { Token } from "antlr4ng";
 
-import type { BSLParserListener } from "./BSLParserListener.js";
-import type { BSLParserVisitor } from "./BSLParserVisitor.js";
+import type { BSLParserListener } from "./BSLParserListener";
+import type { BSLParserVisitor } from "./BSLParserVisitor";
 
 // for running tests with parameters, TODO: discuss strategy for typed parameters in CI
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 type int = number;
 
-import { BslParserRuleContext } from "../../core/context.js";
+import { BslParserRuleContext } from "../../core/context";
 
 export class BSLParser extends antlr.Parser {
     public static readonly LINE_COMMENT = 1;

@@ -1,3 +1,3 @@
-import { BSLLexer as BslGrammarLexer } from "./antlr/generated/BSLLexer.js";
+import { BSLLexer as BslGrammarLexer } from "./antlr/generated/BSLLexer";
 
 export { BslGrammarLexer };

@@ -1,7 +1,7 @@
 import { Interval, ParseTreeVisitor, Parser, type ParseTree } from "antlr4ng";
-import { type FileContext, SubsContext } from "./antlr/generated/BSLParser.js";
-import { BSLParserVisitor as BSLParserVisitor } from "./antlr/generated/BSLParserVisitor.js";
-import { BslGrammarParser } from "./bslGrammarParser.js";
+import { type FileContext, SubsContext } from "./antlr/generated/BSLParser";
+import { BSLParserVisitor as BSLParserVisitor } from "./antlr/generated/BSLParserVisitor";
+import { BslGrammarParser } from "./bslGrammarParser";
 
 export interface IContextTree {
     isModule: boolean;

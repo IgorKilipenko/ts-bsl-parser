@@ -3,14 +3,14 @@
 import * as antlr from "antlr4ng";
 import type { Token } from "antlr4ng";
 
-import type { SDBLParserListener } from "./SDBLParserListener.js";
-import type { SDBLParserVisitor } from "./SDBLParserVisitor.js";
+import type { SDBLParserListener } from "./SDBLParserListener";
+import type { SDBLParserVisitor } from "./SDBLParserVisitor";
 
 // for running tests with parameters, TODO: discuss strategy for typed parameters in CI
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 type int = number;
 
-import { BslParserRuleContext } from "../../core/context.js";
+import { BslParserRuleContext } from "../../core/context";
 
 export class SDBLParser extends antlr.Parser {
     public static readonly WHITE_SPACE = 1;

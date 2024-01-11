@@ -25,7 +25,7 @@
 parser grammar BSLMethodDescriptionParser;
 
 @header {
-import { BslParserRuleContext } from "../../core/context.js";
+import { BslParserRuleContext } from "../../core/context";
 }
 
 options {

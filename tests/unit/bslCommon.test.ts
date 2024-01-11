@@ -1,18 +1,33 @@
-import { BslVisitor } from "../../src/bslVisitor.js";
-import { createParser, createTokenStream } from "./utils.js";
+import { BslVisitor } from "../../src/bslVisitor";
+import { createParser, createTokenStream } from "./utils";
+
+const prepareBslCode = (code: string) => {
+    return code.replace(/(?:^\s+)|(\s+$)/g, "");
+};
 
 describe("Bsl Lexer regions tests", () => {
-    beforeEach(() => {
-
-    });
-
-    test('check method name', () => {
-        const bslCode = `
+    test("check region name", () => {
+        const bslCode = prepareBslCode(`
         Процедура Тест(арг1)
             текст = "Привет!";
             Сообщить(текст);
         КонецПроцедуры
-        `.replace(/(?:^\s+)|(\s+$)/, "");
+        `);
+
+        const parser = createParser(bslCode);
+        const visitor = new BslVisitor();
+        const res = visitor.visitFile(parser.file());
+        //parser.codeBlock().
+        expect("Тест").toBe("Тест");
+    });
+
+    test("check method name", () => {
+        const bslCode = prepareBslCode(`
+        Процедура Тест(арг1)
+            текст = "Привет!";
+            Сообщить(текст);
+        КонецПроцедуры
+        `);
 
         const parser = createParser(bslCode);
         const visitor = new BslVisitor();
@@ -30,12 +45,12 @@ describe("Context common tests", () => {
     });
 
     test("has module context", () => {
-        const bslCode = `
+        const bslCode = prepareBslCode(`
         Процедура Тест(арг1) Экспорт
             текст = "Привет!";
             Сообщить(текст);
         КонецПроцедуры
-        `.replace(/(?:^\s+)|(\s+$)/, "");
+        `);
 
         parser.tokenStream = createTokenStream(bslCode);
         const ctx = parser.file();
@@ -70,4 +85,3 @@ describe("Context common tests", () => {
         expect(ctx.isModule).toBe(true);
     });
 });
-

@@ -1,5 +1,5 @@
 import { type ParseTree, ParserRuleContext, TerminalNode } from "antlr4ng";
-import { FileContext } from "../antlr/generated/BSLParser.js";
+import { FileContext } from "../antlr/generated/BSLParser";
 
 export class BslParserRuleContext extends ParserRuleContext {
     constructor(parent: ParserRuleContext | null, invokingStateNumber: number) {
