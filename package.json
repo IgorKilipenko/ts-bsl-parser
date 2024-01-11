@@ -10,7 +10,8 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint ./src --ext .ts",
     "test": "jest",
-    "antlr4": "antlr4ng -Dlanguage=TypeScript -encoding utf8 -o ./src/antlr/generated -Xexact-output-dir -visitor ./src/antlr/*.g4"
+    "antlr4": "antlr4ng -Dlanguage=TypeScript -encoding utf8 -o ./src/antlr/generated -Xexact-output-dir -visitor ./src/antlr/*.g4",
+    "postinstall": "cd node_modules/antlr4ng && npm run compile && cd ../.."
   },
   "devDependencies": {
     "@types/jest": "^29.5.11",
@@ -19,11 +20,14 @@
     "@typescript-eslint/parser": "^6.18.1",
     "antlr4ng-cli": "^1.0.7",
     "eslint": "^8.56.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.1.1",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "antlr4ng": "file:/media/igor/SSD_2TB_2023/git/antlr/antlr4ng"
+    "antlr4ng": "github:IgorKilipenko/antlr4ng#main"
   }
 }
