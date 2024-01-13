@@ -1,5 +1,6 @@
 import { type ParseTree, ParserRuleContext, TerminalNode } from "antlr4ng";
 import { FileContext } from "../antlr/generated/BSLParser";
+import type { BslRawRegion } from "./bslCodeEntities";
 
 export class BslParserRuleContext extends ParserRuleContext {
     constructor(parent: ParserRuleContext | null, invokingStateNumber: number) {
@@ -14,7 +15,7 @@ export class BslParserRuleContext extends ParserRuleContext {
         return this instanceof FileContext && this.parent === null;
     }
 
-    public root: unknown | null;
+    public regions: Array<BslRawRegion> | null;
 
     public findAllNodes<T extends ParserRuleContext = ParserRuleContext>(
         filter?: (node: T) => boolean,

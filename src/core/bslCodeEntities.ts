@@ -28,15 +28,15 @@ export class BslRawRegion implements IBslRawRegion {
         end?: RegionEndContext | null;
         name?: RegionNameContext | null;
         innerIndex?: number | null;
-        parentRegion?: IBslRawRegion | null;
-        innerRegions?: Array<IBslRawRegion> | null;
+        parent?: IBslRawRegion | null;
+        regions?: Array<IBslRawRegion> | null;
     }) {
         this.start = options.start ?? null;
         this.end = options.end ?? null;
         this.name = options.name ?? null;
         this.innerIndex = options.innerIndex ?? 0;
-        this.parent = options.parentRegion ?? null;
-        this.regions = options.innerRegions ?? null;
+        this.parent = options.parent ?? null;
+        this.regions = options.regions ?? null;
 
         console.assert(Object.values(options).find(v => v !== null && v !== undefined));
     }
