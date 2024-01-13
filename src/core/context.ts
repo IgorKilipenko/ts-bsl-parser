@@ -6,37 +6,41 @@ export class BslParserRuleContext extends ParserRuleContext {
         super(parent, invokingStateNumber);
     }
 
-    get isTerminalNode() : boolean {
+    get isTerminalNode(): boolean {
         return this instanceof TerminalNode;
     }
 
-    get isModule() : boolean {
+    get isModule(): boolean {
         return this instanceof FileContext && this.parent === null;
     }
 
-    public readonly findAllNodes = (filter?: (node: TerminalNode | ParserRuleContext) => boolean): Array<ParseTree> | null => {
-        const findNodes = (tree: ParseTree, result: Array<ParseTree>) => {
-            const node = tree instanceof TerminalNode ? tree as TerminalNode : tree instanceof ParserRuleContext
-                ? tree as ParserRuleContext : null;
+    public root: unknown | null;
 
-            if (!node) {
+    public findAllNodes<T extends ParserRuleContext = ParserRuleContext>(
+        filter?: (node: T) => boolean,
+    ): Array<T> | null {
+        const findNodes = (tree: ParseTree, result: Array<T>) => {
+            const ctx = tree as ParserRuleContext;
+            if (!ctx) {
                 return result;
             }
 
-            (!filter || filter(node)) &&
-                result.push(node);
+            const node = ctx as T;
 
-            node && node instanceof ParserRuleContext &&
-                node.children?.forEach((tree) => {
-                    findNodes(tree as ParserRuleContext, result);
-                });
+            node && (!filter || filter(node)) && result.push(node);
+
+            ctx.children?.forEach((childNode) => {
+                findNodes(childNode, result);
+            });
 
             return result;
         };
 
-        return this.children?.reduce<Array<ParseTree>>((res, tree) => {
-            findNodes(tree, res);
-            return res;
-        }, []) ?? null;
-    };
+        return (
+            this.children?.reduce<Array<T>>((res, tree) => {
+                findNodes(tree, res);
+                return res;
+            }, []) ?? null
+        );
+    }
 }
