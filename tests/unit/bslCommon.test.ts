@@ -1,87 +1,184 @@
-import { BslVisitor } from "../../src/bslVisitor";
-import { createParser, createTokenStream } from "./utils";
+import { FunctionContext, ProcedureContext } from "../../src/antlr/generated/BSLParser";
+import { createParser } from "./utils";
 
 const prepareBslCode = (code: string) => {
     return code.replace(/(?:^\s+)|(\s+$)/g, "");
 };
 
-describe("Bsl Lexer regions tests", () => {
-    test("check region name", () => {
-        const bslCode = prepareBslCode(`
-        Процедура Тест(арг1)
-            текст = "Привет!";
-            Сообщить(текст);
-        КонецПроцедуры
-        `);
+const removeArgDefVal = (arg: string) => {
+    return arg.replace(/\s*=\s*[\S]+$/, "");
+};
+
+const parseStrArg = (arg: string) => {
+    const pattern = /^\s*(?<name>\S+)(?:\s*=\s*(?<defaultValue>\S+))?\s*$/;
+    const m = pattern.exec(arg);
+    if (!m || !m.groups) {
+        return null;
+    }
+
+    if (!m.groups.name) {
+        return null;
+    }
+
+    return { ...(m.groups as typeof m.groups & { name: string; defaultValue?: string }) };
+};
+
+const buildBslFunction = (options: {
+    isVoid?: boolean;
+    name: string;
+    body?: string;
+    args?: string[];
+    isPublic?: boolean;
+    isAsync?: boolean;
+}) => {
+    const isEmptyString = (line: string) => {
+        return !/\S/.test(line);
+    };
+
+    const replaceIndents = <T extends string | string[] = string[]>(
+        data: T,
+        sourceCount?: number,
+        preprocess?: (line: string) => string,
+    ): T => {
+        const isArray = Array.isArray(data);
+        let line = Array.isArray(data) ? data.find((line) => !isEmptyString(line)) ?? "" : (data as string);
+
+        if (!isArray && isEmptyString(line)) {
+            return line as T;
+        }
+
+        sourceCount = sourceCount ?? /(?<=^\s+|^)\S/.exec(line)?.index ?? 0;
+
+        if (!isArray) {
+            if (sourceCount > 0) {
+                line = line.replace(new RegExp(`^\\s{${sourceCount}}`), "");
+            }
+
+            return `${" ".repeat(4)}${line}` as T;
+        }
+
+        return data.reduce<string[]>((res, line) => {
+            let buf = replaceIndents(line, sourceCount!);
+            buf = preprocess ? preprocess(buf) : buf;
+            res.push(buf);
+            return res;
+        }, []) as T;
+    };
+
+    const { isVoid = false, name, args = [], body = "", isPublic = false, isAsync = false } = options;
+    const funcDef = `${isAsync ? "Асинх " : ""}${isVoid ? "Процедура" : "Функция"} ${name}(${args.join(", ")})${
+        isPublic ? " Экспорт" : ""
+    }`;
+    const funcBody = replaceIndents(body.split(/(?:\r?\n)+/)).reduce<string>((res, line, i, arr) => {
+        res += `${replaceIndents(line)}${i < arr.length - 1 ? "\n" : ""}`;
+        return res;
+    }, "");
+    const funcEnd = `Конец${isVoid ? "Процедуры" : "Функции"}`;
+
+    return `${funcDef}\n${funcBody}${isEmptyString(funcBody) ? "" : "\n"}${funcEnd}`;
+};
+
+describe("Bsl procedures tests", () => {
+    test("check simple procedure", () => {
+        const bslCode = buildBslFunction({
+            name: "ПроцедураТест",
+            isVoid: true,
+            body: prepareBslCode(`
+                    Сообщить("Текст");
+                    `),
+        });
 
         const parser = createParser(bslCode);
-        const visitor = new BslVisitor();
-        const res = visitor.visitFile(parser.file());
-        //parser.codeBlock().
-        expect("Тест").toBe("Тест");
+        const procedure = parser.procedure();
+        expect(procedure && !procedure.exception).toBe(true);
     });
 
-    test("check method name", () => {
-        const bslCode = prepareBslCode(`
-        Процедура Тест(арг1)
-            текст = "Привет!";
-            Сообщить(текст);
-        КонецПроцедуры
-        `);
+    test("check procedure declaration without args", () => {
+        const bslCode = buildBslFunction({
+            name: "ПроцедураТест",
+            isVoid: true,
+        });
 
         const parser = createParser(bslCode);
-        const visitor = new BslVisitor();
-        const res = visitor.visitFile(parser.file());
-        //parser.codeBlock().
-        expect("Тест").toBe("Тест");
+        const procedure = parser.procedure();
+        expect(procedure.exception).toBe(null);
+
+        const procDeclaration = procedure.procDeclaration();
+
+        expect(procDeclaration.subName().IDENTIFIER().symbol.text).toBe("ПроцедураТест");
+        expect(procDeclaration.EXPORT_KEYWORD()).toBe(null);
+        expect(procDeclaration.ASYNC_KEYWORD()).toBe(null);
+        expect(procDeclaration.paramList()).toBe(null);
+    });
+
+    test("check procedure full signature", () => {
+        const testItem = (rawData: Parameters<typeof buildBslFunction>[0]) => {
+            const bslCode = buildBslFunction(rawData);
+            const parser = createParser(bslCode);
+
+            const func = rawData.isVoid ? parser.procedure() : parser.function_();
+            expect(func instanceof (rawData.isVoid ? ProcedureContext : FunctionContext)).toBe(true);
+
+            // Function without parsed exceptions
+            expect(func.exception).toBe(null);
+
+            const declaration = rawData.isVoid
+                ? (func as ProcedureContext).procDeclaration()
+                : (func as FunctionContext).funcDeclaration();
+
+            // Declaration without parsed exceptions
+            expect(!!declaration.exception).toBe(false);
+
+            // Check function name
+            expect(declaration.subName().IDENTIFIER().symbol.text).toBe(rawData.name);
+
+            // Is public function
+            expect(!!declaration.EXPORT_KEYWORD()).toBe(rawData.isPublic);
+
+            // Is async function
+            expect(!!declaration.ASYNC_KEYWORD()).toBe(rawData.isAsync);
+
+            // Check function args:
+            // Has parameters and parameters count > 0
+            expect(!!declaration.paramList() && !!declaration.paramList()?.param()?.length).toBe(
+                !!rawData.args?.length,
+            );
+
+            const args = declaration.paramList()!.param();
+            expect(args.length).toBe(rawData.args?.length ?? 0);
+
+            // Check all args names
+            expect(
+                rawData.args?.reduce<boolean>((res, rawArg) => {
+                    return (
+                        res && !!args.find((funcArg) => funcArg.IDENTIFIER().symbol.text === removeArgDefVal(rawArg))
+                    );
+                }, true),
+            ).toBe(true);
+        };
+
+        const rawData = {
+            name: "Тест",
+            isVoid: true,
+            isPublic: true,
+            isAsync: true,
+            args: ["Аргумент1", "Аргумент2", "ОпциональныйАргумент1 = Неопределено"],
+        };
+
+        testItem(rawData);
+        testItem({ ...rawData, isVoid: false, body: "Возврат Неопределено;" });
     });
 });
 
-describe("Context common tests", () => {
-    const parser = createParser("");
-
-    beforeEach(() => {
-        parser.reset();
-    });
-
-    test("has module context", () => {
+describe("Bsl functions tests", () => {
+    test("check simple function", () => {
         const bslCode = prepareBslCode(`
-        Процедура Тест(арг1) Экспорт
-            текст = "Привет!";
-            Сообщить(текст);
-        КонецПроцедуры
+        Функция ТестФункция()
+        КонецФункции
         `);
 
-        parser.tokenStream = createTokenStream(bslCode);
-        const ctx = parser.file();
-
-        expect(ctx.isModule).toBe(true);
-    });
-
-    test("has module context2", () => {
-        const bslCode = `
-        #Область ПрограммныйИнтерфейс
-        Перем переменная1;
-
-        // Описание процедуры Тест
-        //
-        Процедура Тест(аргумент1) Экспорт
-            текст = "Привет!";
-            Сообщить(текст);
-        КонецПроцедуры
-
-        // Описание процедуры Тест2
-        //
-        Процедура Тест2(аргумент1) Экспорт
-            текст = "Привет!";
-            Сообщить(текст);
-        КонецПроцедуры
-        #КонецОбласти // ПрограммныйИнтерфейс
-        `.replace(/(?:^\s+)|(\s+$)/, "");
-
-        parser.tokenStream = createTokenStream(bslCode);
-        const ctx = parser.file();
-
-        expect(ctx.isModule).toBe(true);
+        const parser = createParser(bslCode);
+        const func = parser.function_();
+        expect(func && func.exception === null).toBe(true);
     });
 });
