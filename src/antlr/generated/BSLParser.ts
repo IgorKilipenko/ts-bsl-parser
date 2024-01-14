@@ -827,7 +827,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public file(): FileContext {
-        let localContext = new FileContext(this.context, this.state);
+        const localContext = new FileContext(this.context, this.state);
         this.enterRule(localContext, 0, BSLParser.RULE_file);
         try {
             let alternative: number;
@@ -927,7 +927,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_native(): Preproc_nativeContext {
-        let localContext = new Preproc_nativeContext(this.context, this.state);
+        const localContext = new Preproc_nativeContext(this.context, this.state);
         this.enterRule(localContext, 2, BSLParser.RULE_preproc_native);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -952,7 +952,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public usedLib(): UsedLibContext {
-        let localContext = new UsedLibContext(this.context, this.state);
+        const localContext = new UsedLibContext(this.context, this.state);
         this.enterRule(localContext, 4, BSLParser.RULE_usedLib);
         let _la: number;
         try {
@@ -982,7 +982,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public use(): UseContext {
-        let localContext = new UseContext(this.context, this.state);
+        const localContext = new UseContext(this.context, this.state);
         this.enterRule(localContext, 6, BSLParser.RULE_use);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1009,7 +1009,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public moduleAnnotations(): ModuleAnnotationsContext {
-        let localContext = new ModuleAnnotationsContext(this.context, this.state);
+        const localContext = new ModuleAnnotationsContext(this.context, this.state);
         this.enterRule(localContext, 8, BSLParser.RULE_moduleAnnotations);
         try {
             let alternative: number;
@@ -1110,7 +1110,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public shebang(): ShebangContext {
-        let localContext = new ShebangContext(this.context, this.state);
+        const localContext = new ShebangContext(this.context, this.state);
         this.enterRule(localContext, 10, BSLParser.RULE_shebang);
         let _la: number;
         try {
@@ -1156,7 +1156,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public regionStart(): RegionStartContext {
-        let localContext = new RegionStartContext(this.context, this.state);
+        const localContext = new RegionStartContext(this.context, this.state);
         this.enterRule(localContext, 12, BSLParser.RULE_regionStart);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1181,7 +1181,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public regionEnd(): RegionEndContext {
-        let localContext = new RegionEndContext(this.context, this.state);
+        const localContext = new RegionEndContext(this.context, this.state);
         this.enterRule(localContext, 14, BSLParser.RULE_regionEnd);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1204,7 +1204,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public regionName(): RegionNameContext {
-        let localContext = new RegionNameContext(this.context, this.state);
+        const localContext = new RegionNameContext(this.context, this.state);
         this.enterRule(localContext, 16, BSLParser.RULE_regionName);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1227,7 +1227,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_if(): Preproc_ifContext {
-        let localContext = new Preproc_ifContext(this.context, this.state);
+        const localContext = new Preproc_ifContext(this.context, this.state);
         this.enterRule(localContext, 18, BSLParser.RULE_preproc_if);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1254,7 +1254,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_elsif(): Preproc_elsifContext {
-        let localContext = new Preproc_elsifContext(this.context, this.state);
+        const localContext = new Preproc_elsifContext(this.context, this.state);
         this.enterRule(localContext, 20, BSLParser.RULE_preproc_elsif);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1281,7 +1281,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_else(): Preproc_elseContext {
-        let localContext = new Preproc_elseContext(this.context, this.state);
+        const localContext = new Preproc_elseContext(this.context, this.state);
         this.enterRule(localContext, 22, BSLParser.RULE_preproc_else);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1304,7 +1304,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_endif(): Preproc_endifContext {
-        let localContext = new Preproc_endifContext(this.context, this.state);
+        const localContext = new Preproc_endifContext(this.context, this.state);
         this.enterRule(localContext, 24, BSLParser.RULE_preproc_endif);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1327,7 +1327,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_expression(): Preproc_expressionContext {
-        let localContext = new Preproc_expressionContext(this.context, this.state);
+        const localContext = new Preproc_expressionContext(this.context, this.state);
         this.enterRule(localContext, 26, BSLParser.RULE_preproc_expression);
         let _la: number;
         try {
@@ -1382,7 +1382,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_logicalOperand(): Preproc_logicalOperandContext {
-        let localContext = new Preproc_logicalOperandContext(this.context, this.state);
+        const localContext = new Preproc_logicalOperandContext(this.context, this.state);
         this.enterRule(localContext, 28, BSLParser.RULE_preproc_logicalOperand);
         let _la: number;
         try {
@@ -1460,7 +1460,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_logicalExpression(): Preproc_logicalExpressionContext {
-        let localContext = new Preproc_logicalExpressionContext(this.context, this.state);
+        const localContext = new Preproc_logicalExpressionContext(this.context, this.state);
         this.enterRule(localContext, 30, BSLParser.RULE_preproc_logicalExpression);
         let _la: number;
         try {
@@ -1500,7 +1500,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_symbol(): Preproc_symbolContext {
-        let localContext = new Preproc_symbolContext(this.context, this.state);
+        const localContext = new Preproc_symbolContext(this.context, this.state);
         this.enterRule(localContext, 32, BSLParser.RULE_preproc_symbol);
         try {
             this.state = 349;
@@ -1643,7 +1643,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_unknownSymbol(): Preproc_unknownSymbolContext {
-        let localContext = new Preproc_unknownSymbolContext(this.context, this.state);
+        const localContext = new Preproc_unknownSymbolContext(this.context, this.state);
         this.enterRule(localContext, 34, BSLParser.RULE_preproc_unknownSymbol);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1666,7 +1666,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preproc_boolOperation(): Preproc_boolOperationContext {
-        let localContext = new Preproc_boolOperationContext(this.context, this.state);
+        const localContext = new Preproc_boolOperationContext(this.context, this.state);
         this.enterRule(localContext, 36, BSLParser.RULE_preproc_boolOperation);
         let _la: number;
         try {
@@ -1696,7 +1696,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public preprocessor(): PreprocessorContext {
-        let localContext = new PreprocessorContext(this.context, this.state);
+        const localContext = new PreprocessorContext(this.context, this.state);
         this.enterRule(localContext, 38, BSLParser.RULE_preprocessor);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1761,7 +1761,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public compilerDirectiveSymbol(): CompilerDirectiveSymbolContext {
-        let localContext = new CompilerDirectiveSymbolContext(this.context, this.state);
+        const localContext = new CompilerDirectiveSymbolContext(this.context, this.state);
         this.enterRule(localContext, 40, BSLParser.RULE_compilerDirectiveSymbol);
         let _la: number;
         try {
@@ -1791,7 +1791,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public compilerDirective(): CompilerDirectiveContext {
-        let localContext = new CompilerDirectiveContext(this.context, this.state);
+        const localContext = new CompilerDirectiveContext(this.context, this.state);
         this.enterRule(localContext, 42, BSLParser.RULE_compilerDirective);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1816,7 +1816,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public annotationName(): AnnotationNameContext {
-        let localContext = new AnnotationNameContext(this.context, this.state);
+        const localContext = new AnnotationNameContext(this.context, this.state);
         this.enterRule(localContext, 44, BSLParser.RULE_annotationName);
         let _la: number;
         try {
@@ -1846,7 +1846,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public annotationParamName(): AnnotationParamNameContext {
-        let localContext = new AnnotationParamNameContext(this.context, this.state);
+        const localContext = new AnnotationParamNameContext(this.context, this.state);
         this.enterRule(localContext, 46, BSLParser.RULE_annotationParamName);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1869,7 +1869,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public annotation(): AnnotationContext {
-        let localContext = new AnnotationContext(this.context, this.state);
+        const localContext = new AnnotationContext(this.context, this.state);
         this.enterRule(localContext, 48, BSLParser.RULE_annotation);
         let _la: number;
         try {
@@ -1904,7 +1904,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public annotationParams(): AnnotationParamsContext {
-        let localContext = new AnnotationParamsContext(this.context, this.state);
+        const localContext = new AnnotationParamsContext(this.context, this.state);
         this.enterRule(localContext, 50, BSLParser.RULE_annotationParams);
         let _la: number;
         try {
@@ -1956,7 +1956,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public annotationParam(): AnnotationParamContext {
-        let localContext = new AnnotationParamContext(this.context, this.state);
+        const localContext = new AnnotationParamContext(this.context, this.state);
         this.enterRule(localContext, 52, BSLParser.RULE_annotationParam);
         let _la: number;
         try {
@@ -2018,7 +2018,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public var_name(): Var_nameContext {
-        let localContext = new Var_nameContext(this.context, this.state);
+        const localContext = new Var_nameContext(this.context, this.state);
         this.enterRule(localContext, 54, BSLParser.RULE_var_name);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2041,7 +2041,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public moduleVars(): ModuleVarsContext {
-        let localContext = new ModuleVarsContext(this.context, this.state);
+        const localContext = new ModuleVarsContext(this.context, this.state);
         this.enterRule(localContext, 56, BSLParser.RULE_moduleVars);
         try {
             let alternative: number;
@@ -2083,7 +2083,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public moduleVar(): ModuleVarContext {
-        let localContext = new ModuleVarContext(this.context, this.state);
+        const localContext = new ModuleVarContext(this.context, this.state);
         this.enterRule(localContext, 58, BSLParser.RULE_moduleVar);
         let _la: number;
         try {
@@ -2151,7 +2151,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public moduleVarsList(): ModuleVarsListContext {
-        let localContext = new ModuleVarsListContext(this.context, this.state);
+        const localContext = new ModuleVarsListContext(this.context, this.state);
         this.enterRule(localContext, 60, BSLParser.RULE_moduleVarsList);
         let _la: number;
         try {
@@ -2191,7 +2191,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public moduleVarDeclaration(): ModuleVarDeclarationContext {
-        let localContext = new ModuleVarDeclarationContext(this.context, this.state);
+        const localContext = new ModuleVarDeclarationContext(this.context, this.state);
         this.enterRule(localContext, 62, BSLParser.RULE_moduleVarDeclaration);
         let _la: number;
         try {
@@ -2224,7 +2224,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public subVars(): SubVarsContext {
-        let localContext = new SubVarsContext(this.context, this.state);
+        const localContext = new SubVarsContext(this.context, this.state);
         this.enterRule(localContext, 64, BSLParser.RULE_subVars);
         try {
             let alternative: number;
@@ -2266,7 +2266,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public subVar(): SubVarContext {
-        let localContext = new SubVarContext(this.context, this.state);
+        const localContext = new SubVarContext(this.context, this.state);
         this.enterRule(localContext, 66, BSLParser.RULE_subVar);
         let _la: number;
         try {
@@ -2334,7 +2334,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public subVarsList(): SubVarsListContext {
-        let localContext = new SubVarsListContext(this.context, this.state);
+        const localContext = new SubVarsListContext(this.context, this.state);
         this.enterRule(localContext, 68, BSLParser.RULE_subVarsList);
         let _la: number;
         try {
@@ -2374,7 +2374,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public subVarDeclaration(): SubVarDeclarationContext {
-        let localContext = new SubVarDeclarationContext(this.context, this.state);
+        const localContext = new SubVarDeclarationContext(this.context, this.state);
         this.enterRule(localContext, 70, BSLParser.RULE_subVarDeclaration);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2397,7 +2397,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public subName(): SubNameContext {
-        let localContext = new SubNameContext(this.context, this.state);
+        const localContext = new SubNameContext(this.context, this.state);
         this.enterRule(localContext, 72, BSLParser.RULE_subName);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2420,7 +2420,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public subs(): SubsContext {
-        let localContext = new SubsContext(this.context, this.state);
+        const localContext = new SubsContext(this.context, this.state);
         this.enterRule(localContext, 74, BSLParser.RULE_subs);
         try {
             let alternative: number;
@@ -2462,7 +2462,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public sub(): SubContext {
-        let localContext = new SubContext(this.context, this.state);
+        const localContext = new SubContext(this.context, this.state);
         this.enterRule(localContext, 76, BSLParser.RULE_sub);
         try {
             this.state = 468;
@@ -2498,7 +2498,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public procedure(): ProcedureContext {
-        let localContext = new ProcedureContext(this.context, this.state);
+        const localContext = new ProcedureContext(this.context, this.state);
         this.enterRule(localContext, 78, BSLParser.RULE_procedure);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2525,7 +2525,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public function_(): FunctionContext {
-        let localContext = new FunctionContext(this.context, this.state);
+        const localContext = new FunctionContext(this.context, this.state);
         this.enterRule(localContext, 80, BSLParser.RULE_function);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2552,7 +2552,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public procDeclaration(): ProcDeclarationContext {
-        let localContext = new ProcDeclarationContext(this.context, this.state);
+        const localContext = new ProcDeclarationContext(this.context, this.state);
         this.enterRule(localContext, 82, BSLParser.RULE_procDeclaration);
         let _la: number;
         try {
@@ -2643,7 +2643,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public funcDeclaration(): FuncDeclarationContext {
-        let localContext = new FuncDeclarationContext(this.context, this.state);
+        const localContext = new FuncDeclarationContext(this.context, this.state);
         this.enterRule(localContext, 84, BSLParser.RULE_funcDeclaration);
         let _la: number;
         try {
@@ -2734,7 +2734,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public subCodeBlock(): SubCodeBlockContext {
-        let localContext = new SubCodeBlockContext(this.context, this.state);
+        const localContext = new SubCodeBlockContext(this.context, this.state);
         this.enterRule(localContext, 86, BSLParser.RULE_subCodeBlock);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2767,7 +2767,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public continueStatement(): ContinueStatementContext {
-        let localContext = new ContinueStatementContext(this.context, this.state);
+        const localContext = new ContinueStatementContext(this.context, this.state);
         this.enterRule(localContext, 88, BSLParser.RULE_continueStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2790,7 +2790,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public breakStatement(): BreakStatementContext {
-        let localContext = new BreakStatementContext(this.context, this.state);
+        const localContext = new BreakStatementContext(this.context, this.state);
         this.enterRule(localContext, 90, BSLParser.RULE_breakStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2813,7 +2813,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public raiseStatement(): RaiseStatementContext {
-        let localContext = new RaiseStatementContext(this.context, this.state);
+        const localContext = new RaiseStatementContext(this.context, this.state);
         this.enterRule(localContext, 92, BSLParser.RULE_raiseStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2852,7 +2852,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public ifStatement(): IfStatementContext {
-        let localContext = new IfStatementContext(this.context, this.state);
+        const localContext = new IfStatementContext(this.context, this.state);
         this.enterRule(localContext, 94, BSLParser.RULE_ifStatement);
         let _la: number;
         try {
@@ -2902,7 +2902,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public ifBranch(): IfBranchContext {
-        let localContext = new IfBranchContext(this.context, this.state);
+        const localContext = new IfBranchContext(this.context, this.state);
         this.enterRule(localContext, 96, BSLParser.RULE_ifBranch);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2931,7 +2931,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public elsifBranch(): ElsifBranchContext {
-        let localContext = new ElsifBranchContext(this.context, this.state);
+        const localContext = new ElsifBranchContext(this.context, this.state);
         this.enterRule(localContext, 98, BSLParser.RULE_elsifBranch);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2960,7 +2960,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public elseBranch(): ElseBranchContext {
-        let localContext = new ElseBranchContext(this.context, this.state);
+        const localContext = new ElseBranchContext(this.context, this.state);
         this.enterRule(localContext, 100, BSLParser.RULE_elseBranch);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -2985,7 +2985,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public whileStatement(): WhileStatementContext {
-        let localContext = new WhileStatementContext(this.context, this.state);
+        const localContext = new WhileStatementContext(this.context, this.state);
         this.enterRule(localContext, 102, BSLParser.RULE_whileStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3016,7 +3016,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public forStatement(): ForStatementContext {
-        let localContext = new ForStatementContext(this.context, this.state);
+        const localContext = new ForStatementContext(this.context, this.state);
         this.enterRule(localContext, 104, BSLParser.RULE_forStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3055,7 +3055,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public forEachStatement(): ForEachStatementContext {
-        let localContext = new ForEachStatementContext(this.context, this.state);
+        const localContext = new ForEachStatementContext(this.context, this.state);
         this.enterRule(localContext, 106, BSLParser.RULE_forEachStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3092,7 +3092,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public tryStatement(): TryStatementContext {
-        let localContext = new TryStatementContext(this.context, this.state);
+        const localContext = new TryStatementContext(this.context, this.state);
         this.enterRule(localContext, 108, BSLParser.RULE_tryStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3123,7 +3123,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public returnStatement(): ReturnStatementContext {
-        let localContext = new ReturnStatementContext(this.context, this.state);
+        const localContext = new ReturnStatementContext(this.context, this.state);
         this.enterRule(localContext, 110, BSLParser.RULE_returnStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3156,7 +3156,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public executeStatement(): ExecuteStatementContext {
-        let localContext = new ExecuteStatementContext(this.context, this.state);
+        const localContext = new ExecuteStatementContext(this.context, this.state);
         this.enterRule(localContext, 112, BSLParser.RULE_executeStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3195,7 +3195,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public callStatement(): CallStatementContext {
-        let localContext = new CallStatementContext(this.context, this.state);
+        const localContext = new CallStatementContext(this.context, this.state);
         this.enterRule(localContext, 114, BSLParser.RULE_callStatement);
         try {
             let alternative: number;
@@ -3266,7 +3266,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public waitStatement(): WaitStatementContext {
-        let localContext = new WaitStatementContext(this.context, this.state);
+        const localContext = new WaitStatementContext(this.context, this.state);
         this.enterRule(localContext, 116, BSLParser.RULE_waitStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3289,7 +3289,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public labelName(): LabelNameContext {
-        let localContext = new LabelNameContext(this.context, this.state);
+        const localContext = new LabelNameContext(this.context, this.state);
         this.enterRule(localContext, 118, BSLParser.RULE_labelName);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3312,7 +3312,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public label(): LabelContext {
-        let localContext = new LabelContext(this.context, this.state);
+        const localContext = new LabelContext(this.context, this.state);
         this.enterRule(localContext, 120, BSLParser.RULE_label);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3339,7 +3339,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public gotoStatement(): GotoStatementContext {
-        let localContext = new GotoStatementContext(this.context, this.state);
+        const localContext = new GotoStatementContext(this.context, this.state);
         this.enterRule(localContext, 122, BSLParser.RULE_gotoStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3366,7 +3366,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public tryCodeBlock(): TryCodeBlockContext {
-        let localContext = new TryCodeBlockContext(this.context, this.state);
+        const localContext = new TryCodeBlockContext(this.context, this.state);
         this.enterRule(localContext, 124, BSLParser.RULE_tryCodeBlock);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3389,7 +3389,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public exceptCodeBlock(): ExceptCodeBlockContext {
-        let localContext = new ExceptCodeBlockContext(this.context, this.state);
+        const localContext = new ExceptCodeBlockContext(this.context, this.state);
         this.enterRule(localContext, 126, BSLParser.RULE_exceptCodeBlock);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3412,7 +3412,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public event(): EventContext {
-        let localContext = new EventContext(this.context, this.state);
+        const localContext = new EventContext(this.context, this.state);
         this.enterRule(localContext, 128, BSLParser.RULE_event);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3435,7 +3435,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public handler(): HandlerContext {
-        let localContext = new HandlerContext(this.context, this.state);
+        const localContext = new HandlerContext(this.context, this.state);
         this.enterRule(localContext, 130, BSLParser.RULE_handler);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3458,7 +3458,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public addHandlerStatement(): AddHandlerStatementContext {
-        let localContext = new AddHandlerStatementContext(this.context, this.state);
+        const localContext = new AddHandlerStatementContext(this.context, this.state);
         this.enterRule(localContext, 132, BSLParser.RULE_addHandlerStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3487,7 +3487,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public removeHandlerStatement(): RemoveHandlerStatementContext {
-        let localContext = new RemoveHandlerStatementContext(this.context, this.state);
+        const localContext = new RemoveHandlerStatementContext(this.context, this.state);
         this.enterRule(localContext, 134, BSLParser.RULE_removeHandlerStatement);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3516,7 +3516,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public ternaryOperator(): TernaryOperatorContext {
-        let localContext = new TernaryOperatorContext(this.context, this.state);
+        const localContext = new TernaryOperatorContext(this.context, this.state);
         this.enterRule(localContext, 136, BSLParser.RULE_ternaryOperator);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3553,7 +3553,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public waitExpression(): WaitExpressionContext {
-        let localContext = new WaitExpressionContext(this.context, this.state);
+        const localContext = new WaitExpressionContext(this.context, this.state);
         this.enterRule(localContext, 138, BSLParser.RULE_waitExpression);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3578,7 +3578,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public fileCodeBlockBeforeSub(): FileCodeBlockBeforeSubContext {
-        let localContext = new FileCodeBlockBeforeSubContext(this.context, this.state);
+        const localContext = new FileCodeBlockBeforeSubContext(this.context, this.state);
         this.enterRule(localContext, 140, BSLParser.RULE_fileCodeBlockBeforeSub);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3601,7 +3601,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public fileCodeBlock(): FileCodeBlockContext {
-        let localContext = new FileCodeBlockContext(this.context, this.state);
+        const localContext = new FileCodeBlockContext(this.context, this.state);
         this.enterRule(localContext, 142, BSLParser.RULE_fileCodeBlock);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3624,7 +3624,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public codeBlock(): CodeBlockContext {
-        let localContext = new CodeBlockContext(this.context, this.state);
+        const localContext = new CodeBlockContext(this.context, this.state);
         this.enterRule(localContext, 144, BSLParser.RULE_codeBlock);
         try {
             let alternative: number;
@@ -3674,7 +3674,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public numeric(): NumericContext {
-        let localContext = new NumericContext(this.context, this.state);
+        const localContext = new NumericContext(this.context, this.state);
         this.enterRule(localContext, 146, BSLParser.RULE_numeric);
         let _la: number;
         try {
@@ -3704,7 +3704,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public paramList(): ParamListContext {
-        let localContext = new ParamListContext(this.context, this.state);
+        const localContext = new ParamListContext(this.context, this.state);
         this.enterRule(localContext, 148, BSLParser.RULE_paramList);
         let _la: number;
         try {
@@ -3744,7 +3744,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public param(): ParamContext {
-        let localContext = new ParamContext(this.context, this.state);
+        const localContext = new ParamContext(this.context, this.state);
         this.enterRule(localContext, 150, BSLParser.RULE_param);
         let _la: number;
         try {
@@ -3803,7 +3803,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public defaultValue(): DefaultValueContext {
-        let localContext = new DefaultValueContext(this.context, this.state);
+        const localContext = new DefaultValueContext(this.context, this.state);
         this.enterRule(localContext, 152, BSLParser.RULE_defaultValue);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -3826,7 +3826,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public constValue(): ConstValueContext {
-        let localContext = new ConstValueContext(this.context, this.state);
+        const localContext = new ConstValueContext(this.context, this.state);
         this.enterRule(localContext, 154, BSLParser.RULE_constValue);
         let _la: number;
         try {
@@ -3920,7 +3920,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public multilineString(): MultilineStringContext {
-        let localContext = new MultilineStringContext(this.context, this.state);
+        const localContext = new MultilineStringContext(this.context, this.state);
         this.enterRule(localContext, 156, BSLParser.RULE_multilineString);
         let _la: number;
         try {
@@ -3980,7 +3980,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public string_(): StringContext {
-        let localContext = new StringContext(this.context, this.state);
+        const localContext = new StringContext(this.context, this.state);
         this.enterRule(localContext, 158, BSLParser.RULE_string);
         let _la: number;
         try {
@@ -4030,7 +4030,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public statement(): StatementContext {
-        let localContext = new StatementContext(this.context, this.state);
+        const localContext = new StatementContext(this.context, this.state);
         this.enterRule(localContext, 160, BSLParser.RULE_statement);
         try {
             this.state = 742;
@@ -4195,7 +4195,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public assignment(): AssignmentContext {
-        let localContext = new AssignmentContext(this.context, this.state);
+        const localContext = new AssignmentContext(this.context, this.state);
         this.enterRule(localContext, 162, BSLParser.RULE_assignment);
         let _la: number;
         try {
@@ -4253,7 +4253,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public callParamList(): CallParamListContext {
-        let localContext = new CallParamListContext(this.context, this.state);
+        const localContext = new CallParamListContext(this.context, this.state);
         this.enterRule(localContext, 164, BSLParser.RULE_callParamList);
         let _la: number;
         try {
@@ -4293,7 +4293,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public callParam(): CallParamContext {
-        let localContext = new CallParamContext(this.context, this.state);
+        const localContext = new CallParamContext(this.context, this.state);
         this.enterRule(localContext, 166, BSLParser.RULE_callParam);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -4324,7 +4324,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public expression(): ExpressionContext {
-        let localContext = new ExpressionContext(this.context, this.state);
+        const localContext = new ExpressionContext(this.context, this.state);
         this.enterRule(localContext, 168, BSLParser.RULE_expression);
         let _la: number;
         try {
@@ -4411,7 +4411,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public operation(): OperationContext {
-        let localContext = new OperationContext(this.context, this.state);
+        const localContext = new OperationContext(this.context, this.state);
         this.enterRule(localContext, 170, BSLParser.RULE_operation);
         try {
             this.state = 804;
@@ -4490,7 +4490,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public compareOperation(): CompareOperationContext {
-        let localContext = new CompareOperationContext(this.context, this.state);
+        const localContext = new CompareOperationContext(this.context, this.state);
         this.enterRule(localContext, 172, BSLParser.RULE_compareOperation);
         let _la: number;
         try {
@@ -4520,7 +4520,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public boolOperation(): BoolOperationContext {
-        let localContext = new BoolOperationContext(this.context, this.state);
+        const localContext = new BoolOperationContext(this.context, this.state);
         this.enterRule(localContext, 174, BSLParser.RULE_boolOperation);
         let _la: number;
         try {
@@ -4550,7 +4550,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public unaryModifier(): UnaryModifierContext {
-        let localContext = new UnaryModifierContext(this.context, this.state);
+        const localContext = new UnaryModifierContext(this.context, this.state);
         this.enterRule(localContext, 176, BSLParser.RULE_unaryModifier);
         let _la: number;
         try {
@@ -4580,7 +4580,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public member(): MemberContext {
-        let localContext = new MemberContext(this.context, this.state);
+        const localContext = new MemberContext(this.context, this.state);
         this.enterRule(localContext, 178, BSLParser.RULE_member);
         let _la: number;
         try {
@@ -4682,7 +4682,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public newExpression(): NewExpressionContext {
-        let localContext = new NewExpressionContext(this.context, this.state);
+        const localContext = new NewExpressionContext(this.context, this.state);
         this.enterRule(localContext, 180, BSLParser.RULE_newExpression);
         let _la: number;
         try {
@@ -4732,7 +4732,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public typeName(): TypeNameContext {
-        let localContext = new TypeNameContext(this.context, this.state);
+        const localContext = new TypeNameContext(this.context, this.state);
         this.enterRule(localContext, 182, BSLParser.RULE_typeName);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -4755,7 +4755,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public methodCall(): MethodCallContext {
-        let localContext = new MethodCallContext(this.context, this.state);
+        const localContext = new MethodCallContext(this.context, this.state);
         this.enterRule(localContext, 184, BSLParser.RULE_methodCall);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -4780,7 +4780,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public globalMethodCall(): GlobalMethodCallContext {
-        let localContext = new GlobalMethodCallContext(this.context, this.state);
+        const localContext = new GlobalMethodCallContext(this.context, this.state);
         this.enterRule(localContext, 186, BSLParser.RULE_globalMethodCall);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -4805,7 +4805,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public methodName(): MethodNameContext {
-        let localContext = new MethodNameContext(this.context, this.state);
+        const localContext = new MethodNameContext(this.context, this.state);
         this.enterRule(localContext, 188, BSLParser.RULE_methodName);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -4828,7 +4828,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public complexIdentifier(): ComplexIdentifierContext {
-        let localContext = new ComplexIdentifierContext(this.context, this.state);
+        const localContext = new ComplexIdentifierContext(this.context, this.state);
         this.enterRule(localContext, 190, BSLParser.RULE_complexIdentifier);
         let _la: number;
         try {
@@ -4892,7 +4892,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public modifier(): ModifierContext {
-        let localContext = new ModifierContext(this.context, this.state);
+        const localContext = new ModifierContext(this.context, this.state);
         this.enterRule(localContext, 192, BSLParser.RULE_modifier);
         try {
             this.state = 868;
@@ -4935,7 +4935,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public acceptor(): AcceptorContext {
-        let localContext = new AcceptorContext(this.context, this.state);
+        const localContext = new AcceptorContext(this.context, this.state);
         this.enterRule(localContext, 194, BSLParser.RULE_acceptor);
         try {
             let alternative: number;
@@ -4991,7 +4991,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public lValue(): LValueContext {
-        let localContext = new LValueContext(this.context, this.state);
+        const localContext = new LValueContext(this.context, this.state);
         this.enterRule(localContext, 196, BSLParser.RULE_lValue);
         let _la: number;
         try {
@@ -5038,7 +5038,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public accessCall(): AccessCallContext {
-        let localContext = new AccessCallContext(this.context, this.state);
+        const localContext = new AccessCallContext(this.context, this.state);
         this.enterRule(localContext, 198, BSLParser.RULE_accessCall);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -5063,7 +5063,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public accessIndex(): AccessIndexContext {
-        let localContext = new AccessIndexContext(this.context, this.state);
+        const localContext = new AccessIndexContext(this.context, this.state);
         this.enterRule(localContext, 200, BSLParser.RULE_accessIndex);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -5090,7 +5090,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public accessProperty(): AccessPropertyContext {
-        let localContext = new AccessPropertyContext(this.context, this.state);
+        const localContext = new AccessPropertyContext(this.context, this.state);
         this.enterRule(localContext, 202, BSLParser.RULE_accessProperty);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -5115,7 +5115,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public doCall(): DoCallContext {
-        let localContext = new DoCallContext(this.context, this.state);
+        const localContext = new DoCallContext(this.context, this.state);
         this.enterRule(localContext, 204, BSLParser.RULE_doCall);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -5142,7 +5142,7 @@ export class BSLParser extends antlr.Parser {
     }
 
     public compoundStatement(): CompoundStatementContext {
-        let localContext = new CompoundStatementContext(this.context, this.state);
+        const localContext = new CompoundStatementContext(this.context, this.state);
         this.enterRule(localContext, 206, BSLParser.RULE_compoundStatement);
         try {
             this.state = 914;
