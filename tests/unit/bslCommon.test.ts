@@ -1,5 +1,10 @@
-import { FunctionContext, ProcedureContext } from "../../src/antlr/generated/BSLParser";
-import { createParser } from "./utils";
+import {
+    CompoundStatementContext,
+    FunctionContext,
+    ProcedureContext,
+    StatementContext,
+} from "../../src/antlr/generated/BSLParser";
+import { createParser } from "../../src/parser";
 
 const prepareBslCode = (code: string) => {
     return code.replace(/(?:^\s+)|(\s+$)/g, "");
@@ -78,7 +83,28 @@ const buildBslFunction = (options: {
     return `${funcDef}\n${funcBody}${isEmptyString(funcBody) ? "" : "\n"}${funcEnd}`;
 };
 
-describe("Bsl procedures tests", () => {
+describe("Bsl functions tests", () => {
+    test("check region", () => {
+        const bslCode = prepareBslCode(`
+        #Область Область1
+            Процедура Тест1()
+                Если Истина Тогда
+                КонецЕсли;
+            КонецПроцедуры
+            #Область Область1Область1
+            #КонецОбласти
+        #КонецОбласти
+
+        #Область Область2
+        #КонецОбласти
+        `);
+
+        const parser = createParser(bslCode);
+        const module = parser.parseModule();
+        const parseInfo = parser.parsingInfo;
+        expect(parseInfo?.regions.length === 2).toBe(true);
+
+    });
     test("check simple procedure", () => {
         const bslCode = buildBslFunction({
             name: "ПроцедураТест",
@@ -111,7 +137,7 @@ describe("Bsl procedures tests", () => {
         expect(procDeclaration.paramList()).toBe(null);
     });
 
-    test("check procedure full signature", () => {
+    test("check function with full signature", () => {
         const testItem = (rawData: Parameters<typeof buildBslFunction>[0]) => {
             const bslCode = buildBslFunction(rawData);
             const parser = createParser(bslCode);
@@ -155,6 +181,18 @@ describe("Bsl procedures tests", () => {
                     );
                 }, true),
             ).toBe(true);
+
+            // Check has return value if is no void function or not return value if is procedure
+            const returnStatement = rawData.isVoid
+                ? null
+                : (func as FunctionContext)
+                      .subCodeBlock()
+                      .codeBlock()
+                      .statement()
+                      .filter((s) => !!s.compoundStatement()?.returnStatement())
+                      .at(0) ?? null;
+
+            expect(!!returnStatement).toBe(!rawData.isVoid);
         };
 
         const rawData = {
