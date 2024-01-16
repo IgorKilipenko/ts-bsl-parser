@@ -1,115 +1,46 @@
-import {
-    CompoundStatementContext,
-    FunctionContext,
-    ProcedureContext,
-    StatementContext,
-} from "../../src/antlr/generated/BSLParser";
+import { FunctionContext, ProcedureContext } from "../../src/antlr/generated/BSLParser";
 import { createParser } from "../../src/parser";
+import { RegionTestUtils } from "./utils/regionTestingUtils";
+import { TestingUtils } from "./utils/testingUtils";
 
-const prepareBslCode = (code: string) => {
-    return code.replace(/(?:^\s+)|(\s+$)/g, "");
-};
-
-const removeArgDefVal = (arg: string) => {
-    return arg.replace(/\s*=\s*[\S]+$/, "");
-};
-
-const parseStrArg = (arg: string) => {
-    const pattern = /^\s*(?<name>\S+)(?:\s*=\s*(?<defaultValue>\S+))?\s*$/;
-    const m = pattern.exec(arg);
-    if (!m || !m.groups) {
-        return null;
-    }
-
-    if (!m.groups.name) {
-        return null;
-    }
-
-    return { ...(m.groups as typeof m.groups & { name: string; defaultValue?: string }) };
-};
-
-const buildBslFunction = (options: {
-    isVoid?: boolean;
-    name: string;
-    body?: string;
-    args?: string[];
-    isPublic?: boolean;
-    isAsync?: boolean;
-}) => {
-    const isEmptyString = (line: string) => {
-        return !/\S/.test(line);
-    };
-
-    const replaceIndents = <T extends string | string[] = string[]>(
-        data: T,
-        sourceCount?: number,
-        preprocess?: (line: string) => string,
-    ): T => {
-        const isArray = Array.isArray(data);
-        let line = Array.isArray(data) ? data.find((line) => !isEmptyString(line)) ?? "" : (data as string);
-
-        if (!isArray && isEmptyString(line)) {
-            return line as T;
-        }
-
-        sourceCount = sourceCount ?? /(?<=^\s+|^)\S/.exec(line)?.index ?? 0;
-
-        if (!isArray) {
-            if (sourceCount > 0) {
-                line = line.replace(new RegExp(`^\\s{${sourceCount}}`), "");
-            }
-
-            return `${" ".repeat(4)}${line}` as T;
-        }
-
-        return data.reduce<string[]>((res, line) => {
-            let buf = replaceIndents(line, sourceCount!);
-            buf = preprocess ? preprocess(buf) : buf;
-            res.push(buf);
-            return res;
-        }, []) as T;
-    };
-
-    const { isVoid = false, name, args = [], body = "", isPublic = false, isAsync = false } = options;
-    const funcDef = `${isAsync ? "Асинх " : ""}${isVoid ? "Процедура" : "Функция"} ${name}(${args.join(", ")})${
-        isPublic ? " Экспорт" : ""
-    }`;
-    const funcBody = replaceIndents(body.split(/(?:\r?\n)+/)).reduce<string>((res, line, i, arr) => {
-        res += `${replaceIndents(line)}${i < arr.length - 1 ? "\n" : ""}`;
-        return res;
-    }, "");
-    const funcEnd = `Конец${isVoid ? "Процедуры" : "Функции"}`;
-
-    return `${funcDef}\n${funcBody}${isEmptyString(funcBody) ? "" : "\n"}${funcEnd}`;
-};
-
-describe("Bsl functions tests", () => {
+describe("Bsl regions tests", () => {
     test("check region", () => {
-        const bslCode = prepareBslCode(`
+        const bslCode = TestingUtils.prepareBslCode(`
         #Область Область1
+            Перем пер1;
             Процедура Тест1()
                 Если Истина Тогда
                 КонецЕсли;
             КонецПроцедуры
             #Область Область1Область1
+                Процедура Тест1_1()
+                    Если Истина Тогда
+                    КонецЕсли;
+                КонецПроцедуры
+                Процедура Тест1_2()
+                    Если Истина Тогда
+                    КонецЕсли;
+                КонецПроцедуры
             #КонецОбласти
         #КонецОбласти
-
         #Область Область2
         #КонецОбласти
         `);
 
         const parser = createParser(bslCode);
-        const module = parser.parseModule();
-        const parseInfo = parser.parsingInfo;
-        expect(parseInfo?.regions.length === 2).toBe(true);
-
+        const { parsingInfo } = parser.parseModule();
+        expect(parsingInfo.regions.length).toBe(2);
+        expect(parsingInfo.activeContextQueue.length).toBe(4);
+        expect(RegionTestUtils.checkRegionsQueue(parsingInfo.activeContextQueue)).toBe(true);
     });
+});
+
+describe("Bsl functions tests", () => {
     test("check simple procedure", () => {
-        const bslCode = buildBslFunction({
+        const bslCode = TestingUtils.buildBslFunction({
             name: "ПроцедураТест",
             isVoid: true,
-            body: prepareBslCode(`
+            body: TestingUtils.prepareBslCode(`
                     Сообщить("Текст");
                     `),
         });
@@ -120,7 +51,7 @@ describe("Bsl functions tests", () => {
     });
 
     test("check procedure declaration without args", () => {
-        const bslCode = buildBslFunction({
+        const bslCode = TestingUtils.buildBslFunction({
             name: "ПроцедураТест",
             isVoid: true,
         });
@@ -138,8 +69,8 @@ describe("Bsl functions tests", () => {
     });
 
     test("check function with full signature", () => {
-        const testItem = (rawData: Parameters<typeof buildBslFunction>[0]) => {
-            const bslCode = buildBslFunction(rawData);
+        const testItem = (rawData: Parameters<typeof TestingUtils.buildBslFunction>[0]) => {
+            const bslCode = TestingUtils.buildBslFunction(rawData);
             const parser = createParser(bslCode);
 
             const func = rawData.isVoid ? parser.procedure() : parser.function_();
@@ -177,7 +108,10 @@ describe("Bsl functions tests", () => {
             expect(
                 rawData.args?.reduce<boolean>((res, rawArg) => {
                     return (
-                        res && !!args.find((funcArg) => funcArg.IDENTIFIER().symbol.text === removeArgDefVal(rawArg))
+                        res &&
+                        !!args.find(
+                            (funcArg) => funcArg.IDENTIFIER().symbol.text === TestingUtils.removeArgDefVal(rawArg),
+                        )
                     );
                 }, true),
             ).toBe(true);
@@ -210,7 +144,7 @@ describe("Bsl functions tests", () => {
 
 describe("Bsl functions tests", () => {
     test("check simple function", () => {
-        const bslCode = prepareBslCode(`
+        const bslCode = TestingUtils.prepareBslCode(`
         Функция ТестФункция()
         КонецФункции
         `);
