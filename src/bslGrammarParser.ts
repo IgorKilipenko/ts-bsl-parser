@@ -10,28 +10,29 @@ export class BslGrammarParser extends BSLParserBase implements Disposable {
         return new BslGrammarParser(data);
     }
 
-    private _listener: BslListener | null = null;
+    private _listener: BslListener = new BslListener();
 
     constructor(input: TokenStream | string) {
         super(typeof input === "string" ? BslGrammarLexer.createTokenStream(input as string) : (input as TokenStream));
+        this.addParseListener(this._listener);
     }
 
-    public get parsingInfo(): IParsingInfo | null {
-        return this._listener?.parsingInfo ?? null;
+    public get parsingInfo(): IParsingInfo {
+        return this._listener.parsingInfo;
     }
 
-    public parseModule(): FileContext {
-        return this.file();
+    public parseModule(): { ctx: FileContext; parsingInfo: IParsingInfo } {
+        const ctx = this.file();
+        const parsingInfo: IParsingInfo = this.parsingInfo!;
+        console.assert(parsingInfo !== null);
+
+        return {
+            ctx,
+            parsingInfo,
+        };
     }
 
     public override file(): FileContext {
-        if (this._listener !== null) {
-            this.removeParseListener(this._listener);
-        }
-
-        this._listener = new BslListener();
-        this.addParseListener(this._listener);
-
         return super.file();
     }
 

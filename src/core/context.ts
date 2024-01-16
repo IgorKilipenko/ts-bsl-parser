@@ -1,10 +1,12 @@
-import { type ParseTree, ParserRuleContext } from "antlr4ng";
+import type { TerminalNode, ParseTree } from "antlr4ng";
+import { ParserRuleContext } from "antlr4ng";
 import { FileContext } from "../antlr/generated/BSLParser";
-import type { BslRawRegion } from "./bslCodeEntities";
+
+export interface WithTrailingSemicolon {
+    SEMICOLON: () => TerminalNode | null;
+}
 
 export class BslParserRuleContext extends ParserRuleContext {
-    private _regions: Array<BslRawRegion> | null = null;
-
     private _intentIndex: number | null = null;
 
     constructor(parent: ParserRuleContext | null, invokingStateNumber: number) {
@@ -15,7 +17,7 @@ export class BslParserRuleContext extends ParserRuleContext {
         return this instanceof FileContext && this.parent === null;
     }
 
-    public get intentIndex() : number | null {
+    public get intentIndex(): number | null {
         return this._intentIndex;
     }
 
@@ -23,15 +25,20 @@ export class BslParserRuleContext extends ParserRuleContext {
         this._intentIndex = value;
     }
 
-    public set regions(value: Array<Readonly<BslRawRegion>>) {
-        this._regions = value;
+    public hasTrailingSemi: boolean = false;
+
+    public get isHasTrailingSemi(): boolean | null {
+         //- if (this instanceof ModuleVarContext) {
+         //-     return (this as ModuleVarContext).SEMICOLON() !== null;
+         //- }
+        const obj = this as unknown as WithTrailingSemicolon;
+        return typeof obj["SEMICOLON"] === 'function' ? obj.SEMICOLON() !== null : null;
     }
 
-    public get regions(): Array<Readonly<BslRawRegion>> | null {
-        return this._regions !== null ? [...this._regions] : null;
-    }
-
-    public findAllNodes<T extends ParserRuleContext = ParserRuleContext>({filter, ...options}: {
+    public findAllNodes<T extends ParserRuleContext = ParserRuleContext>({
+        filter,
+        ...options
+    }: {
         ctxType?: new (...args: unknown[]) => T;
         filter?: (node: T) => boolean;
     }): Array<T> | null {

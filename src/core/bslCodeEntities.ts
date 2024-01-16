@@ -1,4 +1,14 @@
-import type { RegionStartContext, RegionNameContext, RegionEndContext, FunctionContext, ProcedureContext } from "../antlr/generated/BSLParser";
+import type {
+    RegionStartContext,
+    RegionNameContext,
+    RegionEndContext,
+    FuncDeclarationContext,
+    ParamContext,
+    ProcDeclarationContext,
+    StatementContext,
+} from "../antlr/generated/BSLParser";
+import { FunctionContext, ProcedureContext, ReturnStatementContext } from "../antlr/generated/BSLParser";
+import type { BslParserRuleContext } from "./context";
 
 export interface IBslRawRegion {
     start: RegionStartContext | null;
@@ -38,7 +48,7 @@ export class BslRawRegion implements IBslRawRegion {
         this.parent = options.parent ?? null;
         this.regions = options.regions ?? null;
 
-        console.assert(Object.values(options).find(v => v !== null && v !== undefined));
+        console.assert(Object.values(options).find((v) => v !== null && v !== undefined));
     }
 }
 
@@ -94,3 +104,83 @@ export class BslModule implements IBslModule {
 export interface IBslCodeBlock extends IBslCodeEntity {}
 
 export interface IBslFunction extends IBslCodeEntity {}
+
+export class BslRawFuncArgument {
+    private readonly _context: ParamContext;
+
+    constructor(context: ParamContext) {
+        this._context = context;
+    }
+
+    public get name(): string | null {
+        return this._context.IDENTIFIER().symbol.text;
+    }
+}
+
+class IBslRaw<T extends BslParserRuleContext> {
+    protected readonly _parseContext: T;
+
+    constructor(parseContext: T) {
+        this._parseContext = parseContext;
+    }
+}
+
+export class BslRawFunction<T extends FunctionContext | ProcedureContext> extends IBslRaw<T> {
+    private readonly _declaration: FuncDeclarationContext | ProcDeclarationContext;
+
+    private readonly _args: ParamContext[];
+
+    private readonly _codeBlock: StatementContext[];
+
+    private readonly _isVoid: boolean;
+
+    constructor(parseContext: T) {
+        super(parseContext);
+
+        this._isVoid = parseContext instanceof ProcedureContext;
+        this._declaration =
+            parseContext instanceof FunctionContext ? parseContext.funcDeclaration() : parseContext.procDeclaration();
+        this._args = this._declaration.paramList()?.param() || [];
+        this._codeBlock = this._parseContext.subCodeBlock().codeBlock().statement();
+    }
+
+    public get name(): string | null {
+        return this._declaration.subName().IDENTIFIER().symbol.text;
+    }
+
+    public get isPublic(): boolean {
+        return !!this._declaration.EXPORT_KEYWORD();
+    }
+
+    public get isAsync(): boolean {
+        return !!this._declaration.ASYNC_KEYWORD();
+    }
+
+    public get args(): ParamContext[] {
+        return this._args;
+    }
+
+    public get isVoid(): boolean {
+        return this._isVoid;
+    }
+
+    public get hasParsingExceptions(): boolean {
+        return !!this._parseContext.exception && !!this._declaration.exception;
+    }
+
+    public get returnStatements(): ReturnStatementContext[] | null {
+        return this._isVoid
+            ? null
+            : this._codeBlock
+                  //.filter((s) => !!s.compoundStatement()?.returnStatement());
+                  //.filter((s) => !!s.compoundStatement()?.findAllNodes({ctxType: ReturnStatementContext}));
+                  .reduce<ReturnStatementContext[]>((res, curr) => {
+                      const items = curr.compoundStatement()?.findAllNodes({ ctxType: ReturnStatementContext }) ?? null;
+                      if (items && items.length > 0) {
+                          res.push(...items);
+                      }
+
+                      return res;
+                  }, []);
+    }
+}

@@ -1,7 +1,8 @@
-import type { TerminalNode } from "antlr4ng";
+import type { ModuleVarContext, ModuleVarsContext } from "../antlr/generated/BSLParser";
 import { FileContext, RegionStartContext, BSLParser, RegionEndContext } from "../antlr/generated/BSLParser";
 import { BSLParserListener as BslListenerBase } from "../antlr/generated/BSLParserListener";
-import { BslModule, BslRawRegion, IBslRawRegion } from "./bslCodeEntities";
+import type { IBslRawRegion } from "./bslCodeEntities";
+import { BslModule, BslRawRegion } from "./bslCodeEntities";
 import { BslSyntaxError } from "./bslSyntaxErrors";
 import type { BslParserRuleContext } from "./context";
 
@@ -47,7 +48,6 @@ export class BslListener extends BslListenerBase {
         this._initParseInfo();
         this._isGlobalContext = true;
 
-        ctx.regions = this._regions;
         this._module = new BslModule();
         this._activeContext.push({ ctx, innerIndex: 0, isActive: true } as ActiveContext);
     };
@@ -65,9 +65,6 @@ export class BslListener extends BslListenerBase {
         openedActiveCtx.isActive = false;
 
         this._regions = this._buildRegionsTree();
-
-        //- ctx.regions = this._buildRegionsTree();
-        // ctx.regions = this._buildRegionsTree();
     };
 
     public override exitRegionStart = (ctx: RegionStartContext) => {
@@ -121,6 +118,16 @@ export class BslListener extends BslListenerBase {
 
         openedActiveCtx.isActive = false;
         openedActiveCtx.endCtx = ctx;
+    };
+
+    public override exitModuleVar = (ctx: ModuleVarContext) => {};
+
+    public override exitModuleVars = (ctx: ModuleVarsContext) => {
+        const vars = ctx.moduleVar();
+        vars.forEach((v) => {
+            v.intentIndex = 0;
+            v.hasTrailingSemi = v.SEMICOLON() !== null;
+        });
     };
 
     private _buildRegionsTree() {

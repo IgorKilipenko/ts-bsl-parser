@@ -3,7 +3,6 @@ import { CharStream, CharStreams, CommonTokenStream, TerminalNode } from "antlr4
 import { BslGrammarParser } from "./bslGrammarParser";
 import { BslGrammarLexer } from "./bslGrammarLexer";
 import { BslVisitor } from "./bslVisitor";
-import { BslListener } from "./core/bslListener";
 
 export { BslGrammarParser, CharStream, CommonTokenStream, BslGrammarLexer, BslVisitor, TerminalNode };
 export * from "./core/context";
