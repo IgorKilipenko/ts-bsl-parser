@@ -1,8 +1,8 @@
-import type { ModuleVarContext, ModuleVarsContext } from "../antlr/generated/BSLParser";
+import type { FunctionContext, ModuleVarContext, ModuleVarsContext } from "../antlr/generated/BSLParser";
 import { FileContext, RegionStartContext, BSLParser, RegionEndContext } from "../antlr/generated/BSLParser";
 import { BSLParserListener as BslListenerBase } from "../antlr/generated/BSLParserListener";
 import type { IBslRawRegion } from "./bslCodeEntities";
-import { BslModule, BslRawRegion } from "./bslCodeEntities";
+import { BslModule, BslRawFunction, BslRawRegion } from "./bslCodeEntities";
 import { BslSyntaxError } from "./bslSyntaxErrors";
 import type { BslParserRuleContext } from "./context";
 
@@ -26,7 +26,7 @@ export class BslListener extends BslListenerBase {
 
     private _regions = new Array<BslRawRegion>();
 
-    private readonly _activeContext: Array<ActiveContext> = [];
+    private readonly _activeContextQueue: Array<ActiveContext> = [];
 
     private _syntaxErrors: Array<BslSyntaxError> | null = null;
 
@@ -35,7 +35,7 @@ export class BslListener extends BslListenerBase {
     public get parsingInfo(): IParsedInfo {
         return {
             regions: [...this._regions],
-            activeContextQueue: [...this._activeContext],
+            activeContextQueue: [...this._activeContextQueue],
         };
     }
 
@@ -49,14 +49,14 @@ export class BslListener extends BslListenerBase {
         this._isGlobalContext = true;
 
         this._module = new BslModule();
-        this._activeContext.push({ ctx, innerIndex: 0, isActive: true } as ActiveContext);
+        this._activeContextQueue.push({ ctx, innerIndex: 0, isActive: true } as ActiveContext);
     };
 
     public override exitFile = (ctx: FileContext) => {
         this._isGlobalContext = false;
-        console.assert(this._activeContext.length > 0 && this._activeContext[0].isActive);
+        console.assert(this._activeContextQueue.length > 0 && this._activeContextQueue[0].isActive);
 
-        const openedActiveCtx = this._activeContext.find(
+        const openedActiveCtx = this._activeContextQueue.find(
             (activeCtx) => activeCtx.isActive && activeCtx.ctx instanceof FileContext,
         );
         if (!openedActiveCtx) {
@@ -77,17 +77,17 @@ export class BslListener extends BslListenerBase {
             return;
         }
 
-        const innerIndex = this._activeContext.reduce<number>((res, cur) => {
+        const innerIndex = this._activeContextQueue.reduce<number>((res, cur) => {
             res += cur.isActive && cur.isRegion ? 1 : 0;
             return res;
         }, 0);
 
         const newActiveCtx: ActiveContext = { ctx, innerIndex, isActive: true, isRegion: true };
-        this._activeContext.push(newActiveCtx);
+        this._activeContextQueue.push(newActiveCtx);
 
         const parentCtx =
             innerIndex > 0
-                ? this._activeContext.findLast((activeCtx) => {
+                ? this._activeContextQueue.findLast((activeCtx) => {
                       return activeCtx.isRegion && activeCtx.innerIndex === innerIndex - 1 && activeCtx.isActive;
                   })
                 : null;
@@ -110,7 +110,7 @@ export class BslListener extends BslListenerBase {
             return;
         }
 
-        const openedActiveCtx = this._activeContext.findLast((activeCtx) => activeCtx.isActive && activeCtx.isRegion);
+        const openedActiveCtx = this._activeContextQueue.findLast((activeCtx) => activeCtx.isActive && activeCtx.isRegion);
         if (!openedActiveCtx) {
             this._syntaxErrors = this._syntaxErrors ?? [new BslSyntaxError("Closing not opened region", ctx)];
             return;
@@ -120,14 +120,19 @@ export class BslListener extends BslListenerBase {
         openedActiveCtx.endCtx = ctx;
     };
 
-    public override exitModuleVar = (ctx: ModuleVarContext) => {};
-
     public override exitModuleVars = (ctx: ModuleVarsContext) => {
         const vars = ctx.moduleVar();
         vars.forEach((v) => {
             v.intentIndex = 0;
-            v.hasTrailingSemi = v.SEMICOLON() !== null;
+            //- v.hasTrailingSemi = v.SEMICOLON() !== null;
         });
+    };
+
+    public override exitFunction = (ctx: FunctionContext) => {
+        const func = new BslRawFunction(ctx);
+        const activeRegion = this._activeContextQueue.findLast(ctx => ctx.isRegion && ctx.isActive);
+        const intentIndex = (activeRegion?.innerIndex ?? 0) + 1;
+        func.parseContext.intentIndex = intentIndex;
     };
 
     private _buildRegionsTree() {
@@ -157,7 +162,7 @@ export class BslListener extends BslListenerBase {
             return region;
         };
 
-        return this._activeContext
+        return this._activeContextQueue
             .filter((ctx) => ctx.isRegion && !ctx.parentCtx)
             .map((ctx) => convertToRawRegion(ctx));
     }

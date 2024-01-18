@@ -17,7 +17,7 @@ export interface IBslRawRegion {
     innerIndex: number;
     parent?: IBslRawRegion | null;
     regions?: Array<IBslRawRegion> | null;
-    functions?: Array<FunctionContext | ProcedureContext> | null;
+    functions?: Array<BslRawFunction>;
 }
 
 export class BslRawRegion implements IBslRawRegion {
@@ -33,6 +33,8 @@ export class BslRawRegion implements IBslRawRegion {
 
     public readonly regions: Array<IBslRawRegion> | null = null;
 
+    public readonly functions: Array<BslRawFunction> = [];
+
     constructor(options: {
         start?: RegionStartContext | null;
         end?: RegionEndContext | null;
@@ -41,14 +43,14 @@ export class BslRawRegion implements IBslRawRegion {
         parent?: IBslRawRegion | null;
         regions?: Array<IBslRawRegion> | null;
     }) {
+        console.assert(Object.values(options).find((v) => v !== null && v !== undefined));
+
         this.start = options.start ?? null;
         this.end = options.end ?? null;
         this.name = options.name ?? null;
         this.innerIndex = options.innerIndex ?? 0;
         this.parent = options.parent ?? null;
         this.regions = options.regions ?? null;
-
-        console.assert(Object.values(options).find((v) => v !== null && v !== undefined));
     }
 }
 
@@ -125,7 +127,9 @@ class IBslRaw<T extends BslParserRuleContext> {
     }
 }
 
-export class BslRawFunction<T extends FunctionContext | ProcedureContext> extends IBslRaw<T> {
+export class BslRawFunction<
+    T extends FunctionContext | ProcedureContext = FunctionContext | ProcedureContext,
+> extends IBslRaw<T> {
     private readonly _declaration: FuncDeclarationContext | ProcDeclarationContext;
 
     private readonly _args: ParamContext[];
@@ -149,11 +153,11 @@ export class BslRawFunction<T extends FunctionContext | ProcedureContext> extend
     }
 
     public get isPublic(): boolean {
-        return !!this._declaration.EXPORT_KEYWORD();
+        return this._declaration.EXPORT_KEYWORD() !== null;
     }
 
     public get isAsync(): boolean {
-        return !!this._declaration.ASYNC_KEYWORD();
+        return !!this._declaration.ASYNC_KEYWORD() !== null;
     }
 
     public get args(): ParamContext[] {
@@ -171,16 +175,19 @@ export class BslRawFunction<T extends FunctionContext | ProcedureContext> extend
     public get returnStatements(): ReturnStatementContext[] | null {
         return this._isVoid
             ? null
-            : this._codeBlock
-                  //.filter((s) => !!s.compoundStatement()?.returnStatement());
-                  //.filter((s) => !!s.compoundStatement()?.findAllNodes({ctxType: ReturnStatementContext}));
-                  .reduce<ReturnStatementContext[]>((res, curr) => {
-                      const items = curr.compoundStatement()?.findAllNodes({ ctxType: ReturnStatementContext }) ?? null;
-                      if (items && items.length > 0) {
-                          res.push(...items);
-                      }
+            : this._codeBlock.reduce<ReturnStatementContext[]>((res, curr) => {
+                  const items = curr.compoundStatement()?.findAllNodes({ ctxType: ReturnStatementContext }) ?? null;
+                  if (items && items.length > 0) {
+                      res.push(...items);
+                  }
 
-                      return res;
-                  }, []);
+                  return res;
+              }, []);
     }
+
+    public get parseContext(): T {
+        return this._parseContext;
+    }
+
+    public parentRegion : IBslRawRegion;
 }

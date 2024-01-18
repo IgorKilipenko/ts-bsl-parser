@@ -137,3 +137,18 @@ describe("Bsl functions tests", () => {
         expect(func && func.exception === null).toBe(true);
     });
 });
+
+describe("Bsl syntax tests", () => {
+    test("Statement without semi d't has exception", () => {
+        const bslCode = `
+        Если Истина Тогда
+        КонецЕсли
+        `;
+
+        const parser = createParser(bslCode);
+        const statement = parser.ifStatement();
+
+        expect(statement.exception).toBeNull();
+        expect(statement.isHasTrailingSemi).toBe(false);
+    });
+});

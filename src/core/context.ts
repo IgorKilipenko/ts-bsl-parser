@@ -25,12 +25,9 @@ export class BslParserRuleContext extends ParserRuleContext {
         this._intentIndex = value;
     }
 
-    public hasTrailingSemi: boolean = false;
+    private _hasTrailingSemi: boolean = false;
 
     public get isHasTrailingSemi(): boolean | null {
-         //- if (this instanceof ModuleVarContext) {
-         //-     return (this as ModuleVarContext).SEMICOLON() !== null;
-         //- }
         const obj = this as unknown as WithTrailingSemicolon;
         return typeof obj["SEMICOLON"] === 'function' ? obj.SEMICOLON() !== null : null;
     }
