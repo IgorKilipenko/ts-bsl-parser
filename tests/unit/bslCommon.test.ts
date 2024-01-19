@@ -1,3 +1,4 @@
+import type { IfStatementContext } from "../../src/antlr/generated/BSLParser";
 import { BslRawFunction, createParser } from "../../src/parser";
 import { RegionTestUtils } from "./utils/regionTestingUtils";
 import { TestingUtils } from "./utils/testingUtils";
@@ -178,16 +179,21 @@ describe("Bsl functions tests", () => {
 });
 
 describe("Bsl syntax tests", () => {
-    test("Statement without semi d't has exception", () => {
-        const bslCode = `
+    test("Statement with & without semi d't has exception", () => {
+        const testItem = (statement: IfStatementContext, withSemi = true) => {
+            expect(statement.exception).toBeNull();
+            expect(statement.isHasTrailingSemi).toBe(withSemi);
+        }
+
+        const bslCode = TestingUtils.prepareBslCode(`
         Если Истина Тогда
         КонецЕсли
-        `;
+        `);
 
-        const parser = createParser(bslCode);
-        const statement = parser.ifStatement();
+        // Without semi
+        testItem(createParser(bslCode).ifStatement(), false);
 
-        expect(statement.exception).toBeNull();
-        expect(statement.isHasTrailingSemi).toBe(false);
+        // With semi
+        testItem(createParser(bslCode + ";").ifStatement(), true);
     });
 });

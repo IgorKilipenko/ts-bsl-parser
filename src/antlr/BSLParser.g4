@@ -175,7 +175,7 @@ continueStatement : CONTINUE_KEYWORD;
 breakStatement    : BREAK_KEYWORD;
 raiseStatement    : RAISE_KEYWORD (doCall | expression)?;
 ifStatement
-    : ifBranch elsifBranch* elseBranch? ENDIF_KEYWORD
+    : ifBranch elsifBranch* elseBranch? ENDIF_KEYWORD SEMICOLON?
     ;
 ifBranch
     : IF_KEYWORD expression THEN_KEYWORD codeBlock
