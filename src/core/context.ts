@@ -7,7 +7,7 @@ export interface WithTrailingSemicolon {
 }
 
 export class BslParserRuleContext extends ParserRuleContext {
-    private _intentIndex: number | null = null;
+    private _indentIndex: number | null = null;
 
     constructor(parent: ParserRuleContext | null, invokingStateNumber: number) {
         super(parent, invokingStateNumber);
@@ -17,15 +17,13 @@ export class BslParserRuleContext extends ParserRuleContext {
         return this instanceof FileContext && this.parent === null;
     }
 
-    public get intentIndex(): number | null {
-        return this._intentIndex;
+    public get indentIndex(): number | null {
+        return this._indentIndex;
     }
 
-    public set intentIndex(value: number) {
-        this._intentIndex = value;
+    public set indentIndex(value: number) {
+        this._indentIndex = value;
     }
-
-    private _hasTrailingSemi: boolean = false;
 
     public get isHasTrailingSemi(): boolean | null {
         const obj = this as unknown as WithTrailingSemicolon;

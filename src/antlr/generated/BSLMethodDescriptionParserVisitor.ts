@@ -1,10 +1,7 @@
+/* eslint-disable no-duplicate-imports */
 // Generated from ./src/antlr/BSLMethodDescriptionParser.g4 by ANTLR 4.13.1
 
 import { AbstractParseTreeVisitor } from "antlr4ng";
-
-
-import { BslParserRuleContext } from "../../core/context";
-
 
 import type { MethodDescriptionContext } from "./BSLMethodDescriptionParser";
 import type { DeprecateContext } from "./BSLMethodDescriptionParser";

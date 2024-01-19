@@ -1,8 +1,7 @@
+/* eslint-disable no-duplicate-imports */
 // Generated from ./src/antlr/SDBLParser.g4 by ANTLR 4.13.1
 
 import { AbstractParseTreeVisitor } from "antlr4ng";
-
-import { BslParserRuleContext } from "../../core/context";
 
 import type { QueryPackageContext } from "./SDBLParser";
 import type { QueriesContext } from "./SDBLParser";

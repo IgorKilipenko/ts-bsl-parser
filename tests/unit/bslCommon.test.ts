@@ -4,33 +4,68 @@ import { TestingUtils } from "./utils/testingUtils";
 
 describe("Bsl regions tests", () => {
     test("check region", () => {
-        const bslCode = TestingUtils.prepareBslCode(`
-        #Область Область1
-            Перем пер1;
-            Процедура Тест1()
+        const bslFunctionsCode = [
+            TestingUtils.buildBslFunction({
+                name: "Тест1",
+                isVoid: true,
+                body: TestingUtils.prepareBslCode(`
                 Если Истина Тогда
                 КонецЕсли;
-            КонецПроцедуры
-            #Область Область1Область1
-                Процедура Тест1_1()
-                    Если Истина Тогда
-                    КонецЕсли;
-                КонецПроцедуры
-                Процедура Тест1_2()
-                    Если Истина Тогда
-                    КонецЕсли;
-                КонецПроцедуры
+                `),
+            }),
+            TestingUtils.buildBslFunction({
+                name: "Тест1_1",
+                isVoid: true,
+                body: TestingUtils.prepareBslCode(`
+                Если Истина Тогда
+                КонецЕсли;
+                `),
+            }),
+            TestingUtils.buildBslFunction({
+                name: "Тест1_2",
+                isVoid: true,
+                body: TestingUtils.prepareBslCode(`
+                Если Истина Тогда
+                КонецЕсли;
+                `),
+            }),
+        ];
+
+        const bslRegionsCode = {
+            get main() {
+                return TestingUtils.prepareBslCode(`
+                #Область Область1
+                    Перем пер1;
+                    ${bslFunctionsCode[0]}
+                    ${this._region2}
+                #КонецОбласти
+                ${this._region3}
+                `);
+            },
+            get _region2() {
+                return TestingUtils.prepareBslCode(`
+                #Область Область1_1
+                    ${bslFunctionsCode[1]}
+                    ${bslFunctionsCode[2]}
+                #КонецОбласти
+                `);
+            },
+            _region3: TestingUtils.prepareBslCode(`
+            #Область Область2
             #КонецОбласти
-        #КонецОбласти
-        #Область Область2
-        #КонецОбласти
-        `);
+            `),
+        };
+
+        const bslCode = TestingUtils.prepareBslCode(bslRegionsCode.main);
 
         const parser = createParser(bslCode);
         const { parsingInfo } = parser.parseModule();
         expect(parsingInfo.regions.length).toBe(2);
         expect(parsingInfo.activeContextQueue.length).toBe(4);
         expect(RegionTestUtils.checkRegionsQueue(parsingInfo.activeContextQueue)).toBe(true);
+
+        expect(parsingInfo.regions.at(0)?.functions?.length).toBe(1);
+        expect(parsingInfo.regions.at(0)?.regions?.at(0)?.functions?.length).toBe(2);
     });
 });
 
@@ -116,12 +151,16 @@ describe("Bsl functions tests", () => {
         };
 
         testItem(rawData);
-        testItem({ ...rawData, isVoid: false, body: `
+        testItem({
+            ...rawData,
+            isVoid: false,
+            body: `
             Если Истина Тогда
                 Возврат 0;
             КонеЕсли;
             Возврат 1;
-        ` });
+        `,
+        });
     });
 });
 

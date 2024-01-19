@@ -1,8 +1,7 @@
+/* eslint-disable no-duplicate-imports */
 // Generated from ./src/antlr/BSLParser.g4 by ANTLR 4.13.1
 
 import type { ErrorNode, ParseTreeListener, ParserRuleContext, TerminalNode } from "antlr4ng";
-
-import { BslParserRuleContext } from "../../core/context";
 
 import type { FileContext } from "./BSLParser";
 import type { Preproc_nativeContext } from "./BSLParser";
@@ -1362,11 +1361,15 @@ export class BSLParserListener implements ParseTreeListener {
      */
     exitCompoundStatement?: (ctx: CompoundStatementContext) => void;
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     visitTerminal(node: TerminalNode): void {}
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     visitErrorNode(node: ErrorNode): void {}
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     enterEveryRule(node: ParserRuleContext): void {}
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     exitEveryRule(node: ParserRuleContext): void {}
 }

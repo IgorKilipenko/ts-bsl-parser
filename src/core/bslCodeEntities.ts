@@ -1,14 +1,89 @@
 import type {
-    RegionStartContext,
     RegionNameContext,
-    RegionEndContext,
     FuncDeclarationContext,
     ParamContext,
     ProcDeclarationContext,
     StatementContext,
 } from "../antlr/generated/BSLParser";
-import { FunctionContext, ProcedureContext, ReturnStatementContext } from "../antlr/generated/BSLParser";
+import {
+    RegionStartContext,
+    RegionEndContext,
+    FunctionContext,
+    ProcedureContext,
+    ReturnStatementContext,
+} from "../antlr/generated/BSLParser";
 import type { BslParserRuleContext } from "./context";
+
+export interface IActiveContext {
+    ctx: BslParserRuleContext;
+    innerIndex: number;
+    isActive: boolean;
+    isRegion?: boolean;
+    endCtx?: BslParserRuleContext | null;
+    childrenCtx?: Array<IActiveContext> | null;
+    parentCtx?: IActiveContext | null;
+    subs: Array<BslRawFunction>;
+}
+
+export class ActiveContext implements IActiveContext {
+    ctx: BslParserRuleContext;
+
+    innerIndex: number;
+
+    isActive: boolean;
+
+    isRegion?: boolean | undefined;
+
+    endCtx?: BslParserRuleContext | null | undefined;
+
+    childrenCtx?: IActiveContext[] | null | undefined;
+
+    parentCtx?: IActiveContext | null | undefined;
+
+    subs: BslRawFunction<FunctionContext | ProcedureContext>[];
+
+    constructor(options: IActiveContext) {
+        this.ctx = options.ctx;
+        this.innerIndex = options.innerIndex;
+        this.isActive = options.isActive;
+        this.isRegion = options.isRegion;
+        this.endCtx = options.endCtx;
+        this.childrenCtx = options.childrenCtx;
+        this.parentCtx = options.parentCtx;
+        this.subs = options.subs;
+    }
+
+    public static isActiveContextObject<T extends object = object>(obj: IActiveContext | T): obj is IActiveContext {
+        return "isActive" in obj && "ctx" in obj && "endCtx" in obj;
+    }
+
+    public static convertToRawRegion(ctx: IActiveContext, parent: BslRawRegion | null = null): BslRawRegion {
+        console.assert(ctx.ctx instanceof RegionStartContext, "Context must be instanceof RegionStartContext");
+        console.assert(ctx.endCtx instanceof RegionEndContext, "End-context must be instanceof RegionEndContext");
+
+        const start = ctx.ctx as RegionStartContext;
+        const end = ctx.endCtx as RegionEndContext;
+        const name = start.regionName();
+        const innerIndex = ctx.innerIndex;
+
+        const region = new BslRawRegion({
+            start,
+            end,
+            name,
+            innerIndex,
+            parent,
+            regions: ctx.childrenCtx?.length ? [] : null,
+            functions: ctx.subs,
+        });
+
+        region.regions &&
+            ctx.childrenCtx?.forEach((c) => {
+                region.regions?.push(ActiveContext.convertToRawRegion(c, region));
+            });
+
+        return region;
+    }
+}
 
 export interface IBslRawRegion {
     start: RegionStartContext | null;
@@ -33,7 +108,7 @@ export class BslRawRegion implements IBslRawRegion {
 
     public readonly regions: Array<IBslRawRegion> | null = null;
 
-    public readonly functions: Array<BslRawFunction> = [];
+    public readonly functions: Array<BslRawFunction>;
 
     constructor(options: {
         start?: RegionStartContext | null;
@@ -42,6 +117,7 @@ export class BslRawRegion implements IBslRawRegion {
         innerIndex?: number | null;
         parent?: IBslRawRegion | null;
         regions?: Array<IBslRawRegion> | null;
+        functions?: Array<BslRawFunction> | null;
     }) {
         console.assert(Object.values(options).find((v) => v !== null && v !== undefined));
 
@@ -51,6 +127,7 @@ export class BslRawRegion implements IBslRawRegion {
         this.innerIndex = options.innerIndex ?? 0;
         this.parent = options.parent ?? null;
         this.regions = options.regions ?? null;
+        this.functions = options.functions ?? [];
     }
 }
 
@@ -189,5 +266,5 @@ export class BslRawFunction<
         return this._parseContext;
     }
 
-    public parentRegion : IBslRawRegion;
+    public parentRegion: IBslRawRegion | null;
 }

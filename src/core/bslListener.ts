@@ -1,24 +1,20 @@
-import type { FunctionContext, ModuleVarContext, ModuleVarsContext } from "../antlr/generated/BSLParser";
-import { FileContext, RegionStartContext, BSLParser, RegionEndContext } from "../antlr/generated/BSLParser";
+import type {
+    FunctionContext,
+    ModuleVarsContext,
+    SubsContext,
+    RegionStartContext,
+    RegionEndContext,
+    SubContext,
+} from "../antlr/generated/BSLParser";
+import { FileContext, BSLParser } from "../antlr/generated/BSLParser";
 import { BSLParserListener as BslListenerBase } from "../antlr/generated/BSLParserListener";
-import type { IBslRawRegion } from "./bslCodeEntities";
-import { BslModule, BslRawFunction, BslRawRegion } from "./bslCodeEntities";
+import type { IActiveContext, IBslRawRegion, BslRawRegion } from "./bslCodeEntities";
+import { ActiveContext, BslModule, BslRawFunction } from "./bslCodeEntities";
 import { BslSyntaxError } from "./bslSyntaxErrors";
-import type { BslParserRuleContext } from "./context";
-
-export interface ActiveContext {
-    ctx: BslParserRuleContext;
-    innerIndex: number;
-    isActive: boolean;
-    isRegion?: boolean;
-    endCtx?: BslParserRuleContext | null;
-    childrenCtx?: Array<ActiveContext> | null;
-    parentCtx?: ActiveContext | null;
-}
 
 export interface IParsedInfo {
     regions: Array<Readonly<IBslRawRegion>>;
-    activeContextQueue: Array<Readonly<ActiveContext>>;
+    activeContextQueue: Array<Readonly<IActiveContext>>;
 }
 
 export class BslListener extends BslListenerBase {
@@ -49,7 +45,13 @@ export class BslListener extends BslListenerBase {
         this._isGlobalContext = true;
 
         this._module = new BslModule();
-        this._activeContextQueue.push({ ctx, innerIndex: 0, isActive: true } as ActiveContext);
+        this._activeContextQueue.push({
+            ctx,
+            innerIndex: 0,
+            isActive: true,
+            subs: [],
+            isRegion: false,
+        } as IActiveContext);
     };
 
     public override exitFile = (ctx: FileContext) => {
@@ -82,7 +84,7 @@ export class BslListener extends BslListenerBase {
             return res;
         }, 0);
 
-        const newActiveCtx: ActiveContext = { ctx, innerIndex, isActive: true, isRegion: true };
+        const newActiveCtx: IActiveContext = { ctx, innerIndex, isActive: true, isRegion: true, subs: [] };
         this._activeContextQueue.push(newActiveCtx);
 
         const parentCtx =
@@ -110,7 +112,9 @@ export class BslListener extends BslListenerBase {
             return;
         }
 
-        const openedActiveCtx = this._activeContextQueue.findLast((activeCtx) => activeCtx.isActive && activeCtx.isRegion);
+        const openedActiveCtx = this._activeContextQueue.findLast(
+            (activeCtx) => activeCtx.isActive && activeCtx.isRegion,
+        );
         if (!openedActiveCtx) {
             this._syntaxErrors = this._syntaxErrors ?? [new BslSyntaxError("Closing not opened region", ctx)];
             return;
@@ -123,47 +127,31 @@ export class BslListener extends BslListenerBase {
     public override exitModuleVars = (ctx: ModuleVarsContext) => {
         const vars = ctx.moduleVar();
         vars.forEach((v) => {
-            v.intentIndex = 0;
-            //- v.hasTrailingSemi = v.SEMICOLON() !== null;
+            v.indentIndex = 0;
         });
     };
 
     public override exitFunction = (ctx: FunctionContext) => {
         const func = new BslRawFunction(ctx);
-        const activeRegion = this._activeContextQueue.findLast(ctx => ctx.isRegion && ctx.isActive);
-        const intentIndex = (activeRegion?.innerIndex ?? 0) + 1;
-        func.parseContext.intentIndex = intentIndex;
+        const activeRegion = this._activeContextQueue.findLast((ctx) => ctx.isRegion && ctx.isActive);
+        const indentIndex = (activeRegion?.innerIndex ?? 0) + 1;
+        func.parseContext.indentIndex = indentIndex;
     };
 
     private _buildRegionsTree() {
-        const convertToRawRegion = (ctx: ActiveContext, parent: BslRawRegion | null = null): BslRawRegion => {
-            console.assert(ctx.ctx instanceof RegionStartContext, "Context must be instanceof RegionStartContext");
-            console.assert(ctx.endCtx instanceof RegionEndContext, "End-context must be instanceof RegionEndContext");
-
-            const start = ctx.ctx as RegionStartContext;
-            const end = ctx.endCtx as RegionEndContext;
-            const name = start.regionName();
-            const innerIndex = ctx.innerIndex;
-
-            const region = new BslRawRegion({
-                start,
-                end,
-                name,
-                innerIndex,
-                parent,
-                regions: ctx.childrenCtx?.length ? [] : null,
-            });
-
-            region.regions &&
-                ctx.childrenCtx?.forEach((c) => {
-                    region.regions?.push(convertToRawRegion(c, region));
-                });
-
-            return region;
-        };
-
         return this._activeContextQueue
             .filter((ctx) => ctx.isRegion && !ctx.parentCtx)
-            .map((ctx) => convertToRawRegion(ctx));
+            .map((ctx) => ActiveContext.convertToRawRegion(ctx));
     }
+
+    public override exitSub = (ctx: SubContext) => {
+        console.assert((ctx.procedure() ?? ctx.function()) !== null);
+
+        const lastActiveRegion = this._activeContextQueue.findLast((reg) => reg.isRegion && reg.isActive) ?? null;
+
+        const func = new BslRawFunction(ctx.procedure() ?? ctx.function()!);
+        const indentIndex = (lastActiveRegion?.innerIndex ?? 0) + 1;
+        func.parseContext.indentIndex = indentIndex;
+        lastActiveRegion?.subs.push(func);
+    };
 }

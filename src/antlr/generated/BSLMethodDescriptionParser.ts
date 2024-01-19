@@ -218,7 +218,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public methodDescription(): MethodDescriptionContext {
-        let localContext = new MethodDescriptionContext(this.context, this.state);
+        const localContext = new MethodDescriptionContext(this.context, this.state);
         this.enterRule(localContext, 0, BSLMethodDescriptionParser.RULE_methodDescription);
         let _la: number;
         try {
@@ -766,7 +766,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public deprecate(): DeprecateContext {
-        let localContext = new DeprecateContext(this.context, this.state);
+        const localContext = new DeprecateContext(this.context, this.state);
         this.enterRule(localContext, 2, BSLMethodDescriptionParser.RULE_deprecate);
         let _la: number;
         try {
@@ -813,7 +813,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public deprecateDescription(): DeprecateDescriptionContext {
-        let localContext = new DeprecateDescriptionContext(this.context, this.state);
+        const localContext = new DeprecateDescriptionContext(this.context, this.state);
         this.enterRule(localContext, 4, BSLMethodDescriptionParser.RULE_deprecateDescription);
         let _la: number;
         try {
@@ -866,7 +866,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public descriptionBlock(): DescriptionBlockContext {
-        let localContext = new DescriptionBlockContext(this.context, this.state);
+        const localContext = new DescriptionBlockContext(this.context, this.state);
         this.enterRule(localContext, 6, BSLMethodDescriptionParser.RULE_descriptionBlock);
         let _la: number;
         try {
@@ -913,7 +913,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public description(): DescriptionContext {
-        let localContext = new DescriptionContext(this.context, this.state);
+        const localContext = new DescriptionContext(this.context, this.state);
         this.enterRule(localContext, 8, BSLMethodDescriptionParser.RULE_description);
         try {
             let alternative: number;
@@ -955,7 +955,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public descriptionString(): DescriptionStringContext {
-        let localContext = new DescriptionStringContext(this.context, this.state);
+        const localContext = new DescriptionStringContext(this.context, this.state);
         this.enterRule(localContext, 10, BSLMethodDescriptionParser.RULE_descriptionString);
         let _la: number;
         try {
@@ -1039,7 +1039,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public examples(): ExamplesContext {
-        let localContext = new ExamplesContext(this.context, this.state);
+        const localContext = new ExamplesContext(this.context, this.state);
         this.enterRule(localContext, 12, BSLMethodDescriptionParser.RULE_examples);
         let _la: number;
         try {
@@ -1091,7 +1091,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public examplesString(): ExamplesStringContext {
-        let localContext = new ExamplesStringContext(this.context, this.state);
+        const localContext = new ExamplesStringContext(this.context, this.state);
         this.enterRule(localContext, 14, BSLMethodDescriptionParser.RULE_examplesString);
         let _la: number;
         try {
@@ -1181,7 +1181,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public callOptions(): CallOptionsContext {
-        let localContext = new CallOptionsContext(this.context, this.state);
+        const localContext = new CallOptionsContext(this.context, this.state);
         this.enterRule(localContext, 16, BSLMethodDescriptionParser.RULE_callOptions);
         let _la: number;
         try {
@@ -1233,7 +1233,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public callOptionsString(): CallOptionsStringContext {
-        let localContext = new CallOptionsStringContext(this.context, this.state);
+        const localContext = new CallOptionsStringContext(this.context, this.state);
         this.enterRule(localContext, 18, BSLMethodDescriptionParser.RULE_callOptionsString);
         let _la: number;
         try {
@@ -1323,7 +1323,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public parameters(): ParametersContext {
-        let localContext = new ParametersContext(this.context, this.state);
+        const localContext = new ParametersContext(this.context, this.state);
         this.enterRule(localContext, 20, BSLMethodDescriptionParser.RULE_parameters);
         let _la: number;
         try {
@@ -1417,7 +1417,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public parameterString(): ParameterStringContext {
-        let localContext = new ParameterStringContext(this.context, this.state);
+        const localContext = new ParameterStringContext(this.context, this.state);
         this.enterRule(localContext, 22, BSLMethodDescriptionParser.RULE_parameterString);
         try {
             this.state = 335;
@@ -1494,7 +1494,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public parameter(): ParameterContext {
-        let localContext = new ParameterContext(this.context, this.state);
+        const localContext = new ParameterContext(this.context, this.state);
         this.enterRule(localContext, 24, BSLMethodDescriptionParser.RULE_parameter);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1521,7 +1521,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public subParameter(): SubParameterContext {
-        let localContext = new SubParameterContext(this.context, this.state);
+        const localContext = new SubParameterContext(this.context, this.state);
         this.enterRule(localContext, 26, BSLMethodDescriptionParser.RULE_subParameter);
         let _la: number;
         try {
@@ -1561,7 +1561,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public parameterName(): ParameterNameContext {
-        let localContext = new ParameterNameContext(this.context, this.state);
+        const localContext = new ParameterNameContext(this.context, this.state);
         this.enterRule(localContext, 28, BSLMethodDescriptionParser.RULE_parameterName);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1584,7 +1584,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public returnsValues(): ReturnsValuesContext {
-        let localContext = new ReturnsValuesContext(this.context, this.state);
+        const localContext = new ReturnsValuesContext(this.context, this.state);
         this.enterRule(localContext, 30, BSLMethodDescriptionParser.RULE_returnsValues);
         let _la: number;
         try {
@@ -1678,7 +1678,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public returnsValuesString(): ReturnsValuesStringContext {
-        let localContext = new ReturnsValuesStringContext(this.context, this.state);
+        const localContext = new ReturnsValuesStringContext(this.context, this.state);
         this.enterRule(localContext, 32, BSLMethodDescriptionParser.RULE_returnsValuesString);
         try {
             this.state = 382;
@@ -1755,7 +1755,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public returnsValue(): ReturnsValueContext {
-        let localContext = new ReturnsValueContext(this.context, this.state);
+        const localContext = new ReturnsValueContext(this.context, this.state);
         this.enterRule(localContext, 34, BSLMethodDescriptionParser.RULE_returnsValue);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1811,7 +1811,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public typesBlock(): TypesBlockContext {
-        let localContext = new TypesBlockContext(this.context, this.state);
+        const localContext = new TypesBlockContext(this.context, this.state);
         this.enterRule(localContext, 36, BSLMethodDescriptionParser.RULE_typesBlock);
         try {
             this.enterOuterAlt(localContext, 1);
@@ -1867,7 +1867,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public typeDescription(): TypeDescriptionContext {
-        let localContext = new TypeDescriptionContext(this.context, this.state);
+        const localContext = new TypeDescriptionContext(this.context, this.state);
         this.enterRule(localContext, 38, BSLMethodDescriptionParser.RULE_typeDescription);
         let _la: number;
         try {
@@ -1929,7 +1929,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public type_(): TypeContext {
-        let localContext = new TypeContext(this.context, this.state);
+        const localContext = new TypeContext(this.context, this.state);
         this.enterRule(localContext, 40, BSLMethodDescriptionParser.RULE_type);
         let _la: number;
         try {
@@ -1991,7 +1991,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public simpleType(): SimpleTypeContext {
-        let localContext = new SimpleTypeContext(this.context, this.state);
+        const localContext = new SimpleTypeContext(this.context, this.state);
         this.enterRule(localContext, 42, BSLMethodDescriptionParser.RULE_simpleType);
         let _la: number;
         try {
@@ -2021,7 +2021,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public listTypes(): ListTypesContext {
-        let localContext = new ListTypesContext(this.context, this.state);
+        const localContext = new ListTypesContext(this.context, this.state);
         this.enterRule(localContext, 44, BSLMethodDescriptionParser.RULE_listTypes);
         let _la: number;
         try {
@@ -2118,7 +2118,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public complexType(): ComplexTypeContext {
-        let localContext = new ComplexTypeContext(this.context, this.state);
+        const localContext = new ComplexTypeContext(this.context, this.state);
         this.enterRule(localContext, 46, BSLMethodDescriptionParser.RULE_complexType);
         let _la: number;
         try {
@@ -2157,7 +2157,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public hyperlinkType(): HyperlinkTypeContext {
-        let localContext = new HyperlinkTypeContext(this.context, this.state);
+        const localContext = new HyperlinkTypeContext(this.context, this.state);
         this.enterRule(localContext, 48, BSLMethodDescriptionParser.RULE_hyperlinkType);
         let _la: number;
         try {
@@ -2227,7 +2227,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public spitter(): SpitterContext {
-        let localContext = new SpitterContext(this.context, this.state);
+        const localContext = new SpitterContext(this.context, this.state);
         this.enterRule(localContext, 50, BSLMethodDescriptionParser.RULE_spitter);
         let _la: number;
         try {
@@ -2271,7 +2271,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public hyperlinkBlock(): HyperlinkBlockContext {
-        let localContext = new HyperlinkBlockContext(this.context, this.state);
+        const localContext = new HyperlinkBlockContext(this.context, this.state);
         this.enterRule(localContext, 52, BSLMethodDescriptionParser.RULE_hyperlinkBlock);
         try {
             let alternative: number;
@@ -2343,7 +2343,7 @@ export class BSLMethodDescriptionParser extends antlr.Parser {
     }
 
     public startPart(): StartPartContext {
-        let localContext = new StartPartContext(this.context, this.state);
+        const localContext = new StartPartContext(this.context, this.state);
         this.enterRule(localContext, 54, BSLMethodDescriptionParser.RULE_startPart);
         let _la: number;
         try {

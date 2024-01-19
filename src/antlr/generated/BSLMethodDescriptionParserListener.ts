@@ -1,8 +1,7 @@
+/* eslint-disable no-duplicate-imports */
 // Generated from ./src/antlr/BSLMethodDescriptionParser.g4 by ANTLR 4.13.1
 
 import type { ErrorNode, ParseTreeListener, ParserRuleContext, TerminalNode } from "antlr4ng";
-
-import { BslParserRuleContext } from "../../core/context";
 
 import type { MethodDescriptionContext } from "./BSLMethodDescriptionParser";
 import type { DeprecateContext } from "./BSLMethodDescriptionParser";
@@ -374,11 +373,15 @@ export class BSLMethodDescriptionParserListener implements ParseTreeListener {
      */
     exitStartPart?: (ctx: StartPartContext) => void;
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     visitTerminal(node: TerminalNode): void {}
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     visitErrorNode(node: ErrorNode): void {}
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     enterEveryRule(node: ParserRuleContext): void {}
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     exitEveryRule(node: ParserRuleContext): void {}
 }

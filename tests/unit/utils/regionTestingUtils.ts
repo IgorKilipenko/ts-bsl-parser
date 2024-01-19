@@ -1,8 +1,8 @@
 import { RegionStartContext } from "../../../src/antlr/generated/BSLParser";
-import type { ActiveContext } from "../../../src/core/bslListener";
+import type { IActiveContext } from "../../../src/core/bslCodeEntities";
 
 export class RegionTestUtils {
-    public static checkIndexes = (ctx: Readonly<ActiveContext>): boolean => {
+    public static checkIndexes = (ctx: Readonly<IActiveContext>): boolean => {
         let result = true;
         if (ctx.childrenCtx?.length) {
             result = ctx.childrenCtx.reduce<boolean>((res, curr) => {
@@ -17,7 +17,7 @@ export class RegionTestUtils {
         return result;
     };
 
-    public static checkRegionsQueue = (queue: Readonly<ActiveContext>[]): boolean => {
+    public static checkRegionsQueue = (queue: Readonly<IActiveContext>[]): boolean => {
         return queue
             .filter((ctx) => ctx.ctx instanceof RegionStartContext)
             .reduce<boolean>((res, curr, i, arr) => {

@@ -1,7 +1,6 @@
 // Generated from ./src/antlr/BSLParser.g4 by ANTLR 4.13.1
 
 import * as antlr from "antlr4ng";
-import { Token } from "antlr4ng";
 
 import type { BSLParserListener } from "./BSLParserListener";
 import type { BSLParserVisitor } from "./BSLParserVisitor";
