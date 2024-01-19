@@ -15,54 +15,54 @@ import {
 import type { BslParserRuleContext } from "./context";
 
 export interface IActiveContext {
-    ctx: BslParserRuleContext;
+    regionStartContext: BslParserRuleContext;
     innerIndex: number;
     isActive: boolean;
     isRegion?: boolean;
-    endCtx?: BslParserRuleContext | null;
-    childrenCtx?: Array<IActiveContext> | null;
-    parentCtx?: IActiveContext | null;
+    regionEndContext?: BslParserRuleContext | null;
+    children?: Array<IActiveContext> | null;
+    parent?: IActiveContext | null;
     subs: Array<BslRawFunction>;
 }
 
 export class ActiveContext implements IActiveContext {
-    ctx: BslParserRuleContext;
+    regionStartContext: BslParserRuleContext;
 
     innerIndex: number;
 
     isActive: boolean;
 
-    isRegion?: boolean | undefined;
+    isRegion: boolean;
 
-    endCtx?: BslParserRuleContext | null | undefined;
+    regionEndContext: BslParserRuleContext | null;
 
-    childrenCtx?: IActiveContext[] | null | undefined;
+    children: IActiveContext[] | null;
 
-    parentCtx?: IActiveContext | null | undefined;
+    parent: IActiveContext | null;
 
     subs: BslRawFunction<FunctionContext | ProcedureContext>[];
 
     constructor(options: IActiveContext) {
-        this.ctx = options.ctx;
+        this.regionStartContext = options.regionStartContext;
         this.innerIndex = options.innerIndex;
         this.isActive = options.isActive;
-        this.isRegion = options.isRegion;
-        this.endCtx = options.endCtx;
-        this.childrenCtx = options.childrenCtx;
-        this.parentCtx = options.parentCtx;
+        this.isRegion = options.isRegion ?? false;
+        this.regionEndContext = options.regionEndContext ?? null;
+        this.children = options.children ?? null;
+        this.parent = options.parent ?? null;
         this.subs = options.subs;
     }
 
     public static isActiveContextObject<T extends object = object>(obj: IActiveContext | T): obj is IActiveContext {
-        return "isActive" in obj && "ctx" in obj && "endCtx" in obj;
+        return "isActive" in obj && "regionStartContext" in obj && "regionEndContext" in obj;
     }
 
     public static convertToRawRegion(ctx: IActiveContext, parent: BslRawRegion | null = null): BslRawRegion {
-        console.assert(ctx.ctx instanceof RegionStartContext, "Context must be instanceof RegionStartContext");
-        console.assert(ctx.endCtx instanceof RegionEndContext, "End-context must be instanceof RegionEndContext");
+        console.assert(ctx.regionStartContext instanceof RegionStartContext, "Context must be instanceof RegionStartContext");
+        console.assert(ctx.regionEndContext instanceof RegionEndContext, "End-context must be instanceof RegionEndContext");
 
-        const start = ctx.ctx as RegionStartContext;
-        const end = ctx.endCtx as RegionEndContext;
+        const start = ctx.regionStartContext as RegionStartContext;
+        const end = ctx.regionEndContext as RegionEndContext;
         const name = start.regionName();
         const innerIndex = ctx.innerIndex;
 
@@ -72,12 +72,12 @@ export class ActiveContext implements IActiveContext {
             name,
             innerIndex,
             parent,
-            regions: ctx.childrenCtx?.length ? [] : null,
+            regions: ctx.children?.length ? [] : null,
             functions: ctx.subs,
         });
 
         region.regions &&
-            ctx.childrenCtx?.forEach((c) => {
+            ctx.children?.forEach((c) => {
                 region.regions?.push(ActiveContext.convertToRawRegion(c, region));
             });
 

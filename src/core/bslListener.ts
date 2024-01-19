@@ -6,7 +6,7 @@ import type {
     RegionEndContext,
     SubContext,
 } from "../antlr/generated/BSLParser";
-import { FileContext, BSLParser } from "../antlr/generated/BSLParser";
+import { FileContext, BSLParser, SubCodeBlockContext } from "../antlr/generated/BSLParser";
 import { BSLParserListener as BslListenerBase } from "../antlr/generated/BSLParserListener";
 import type { IActiveContext, IBslRawRegion, BslRawRegion } from "./bslCodeEntities";
 import { ActiveContext, BslModule, BslRawFunction } from "./bslCodeEntities";
@@ -40,18 +40,22 @@ export class BslListener extends BslListenerBase {
         this._syntaxErrors = null;
     }
 
+    constructor() {
+        super();
+    }
+
     public override enterFile = (ctx: FileContext) => {
         this._initParseInfo();
         this._isGlobalContext = true;
 
         this._module = new BslModule();
-        this._activeContextQueue.push({
-            ctx,
+        this._activeContextQueue.push(new ActiveContext({
+            regionStartContext: ctx,
             innerIndex: 0,
             isActive: true,
             subs: [],
             isRegion: false,
-        } as IActiveContext);
+        }));
     };
 
     public override exitFile = (ctx: FileContext) => {
@@ -59,7 +63,7 @@ export class BslListener extends BslListenerBase {
         console.assert(this._activeContextQueue.length > 0 && this._activeContextQueue[0].isActive);
 
         const openedActiveCtx = this._activeContextQueue.find(
-            (activeCtx) => activeCtx.isActive && activeCtx.ctx instanceof FileContext,
+            (activeCtx) => activeCtx.isActive && activeCtx.regionStartContext instanceof FileContext,
         );
         if (!openedActiveCtx) {
             return;
@@ -84,7 +88,7 @@ export class BslListener extends BslListenerBase {
             return res;
         }, 0);
 
-        const newActiveCtx: IActiveContext = { ctx, innerIndex, isActive: true, isRegion: true, subs: [] };
+        const newActiveCtx = new ActiveContext({ regionStartContext: ctx, innerIndex, isActive: true, isRegion: true, subs: [] });
         this._activeContextQueue.push(newActiveCtx);
 
         const parentCtx =
@@ -95,9 +99,9 @@ export class BslListener extends BslListenerBase {
                 : null;
 
         if (parentCtx) {
-            newActiveCtx.parentCtx = parentCtx;
-            parentCtx.childrenCtx = parentCtx.childrenCtx ?? [];
-            parentCtx.childrenCtx.push(newActiveCtx);
+            newActiveCtx.parent = parentCtx;
+            parentCtx.children = parentCtx.children ?? [];
+            parentCtx.children.push(newActiveCtx);
         }
     };
 
@@ -121,7 +125,7 @@ export class BslListener extends BslListenerBase {
         }
 
         openedActiveCtx.isActive = false;
-        openedActiveCtx.endCtx = ctx;
+        openedActiveCtx.regionEndContext = ctx;
     };
 
     public override exitModuleVars = (ctx: ModuleVarsContext) => {
@@ -140,7 +144,7 @@ export class BslListener extends BslListenerBase {
 
     private _buildRegionsTree() {
         return this._activeContextQueue
-            .filter((ctx) => ctx.isRegion && !ctx.parentCtx)
+            .filter((ctx) => ctx.isRegion && !ctx.parent)
             .map((ctx) => ActiveContext.convertToRawRegion(ctx));
     }
 
