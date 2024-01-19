@@ -196,7 +196,7 @@ export class BslRawFuncArgument {
     }
 }
 
-class IBslRaw<T extends BslParserRuleContext> {
+abstract class BslRaw<T extends BslParserRuleContext> {
     protected readonly _parseContext: T;
 
     constructor(parseContext: T) {
@@ -206,7 +206,7 @@ class IBslRaw<T extends BslParserRuleContext> {
 
 export class BslRawFunction<
     T extends FunctionContext | ProcedureContext = FunctionContext | ProcedureContext,
-> extends IBslRaw<T> {
+> extends BslRaw<T> {
     private readonly _declaration: FuncDeclarationContext | ProcDeclarationContext;
 
     private readonly _args: ParamContext[];
