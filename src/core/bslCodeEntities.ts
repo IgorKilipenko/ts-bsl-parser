@@ -224,13 +224,13 @@ abstract class BslRawEntity<T extends BslParserRuleContext> {
 }
 
 abstract class BslRawBlockEntity<T extends BslParserRuleContext> extends BslRawEntity<T> {
-    protected _codeBlockPosition: IBslCodeRange | null = null;
+    protected _codeBlockPosition: IBslCodeRange;
 
     constructor(parseContext: T) {
         super(parseContext);
     }
 
-    public get codeBlockPosition(): IBslCodeRange | null {
+    public get codeBlockPosition(): IBslCodeRange {
         return this._codeBlockPosition;
     }
 }
@@ -318,35 +318,26 @@ export class BslRawFunction<
 
     public parentRegion: IBslRawRegion | null;
 
-    private _calcCodeBlockPosition(): IBslCodeRange | null {
+    private _calcCodeBlockPosition(): IBslCodeRange {
         const subCodeBlock = this._parseContext.subCodeBlock();
         console.assert(subCodeBlock.start !== null && subCodeBlock.stop !== null);
 
         const startToken = subCodeBlock.start!;
         const stopToken = subCodeBlock.stop!;
 
-        //- const isEmptyCode =
-        //-     startToken.line > stopToken.line ||
-        //-     (startToken.line === stopToken.line && startToken.column > stopToken.column);
-
         const isEmptyCode = startToken.line === this._endToken.line && startToken.column === this._endToken.column;
         const stopDeclaration = this._declarationPosition.stop;
-        const isInlineAndEmpty = this.isInlineCodeBlock && isEmptyCode;
 
-        const start: IBslCodePosition = !isInlineAndEmpty
+        const start: IBslCodePosition = !isEmptyCode
             ? { line: startToken.line, column: startToken.column }
             : { line: stopDeclaration.line, column: stopDeclaration.column + 1 };
 
-        const stop: IBslCodePosition = !isInlineAndEmpty
+        const stop: IBslCodePosition = !isEmptyCode
             ? { line: stopToken.line, column: stopToken.column }
             : {
-                  line: this._endToken.line,
+                  line: stopDeclaration.line,
                   column: Math.max(this._endToken.column - (this._endToken.text?.length ?? 0), start.column),
               };
-
-        if ((start.line === this._endToken.line && start.column === this._endToken.column) || start.line > stop.line) {
-            return null;
-        }
 
         return { start, stop } as IBslCodeRange;
     }

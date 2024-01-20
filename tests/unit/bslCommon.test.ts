@@ -208,25 +208,26 @@ describe("Bsl code blocks tests", () => {
         // Position must be null
         let bslCode = bslCodeBase;
         let func = new BslRawFunction(createParser(bslCode).procedure());
-        expect(func.codeBlockPosition).toBe(null);
+        expect(func.codeBlockPosition.start.line).toBe(1);
+        expect(func.codeBlockPosition.start.column).toBe(bslCode.indexOf(")") + 1);
+        expect(func.codeBlockPosition.stop.line === func.codeBlockPosition.start.line).toBe(true);
+        expect(func.codeBlockPosition.stop.column === func.codeBlockPosition.start.column).toBe(true);
 
         // Check position for inline function with empty code
         bslCode = bslCodeBase.replace(/(\r?\n)+/, "");
         func = new BslRawFunction(createParser(bslCode).procedure());
-        expect(!!func.codeBlockPosition).toBe(true);
         expect(func.codeBlockPosition?.start.line).toBe(1);
         expect(func.codeBlockPosition?.start.column).toBe(bslCode.indexOf(")") + 1);
-        expect(func.codeBlockPosition?.stop.line === func.codeBlockPosition?.start.line).toBe(true);
-        expect(func.codeBlockPosition?.stop.column === func.codeBlockPosition?.start.column).toBe(true);
+        expect(func.codeBlockPosition?.stop.line === func.codeBlockPosition.start.line).toBe(true);
+        expect(func.codeBlockPosition?.stop.column === func.codeBlockPosition.start.column).toBe(true);
 
         // Check position for inline function with not empty code
         bslCode = bslCodeBase.replace(/(\r?\n)+/, "var = 1;");
         func = new BslRawFunction(createParser(bslCode).procedure());
-        expect(!!func.codeBlockPosition).toBe(true);
-        expect(func.codeBlockPosition?.start.line).toBe(1);
-        expect(func.codeBlockPosition?.start.column).toBe(bslCode.indexOf(")") + 1);
-        expect(func.codeBlockPosition?.stop.line === func.codeBlockPosition?.start.line).toBe(true);
-        expect(func.codeBlockPosition?.stop.column === func.codeBlockPosition?.start.column).toBe(false);
+        expect(func.codeBlockPosition.start.line).toBe(1);
+        expect(func.codeBlockPosition.start.column).toBe(bslCode.indexOf(")") + 1);
+        expect(func.codeBlockPosition.stop.line === func.codeBlockPosition.start.line).toBe(true);
+        expect(func.codeBlockPosition.stop.column === func.codeBlockPosition.start.column).toBe(false);
     });
 });
 
