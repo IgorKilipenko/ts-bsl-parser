@@ -229,3 +229,38 @@ describe("Bsl code blocks tests", () => {
         expect(func.codeBlockPosition?.stop.column === func.codeBlockPosition?.start.column).toBe(false);
     });
 });
+
+describe("Bsl statements tests", () => {
+    describe("Bsl If/Else statements tests", () => {
+        test("check if/else statements without else/elseif", () => {
+            const bslCode = TestingUtils.prepareBslCode(`
+            Если Истина Тогда
+            КонецЕсли;
+            `);
+
+            const statement = createParser(bslCode).ifStatement();
+            expect(statement.exception).toBe(null);
+            expect(statement.isHasTrailingSemi).toBe(true);
+            expect(statement.elseBranch()).toBe(null);
+            expect(statement.elsifBranch().length).toBe(0);
+            expect(statement.ifBranch().expression().member().length).toBe(1);
+        });
+
+        test("check if/else statements with all items", () => {
+            const bslCode = TestingUtils.prepareBslCode(`
+            Если Истина Тогда
+            ИначеЕсли Ложь Тогда
+            Иначе
+            КонецЕсли;
+            `);
+
+            const statement = createParser(bslCode).ifStatement();
+            expect(statement.exception).toBe(null);
+            expect(statement.isHasTrailingSemi).toBe(true);
+            expect(statement.elseBranch()).not.toBe(null);
+            expect(statement.elsifBranch().length).toBe(1);
+            expect(statement.ifBranch().expression().member().length).toBe(1);
+            expect(statement.elsifBranch(0)?.expression().member().length).toBe(1);
+        });
+    });
+});
