@@ -183,7 +183,7 @@ describe("Bsl syntax tests", () => {
         const testItem = (statement: IfStatementContext, withSemi = true) => {
             expect(statement.exception).toBeNull();
             expect(statement.isHasTrailingSemi).toBe(withSemi);
-        }
+        };
 
         const bslCode = TestingUtils.prepareBslCode(`
         Если Истина Тогда
@@ -195,5 +195,37 @@ describe("Bsl syntax tests", () => {
 
         // With semi
         testItem(createParser(bslCode + ";").ifStatement(), true);
+    });
+});
+
+describe("Bsl code blocks tests", () => {
+    test("Functions empty code block position test", () => {
+        const bslCodeBase = TestingUtils.prepareBslCode(`
+            Процедура Тест1()
+            КонецПроцедуры
+        `);
+
+        // Position must be null
+        let bslCode = bslCodeBase;
+        let func = new BslRawFunction(createParser(bslCode).procedure());
+        expect(func.codeBlockPosition).toBe(null);
+
+        // Check position for inline function with empty code
+        bslCode = bslCodeBase.replace(/(\r?\n)+/, "");
+        func = new BslRawFunction(createParser(bslCode).procedure());
+        expect(!!func.codeBlockPosition).toBe(true);
+        expect(func.codeBlockPosition?.start.line).toBe(1);
+        expect(func.codeBlockPosition?.start.column).toBe(bslCode.indexOf(")") + 1);
+        expect(func.codeBlockPosition?.stop.line === func.codeBlockPosition?.start.line).toBe(true);
+        expect(func.codeBlockPosition?.stop.column === func.codeBlockPosition?.start.column).toBe(true);
+
+        // Check position for inline function with not empty code
+        bslCode = bslCodeBase.replace(/(\r?\n)+/, "var = 1;");
+        func = new BslRawFunction(createParser(bslCode).procedure());
+        expect(!!func.codeBlockPosition).toBe(true);
+        expect(func.codeBlockPosition?.start.line).toBe(1);
+        expect(func.codeBlockPosition?.start.column).toBe(bslCode.indexOf(")") + 1);
+        expect(func.codeBlockPosition?.stop.line === func.codeBlockPosition?.start.line).toBe(true);
+        expect(func.codeBlockPosition?.stop.column === func.codeBlockPosition?.start.column).toBe(false);
     });
 });
