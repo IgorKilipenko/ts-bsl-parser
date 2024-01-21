@@ -1,19 +1,20 @@
 import type { Token } from "antlr4ng";
-import {
+import type {
     RegionNameContext,
     FuncDeclarationContext,
     ParamContext,
     ProcDeclarationContext,
     StatementContext,
-    CompoundStatementContext,
+    IfBranchContext,
+    ElseBranchContext,
+    ElsifBranchContext,
+} from "../antlr/generated/BSLParser";
+import {
     IfStatementContext,
     WhileStatementContext,
     ForEachStatementContext,
     ForStatementContext,
     TryStatementContext,
-    SubCodeBlockContext,
-} from "../antlr/generated/BSLParser";
-import {
     RegionStartContext,
     RegionEndContext,
     FunctionContext,
@@ -239,9 +240,8 @@ abstract class BslRawEntity<T extends BslParserRuleContext> {
         );
     }
 
-    public getParentBlock<U extends T>(): BslRawCodeBlockEntity<U> | null {
-        return null;
-    }
+    //public abstract getParentBlock<TContext extends T, TEntity extends BslRawCodeBlockEntity<TContext>>(): TEntity | null;
+    //public abstract getParentEntity<TContext extends T, TEntity extends BslRawCodeBlockEntity<TContext>>(): TEntity | null;
 
     public get parseContext(): T {
         return this._parseContext;
@@ -251,15 +251,32 @@ abstract class BslRawEntity<T extends BslParserRuleContext> {
 abstract class BslRawCodeBlockEntity<T extends BslParserRuleContext> extends BslRawEntity<T> {
     protected _codeBlockPosition: IBslCodeRange;
 
+    protected _startPositionRange: IBslCodeRange;
+
+    protected _stopPositionRange: IBslCodeRange;
+
     constructor(parseContext: T) {
         super(parseContext);
     }
 
     public get codeBlockPosition(): IBslCodeRange {
-        return this._codeBlockPosition;
+        return this._codeBlockPosition ?? this._calcCodeBlockPosition();
     }
 
-    protected readonly _calcCodeBlockPosition: () => IBslCodeRange;
+    public get textBlockPosition(): IBslCodeRange {
+        console.assert(!!this._startPositionRange && this._stopPositionRange);
+
+        const start = this._startPositionRange.stop;
+        const stop = this._stopPositionRange.start;
+
+        return { start, stop } as IBslCodeRange;
+    }
+
+    protected abstract readonly _calcCodeBlockPosition: () => IBslCodeRange;
+
+    //protected abstract readonly _calcStartPositionRange: () => IBslCodeRange;
+
+    //protected abstract readonly _calcStopPositionRange: () => IBslCodeRange;
 }
 
 export abstract class BslRawCodeBlockCompoundStatement<
@@ -272,42 +289,85 @@ export abstract class BslRawCodeBlockCompoundStatement<
     constructor(parseContext: T) {
         super(parseContext);
     }
-
-    public override getParentBlock<U extends T = T>(): BslRawCodeBlockEntity<U> | null {
-        return this as unknown as BslRawCodeBlockEntity<U>;
-    }
 }
 
 export class BslRawIfStatement extends BslRawCodeBlockCompoundStatement<IfStatementContext> {
-    private _endToken: Token;
+    private readonly _ifBranch: IfBranchContext;
+
+    private readonly _elseBranch: ElseBranchContext | null;
+
+    private readonly _elsifBranches: Array<ElsifBranchContext>;
+
+    private readonly _ifToken: Token;
+
+    private readonly _thenToken: Token;
+
+    private readonly _endToken: Token;
 
     constructor(parseContext: IfStatementContext) {
         super(parseContext);
+
+        this._ifBranch = this._parseContext.ifBranch();
+        this._elseBranch = this._parseContext.elseBranch();
+        this._elsifBranches = this._parseContext.elsifBranch();
+
+        this._ifToken = this._ifBranch.IF_KEYWORD().symbol;
+        this._thenToken = this._ifBranch.THEN_KEYWORD().symbol;
         this._endToken = parseContext.ENDIF_KEYWORD().symbol;
+
+        this._startPositionRange = this._calcStartPositionRange();
+        this._stopPositionRange = this._calcStopPositionRange();
         this._codeBlockPosition = this._calcCodeBlockPosition();
     }
 
+    public getParentBlock<
+        TContext extends BslParserRuleContext = BslParserRuleContext,
+        TEntity extends BslRawCodeBlockEntity<TContext> = BslRawCodeBlockEntity<TContext>,
+    >(): TEntity | null {
+        return this as unknown as TEntity | null;
+    }
+
     protected override readonly _calcCodeBlockPosition = (): IBslCodeRange => {
-        const startToken = this.parseContext.ifBranch().codeBlock().start!;
-        const stopToken = (
-            this._parseContext.elseBranch()?.codeBlock().stop ?? this._parseContext.elsifBranch().length > 0
-                ? this._parseContext.elsifBranch(this._parseContext.elsifBranch().length - 1)?.codeBlock().stop ?? null
-                : this._parseContext.ifBranch().codeBlock().stop!
-        )!;
+        const startToken = this._ifBranch.codeBlock().start!;
+        const stopToken =
+            this._elseBranch?.codeBlock().stop ?? this._elsifBranches.length > 0
+                ? this._elsifBranches[this._parseContext.elsifBranch().length - 1].codeBlock().stop!
+                : this._ifBranch.codeBlock().stop!;
 
         const isEmptyCode = startToken.line === this._endToken.line && startToken.column === this._endToken.column;
-        const thenToken = this._parseContext.ifBranch().THEN_KEYWORD().symbol;
 
         const start: IBslCodePosition = !isEmptyCode
             ? { line: startToken.line, column: startToken.column }
-            : { line: thenToken.line, column: thenToken.column + thenToken.text!.length };
+            : { line: this._thenToken.line, column: this._thenToken.column + (this._thenToken.text?.length ?? 0) };
 
         const stop: IBslCodePosition = !isEmptyCode
             ? { line: stopToken.line, column: stopToken.column }
             : {
-                  line: thenToken.line,
+                  line: this._thenToken.line,
                   column: Math.max(this._endToken.column - 1, start.column),
               };
+
+        return { start, stop } as IBslCodeRange;
+    };
+
+    private readonly _calcStartPositionRange = () => {
+        const thenTokenLength = this._thenToken.text?.length ?? 0;
+        const start: IBslCodePosition = { line: this._ifToken.line, column: this._ifToken.column };
+        const stop: IBslCodePosition = {
+            line: this._thenToken.line,
+            column: this._thenToken.column + (thenTokenLength === 0 ? 0 : thenTokenLength - 1),
+        };
+
+        return { start, stop } as IBslCodeRange;
+    };
+
+    private readonly _calcStopPositionRange = () => {
+        const endTokenLength = this._endToken.text?.length ?? 0;
+        const start: IBslCodePosition = { line: this._endToken.line, column: this._endToken.column };
+        const stop: IBslCodePosition = {
+            line: this._endToken.line,
+            column: this._endToken.column + (endTokenLength === 0 ? 0 : endTokenLength - 1),
+        };
 
         return { start, stop } as IBslCodeRange;
     };

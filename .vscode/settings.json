@@ -5,6 +5,8 @@
         "runtimeExecutable": "node",
     },
     "cSpell.words": [
+        "ENDFUNCTION",
+        "ENDPROCEDURE",
         "linebreak",
         "PREPROC",
         "SDBL",

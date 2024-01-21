@@ -25,7 +25,7 @@ export interface WithTrailingSemicolon {
 }
 
 export class BslParserContextTypeConverter {
-    public static isCompoundStatementBlockItem<T extends BslParserRuleContext>(ctx: T): boolean {
+    public static isCompoundStatementBlockItem<T extends ParserRuleContext>(ctx: T): boolean {
         return (
             ctx instanceof IfStatementContext ||
             ctx instanceof TryStatementContext ||
@@ -35,8 +35,9 @@ export class BslParserContextTypeConverter {
         );
     }
 
-    public static isCompoundStatementItem<T extends BslParserRuleContext>(ctx: T): boolean {
-        return BslParserContextTypeConverter.isCompoundStatementBlockItem(ctx) || (
+    public static isCompoundStatementItem<T extends ParserRuleContext>(ctx: T): boolean {
+        return (
+            BslParserContextTypeConverter.isCompoundStatementBlockItem(ctx) ||
             ctx instanceof ReturnStatementContext ||
             ctx instanceof IfStatementContext ||
             ctx instanceof ForStatementContext ||
@@ -48,8 +49,9 @@ export class BslParserContextTypeConverter {
         );
     }
 
-    public static isStatementItem<T extends BslParserRuleContext>(ctx: T): boolean {
-        return BslParserContextTypeConverter.isCompoundStatementItem(ctx) || (
+    public static isStatementItem<T extends ParserRuleContext>(ctx: T): boolean {
+        return (
+            BslParserContextTypeConverter.isCompoundStatementItem(ctx) ||
             ctx instanceof LabelContext ||
             ctx instanceof CallStatementContext ||
             ctx instanceof WaitStatementContext ||
@@ -58,11 +60,11 @@ export class BslParserContextTypeConverter {
         );
     }
 
-    public static isIfStatementContext<T extends BslParserRuleContext>(ctx: T): boolean {
+    public static isIfStatementContext<T extends ParserRuleContext>(ctx: T): boolean {
         return ctx instanceof IfStatementContext;
     }
 
-    public static isFunctionContext<T extends BslParserRuleContext>(ctx: T): boolean {
+    public static isFunctionContext<T extends ParserRuleContext>(ctx: T): boolean {
         return ctx instanceof FunctionContext || this instanceof ProcedureContext;
     }
 }
@@ -89,6 +91,33 @@ export class BslParserRuleContext extends ParserRuleContext {
     public get isHasTrailingSemi(): boolean | null {
         const obj = this as unknown as WithTrailingSemicolon;
         return typeof obj["SEMICOLON"] === "function" ? obj.SEMICOLON() !== null : null;
+    }
+
+    public getParentCodeBlock(): ParserRuleContext | null {
+        let parentCtx: ParserRuleContext | null = this.parent;
+        while (parentCtx) {
+            if (
+                BslParserContextTypeConverter.isCompoundStatementBlockItem(parentCtx) ||
+                BslParserContextTypeConverter.isFunctionContext(parentCtx)
+            ) {
+                return parentCtx;
+            }
+            parentCtx = parentCtx.parent;
+        }
+        return null;
+    }
+
+    public findParentNode<T extends ParserRuleContext = ParserRuleContext>(
+        ctxType: new (...args: unknown[]) => T,
+    ): T | null {
+        let node: ParserRuleContext | null = this.parent;
+        while (node) {
+            if (node instanceof ctxType) {
+                return node;
+            }
+            node = node.parent;
+        }
+        return null;
     }
 
     public findAllNodes<T extends ParserRuleContext = ParserRuleContext>({

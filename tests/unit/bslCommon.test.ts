@@ -1,4 +1,4 @@
-import type { IfStatementContext } from "../../src/antlr/generated/BSLParser";
+import { IfStatementContext } from "../../src/antlr/generated/BSLParser";
 import { BslRawFunction, BslRawIfStatement, createParser } from "../../src/parser";
 import { RegionTestUtils } from "./utils/regionTestingUtils";
 import { TestingUtils } from "./utils/testingUtils";
@@ -93,14 +93,14 @@ describe("Bsl functions context tests", () => {
 
         const parser = createParser(bslCode);
         const procedure = parser.procedure();
-        expect(procedure.exception).toBe(null);
+        expect(procedure.exception).toBeNull();
 
         const procDeclaration = procedure.procDeclaration();
 
         expect(procDeclaration.subName().IDENTIFIER().symbol.text).toBe("ПроцедураТест");
-        expect(procDeclaration.EXPORT_KEYWORD()).toBe(null);
-        expect(procDeclaration.ASYNC_KEYWORD()).toBe(null);
-        expect(procDeclaration.paramList()).toBe(null);
+        expect(procDeclaration.EXPORT_KEYWORD()).toBeNull();
+        expect(procDeclaration.ASYNC_KEYWORD()).toBeNull();
+        expect(procDeclaration.paramList()).toBeNull();
     });
 
     test("check simple function context", () => {
@@ -273,9 +273,9 @@ describe("Bsl statements tests", () => {
             `);
 
             const statement = createParser(bslCode).ifStatement();
-            expect(statement.exception).toBe(null);
+            expect(statement.exception).toBeNull();
             expect(statement.isHasTrailingSemi).toBe(true);
-            expect(statement.elseBranch()).toBe(null);
+            expect(statement.elseBranch()).toBeNull();
             expect(statement.elsifBranch().length).toBe(0);
             expect(statement.ifBranch().expression().member().length).toBe(1);
         });
@@ -289,9 +289,9 @@ describe("Bsl statements tests", () => {
             `);
 
             const statement = createParser(bslCode).ifStatement();
-            expect(statement.exception).toBe(null);
+            expect(statement.exception).toBeNull();
             expect(statement.isHasTrailingSemi).toBe(true);
-            expect(statement.elseBranch()).not.toBe(null);
+            expect(statement.elseBranch()).not.toBeNull();
             expect(statement.elsifBranch().length).toBe(1);
             expect(statement.ifBranch().expression().member().length).toBe(1);
             expect(statement.elsifBranch(0)?.expression().member().length).toBe(1);
@@ -312,12 +312,40 @@ describe("Bsl statements tests", () => {
             `);
 
             const statement = createParser(bslCode).ifStatement();
-            expect(statement.exception).toBe(null);
+            expect(statement.exception).toBeNull();
             expect(statement.isHasTrailingSemi).toBe(true);
-            expect(statement.elseBranch()).not.toBe(null);
+            expect(statement.elseBranch()).not.toBeNull();
             expect(statement.elsifBranch().length).toBe(1);
             expect(statement.ifBranch().expression().member().length).toBe(1);
             expect(statement.elsifBranch(0)?.expression().member().length).toBe(1);
+
+            const elseBranch = statement.elseBranch()!;
+            const parent = elseBranch.getParentCodeBlock();
+            expect(parent).toEqual(statement);
+            const nestedIfStatement = elseBranch.codeBlock();
+            expect(nestedIfStatement?.getParentCodeBlock()).toBe(statement);
+        });
+
+        test("check parent if/else block", () => {
+            const bslCode = TestingUtils.prepareBslCode(`
+            Если Истина Тогда
+                Если Истина Тогда
+                КонецЕсли;
+            ИначеЕсли Ложь Тогда
+                Если Истина Тогда
+                КонецЕсли;
+            Иначе
+                Если Истина Тогда
+                КонецЕсли;
+            КонецЕсли;
+            `);
+
+            const statement = createParser(bslCode).ifStatement();
+            const elseBranch = statement.elseBranch()!;
+            const parent = elseBranch.getParentCodeBlock();
+            expect(parent).toEqual(statement);
+            const nestedIfStatement = elseBranch.codeBlock();
+            expect(nestedIfStatement?.getParentCodeBlock()).toBe(statement);
         });
     });
 });
