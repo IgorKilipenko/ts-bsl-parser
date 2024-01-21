@@ -70,8 +70,8 @@ describe("Bsl regions tests", () => {
     });
 });
 
-describe("Bsl functions tests", () => {
-    test("check simple procedure", () => {
+describe("Bsl functions context tests", () => {
+    test("check simple procedure context", () => {
         const bslCode = TestingUtils.buildBslFunction({
             name: "ПроцедураТест",
             isVoid: true,
@@ -85,7 +85,7 @@ describe("Bsl functions tests", () => {
         expect(procedure && !procedure.exception).toBe(true);
     });
 
-    test("check procedure declaration without args", () => {
+    test("check procedure declaration context without args", () => {
         const bslCode = TestingUtils.buildBslFunction({
             name: "ПроцедураТест",
             isVoid: true,
@@ -103,6 +103,19 @@ describe("Bsl functions tests", () => {
         expect(procDeclaration.paramList()).toBe(null);
     });
 
+    test("check simple function context", () => {
+        const bslCode = TestingUtils.prepareBslCode(`
+        Функция ТестФункция()
+        КонецФункции
+        `);
+
+        const parser = createParser(bslCode);
+        const func = parser.function_();
+        expect(func && func.exception === null).toBe(true);
+    });
+});
+
+describe("Bsl functions tests", () => {
     test("check function with full signature", () => {
         const testItem = (rawData: Parameters<typeof TestingUtils.buildBslFunction>[0]) => {
             const bslCode = TestingUtils.buildBslFunction(rawData);
@@ -165,21 +178,8 @@ describe("Bsl functions tests", () => {
     });
 });
 
-describe("Bsl functions tests", () => {
-    test("check simple function", () => {
-        const bslCode = TestingUtils.prepareBslCode(`
-        Функция ТестФункция()
-        КонецФункции
-        `);
-
-        const parser = createParser(bslCode);
-        const func = parser.function_();
-        expect(func && func.exception === null).toBe(true);
-    });
-});
-
 describe("Bsl syntax tests", () => {
-    test("Statement with & without semi d't has exception", () => {
+    test("statement with & without semi d't has exception", () => {
         const testItem = (statement: IfStatementContext, withSemi = true) => {
             expect(statement.exception).toBeNull();
             expect(statement.isHasTrailingSemi).toBe(withSemi);
@@ -199,7 +199,7 @@ describe("Bsl syntax tests", () => {
 });
 
 describe("Bsl code blocks tests", () => {
-    test("Functions empty code block position test", () => {
+    test("functions empty code block position test", () => {
         const bslCodeBase = TestingUtils.prepareBslCode(`
             Процедура Тест1()
             КонецПроцедуры
@@ -209,7 +209,7 @@ describe("Bsl code blocks tests", () => {
         let bslCode = bslCodeBase;
         let func = new BslRawFunction(createParser(bslCode).procedure());
         expect(func.codeBlockPosition.start.line).toBe(1);
-        expect(func.codeBlockPosition.start.column).toBe(bslCode.indexOf(")") + 1);
+        expect(func.codeBlockPosition.start.column).toBe(/\r?\n/.exec(bslCode)?.index);
         expect(func.codeBlockPosition.stop.line === func.codeBlockPosition.start.line).toBe(true);
         expect(func.codeBlockPosition.stop.column === func.codeBlockPosition.start.column).toBe(true);
 
@@ -217,33 +217,50 @@ describe("Bsl code blocks tests", () => {
         bslCode = bslCodeBase.replace(/(\r?\n)+/, "");
         func = new BslRawFunction(createParser(bslCode).procedure());
         expect(func.codeBlockPosition?.start.line).toBe(1);
-        expect(func.codeBlockPosition?.start.column).toBe(bslCode.indexOf(")") + 1);
+        expect(func.codeBlockPosition.start.column).toBe(/\s+КонецПроцедуры/.exec(bslCode)?.index);
         expect(func.codeBlockPosition?.stop.line === func.codeBlockPosition.start.line).toBe(true);
-        expect(func.codeBlockPosition?.stop.column === func.codeBlockPosition.start.column).toBe(true);
+        expect(func.codeBlockPosition?.stop.column).toBe((/КонецПроцедуры/.exec(bslCode)?.index ?? 0) - 1);
 
         // Check position for inline function with not empty code
-        bslCode = bslCodeBase.replace(/(\r?\n)+/, "var1 = 1;");
+        bslCode = bslCodeBase.replace(/(\r?\n)+/, " var1 = 1;");
         func = new BslRawFunction(createParser(bslCode).procedure());
         expect(func.codeBlockPosition.start.line).toBe(1);
-        expect(func.codeBlockPosition.start.column).toBe(bslCode.indexOf(")") + 1);
+        expect(func.codeBlockPosition.start.column).toBe(/var1/.exec(bslCode)?.index ?? -1);
         expect(func.codeBlockPosition.stop.line === func.codeBlockPosition.start.line).toBe(true);
         expect(func.codeBlockPosition.stop.column === func.codeBlockPosition.start.column).toBe(false);
     });
 
-    test("compound statements empty code block position test", () => {
-        const bslCodeBase = TestingUtils.prepareBslCode(`
+    describe("Bsl compound statement blocks tests", () => {
+        test("compound statements empty code block position test", () => {
+            const bslCodeBase = TestingUtils.prepareBslCode(`
             Если Истина Тогда
             КонецЕсли;
-        `);
+            `);
 
-        // Position must be at def stop
-        const bslCode = bslCodeBase;
-        const statement = new BslRawIfStatement(createParser(bslCode).ifStatement());
-        expect(statement.codeBlockPosition.start.line).toBe(1);
-        expect(statement.codeBlockPosition.start.column).toBe(bslCode.indexOf("Тогда") + "Тогда".length);
-        expect(statement.codeBlockPosition.stop.line === statement.codeBlockPosition.start.line).toBe(true);
-        expect(statement.codeBlockPosition.stop.column === statement.codeBlockPosition.start.column).toBe(true);
+            // Position must be at def stop
+            let bslCode = bslCodeBase;
+            let statement = new BslRawIfStatement(createParser(bslCode).ifStatement());
+            expect(statement.codeBlockPosition.start.line).toBe(1);
+            expect(statement.codeBlockPosition.start.column).toBe(/\r?\n/.exec(bslCode)?.index);
+            expect(statement.codeBlockPosition.stop.line === statement.codeBlockPosition.start.line).toBe(true);
+            expect(statement.codeBlockPosition.stop.column === statement.codeBlockPosition.start.column).toBe(true);
 
+            // Check position for inline statement with empty code
+            bslCode = bslCodeBase.replace(/(\r?\n)+/, "");
+            statement = new BslRawIfStatement(createParser(bslCode).ifStatement());
+            expect(statement.codeBlockPosition.start.line).toBe(1);
+            expect(statement.codeBlockPosition.start.column).toBe(/\s+КонецЕсли/.exec(bslCode)?.index);
+            expect(statement.codeBlockPosition.stop.line === statement.codeBlockPosition.start.line).toBe(true);
+            expect(statement.codeBlockPosition?.stop.column).toBe((/КонецЕсли/.exec(bslCode)?.index ?? 0) - 1);
+
+            // Check position for inline statement with not empty code
+            bslCode = bslCodeBase.replace(/(\r?\n)+/, " var1 = 1;");
+            statement = new BslRawIfStatement(createParser(bslCode).ifStatement());
+            expect(statement.codeBlockPosition.start.line).toBe(1);
+            expect(statement.codeBlockPosition.start.column).toBe(/var1/.exec(bslCode)?.index ?? -1);
+            expect(statement.codeBlockPosition.stop.line === statement.codeBlockPosition.start.line).toBe(true);
+            expect(statement.codeBlockPosition.stop.column === statement.codeBlockPosition.start.column).toBe(false);
+        });
     });
 });
 

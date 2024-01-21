@@ -306,11 +306,11 @@ export class BslRawIfStatement extends BslRawCodeBlockCompoundStatement<IfStatem
             ? { line: stopToken.line, column: stopToken.column }
             : {
                   line: thenToken.line,
-                  column: Math.max(this._endToken.column - (this._endToken.text?.length ?? 0), start.column),
+                  column: Math.max(this._endToken.column - 1, start.column),
               };
 
         return { start, stop } as IBslCodeRange;
-    }
+    };
 }
 
 export class BslRawFunction<
@@ -414,11 +414,11 @@ export class BslRawFunction<
             ? { line: stopToken.line, column: stopToken.column }
             : {
                   line: stopDeclaration.line,
-                  column: Math.max(this._endToken.column - (this._endToken.text?.length ?? 0), start.column),
+                  column: Math.max(this._endToken.column - 1, start.column),
               };
 
         return { start, stop } as IBslCodeRange;
-    }
+    };
 
     private _calcDeclarationPosition(): IBslCodeRange {
         console.assert(this._declaration.start !== null && this._declaration.stop !== null);
