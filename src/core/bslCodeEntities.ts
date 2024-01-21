@@ -1,10 +1,17 @@
 import type { Token } from "antlr4ng";
-import type {
+import {
     RegionNameContext,
     FuncDeclarationContext,
     ParamContext,
     ProcDeclarationContext,
     StatementContext,
+    CompoundStatementContext,
+    IfStatementContext,
+    WhileStatementContext,
+    ForEachStatementContext,
+    ForStatementContext,
+    TryStatementContext,
+    SubCodeBlockContext,
 } from "../antlr/generated/BSLParser";
 import {
     RegionStartContext,
@@ -13,7 +20,7 @@ import {
     ProcedureContext,
     ReturnStatementContext,
 } from "../antlr/generated/BSLParser";
-import type { BslParserRuleContext } from "./context";
+import type { BslControlFlowBlockContext, BslIterationsBlockContext, BslParserRuleContext } from "./context";
 
 export interface IActiveContext {
     regionStartContext: BslParserRuleContext;
@@ -213,17 +220,35 @@ abstract class BslRawEntity<T extends BslParserRuleContext> {
 
         console.assert(parseContext.start !== null && parseContext.stop !== null);
         this._position = {
-            start: { line: parseContext.start!.line, column: parseContext.start!.column },
-            stop: { line: parseContext.stop!.line, column: parseContext.stop!.column },
+            start: { line: parseContext.start!.line, column: parseContext.start!.column } as IBslCodePosition,
+            stop: { line: parseContext.stop!.line, column: parseContext.stop!.column } as IBslCodePosition,
         };
     }
 
     public get position(): IBslCodeRange {
         return this._position;
     }
+
+    public get isStatement(): boolean {
+        return (
+            this._parseContext instanceof IfStatementContext ||
+            this._parseContext instanceof TryStatementContext ||
+            this._parseContext instanceof WhileStatementContext ||
+            this._parseContext instanceof ForStatementContext ||
+            this._parseContext instanceof ForEachStatementContext
+        );
+    }
+
+    public getParentBlock<U extends T>(): BslRawCodeBlockEntity<U> | null {
+        return null;
+    }
+
+    public get parseContext(): T {
+        return this._parseContext;
+    }
 }
 
-abstract class BslRawBlockEntity<T extends BslParserRuleContext> extends BslRawEntity<T> {
+abstract class BslRawCodeBlockEntity<T extends BslParserRuleContext> extends BslRawEntity<T> {
     protected _codeBlockPosition: IBslCodeRange;
 
     constructor(parseContext: T) {
@@ -233,11 +258,64 @@ abstract class BslRawBlockEntity<T extends BslParserRuleContext> extends BslRawE
     public get codeBlockPosition(): IBslCodeRange {
         return this._codeBlockPosition;
     }
+
+    protected readonly _calcCodeBlockPosition: () => IBslCodeRange;
+}
+
+export abstract class BslRawCodeBlockCompoundStatement<
+    T extends BslControlFlowBlockContext | BslIterationsBlockContext =
+        | BslControlFlowBlockContext
+        | BslIterationsBlockContext,
+> extends BslRawCodeBlockEntity<T> {
+    private readonly _statements: Array<StatementContext>;
+
+    constructor(parseContext: T) {
+        super(parseContext);
+    }
+
+    public override getParentBlock<U extends T = T>(): BslRawCodeBlockEntity<U> | null {
+        return this as unknown as BslRawCodeBlockEntity<U>;
+    }
+}
+
+export class BslRawIfStatement extends BslRawCodeBlockCompoundStatement<IfStatementContext> {
+    private _endToken: Token;
+
+    constructor(parseContext: IfStatementContext) {
+        super(parseContext);
+        this._endToken = parseContext.ENDIF_KEYWORD().symbol;
+        this._codeBlockPosition = this._calcCodeBlockPosition();
+    }
+
+    protected override readonly _calcCodeBlockPosition = (): IBslCodeRange => {
+        const startToken = this.parseContext.ifBranch().codeBlock().start!;
+        const stopToken = (
+            this._parseContext.elseBranch()?.codeBlock().stop ?? this._parseContext.elsifBranch().length > 0
+                ? this._parseContext.elsifBranch(this._parseContext.elsifBranch().length - 1)?.codeBlock().stop ?? null
+                : this._parseContext.ifBranch().codeBlock().stop!
+        )!;
+
+        const isEmptyCode = startToken.line === this._endToken.line && startToken.column === this._endToken.column;
+        const thenToken = this._parseContext.ifBranch().THEN_KEYWORD().symbol;
+
+        const start: IBslCodePosition = !isEmptyCode
+            ? { line: startToken.line, column: startToken.column }
+            : { line: thenToken.line, column: thenToken.column + thenToken.text!.length };
+
+        const stop: IBslCodePosition = !isEmptyCode
+            ? { line: stopToken.line, column: stopToken.column }
+            : {
+                  line: thenToken.line,
+                  column: Math.max(this._endToken.column - (this._endToken.text?.length ?? 0), start.column),
+              };
+
+        return { start, stop } as IBslCodeRange;
+    }
 }
 
 export class BslRawFunction<
     T extends FunctionContext | ProcedureContext = FunctionContext | ProcedureContext,
-> extends BslRawBlockEntity<T> {
+> extends BslRawCodeBlockEntity<T> {
     private readonly _declaration: FuncDeclarationContext | ProcDeclarationContext;
 
     private readonly _endToken: Token;
@@ -304,10 +382,6 @@ export class BslRawFunction<
               }, []);
     }
 
-    public get parseContext(): T {
-        return this._parseContext;
-    }
-
     public get isInlineCodeBlock(): boolean {
         return this._declarationPosition.stop.line === this._endToken.line;
     }
@@ -316,9 +390,13 @@ export class BslRawFunction<
         return this._declarationPosition;
     }
 
+    public get codeBlock(): Array<StatementContext> {
+        return this._statements;
+    }
+
     public parentRegion: IBslRawRegion | null;
 
-    private _calcCodeBlockPosition(): IBslCodeRange {
+    protected override readonly _calcCodeBlockPosition = (): IBslCodeRange => {
         const subCodeBlock = this._parseContext.subCodeBlock();
         console.assert(subCodeBlock.start !== null && subCodeBlock.stop !== null);
 

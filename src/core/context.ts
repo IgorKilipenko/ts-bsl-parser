@@ -1,9 +1,70 @@
 import type { TerminalNode, ParseTree } from "antlr4ng";
 import { ParserRuleContext } from "antlr4ng";
-import { FileContext } from "../antlr/generated/BSLParser";
+import {
+    AssignmentContext,
+    CallStatementContext,
+    FileContext,
+    ForEachStatementContext,
+    ForStatementContext,
+    FunctionContext,
+    IfStatementContext,
+    LabelContext,
+    ProcedureContext,
+    RemoveHandlerStatementContext,
+    ReturnStatementContext,
+    TryStatementContext,
+    WaitStatementContext,
+    WhileStatementContext,
+} from "../antlr/generated/BSLParser";
+
+export type BslControlFlowBlockContext = IfStatementContext | TryStatementContext;
+export type BslIterationsBlockContext = WhileStatementContext | ForStatementContext | ForEachStatementContext;
 
 export interface WithTrailingSemicolon {
     SEMICOLON: () => TerminalNode | null;
+}
+
+export class BslParserContextTypeConverter {
+    public static isCompoundStatementBlockItem<T extends BslParserRuleContext>(ctx: T): boolean {
+        return (
+            ctx instanceof IfStatementContext ||
+            ctx instanceof TryStatementContext ||
+            ctx instanceof WhileStatementContext ||
+            ctx instanceof ForStatementContext ||
+            ctx instanceof ForEachStatementContext
+        );
+    }
+
+    public static isCompoundStatementItem<T extends BslParserRuleContext>(ctx: T): boolean {
+        return BslParserContextTypeConverter.isCompoundStatementBlockItem(ctx) || (
+            ctx instanceof ReturnStatementContext ||
+            ctx instanceof IfStatementContext ||
+            ctx instanceof ForStatementContext ||
+            ctx instanceof IfStatementContext ||
+            ctx instanceof TryStatementContext ||
+            ctx instanceof ForStatementContext ||
+            ctx instanceof WhileStatementContext ||
+            ctx instanceof RemoveHandlerStatementContext
+        );
+    }
+
+    public static isStatementItem<T extends BslParserRuleContext>(ctx: T): boolean {
+        return BslParserContextTypeConverter.isCompoundStatementItem(ctx) || (
+            ctx instanceof LabelContext ||
+            ctx instanceof CallStatementContext ||
+            ctx instanceof WaitStatementContext ||
+            ctx instanceof AssignmentContext
+            //! || ctx instanceof PreprocessorContext   //!
+        );
+    }
+
+    public static isIfStatementContext<T extends BslParserRuleContext>(ctx: T): boolean {
+        return ctx instanceof IfStatementContext;
+    }
+
+    public static isFunctionContext<T extends BslParserRuleContext>(ctx: T): boolean {
+        return ctx instanceof FunctionContext || this instanceof ProcedureContext;
+    }
 }
 
 export class BslParserRuleContext extends ParserRuleContext {
@@ -27,7 +88,7 @@ export class BslParserRuleContext extends ParserRuleContext {
 
     public get isHasTrailingSemi(): boolean | null {
         const obj = this as unknown as WithTrailingSemicolon;
-        return typeof obj["SEMICOLON"] === 'function' ? obj.SEMICOLON() !== null : null;
+        return typeof obj["SEMICOLON"] === "function" ? obj.SEMICOLON() !== null : null;
     }
 
     public findAllNodes<T extends ParserRuleContext = ParserRuleContext>({
@@ -61,5 +122,25 @@ export class BslParserRuleContext extends ParserRuleContext {
                 return res;
             }, []) ?? null
         );
+    }
+
+    public get isCompoundStatementBlockItem(): boolean {
+        return BslParserContextTypeConverter.isCompoundStatementBlockItem(this);
+    }
+
+    public get isCompoundStatementItem(): boolean {
+        return BslParserContextTypeConverter.isCompoundStatementItem(this);
+    }
+
+    public get isStatementItem(): boolean {
+        return BslParserContextTypeConverter.isStatementItem(this);
+    }
+
+    public get isIfStatementContext(): boolean {
+        return BslParserContextTypeConverter.isIfStatementContext(this);
+    }
+
+    public get isFunctionContext(): boolean {
+        return BslParserContextTypeConverter.isFunctionContext(this);
     }
 }

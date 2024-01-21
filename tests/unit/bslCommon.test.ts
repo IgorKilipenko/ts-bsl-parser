@@ -1,5 +1,5 @@
 import type { IfStatementContext } from "../../src/antlr/generated/BSLParser";
-import { BslRawFunction, createParser } from "../../src/parser";
+import { BslRawFunction, BslRawIfStatement, createParser } from "../../src/parser";
 import { RegionTestUtils } from "./utils/regionTestingUtils";
 import { TestingUtils } from "./utils/testingUtils";
 
@@ -158,7 +158,7 @@ describe("Bsl functions tests", () => {
             body: `
             Если Истина Тогда
                 Возврат 0;
-            КонеЕсли;
+            КонецЕсли;
             Возврат 1;
         `,
         });
@@ -205,7 +205,7 @@ describe("Bsl code blocks tests", () => {
             КонецПроцедуры
         `);
 
-        // Position must be null
+        // Position must be at def stop
         let bslCode = bslCodeBase;
         let func = new BslRawFunction(createParser(bslCode).procedure());
         expect(func.codeBlockPosition.start.line).toBe(1);
@@ -222,12 +222,28 @@ describe("Bsl code blocks tests", () => {
         expect(func.codeBlockPosition?.stop.column === func.codeBlockPosition.start.column).toBe(true);
 
         // Check position for inline function with not empty code
-        bslCode = bslCodeBase.replace(/(\r?\n)+/, "var = 1;");
+        bslCode = bslCodeBase.replace(/(\r?\n)+/, "var1 = 1;");
         func = new BslRawFunction(createParser(bslCode).procedure());
         expect(func.codeBlockPosition.start.line).toBe(1);
         expect(func.codeBlockPosition.start.column).toBe(bslCode.indexOf(")") + 1);
         expect(func.codeBlockPosition.stop.line === func.codeBlockPosition.start.line).toBe(true);
         expect(func.codeBlockPosition.stop.column === func.codeBlockPosition.start.column).toBe(false);
+    });
+
+    test("compound statements empty code block position test", () => {
+        const bslCodeBase = TestingUtils.prepareBslCode(`
+            Если Истина Тогда
+            КонецЕсли;
+        `);
+
+        // Position must be at def stop
+        const bslCode = bslCodeBase;
+        const statement = new BslRawIfStatement(createParser(bslCode).ifStatement());
+        expect(statement.codeBlockPosition.start.line).toBe(1);
+        expect(statement.codeBlockPosition.start.column).toBe(bslCode.indexOf("Тогда") + "Тогда".length);
+        expect(statement.codeBlockPosition.stop.line === statement.codeBlockPosition.start.line).toBe(true);
+        expect(statement.codeBlockPosition.stop.column === statement.codeBlockPosition.start.column).toBe(true);
+
     });
 });
 
@@ -252,6 +268,29 @@ describe("Bsl statements tests", () => {
             Если Истина Тогда
             ИначеЕсли Ложь Тогда
             Иначе
+            КонецЕсли;
+            `);
+
+            const statement = createParser(bslCode).ifStatement();
+            expect(statement.exception).toBe(null);
+            expect(statement.isHasTrailingSemi).toBe(true);
+            expect(statement.elseBranch()).not.toBe(null);
+            expect(statement.elsifBranch().length).toBe(1);
+            expect(statement.ifBranch().expression().member().length).toBe(1);
+            expect(statement.elsifBranch(0)?.expression().member().length).toBe(1);
+        });
+
+        test("check nested if/else statements", () => {
+            const bslCode = TestingUtils.prepareBslCode(`
+            Если Истина Тогда
+                Если Истина Тогда
+                КонецЕсли;
+            ИначеЕсли Ложь Тогда
+                Если Истина Тогда
+                КонецЕсли;
+            Иначе
+                Если Истина Тогда
+                КонецЕсли;
             КонецЕсли;
             `);
 
